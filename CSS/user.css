@@ -1,0 +1,28 @@
+body {
+    background-color: #262626;
+}
+.nav {
+    padding: 10px 0px;
+}
+
+#slider, #content {
+    padding: 0px 100px;
+}
+
+#content {
+    background-color: #1A1A1A;
+}
+
+svg {
+    fill: #A3A3A3;
+}
+
+svg:hover {
+    fill: #545454;
+}
+
+.dropdown-item {            
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
