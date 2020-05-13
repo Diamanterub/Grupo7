@@ -1,65 +1,53 @@
-/* Uso de imagem de fundo */
-body {
-    background-image: url('../imgs/Background-sign.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: white;
-}
-/* Definição da cor dos elementos "a" que incluem um href */
-a, a:hover {
-    color: rgba(218, 218, 218, 1);
-}
+/* CSS para Sign In e Sign Up */
 
-div.row {
-    font-size: 20px;
-    color: rgba(218, 218, 218, 1);
-    text-shadow: 0.7px 0.7px rgba(0, 0, 0, 0.16);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    padding-top: 10px;
-}
-/* Definição do container (caixa grande) onde estaram inseridos todos os elementos */
-div.container {
-    width: 454px;
-    height: 558px;
-    background-color: rgba(26, 26, 26, 1);
-    position: relative;
-    margin: 6% auto;
-    padding: 5px;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-}
-
-div.form-group {
-    padding: 0% 2%;
-    font-size: 15px;
-    font-weight: 400;
-}
-
-/* Posicionamento de certos elementos através de id's*/
-#logo{
-    padding-top: 69px;
-    padding-bottom: 38px;
-}
-#SI{
-    padding-left: 101px;
-}
-#SU{
-    padding-right: 101px;
-}
-#cbtxt{
-    padding-left: 65.5px;
-}
-#csi{
-    padding-right: 55.5px;
-    padding-top:1.5px;
-}
-/* Botão submit (SIGN IN) personalizado */
-input[type=submit]{
-    background-color: rgba(218, 218, 218, 1);
-    border-radius: 5px;
+ /* Uso de imagem de fundo */
+ body {
+ background-image: url('../imgs/Background-sign.jpg');
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+ color: white;
+ }
+ /* Definição da cor e estilo dos elementos href */
+ a, a:hover {
+ color: rgba(218, 218, 218, 1);
+ }
+ div.row {
+ font-size: 20px;
+ color: rgba(218, 218, 218, 1);
+ text-shadow: 0.7px 0.7px rgba(0, 0, 0, 0.16);
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 500;
+ padding-top: 10px;
+ }
+ /* Padding, tamanho e peso da fonte dos elementos no container */
+ div.form-group {
+ padding: 0% 2%;
+ font-size: 15px;
+ font-weight: 400;
+ }
+ /* Posicionamento de certos elementos através de id's*/
+ #logo{
+ padding-top: 69px;
+ padding-bottom: 38px;
+ }
+ #SI{
+ padding-left: 101px;
+ }
+ #SU{
+ padding-right: 101px;
+ }
+ #cbtxt{
+ padding-left: 65.5px;
+ }
+ #csi{
+ padding-right: 55.5px;
+ padding-top:1.5px;
+ }
+ /* Botão submit (SIGN IN/SIGN UP) personalizado */
+ input[type=submit]{
+ background-color: rgba(218, 218, 218, 1);
+ border-radius: 5px;
     border: none;
     padding: 9px 69px;
     font-weight: 500;
@@ -165,4 +153,49 @@ input:-webkit-autofill:active  {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+ }
+
+/* CSS apenas para Sign Up */ 
+ 
+ /* Container do Sign Up - caixa grande que contém os elementos */
+ #container_su {
+ width: 454px;
+ height: 686px;
+ background-color: rgba(26, 26, 26, 1);
+ position: relative;
+ margin: 34px auto;
+ padding: 5px;
+ border-radius: 10px;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 400;
+ }
+ /* Input Email Personalizado */
+ input[type=email]:focus, input[type=email], select{
+ background-color: rgba(48, 48, 48, 1);
+ color: rgba(218, 218, 218, 1);
+ width: 343px;
+ height: 51px;
+ padding: 16px 14px;
+ border: none;
+ border-radius: 5px;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 500;
+ }
+ input[type=email]::placeholder{
+ color: rgba(218, 218, 218, 1);
+ }
+
+/* CSS apenas para Sign In */ 
+ 
+ /* Container do Sign In - caixa grande que contém os elementos */ 
+ #container_si {
+ width: 454px;
+ height: 558px;
+ background-color: rgba(26, 26, 26, 1);
+ position: relative;
+ margin: 93.35px auto;
+ padding: 5px;
+ border-radius: 10px;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 400;
  }
