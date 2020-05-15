@@ -1,8 +1,11 @@
-import UserView from './views/UserView.js'
+import SignInView from './views/SignInView.js'
+import SignUpView from './views/SignUpView.js'
+
 
 class App {
     constructor() {
-        this.UserView = new UserView();
+        this.signInView = new SignInView();
+        this.signUpView = new SignUpView();
     }
 }
 
