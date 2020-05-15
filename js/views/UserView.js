@@ -18,6 +18,7 @@ export default class UserView {
         this.loginForm = document.getElementById('frmLogin');
         this.loginUsername = document.getElementById('txtUsername');
         this.loginPassword = document.getElementById('txtPassword');
+        // this.loginStaySigned = document.getElementById('checkStaySigned');
         this.loginMessage = document.getElementById('LoginMessage');
 
         this.bindAddLoginForm();
@@ -27,7 +28,7 @@ export default class UserView {
 
         this.bindAddLogoutEvent();
 
-        this.checkLoginStatus();     
+        // this.checkLoginStatus();
     }
 
     bindAddRegisterForm() {
@@ -53,7 +54,6 @@ export default class UserView {
             try {
                 this.userController.loginUser(this.loginUsername.value, this.loginPassword.value);
                 this.displayLoginMessage('User logged in with success!', 'success');
-                this.updateButtons('login');
             } catch(e) {
                 this.displayLoginMessage(e, 'danger');
             }
@@ -67,13 +67,13 @@ export default class UserView {
         });
     }
 
-    checkLoginStatus() {
-        if (this.userController.checkLoginStatus()) {
-            this.updateButtons('login');
-        } else {
-            this.updateButtons('logout');
-        }
-    }
+    // checkLoginStatus() {
+    //     if (this.userController.checkLoginStatus()) {
+    //         this.updateButtons('login');
+    //     } else {
+    //         this.updateButtons('logout');
+    //     }
+    // }
 
     displayRegisterMessage(message, type) {
         this.registerMessage.innerHTML =
@@ -83,19 +83,5 @@ export default class UserView {
     displayLoginMessage(message, type) {
         this.loginMessage.innerHTML =
             `<div class="alert alert-${type}" role="alert">${message}</div>`;
-    }
-
-    updateButtons(event) {
-        switch(event) {
-            case 'login':
-                this.loginButton.setAttribute('Disabled', '');
-                this.registerButton.setAttribute('Disabled', '');
-                this.logoutButton.removeAttribute('Disabled', '');
-                break;
-            case 'logout':
-                this.loginButton.removeAttribute('Disabled', '');
-                this.registerButton.removeAttribute('Disabled', '');
-                this.logoutButton.setAttribute('Disabled', '');                
-        }
     }
 }

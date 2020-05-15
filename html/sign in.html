@@ -12,27 +12,27 @@
 </head>
 <body>
     <div id="container_si" class="container flex-container">
-        <form action="">
+        <form action="" id="frmLogin">
             <div id="logo" class="row justify-content-center">
                 <img src="../imgs/logo.svg" class="img-fluid" alt="Responsive image">
             </div>
 
             <div class="row justify-content-around" id="SI_SU">
                 <a id="SI" href="#" style="text-decoration:none">SIGN IN</a>
-                <a id="SU" href="#" style="text-decoration:none">SIGN UP</a>
+                <a id="SU" href="sign up.html" style="text-decoration:none">SIGN UP</a>
             </div>
 
             <div class="form-group row justify-content-center">
-                <input type="text" class="form-control" id="user" placeholder="Username" required>
+                <input type="text" class="form-control" id="txtUsername" placeholder="Username" required>
             </div>
 
             <div class="form-group row justify-content-center">
-                <input type="password" class="form-control" id="pass" placeholder="Password" required>
+                <input type="password" class="form-control" id="txtPassword" placeholder="Password" required>
             </div>
 
             <div id="cbtxt" class="form-group row justify-content-between">
                 <label class="form-check-label">Stay signed in
-                    <input class="form-check-input" type="checkbox" id="keepsigned">
+                    <input class="form-check-input" type="checkbox" id="checkStaySigned">
                     <span class="checkmark"></span>
                 </label>
                 <a id="csi" href="#">Can't sign in?</a>
@@ -42,9 +42,11 @@
                 <input type="submit" value="SIGN IN">
             </div>
         </form>
-        <div class="row" id="RegisterMessage"></div>
+        <div class="row" id="LoginMessage"></div>
     </div>
     
+    <script type="module" src="../js/app.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
