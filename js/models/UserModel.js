@@ -18,8 +18,14 @@ export default class UserModel {
         this._persist();
     }
 
-    login(username) {
-        sessionStorage.setItem('loggedUser', username);
+    login(username, staysigned) {
+        if (staysigned) {
+            localStorage.setItem('loggedUser', username);
+            const ttl = Date.now() + (72 * 60 * 60);
+            localStorage.setItem('timeToLive', ttl);
+        } else {
+            sessionStorage.setItem('loggedUser', username);
+        }
     }
 
     logout() {

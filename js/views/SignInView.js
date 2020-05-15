@@ -8,7 +8,7 @@ export default class SignInView {
         this.loginForm = document.getElementById('frmLogin');
         this.loginUsername = document.getElementById('txtUsername');
         this.loginPassword = document.getElementById('txtPassword');
-        // this.loginStaySigned = document.getElementById('checkStaySigned');
+        this.loginStaySigned = document.getElementById('checkStaySigned');
         this.loginMessage = document.getElementById('LoginMessage');
 
         this.bindAddLoginForm();
@@ -19,8 +19,9 @@ export default class SignInView {
             event.preventDefault(); 
 
             try {
-                this.signInController.loginUser(this.loginUsername.value, this.loginPassword.value);
-                this.displayLoginMessage('User logged in with success!', 'success');
+                this.signInController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.value);
+                // this.displayLoginMessage('User logged in with success!', 'success');
+                window.location.replace("/html/home.html");
             } catch(e) {
                 this.displayLoginMessage(e, 'danger');
             }
