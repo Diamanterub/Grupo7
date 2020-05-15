@@ -4,8 +4,12 @@ import SignUpView from './views/SignUpView.js'
 
 class App {
     constructor() {
-        this.signInView = new SignInView();
-        this.signUpView = new SignUpView();
+        if (window.location.pathname == "/html/sign%20in.html") {
+            this.signInView = new SignInView();
+        }
+        if (window.location.pathname == "/html/sign%20up.html") {
+            this.signUpView = new SignUpView();
+        }
     }
 }
 
