@@ -19,8 +19,8 @@ export default class SignInView {
             event.preventDefault(); 
 
             try {
-                this.signInController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.value);
-                // this.displayLoginMessage('User logged in with success!', 'success');
+                this.signInController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.checked);
+                //this.displayLoginMessage('User logged in with success!', 'success');
                 window.location.replace("/html/home.html");
             } catch(e) {
                 this.displayLoginMessage(e, 'danger');

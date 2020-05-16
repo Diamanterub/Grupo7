@@ -19,6 +19,7 @@ export default class UserModel {
     }
 
     login(username, staysigned) {
+        this.logout();
         if (staysigned) {
             localStorage.setItem('loggedUser', username);
             const ttl = Date.now() + (72 * 60 * 60);
@@ -29,7 +30,13 @@ export default class UserModel {
     }
 
     logout() {
-        sessionStorage.removeItem('loggedUser');
+        try {
+            localStorage.removeItem('loggedUser');
+            localStorage.removeItem('timeToLive');
+        } catch (error) { }
+        try {
+            sessionStorage.removeItem('loggedUser');
+        } catch (error) { }
     }
 
     isLogged() {
