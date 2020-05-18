@@ -8,11 +8,14 @@ export default class UserModel {
     }
 
     create(username, password, email) {
+        let admin;
+        username == "adminP" ? admin = true : admin = false;
         const user = {
             id: this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 1,
             username: username,
             password: password,
-            email: email         
+            email: email,
+            admin: admin
         }
         this.users.push(user);
         this._persist();
