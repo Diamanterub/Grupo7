@@ -13,4 +13,8 @@ export default class SignInController {
             throw Error('Invalid login!');
         }    
     }
+
+    logoutUser() {
+        this.userModel.logout();
+    }
 }

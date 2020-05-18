@@ -1,5 +1,6 @@
 import SignInView from './views/SignInView.js'
 import SignUpView from './views/SignUpView.js'
+import SignStatusView from './views/SignStatusView.js'
 
 
 class App {
@@ -14,14 +15,9 @@ class App {
                 break;
         
             default:
+                this.SignStatusView = new SignStatusView();
                 break;
         }
-        // if (window.location.pathname == "/html/sign-in.html") {
-        //     this.signInView = new SignInView();
-        // }
-        // if (window.location.pathname == "/html/sign-up.html") {
-        //     this.signUpView = new SignUpView();
-        // }
     }
 }
 

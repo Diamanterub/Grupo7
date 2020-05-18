@@ -4,6 +4,8 @@ export default class SignInView {
     constructor() {
         this.signInController = new SignInController();
 
+        this.signInController.logoutUser();
+
         // login DOM
         this.loginForm = document.getElementById('frmLogin');
         this.loginUsername = document.getElementById('txtUsername');
@@ -20,8 +22,8 @@ export default class SignInView {
 
             try {
                 this.signInController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.checked);
-                //this.displayLoginMessage('User logged in with success!', 'success');
-                window.location.replace("/html/home.html");
+                window.location.href = "/html/home.html";
+                //this.displayLoginMessage();
             } catch(e) {
                 this.displayLoginMessage(e, 'danger');
             }

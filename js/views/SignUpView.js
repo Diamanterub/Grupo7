@@ -4,6 +4,8 @@ export default class SignUpView {
     constructor() {
         this.signUpController = new SignUpController();
 
+        this.signUpController.logoutUser();
+
         // register DOM
         this.registerForm = document.getElementById('frmRegister');
         this.registerUsername = document.getElementById('txtUsernameRegister');
@@ -25,7 +27,7 @@ export default class SignUpView {
                 }
                 this.signUpController.createUser(this.registerUsername.value, this.registerPassword.value, this.registerEmail.value);
                 // this.displayRegisterMessage('User registado com successo!', 'success');
-                window.location.replace("/html/sign-in.html");
+                window.location.href = "/html/sign-in.html";
             } catch(e) {
                 this.displayRegisterMessage(e, 'danger');
             }

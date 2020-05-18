@@ -22,7 +22,7 @@ export default class UserModel {
         this.logout();
         if (staysigned) {
             localStorage.setItem('loggedUser', username);
-            const ttl = Date.now() + (72 * 60 * 60);
+            const ttl = Date.now() + (72 * 60 * 60 * 1000);
             localStorage.setItem('timeToLive', ttl);
         } else {
             sessionStorage.setItem('loggedUser', username);
@@ -39,8 +39,20 @@ export default class UserModel {
         } catch (error) { }
     }
 
-    isLogged() {
-        return sessionStorage.getItem('loggedUser') !== null ? true : false;
+    isSigned() {
+        try {
+            if (localStorage.getItem('loggedUser') !== null && parseInt(localStorage.getItem('timeToLive')) > Date.now()) {
+                const ttl = Date.now() + (72 * 60 * 60 * 1000);
+                localStorage.setItem('timeToLive', ttl);
+                return true;
+            } else if (sessionStorage.getItem('loggedUser') !== null) {
+                return true;
+            } {
+                return false;
+            }         
+        } catch (error) {
+            return false;
+        }
     }
 
     _persist() {

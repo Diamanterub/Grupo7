@@ -12,4 +12,8 @@ export default class SignUpController {
             throw Error(`User com username "${username}" já existe!`);
         }
     }
+
+    logoutUser() {
+        this.userModel.logout();
+    }
 }
