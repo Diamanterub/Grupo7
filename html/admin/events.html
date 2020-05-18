@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Swift Admin - Events</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" >
+</head>
+<body>
+    <div class="container">
+        <form action="" id="frmEvent">
+            <div class="form-group row justify-content-between">
+                <div class="col-3">
+                </div>                
+                <div class="col-3">
+                    <input type="text" class="form-control" id="txtName" placeholder="Event Name" required>
+                    <input type="number" class="form-control" id="txtEdition" placeholder="Edition" required> <!-- Definir máximo no JS, ou ser automático -->
+                    <input type="text" class="form-control" id="txtCountry" placeholder="Country" required>
+                    <input type="text" class="form-control" id="txtCity" placeholder="City" required>
+                    <input type="date" class="form-control" id="txtDate" required> <!-- Definir minimo no JS -->
+                    <input type="time" class="form-control" id="txtTime" required>
+                    <input type="number" class="form-control" id="txtCapacity" placeholder="Capacity" required> <!-- Definir minimo no JS -->
+                    <input type="number" class="form-control" id="txtPrice" placeholder="Price" required min="0">
+                    <input type="submit" value="SIGN UP">
+                </div>
+                <div class="col-3">
+
+                </div>
+                <div class="col-3">
+
+                </div>
+            </div>
+            <div class="row" id="EventMessage"></div>
+        </form>
+    </div>
+    
+    <script type="module" src="../../js/app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>

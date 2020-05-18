@@ -47,14 +47,22 @@ export default class UserModel {
             if (localStorage.getItem('loggedUser') !== null && parseInt(localStorage.getItem('timeToLive')) > Date.now()) {
                 const ttl = Date.now() + (72 * 60 * 60 * 1000);
                 localStorage.setItem('timeToLive', ttl);
-                return true;
+                return this.isAdmin(localStorage.getItem('loggedUser'));
             } else if (sessionStorage.getItem('loggedUser') !== null) {
                 return true;
-            } {
+            } else {
                 return false;
             }         
         } catch (error) {
             return false;
+        }
+    }
+
+    isAdmin(username) {
+        if (window.location.pathname.includes("admin")) {
+            return this.getAll().some(user => { return user.username === username && user.admin})            
+        } else {
+            return true;
         }
     }
 
