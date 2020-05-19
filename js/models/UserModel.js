@@ -30,6 +30,7 @@ export default class UserModel {
         } else {
             sessionStorage.setItem('loggedUser', username);
         }
+        return this.isAdmin(username);
     }
 
     logout() {
@@ -59,8 +60,12 @@ export default class UserModel {
     }
 
     isAdmin(username) {
-        if (window.location.pathname.includes("admin")) {
-            return this.getAll().some(user => { return user.username === username && user.admin})            
+        if (window.location.pathname.includes("admin") || window.location.pathname == "/html/sign-in.html") {
+            try {
+                return this.getAll().some(user => { return user.username === username && user.admin});
+            } catch (error) {
+                return false;
+            }
         } else {
             return true;
         }
