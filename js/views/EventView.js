@@ -21,6 +21,8 @@ export default class EventView {
         this.eventWalk = document.getElementById('txtWalk');
         this.eventMessage = document.getElementById('EventMessage');
 
+        this.eventDate.setAttribute("min", this.caldDataMin());
+        
         this.bindAddEventForm();
     }
 
@@ -50,5 +52,24 @@ export default class EventView {
     displayEventMessage(message, type) {
         this.eventMessage.innerHTML =
             `<div class="alert alert-${type}" role="alert">${message}</div>`;
+    }
+
+    calcEdition(name) {
+        this.eventEdition.value = this.eventController.checkEdition(name);
+    }
+
+    caldDataMin() {
+        this.eventName.addEventListener('change', (event) => { this.calcEdition(this.eventName.value);});
+        var now = new Date();
+        var datamin = new Date(now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate() + 7);
+        var month = '' + datamin.getUTCMonth();
+        if (month.length < 2) {
+            month = '0' + month;
+        }
+        var day = '' + datamin.getUTCDate();
+        if (day.length < 2) {
+            day = '0' + day;
+        }
+        return [datamin.getUTCFullYear(), month, day].join('-');
     }
 }

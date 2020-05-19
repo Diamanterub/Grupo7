@@ -62,4 +62,19 @@ export default class EventModel {
 
         return quant;
     }
+
+    searchEdition(name) {
+        let events = [];
+        let e = 1;
+        try {
+            events = JSON.parse(localStorage.getItem('events'));
+            for (let index = 0; index < events.length; index++) {
+                if (events[index].name === name && events[index].edition > e) {
+                    e = parseInt(events[index].edition) + 1;
+                }
+            }
+        } catch (error) {}
+        
+        return e;
+    }
 }
