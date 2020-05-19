@@ -7,8 +7,7 @@ export default class SignInController {
 
     loginUser(username, password, staysigned) {
         if (this.userModel.getAll().some(user => { return user.username === username && user.password === password })) {
-            this.userModel.login(username, staysigned);
-            return true;
+            return this.userModel.login(username, staysigned);
         } else {
             throw Error('Invalid login!');
         }    

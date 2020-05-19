@@ -13,8 +13,16 @@ export default class EventView {
         this.eventTime = document.getElementById('txtTime');
         this.eventCapacity = document.getElementById('txtCapacity');
         this.eventPrice = document.getElementById('txtPrice');
+        this.event5K = document.getElementById('txt5K');
+        this.event10K = document.getElementById('txt10K');
+        this.event21K = document.getElementById('txt21K');
+        this.event42K = document.getElementById('txt42K');
+        this.eventRace = document.getElementById('txtRace');
+        this.eventWalk = document.getElementById('txtWalk');
         this.eventMessage = document.getElementById('EventMessage');
 
+        this.eventDate.setAttribute("min", this.caldDataMin());
+        
         this.bindAddEventForm();
     }
 
@@ -23,7 +31,17 @@ export default class EventView {
             event.preventDefault();
 
             try {
-                this.eventController.createEvent(this.eventName.value, this.eventEdition.value, this.eventCountry.value, this.eventCity.value, this.eventDate.value, this.eventTime.value, this.eventCapacity.value, this.eventPrice.value);
+                if (!this.event5K.checked && !this.event10K.checked && !this.event21K.checked && !this.event42K.checked) {
+                    throw Error(`Selecione pelo menos uma distância`);
+                }
+                if (!this.eventRace.checked && !this.eventWalk.checked) {
+                    throw Error(`Selecione um tipo`);
+                }
+                this.eventController.createEvent(
+                    this.eventName.value, this.eventEdition.value, this.eventCountry.value, this.eventCity.value,
+                    this.eventDate.value, this.eventTime.value, this.eventCapacity.value, this.eventPrice.value,
+                    this.event5K.checked, this.event10K.checked, this.event21K.checked, this.event42K.checked,
+                    this.eventRace.checked, this.eventWalk.checked);
                 this.displayEventMessage('Evento registado com successo!', 'success');
             } catch(e) {
                 this.displayEventMessage(e, 'danger');
@@ -34,5 +52,24 @@ export default class EventView {
     displayEventMessage(message, type) {
         this.eventMessage.innerHTML =
             `<div class="alert alert-${type}" role="alert">${message}</div>`;
+    }
+
+    calcEdition(name) {
+        this.eventEdition.value = this.eventController.checkEdition(name);
+    }
+
+    caldDataMin() {
+        this.eventName.addEventListener('change', (event) => { this.calcEdition(this.eventName.value);});
+        var now = new Date();
+        var datamin = new Date(now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate() + 7);
+        var month = '' + datamin.getUTCMonth();
+        if (month.length < 2) {
+            month = '0' + month;
+        }
+        var day = '' + datamin.getUTCDate();
+        if (day.length < 2) {
+            day = '0' + day;
+        }
+        return [datamin.getUTCFullYear(), month, day].join('-');
     }
 }

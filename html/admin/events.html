@@ -15,20 +15,41 @@
                 </div>                
                 <div class="col-3">
                     <input type="text" class="form-control" id="txtName" placeholder="Event Name" required>
-                    <input type="number" class="form-control" id="txtEdition" placeholder="Edition" required> <!-- Definir máximo no JS, ou ser automático -->
+                    <input type="number" class="form-control" id="txtEdition" placeholder="Edition" required readonly>
                     <input type="text" class="form-control" id="txtCountry" placeholder="Country" required>
                     <input type="text" class="form-control" id="txtCity" placeholder="City" required>
-                    <input type="date" class="form-control" id="txtDate" required> <!-- Definir minimo no JS -->
+                    <input type="date" class="form-control" id="txtDate" required>
                     <input type="time" class="form-control" id="txtTime" required>
                     <input type="number" class="form-control" id="txtCapacity" placeholder="Capacity" required> <!-- Definir minimo no JS -->
                     <input type="number" class="form-control" id="txtPrice" placeholder="Price" required min="0">
-                    <input type="submit" value="SIGN UP">
                 </div>
                 <div class="col-3">
 
                 </div>
                 <div class="col-3">
-
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="txt5K"> 5K
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="txt10K"> 10K
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="txt21K"> 21K
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="txt42K"> 42K
+                        </label>
+                    </div>
+                    <div class="form-check">                        
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="type" type="radio" id="txtRace"> Race
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="type" type="radio" id="txtWalk"> Walk
+                        </label>
+                    </div>
+                    <input type="submit" value="CREATE">
                 </div>
             </div>
             <div class="row" id="EventMessage"></div>

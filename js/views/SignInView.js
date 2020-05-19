@@ -21,8 +21,11 @@ export default class SignInView {
             event.preventDefault(); 
 
             try {
-                this.signInController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.checked);
-                window.location.href = "/html/home.html";
+                if (!this.signInController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.checked)) {
+                    window.location.href = "/html/home.html";
+                } else {
+                    window.location.href = "/html/admin/home.html";
+                }
                 //this.displayLoginMessage();
             } catch(e) {
                 this.displayLoginMessage(e, 'danger');
