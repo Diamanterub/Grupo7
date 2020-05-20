@@ -5,12 +5,8 @@ export default class EventController {
         this.eventModel = new EventModel();
     }
 
-    createEvent(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk) {
-        if (!this.eventModel.getAll().some(event => event.name === name && event.edition >= edition)) {
-            this.eventModel.create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk);
-        } else {
-            throw Error(`A "${edition}"ª edição do evento "${name}" já existe!`);
-        }
+    createEvent(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map) {
+        this.eventModel.create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map);
     }
 
     checkEdition(name) {

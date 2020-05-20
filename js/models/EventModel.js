@@ -11,8 +11,7 @@ export default class EventModel {
         localStorage.setItem('events', JSON.stringify(this.events));
     }
 
-    create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk) {
-        alert(d5K + " " + d10K + " " + d21K + " " + d42K);
+    create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map) {
         const dist = JSON.parse(this._dist(d5K, d10K, d21K, d42K))
         let type;
         if (race) {
@@ -25,7 +24,8 @@ export default class EventModel {
         const event = {
             id: this.events.length > 0 ? this.events[this.events.length - 1].id + 1 : 1,
             name: name, edition: edition, country: country, city: city, date: date,
-            time: time, capacity: capacity, price: price, dist: dist, type: type
+            time: time, capacity: capacity, price: price, dist: dist, type: type,
+            poster: poster, tshirt: tshirt, map: map
         }
         this.events.push(event);
         this._persist();
