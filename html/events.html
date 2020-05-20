@@ -71,20 +71,50 @@
             </ul>
         </div>
         <div class="row rounded" id="content">
-            <div class="col-3">
+            <div class="col-3" id="frmSearchEvent">
                 <form action="">
                     <div class="form-group">
-                        <input type="submit" value="Search">
+                        <input type="submit" value="SEARCH">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="event">
+                        <input type="text" class="form-control" placeholder="Name" id="txtName">
                     </div>
-                    <select class="form-control">
-                      <option>Recent</option>
-                      <option>Popular</option>
+                    <select class="form-control" id="selectOps">
+                        <option>Recent</option>
+                        <option>Popular</option>
                     </select>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Country" id="txtCountry">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="City" id="txtCity">
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="chk5K"> 5K
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="chk10K"> 10K
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="chk21K"> 21K
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="chk42K"> 42K
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="chkRace"> Race
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="chkWalk"> Walk
+                        </label>
+                    </div>
+                    <div class="row" id="EventMessage"></div>
                 </form>
             </div>
+            <div class="col-9" id="EventArea"></div>
         </div>
     </div>
     

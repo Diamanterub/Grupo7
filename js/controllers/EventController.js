@@ -12,4 +12,8 @@ export default class EventController {
     checkEdition(name) {
         return this.eventModel.searchEdition(name);
     }
+
+    searchEvent(name, country, city, selected, d5K, d10K, d21K, d42K, race, walk, area) {
+        this.eventModel.search(name, country, city, selected, d5K, d10K, d21K, d42K, race, walk, area);
+    }
 }
