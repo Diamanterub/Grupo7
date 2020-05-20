@@ -20,13 +20,18 @@
                     <input type="text" class="form-control" id="txtCity" placeholder="City" required>
                     <input type="date" class="form-control" id="txtDate" required>
                     <input type="time" class="form-control" id="txtTime" required>
-                    <input type="number" class="form-control" id="txtCapacity" placeholder="Capacity" required> <!-- Definir minimo no JS -->
+                    <input type="number" class="form-control" id="txtCapacity" placeholder="Capacity" required min="500">
                     <input type="number" class="form-control" id="txtPrice" placeholder="Price" required min="0">
                 </div>
                 <div class="col-3">
-
+                    <img src=""  class="img-fluid" alt="Poster" id="imgPoster">
+                    <input type="url" class="form-control" id="txtPoster" placeholder="URL Imagem Poster" required>
+                    <img src=""  class="img-fluid" alt="T-shirt" id="imgTshirt">
+                    <input type="url" class="form-control" id="txtTshirt" placeholder="URL Imagem T-shirt" required>
                 </div>
                 <div class="col-3">
+                    <img src=""  class="img-fluid" alt="Mapa" id="imgMap">
+                    <input type="url" class="form-control" id="txtMap" placeholder="URL Imagem Mapa" required>
                     <div class="form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="txt5K"> 5K
@@ -41,7 +46,7 @@
                             <input class="form-check-input" type="checkbox" id="txt42K"> 42K
                         </label>
                     </div>
-                    <div class="form-check">                        
+                    <div class="form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" name="type" type="radio" id="txtRace"> Race
                         </label>

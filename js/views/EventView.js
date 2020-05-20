@@ -19,9 +19,21 @@ export default class EventView {
         this.event42K = document.getElementById('txt42K');
         this.eventRace = document.getElementById('txtRace');
         this.eventWalk = document.getElementById('txtWalk');
+        this.eventPoster = document.getElementById('txtPoster');
+        this.eventTshirt = document.getElementById('txtTshirt');
+        this.eventMap = document.getElementById('txtMap');
+        this.imagePoster = document.getElementById('imgPoster');
+        this.imageTshirt = document.getElementById('imgTshirt');
+        this.imageMap = document.getElementById('imgMap');
         this.eventMessage = document.getElementById('EventMessage');
 
         this.eventDate.setAttribute("min", this.caldDataMin());
+
+        this.eventName.addEventListener('change', (event) => { this.calcEdition(this.eventName.value);});
+
+        this.eventPoster.addEventListener('change', (event) => { this.imagePoster.src = this.eventPoster.value});
+        this.eventTshirt.addEventListener('change', (event) => { this.imageTshirt.src = this.eventTshirt.value});
+        this.eventMap.addEventListener('change', (event) => { this.imageMap.src = this.eventMap.value});
         
         this.bindAddEventForm();
     }
@@ -59,7 +71,6 @@ export default class EventView {
     }
 
     caldDataMin() {
-        this.eventName.addEventListener('change', (event) => { this.calcEdition(this.eventName.value);});
         var now = new Date();
         var datamin = new Date(now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate() + 7);
         var month = '' + datamin.getUTCMonth();
