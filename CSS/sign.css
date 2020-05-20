@@ -8,6 +8,18 @@
  background-size: cover;
  color: white;
  }
+/* Centralização do container na área visível */ 
+ .container-position-helper1 {
+    display: table;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+ }
+ .container-position-helper2 {
+    display: table-cell;
+    vertical-align: middle;
+ }
  /* Definição da cor e estilo dos elementos href */
  a, a:hover {
  color: rgba(218, 218, 218, 1);
@@ -101,7 +113,7 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
     -webkit-text-fill-color: rgba(218, 218, 218, 1) !important;
 }
-/* Botão checkbox Personalizado */
+/* Botão checkbox Personalizado para Sign In e Sign Up */
 .form-check-label {
     display: block;
     position: relative;
@@ -145,10 +157,10 @@ input:-webkit-autofill:active  {
  } 
  /* Estilo do checkmark */
   .form-check-label .checkmark:after {
-    left: 3.5px;
-    top: 3.5px;  
-    width: 18px;
-    height: 18px;
+    left: 3px;
+    top: 3px;  
+    width: 19px;
+    height: 19px;
     background: rgba(218, 218, 218, 1);
     border: none;
     border-radius: 3px;
@@ -162,8 +174,7 @@ input:-webkit-autofill:active  {
  width: 454px;
  height: 686px;
  background-color: rgba(26, 26, 26, 1);
- position: relative;
- margin: 34px auto;
+ vertical-align: middle;
  padding: 5px;
  border-radius: 10px;
  font-family: 'Montserrat', sans-serif;
@@ -187,13 +198,12 @@ input:-webkit-autofill:active  {
 
 /* CSS apenas para Sign In */ 
  
- /* Container do Sign In - caixa grande que contém os elementos */ 
+/* Container do Sign In - caixa grande que contém os elementos */ 
  #container_si {
  width: 454px;
  height: 558px;
  background-color: rgba(26, 26, 26, 1);
- position: relative;
- margin: 93.35px auto;
+ vertical-align: middle;
  padding: 5px;
  border-radius: 10px;
  font-family: 'Montserrat', sans-serif;
