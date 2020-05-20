@@ -11,33 +11,33 @@
     <link rel="stylesheet" href="CSS/sign.css">
 </head>
 <body>
-    <div class="container-position-helper1">
-     <div class="container-position-helper2">
-      <div id="container_su" class="container flex-container">
-        <form action="">
+     <div class="container-position-helper1">
+      <div class="container-position-helper2">
+       <div id="container_su" class="container flex-container">
+        <form action="" id="frmRegister">
             <div id="logo" class="row justify-content-center">
                 <img src="imgs/logo.svg" class="img-fluid" alt="Responsive image">
             </div>
 
             <div class="row justify-content-around">
-                <a id="SI" href="#" style="text-decoration:none">SIGN IN</a>
+                <a id="SI" href="sign-in.html" style="text-decoration:none">SIGN IN</a>
                 <a id="SU" href="#" style="text-decoration:none">SIGN UP</a>
             </div>
 
             <div class="form-group row justify-content-center">
-                <input type="text" class="form-control" id="user" placeholder="Username" required>
+                <input type="text" class="form-control" id="txtUsernameRegister" placeholder="Username" required>
             </div>
 
             <div class="form-group row justify-content-center">
-                <input type="email" class="form-control" id="email" placeholder="Email" required>
+                <input type="email" class="form-control" id="txtEmailRegister" placeholder="Email" required>
             </div>
 
             <div class="form-group row justify-content-center">
-                <input type="password" class="form-control" id="pass" placeholder="Password" required>
+                <input type="password" class="form-control" id="txtPasswordRegister" placeholder="Password" required>
             </div>
 
             <div class="form-group row justify-content-center">
-                <input type="password" class="form-control" id="pass2" placeholder="Confirm Password" required>
+                <input type="password" class="form-control" id="txtPasswordRegister2" placeholder="Confirm Password" required>
             </div>
 
             <div id="cbtxt" class="form-group row justify-content-between">
@@ -51,11 +51,11 @@
                 <input type="submit" value="SIGN UP">
             </div>
         </form>
+        <div class="row" id="RegisterMessage"></div>
+       </div>
       </div>
-     </div>
-    </div> 
-     
-    
+     </div>  
+    <script type="module" src="../js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
