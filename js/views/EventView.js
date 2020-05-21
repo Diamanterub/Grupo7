@@ -25,6 +25,7 @@ export default class EventView {
         this.imagePoster = document.getElementById('imgPoster');
         this.imageTshirt = document.getElementById('imgTshirt');
         this.imageMap = document.getElementById('imgMap');
+        this.eventAbout = document.getElementById('txtAbout');
         this.eventMessage = document.getElementById('EventMessage');
 
         this.eventDate.setAttribute("min", this.caldDataMin());
@@ -53,7 +54,8 @@ export default class EventView {
                     this.eventName.value, this.eventEdition.value, this.eventCountry.value, this.eventCity.value,
                     this.eventDate.value, this.eventTime.value, this.eventCapacity.value, this.eventPrice.value,
                     this.event5K.checked, this.event10K.checked, this.event21K.checked, this.event42K.checked,
-                    this.eventRace.checked, this.eventWalk.checked);
+                    this.eventRace.checked, this.eventWalk.checked, this.eventPoster.value, this.eventTshirt.value,
+                    this.eventMap.value, this.eventAbout.value);
                 this.displayEventMessage('Evento registado com successo!', 'success');
             } catch(e) {
                 this.displayEventMessage(e, 'danger');
