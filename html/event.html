@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Swift - Events</title>
+<title>Swift - Event</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -14,7 +14,6 @@
         fill: #C7F942;
     }
 </style>
-
 </head>
 <body>
     <div class="container">
@@ -31,7 +30,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="events.html">
                         <svg xmlns="http://www.w3.org/2000/svg" class="active" width="24" height="24" viewBox="0 0 24 24"><path d="M4 24h-2v-24h2v24zm18-21.387s-1.621 1.43-3.754 1.43c-3.361 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v12.085c1.183-.819 2.979-1.681 4.922-1.681 3.685 0 4.201 2.754 7.485 2.754 2.121 0 3.593-1.359 3.593-1.359-1.742-1.253-3.071-2.954-3.778-4.932 1.464-1.278 3.508-4.962 3.778-7.096z"/></svg>
                     </a>
                 </li>
@@ -72,50 +71,19 @@
             </ul>
         </div>
         <div class="row rounded" id="content">
-            <div class="col-3" id="frmSearchEvent">
-                <form action="">
-                    <div class="form-group">
-                        <input type="submit" value="SEARCH">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" id="txtName">
-                    </div>
-                    <select class="form-control" id="selectOps">
-                        <option>Recent</option>
-                        <option>Popular</option>
-                    </select>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Country" id="txtCountry">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="City" id="txtCity">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="chk5K"> 5K
-                        </label>
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="chk10K"> 10K
-                        </label>
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="chk21K"> 21K
-                        </label>
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="chk42K"> 42K
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="chkRace"> Race
-                        </label>
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="chkWalk"> Walk
-                        </label>
-                    </div>
-                    <div class="row" id="EventMessage"></div>
-                </form>
+            <div class="col-3">
+                <a href="events.html">Return</a><br>
+                <div id="imgPoster"></div>
+                <div id="txtInfo"></div>
+                <div id="btns"></div>
             </div>
-            <div class="col-9" id="EventArea"></div>
+            <div class="col-3">
+                <div id="gauge"></div>
+                <div id="txtAbout"></div>
+            </div>
+            <div class="col-6">
+                <div id="imgMap"></div>
+            </div>
         </div>
     </div>
     
