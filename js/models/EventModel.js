@@ -11,7 +11,7 @@ export default class EventModel {
         localStorage.setItem('events', JSON.stringify(this.events));
     }
 
-    create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map) {
+    create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
         const dist = JSON.parse(this._dist(d5K, d10K, d21K, d42K))
         let type;
         const runners = [];
@@ -26,7 +26,8 @@ export default class EventModel {
             id: this.events.length > 0 ? this.events[this.events.length - 1].id + 1 : 1,
             name: name, edition: edition, country: country, city: city, date: date,
             time: time, capacity: capacity, price: price, dist: dist, type: type,
-            poster: poster, tshirt: tshirt, map: map, enrolled: 0, runners: runners
+            poster: poster, tshirt: tshirt, map: map, enrolled: 0, runners: runners,
+            about: about, status: "open"
         }
         this.events.push(event);
         this._persist();
@@ -137,7 +138,7 @@ export default class EventModel {
     }
 
     show(area, array, selected) {
-        //try {
+        try {
             var sortedActivities = [];
             if (selected === 0) {
                 sortedActivities = array.slice().sort((a, b) => -(new Date(b.date) - new Date(a.date)));                
@@ -146,10 +147,67 @@ export default class EventModel {
             }
             area.innerHTML = ``;
             for (let index = 0; index < sortedActivities.length; index++) {
-                let url = sortedActivities[index].url;
                 area.innerHTML += 
-                `<div><a href="#"><img src="${url}" class="img-fluid" alt="Poster" id="${index}"></a></div>`
+                `<a href="event.html?id=${sortedActivities[index].id - 1}"><img src="${sortedActivities[index].url}" class="img-fluid" alt="Poster" width="25%"></a>`
             }
+        } catch (error) {}
+    }
+
+    displayContent(poster, info, buttons, gauge, about, map, id) {
+        //try {
+            poster.innerHTML = `<img src="${this.events[id].poster}" class="img-fluid" alt="Poster">`
+            info.innerHTML =
+            `<h1>${this.events[id].name}</h1><br>
+            <p>(${this.events[id].edition}${this.getNth(this.events[id].edition)} Edition)</p><br>
+            <p>Location: ${this.events[id].country}, ${this.events[id].city}</p><br>
+            <p>Date: ${this.events[id].date}</p><br>
+            <p>Time: ${this.events[id].time}</p><br>
+            <p>Type: ${this.events[id].type}</p><br>
+            <p>Distance(s): ${this.getDist(id)}</p><br>
+            <p>Capacity: ${this.events[id].capacity} participants</p><br>
+            <p>Price: ${this.events[id].price}€</p>`
+            if (this.events[id].status === "open") {                
+                buttons.innerHTML = `<input type="button" value="REGISTER" id="btnReg">`
+            } else {
+                buttons.innerHTML = `<input type="button" value="LEADERBOARDS" id="btnLeadB">`
+            }
+            about.innerHTML = 
+            `<h1>About this event:</h1><br>
+            <p>${this.events[id].about}</p>`
+            map.innerHTML = `<img src="${this.events[id].map}" class="img-fluid" alt="Map">`
         //} catch (error) {}
+    }
+
+    getDist(id) {
+        var dists = "";
+        JSON.stringify(this.events[id].dist).includes("5K") ? dists += "5K" : {} ;
+        dists !== "" ? dists += " | " : {} ;
+        JSON.stringify(this.events[id].dist).includes("10K") ? dists += "10K" : {} ;
+        dists !== "" ? dists += " | " : {} ;
+        JSON.stringify(this.events[id].dist).includes("21K") ? dists += "21K" : {} ;
+        dists !== "" ? dists += " | " : {} ;
+        JSON.stringify(this.events[id].dist).includes("42K") ? dists += "42K" : {} ;
+        return dists;
+    }
+
+    getNth(edition) {
+        if (edition.length === 1) {
+            return this._lastDigit(edition);
+        } else {
+            if (edition[edition.length - 2] === 1) {
+                return "nt";
+            } else {
+                return this._lastDigit(edition[edition.length - 1]);
+            }
+        }
+    }
+
+    _lastDigit(num) {
+        switch (num) {
+            case "1": return "st"; break;
+            case "2": return "nd"; break;
+            case "3": return "rd"; break;
+            default: return "th"; break;
+        }
     }
 }

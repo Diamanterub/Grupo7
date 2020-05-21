@@ -3,6 +3,7 @@ import SignUpView from './views/SignUpView.js'
 import SignStatusView from './views/SignStatusView.js'
 import EventView from './views/EventView.js'
 import SearchEventView from './views/SearchEventView.js'
+import ShowEventView from './views/ShowEventView.js'
 
 
 class App {
@@ -25,6 +26,10 @@ class App {
 
             case "/html/events.html":
                 this.searchEventView = new SearchEventView();
+                break;
+
+            case "/html/event.html":
+                this.showEventView = new ShowEventView();
                 break;
         
             default:                
