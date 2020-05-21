@@ -158,12 +158,12 @@ export default class EventModel {
             poster.innerHTML = `<img src="${this.events[id].poster}" class="img-fluid" alt="Poster">`
             info.innerHTML =
             `<h1>${this.events[id].name}</h1><br>
-            <p>(${this.events[id].edition}${this.getNth(this.events[id].edition)} Edition)</p><br>
+            <p>(${this.events[id].edition}${this._getNth(this.events[id].edition)} Edition)</p><br>
             <p>Location: ${this.events[id].country}, ${this.events[id].city}</p><br>
             <p>Date: ${this.events[id].date}</p><br>
             <p>Time: ${this.events[id].time}</p><br>
             <p>Type: ${this.events[id].type}</p><br>
-            <p>Distance(s): ${this.getDist(id)}</p><br>
+            <p>Distance(s): ${this._getDist(id)}</p><br>
             <p>Capacity: ${this.events[id].capacity} participants</p><br>
             <p>Price: ${this.events[id].price}€</p>`
             if (this.events[id].status === "open") {                
@@ -175,10 +175,14 @@ export default class EventModel {
             `<h1>About this event:</h1><br>
             <p>${this.events[id].about}</p>`
             map.innerHTML = `<img src="${this.events[id].map}" class="img-fluid" alt="Map">`
+            gauge.innerHTML =
+            `<canvas id="foo"></canvas>
+            <label id="preview-textfield" for="foo"></label>`
+            this._getGauge(this.events[id].capacity, this.events[id].enrolled)
         //} catch (error) {}
     }
 
-    getDist(id) {
+    _getDist(id) {
         var dists = "";
         JSON.stringify(this.events[id].dist).includes("5K") ? dists += "5K" : {} ;
         dists !== "" ? dists += " | " : {} ;
@@ -190,7 +194,7 @@ export default class EventModel {
         return dists;
     }
 
-    getNth(edition) {
+    _getNth(edition) {
         if (edition.length === 1) {
             return this._lastDigit(edition);
         } else {
@@ -209,5 +213,34 @@ export default class EventModel {
             case "3": return "rd"; break;
             default: return "th"; break;
         }
+    }
+
+    _getGauge(max, num) {
+        var opts = {
+            angle: 0.48,
+            lineWidth: 0.1,
+            radiusScale: 1,
+            pointer: {
+              length: 0.6,
+              strokeWidth: 0.035,
+              color: '#000000'
+            },
+            limitMax: false,
+            limitMin: false,
+            colorStart: '#FFFFFF',
+            colorStop: '#C7F942',
+            strokeColor: '#1A1A1A',
+            generateGradient: true,
+            highDpiSupport: true,
+          };
+        var target = document.getElementById('foo');
+        var gauge = new Donut(target).setOptions(opts);
+        gauge.maxValue = max;
+        gauge.setMinValue(0);
+        gauge.animationSpeed = 23;
+        gauge.set(num);
+
+        var perc = Math.round((num / max) * 100);
+        document.getElementById("preview-textfield").innerHTML = perc + "% - " + num;
     }
 }
