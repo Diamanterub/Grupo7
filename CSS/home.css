@@ -1,0 +1,99 @@
+#i1, #i2, #i3, #i4{ display: none;}
+
+.slide-container{
+		margin: 0 auto;
+		position: relative;
+		width: 100%;
+		height: 92vh;
+	  user-select: none;
+		background-color: rgba(26, 26, 26, 0.75);
+		border: solid 5px rgba(163, 163, 163, 1);
+		border-radius:10px ; 
+	}
+
+	.slide-container .slide_img{
+		position: absolute;
+		width: 100%;;
+		height: 100%;
+	}
+	.slide-container .slide_img img{
+		width: inherit;
+		height: inherit;
+	}
+
+
+	label span{
+		position: absolute;
+		font-size: 100pt;
+		top: 50%;
+	 	transform: translateY(-50%);
+	}
+
+
+.slide-container #nav_slide{
+	width: 100%;
+	bottom: 12%;
+	height: 11px;
+	position: absolute;
+	text-align: center;
+	z-index: 99;
+	cursor: default;
+}
+
+#nav_slide .dots{
+	top: 65px;
+	width: 18px;
+	height: 18px;
+	margin: 0 4px;
+	position: relative;
+  border-radius: 5px;
+  border: 2px solid rgba(163, 163, 163, 1);
+	display: inline-block;
+	background-color: rgba(26, 26, 26, 0.75);
+	transition: .4s;
+}
+
+#nav_slide .dots:hover {
+	cursor: pointer;
+	transition: .25s
+}
+
+.slide_img{z-index: -1;}
+
+#i1:checked ~ #one  ,
+#i2:checked ~ #two  ,
+#i3:checked ~ #three,
+#i4:checked ~ #four ,
+#i5:checked ~ #five{
+z-index: 9;
+animation: scroll 1s ease-in-out;
+}
+
+#i1:checked  ~  #nav_slide #dot1,
+#i2:checked  ~  #nav_slide #dot2,
+#i3:checked  ~  #nav_slide #dot3,
+#i4:checked  ~  #nav_slide #dot4,
+#i5:checked  ~  #nav_slide #dot5{ 
+background-color: rgba(218, 218, 218, 1);
+}
+
+@keyframes scroll{
+	0%{	opacity:.4;}
+	100%{opacity:1;}
+}		
+
+
+@media screen and (max-width: 685px){
+	.container{
+		border: none;
+		width: 100%;
+		height: 0;
+		padding-bottom: 55%; 
+	}	
+
+
+
+}
+@media screen  and(min-width: 970px){
+	.me{ display: none;}
+}
