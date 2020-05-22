@@ -6,8 +6,8 @@ export default class EventView {
         
         this.Poster = document.getElementById('imgPoster');
         this.Info = document.getElementById('txtInfo');
-        this.Buttons = document.getElementById('btns');
-        this.Gauge = document.getElementById('gauge');
+        this.Buttons = document.getElementById('divBtn');
+        this.Gauge = document.getElementById('divGauge');
         this.About = document.getElementById('txtAbout');
         this.Map = document.getElementById('imgMap');
 
