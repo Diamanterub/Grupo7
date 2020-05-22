@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+
+}
+.outside-box {
+  background: rgba(38, 38, 38, 1);
+  height: 94vh;
+  padding-bottom: 20px;
+}
+.inside-box {
+  background: rgba(26, 26, 26, 1);
+  height: 100%;
+  border-radius: 10px;
+  margin: 0 20px;
+}
+.flex-container-top {
+    display: flex;
+    justify-content: space-between;
+    height: 6vh;
+    background-color: rgba(38, 38, 38, 1);
+  }
+.flex-container-left {
+    background: url("../imgs/logo-mini.svg") no-repeat center ;
+    width: 100px;
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.flex-container-center {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(38, 38, 38, 1);
+    width: 250px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.box, .box-home, .box-events, .box-teams, .box-leaderboards, .box-stats{
+    background-color: rgba(38, 38, 38, 1);
+    width: 48px;
+    margin: 12px;
+}
+svg {
+    display: block;
+    margin: 2px auto;
+    fill: rgba(163, 163, 163, 1);
+}
+svg:hover {
+    fill: rgba(84, 84, 84, 1);
+}
+.in-home, .in-home:hover {
+    fill: rgba(218, 218, 218, 1);
+}
+.in-events, .in-events:hover {
+    fill: rgba(199, 249, 66, 1);
+}
+.in-teams, .in-teams:hover {
+    fill: rgba(150, 205, 91, 1);
+}
+.in-leaderboards, .in-leaderboards:hover {
+    fill: rgba(98, 158, 120, 1);
+}
+.in-stats, .in-stats:hover {
+    fill: rgba(30, 123, 154, 1);
+}
+
+.flex-container-right {
+    background-color: rgba(26, 26, 26, 1);
+    width: 138px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-content: flex-end;
+    display: flex;
+    border-radius: 10px;
+    
+}
+
+.buttons-box{
+    width: 92px;
+    height: 46px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    
+}
+.logout-box{
+  width: 38px;
+}
+.settings-box{
+  width: 38px;
+}
+
+
+
+
+  .user-box {
+      width: 46px;
+      height: 46px;
+  }
+  #user-photo{
+   border: 2px solid rgba(163, 163, 163, 1);
+   border-radius: 10px;
+  }
+
+
