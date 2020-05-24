@@ -163,7 +163,7 @@ export default class EventModel {
             <p>Date: ${this.events[id].date}</p><br>
             <p>Time: ${this.events[id].time}</p><br>
             <p>Type: ${this.events[id].type}</p><br>
-            <p>Distance(s): ${this._getDist(id)}</p><br>
+            <p>Distance(s): ${this._getDist(id, dists)}</p><br>
             <p>Capacity: ${this.events[id].capacity} participants</p><br>
             <p>Price: ${this.events[id].price}€</p>`
             if (this.events[id].status === "open") {                
@@ -183,16 +183,40 @@ export default class EventModel {
         //} catch (error) {}
     }
 
-    _getDist(id) {
-        var dists = "";
-        JSON.stringify(this.events[id].dist).includes("5K") ? dists += "5K" : {} ;
-        dists !== "" ? dists += " | " : {} ;
-        JSON.stringify(this.events[id].dist).includes("10K") ? dists += "10K" : {} ;
-        dists !== "" ? dists += " | " : {} ;
-        JSON.stringify(this.events[id].dist).includes("21K") ? dists += "21K" : {} ;
-        dists !== "" ? dists += " | " : {} ;
-        JSON.stringify(this.events[id].dist).includes("42K") ? dists += "42K" : {} ;
-        return dists;
+    _getDist(id, dists) {
+        var vals = "";
+        if (JSON.stringify(this.events[id].dist).includes("5K")) {
+            vals += "5K";
+            dists.innerHTML +=
+            `<label class="form-check-label">
+            <input class="form-check-input" name="dist" type="radio" id="frm5K"> 5K
+            </label><br>`
+        }
+        if (JSON.stringify(this.events[id].dist).includes("10K")) {
+            vals !== "" ? vals += " | " : {} ;
+            vals += "10K";
+            dists.innerHTML +=
+            `<label class="form-check-label">
+            <input class="form-check-input" name="dist" type="radio" id="frm10K"> 10K
+            </label><br>`
+        }
+        if (JSON.stringify(this.events[id].dist).includes("21K")) {
+            vals !== "" ? vals += " | " : {} ;
+            vals += "21K";
+            dists.innerHTML +=
+            `<label class="form-check-label">
+            <input class="form-check-input" name="dist" type="radio" id="frm21K"> 21K
+            </label><br>`
+        }
+        if (JSON.stringify(this.events[id].dist).includes("42K")) {
+            vals !== "" ? vals += " | " : {} ;
+            vals += "42K";
+            dists.innerHTML +=
+            `<label class="form-check-label">
+            <input class="form-check-input" name="dist" type="radio" id="frm42K"> 42K
+            </label><br>`
+        }
+        return vals;
     }
 
     _getNth(edition) {
@@ -243,5 +267,12 @@ export default class EventModel {
 
         var perc = Math.round((num / max) * 100);
         document.getElementById("preview-textfield").innerHTML = perc + "% - " + num;
+    }
+
+    addRunner(dist, run, id) {
+        alert(JSON.stringify(this.events[id].dist))
+        // if (!JSON.stringify(this.events[id].runners).includes(localStorage.getItem('loggedUser'))) {
+            
+        // }
     }
 }
