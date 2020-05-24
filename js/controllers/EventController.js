@@ -20,4 +20,8 @@ export default class EventController {
     findContent(poster, info, buttons, gauge, about, map, id, dists) {
         this.eventModel.displayContent(poster, info, buttons, gauge, about, map, id, dists);
     }
+
+    enroll(dist, run, id) {
+        this.eventModel.addRunner(dist, run, id);
+    }
 }

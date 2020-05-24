@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="../css/user.css">
+<!-- <link rel="stylesheet" href="../css/user.css"> -->
 
 <script src="../js/gauge.js-gh-pages/dist/gauge.min.js"></script>
 
@@ -31,7 +31,14 @@
                 <div class="modal-body">
                     <form id="frmRegister">
                         <div class="form-check" id="frmDists"></div>
-                        <div class="form-check" id="frmRunners"></div>
+                        <div class="form-check">
+                            <br><label class="form-check-label">
+                                <input class="form-check-input" name="run" type="radio" id="frmSolo" checked> Solo
+                            </label>
+                            <br><label class="form-check-label">
+                                <input class="form-check-input" name="run" type="radio" id="frmTeam" disabled> Team
+                            </label>
+                        </div>
                         <div class="form-check">
                             <button type="submit">Submit</button>
                         </div>
