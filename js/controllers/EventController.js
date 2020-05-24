@@ -17,7 +17,7 @@ export default class EventController {
         this.eventModel.search(name, country, city, selected, d5K, d10K, d21K, d42K, race, walk, area);
     }
 
-    findContent(poster, info, buttons, gauge, about, map, id) {
-        this.eventModel.displayContent(poster, info, buttons, gauge, about, map, id);
+    findContent(poster, info, buttons, gauge, about, map, id, dists) {
+        this.eventModel.displayContent(poster, info, buttons, gauge, about, map, id, dists);
     }
 }
