@@ -1,0 +1,12 @@
+document.getElementById("test").style.cursor = "pointer";
+document.getElementById('test').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById("home").style.cursor = "pointer";
+document.getElementById('home').addEventListener('click', (event) => { window.location.href = "home.html" });
+document.getElementById("events").style.cursor = "pointer";
+document.getElementById('events').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById("teams").style.cursor = "pointer";
+document.getElementById('teams').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById("leaderboards").style.cursor = "pointer";
+document.getElementById('leaderboards').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById("stats").style.cursor = "pointer";
+document.getElementById('stats').addEventListener('click', (event) => { window.location.href = "#" });
