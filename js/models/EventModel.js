@@ -153,7 +153,7 @@ export default class EventModel {
         } catch (error) {}
     }
 
-    displayContent(poster, info, buttons, gauge, about, map, id) {
+    displayContent(poster, info, buttons, gauge, about, map, id, dists) {
         //try {
             poster.innerHTML = `<img src="${this.events[id].poster}" class="img-fluid" alt="Poster">`
             info.innerHTML =
@@ -167,7 +167,8 @@ export default class EventModel {
             <p>Capacity: ${this.events[id].capacity} participants</p><br>
             <p>Price: ${this.events[id].price}€</p>`
             if (this.events[id].status === "open") {                
-                buttons.innerHTML = `<input type="button" value="REGISTER" id="btnReg">`
+                buttons.innerHTML = `<input type="button" value="REGISTER" id="btnReg" data-toggle="modal"
+                data-target="#mdlRegister">`
             } else {
                 buttons.innerHTML = `<input type="button" value="LEADERBOARDS" id="btnLeadB">`
             }
