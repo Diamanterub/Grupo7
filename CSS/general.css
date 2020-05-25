@@ -33,11 +33,12 @@ body{
     width: 250px;
     margin-top: 2px;
     margin-bottom: 2px;
+    align-items: center;
 }
 .box, .box-home, .box-events, .box-teams, .box-leaderboards, .box-stats{
     background-color: rgba(38, 38, 38, 1);
     width: 48px;
-    margin: 12px;
+
 }
 svg {
     display: block;
@@ -67,11 +68,13 @@ svg:hover {
     background-color: rgba(26, 26, 26, 1);
     width: 138px;
     margin-right: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+    height: 5vh;
     justify-content: flex-end;
     display: flex;
     border-radius: 10px;
+    align-items: center;
 }
 
 .buttons-box{
