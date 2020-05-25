@@ -79,7 +79,7 @@ svg:hover {
 
 .buttons-box{
     width: 92px;
-    height: 46px;
+    height: 5vh;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -96,8 +96,8 @@ svg:hover {
 
 
   .user-box {
-      width: 46px;
-      height: 46px;
+      width: 5vh;
+      height: 5vh;
   }
   #user-photo{
    border: 2px solid rgba(163, 163, 163, 1);
