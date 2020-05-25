@@ -70,7 +70,7 @@ export default class EventModel {
         try {
             this.events = JSON.parse(localStorage.getItem('events'));
             for (let index = 0; index < this.events.length; index++) {
-                if (this.events[index].name === name && this.events[index].edition >= e) {
+                if (this.events[index].name == name && this.events[index].edition >= e) {
                     e = parseInt(this.events[index].edition) + 1;
                 }
             }
@@ -84,15 +84,15 @@ export default class EventModel {
         for (let index = 0; index < this.events.length; index++) {
             let flag = false;
             if (name !== "") {
-                flag = name === this.events[index].name;
+                flag = name == this.events[index].name;
             } else { flag = true; }
             if (!flag) { continue; }
             if (country !== "") {
-                flag = country === this.events[index].country;
+                flag = country == this.events[index].country;
             } else { flag = true; }
             if (!flag) { continue; }
             if (city !== "") {
-                flag = city === this.events[index].city;
+                flag = city == this.events[index].city;
             } else { flag = true; }
             if (!flag) { continue; }
             if (!((!d5K && !d10K && !d21K && !d42K) || (d5K && d10K && d21K && d42K))) {
@@ -118,9 +118,9 @@ export default class EventModel {
             if (!flag) { continue; }
             if (!((!race && !walk) || (race && walk))) {
                 if (race) {
-                    flag = this.events[index].type === "race";
+                    flag = this.events[index].type == "race";
                 } else {
-                    flag = this.events[index].type === "walk";
+                    flag = this.events[index].type == "walk";
                 }
             } else { flag = true; }
             if (!flag) { continue; }
@@ -140,10 +140,10 @@ export default class EventModel {
     show(area, array, selected) {
         try {
             var sortedActivities = [];
-            if (selected === 0) {
+            if (selected == 0) {
                 sortedActivities = array.slice().sort((a, b) => -(new Date(b.date) - new Date(a.date)));                
             } else {
-                sortedActivities = array.slice().sort((a, b) => -(parseInt(b.enrolled) - parseInt(a.enrolled)));
+                sortedActivities = array.slice().sort((a, b) => (parseInt(b.enrolled) - parseInt(a.enrolled)));
             }
             area.innerHTML = ``;
             for (let index = 0; index < sortedActivities.length; index++) {
@@ -166,11 +166,15 @@ export default class EventModel {
             <p>Distance(s): ${this._getDist(id, dists)}</p><br>
             <p>Capacity: ${this.events[id].capacity} participants</p><br>
             <p>Price: ${this.events[id].price}€</p>`
-            if (this.events[id].status === "open") {                
-                buttons.innerHTML = `<input type="button" value="REGISTER" id="btnReg" data-toggle="modal"
-                data-target="#mdlRegister">`
-            } else {
+            if (this.events[id].status == "open") {                
+                buttons.innerHTML = `<input type="button" value="REGISTER" id="btnReg" data-toggle="modal" data-target="#mdlRegister">`
+                if (this.events[id].capacity == this.events[id].enrolled || JSON.stringify(this.events[id].runners).includes(localStorage.getItem('loggedUser'))) {
+                    document.getElementById("btnReg").disabled = true;
+                }
+            } else if (this.events[id].status == "closed") {
                 buttons.innerHTML = `<input type="button" value="LEADERBOARDS" id="btnLeadB">`
+            } else {
+                buttons.innerHTML = ``
             }
             about.innerHTML = 
             `<h1>About this event:</h1><br>
@@ -220,10 +224,10 @@ export default class EventModel {
     }
 
     _getNth(edition) {
-        if (edition.length === 1) {
+        if (edition.length == 1) {
             return this._lastDigit(edition);
         } else {
-            if (edition[edition.length - 2] === 1) {
+            if (edition[edition.length - 2] == 1) {
                 return "nt";
             } else {
                 return this._lastDigit(edition[edition.length - 1]);
@@ -270,18 +274,39 @@ export default class EventModel {
     }
 
     addRunner(dist, run, id) {
-        if (!JSON.stringify(this.events[id].runners).includes(localStorage.getItem('loggedUser'))) {
-            const enroll = {
-                id: this.events[id].runners.length,
-                data: {
-                    id: 0, runner: localStorage.getItem('loggedUser'), dist: dist, run: run
-                }
+        const enroll = {
+            id: this.events[id].runners.length,
+            data: {
+                id: 0, runner: localStorage.getItem('loggedUser'), dist: dist, run: run
             }
-            this.events[id].runners.push(enroll);
-            this.events[id].enrolled++;
-            this._persist();
-        } else {
-            throw Error(`Já está inscrito no evento.`)
         }
+        this.events[id].runners.push(enroll);
+        this.events[id].enrolled++;
+        this._persist();
+        document.getElementById("frmSubmit").disabled = true;
+        document.getElementById("btnReg").disabled = true;
+        var perc = Math.round((this.events[id].enrolled / this.events[id].capacity) * 100);
+        document.getElementById("preview-textfield").innerHTML = perc + "% - " + this.events[id].enrolled;
+    }
+
+    isToday() {
+        var now = new Date();
+        var year = '' + now.getUTCFullYear();
+        var month = '' + now.getUTCMonth() + 1;
+        if (month.length < 2) { month = '0' + month; }
+        var day = '' + now.getUTCDate();
+        if (day.length < 2) { day = '0' + day; }
+        var today = [year, month, day].join('-');
+        for (let i = 0; i < this.events.length; i++) {
+            if (this.events[i].status == "open" && this.events[i].date == today) {
+                this.events[i].status = "ongoing";
+            }
+        }
+        this._persist();
+    }
+
+    isOver(id) {
+        this.events[id].status = "close";
+        this._persist();
     }
 }
