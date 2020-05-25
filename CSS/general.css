@@ -1,6 +1,6 @@
 body{
     margin: 0;
-
+    background: rgba(38, 38, 38, 1);
 }
 .outside-box {
   background: rgba(38, 38, 38, 1);
@@ -18,13 +18,15 @@ body{
     justify-content: space-between;
     height: 6vh;
     background-color: rgba(38, 38, 38, 1);
+    margin-left: 20px;
+    margin-right: 20px;
   }
 .flex-container-left {
     background: url("../imgs/logo-mini.svg") no-repeat center ;
     width: 100px;
-    margin-left: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    height: 5vh;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
 }
 .flex-container-center {
     display: flex;
@@ -67,7 +69,6 @@ svg:hover {
 .flex-container-right {
     background-color: rgba(26, 26, 26, 1);
     width: 15vh;
-    margin-right: 20px;
     margin-top: 0.5vh;
     margin-bottom: 0.5vh;
     height: 5vh;
@@ -90,7 +91,7 @@ svg:hover {
   height: 5vh;
   display: flex;
   align-items: center;
-  margin-left: 4px;
+  margin-left: 0.5vh;
 }
 .settings-box{
   width: 5vh;
