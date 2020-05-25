@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    background: rgba(38, 38, 38, 1);
+}
+.outside-box {
+  background: rgba(38, 38, 38, 1);
+  height: 94vh;
+  padding-bottom: 20px;
+}
+.inside-box {
+  background: rgba(26, 26, 26, 1);
+  height: 100%;
+  border-radius: 10px;
+  margin: 0 20px;
+}
+.flex-container-top {
+    display: flex;
+    justify-content: space-between;
+    height: 6vh;
+    background-color: rgba(38, 38, 38, 1);
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+.flex-container-left {
+    background: url("../imgs/logo-mini.svg") no-repeat center ;
+    width: 100px;
+    height: 5vh;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+}
