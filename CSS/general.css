@@ -91,7 +91,7 @@ svg:hover {
   height: 5vh;
   display: flex;
   align-items: center;
-  margin-left: 4px;
+  margin-left: 0.5vh;
 }
 .settings-box{
   width: 5vh;
