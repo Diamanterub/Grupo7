@@ -22,9 +22,10 @@ body{
 .flex-container-left {
     background: url("../imgs/logo-mini.svg") no-repeat center ;
     width: 100px;
+    height: 5vh;
     margin-left: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
 }
 .flex-container-center {
     display: flex;
