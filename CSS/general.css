@@ -33,11 +33,12 @@ body{
     width: 250px;
     margin-top: 2px;
     margin-bottom: 2px;
+    align-items: center;
 }
 .box, .box-home, .box-events, .box-teams, .box-leaderboards, .box-stats{
     background-color: rgba(38, 38, 38, 1);
     width: 48px;
-    margin: 12px;
+
 }
 svg {
     display: block;
@@ -65,37 +66,40 @@ svg:hover {
 
 .flex-container-right {
     background-color: rgba(26, 26, 26, 1);
-    width: 138px;
+    width: 15vh;
     margin-right: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+    height: 5vh;
     justify-content: flex-end;
     display: flex;
     border-radius: 10px;
+    align-items: center;
 }
 
 .buttons-box{
-    width: 92px;
-    height: 46px;
+    width: 10vh;
+    height: 5vh;
     justify-content: center;
     display: flex;
     align-items: center;
     
 }
 .logout-box{
-  width: 38px;
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
 }
 .settings-box{
-  width: 38px;
+  width: 5vh;
+  height: 5vh;
+  display: flex;
+  align-items: center;
 }
 
 
-
-
-  .user-box {
-      width: 46px;
-      height: 46px;
-  }
   #user-photo{
    border: 2px solid rgba(163, 163, 163, 1);
    border-radius: 10px;
