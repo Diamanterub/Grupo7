@@ -23,7 +23,7 @@ export default class EventModel {
             throw Error(`Invalid create! (type)`);
         }
         const event = {
-            id: this.events.length > 0 ? this.events[this.events.length - 1].id + 1 : 1,
+            id: this.events.length,
             name: name, edition: edition, country: country, city: city, date: date,
             time: time, capacity: capacity, price: price, dist: dist, type: type,
             poster: poster, tshirt: tshirt, map: map, enrolled: 0, runners: runners,
@@ -126,7 +126,7 @@ export default class EventModel {
             if (!flag) { continue; }
             if (flag) {
                 const ph = {
-                    id: send.length > 0 ? send[send.length - 1].id + 1 : 1,
+                    id: send.length,
                     url: this.events[index].poster,
                     date: this.events[index].date,
                     enrolled: this.events[index].enrolled
@@ -148,13 +148,13 @@ export default class EventModel {
             area.innerHTML = ``;
             for (let index = 0; index < sortedActivities.length; index++) {
                 area.innerHTML += 
-                `<a href="event.html?id=${sortedActivities[index].id - 1}"><img src="${sortedActivities[index].url}" class="img-fluid" alt="Poster" width="25%"></a>`
+                `<a href="event.html?id=${sortedActivities[index].id}"><img src="${sortedActivities[index].url}" class="img-fluid" alt="Poster" width="25%"></a>`
             }
         } catch (error) {}
     }
 
     displayContent(poster, info, buttons, gauge, about, map, id, dists) {
-        //try {
+        try {
             poster.innerHTML = `<img src="${this.events[id].poster}" class="img-fluid" alt="Poster">`
             info.innerHTML =
             `<h1>${this.events[id].name}</h1><br>
@@ -180,7 +180,7 @@ export default class EventModel {
             `<canvas id="foo"></canvas>
             <label id="preview-textfield" for="foo"></label>`
             this._getGauge(this.events[id].capacity, this.events[id].enrolled)
-        //} catch (error) {}
+        } catch (error) {}
     }
 
     _getDist(id, dists) {
@@ -270,9 +270,18 @@ export default class EventModel {
     }
 
     addRunner(dist, run, id) {
-        alert(JSON.stringify(this.events[id].dist))
-        // if (!JSON.stringify(this.events[id].runners).includes(localStorage.getItem('loggedUser'))) {
-            
-        // }
+        if (!JSON.stringify(this.events[id].runners).includes(localStorage.getItem('loggedUser'))) {
+            const enroll = {
+                id: this.events[id].runners.length,
+                data: {
+                    id: 0, runner: localStorage.getItem('loggedUser'), dist: dist, run: run
+                }
+            }
+            this.events[id].runners.push(enroll);
+            this.events[id].enrolled++;
+            this._persist();
+        } else {
+            throw Error(`Já está inscrito no evento.`)
+        }
     }
 }
