@@ -30,15 +30,15 @@ export default class EventView {
 
         this.eventDate.setAttribute("min", this.caldDataMin());
 
-        this.eventName.addEventListener('change', (event) => {
+        this.eventName.addEventListener('input', (event) => {
             this.eventEdition.value = this.eventController.checkEdition(this.eventName.value, this.eventCountry,
                 this.eventCity, this.eventTime, this.eventCapacity, this.eventPrice, this.event5K,
                 this.event10K, this.event21K, this.event42K, this.eventRace, this.eventWalk,
                 this.eventPoster, this.eventTshirt, this.eventMap, this.eventAbout);});
 
-        this.eventPoster.addEventListener('change', (event) => { this.imagePoster.src = this.eventPoster.value});
-        this.eventTshirt.addEventListener('change', (event) => { this.imageTshirt.src = this.eventTshirt.value});
-        this.eventMap.addEventListener('change', (event) => { this.imageMap.src = this.eventMap.value});
+        this.eventPoster.addEventListener('input', (event) => { this.imagePoster.src = this.eventPoster.value});
+        this.eventTshirt.addEventListener('input', (event) => { this.imageTshirt.src = this.eventTshirt.value});
+        this.eventMap.addEventListener('input', (event) => { this.imageMap.src = this.eventMap.value});
         
         this.bindAddEventForm();
     }

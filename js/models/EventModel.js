@@ -93,6 +93,12 @@ export default class EventModel {
             JSON.stringify(this.events[id].dist).includes("21K") ? d21K.checked = true : [] ;
             JSON.stringify(this.events[id].dist).includes("42K") ? d42K.checked = true : [] ;
             this.events[id].type == "race" ? race.checked = true : walk.checked = true;
+        } else {
+            country.value   = ""; city.value      = ""; time.value      = "";
+            capacity.value  = ""; poster.value    = ""; tshirt.value    = "";
+            map.value       = ""; about.value     = ""; price.value     = "";
+            d5K.checked  = false; d10K.checked = false; d21K.checked = false;
+            d42K.checked = false; race.checked = false; walk.checked = false;
         }
         
         return e;
