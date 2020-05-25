@@ -44,13 +44,12 @@ export default class EventView {
             try {
                 var d = ""
                 try {
-                    if (this.d5K  !== null) { if (this.d5K.checked ) { d = "5k" ; } }
-                    if (this.d10K !== null) { if (this.d19K.checked) { d = "10k"; } }
-                    if (this.d21K !== null) { if (this.d21K.checked) { d = "21k"; } }
-                    if (this.d42K !== null) { if (this.d42K.checked) { d = "42k"; } }
-                    } catch (error) { this.displayEventMessage('Select a distance', 'danger');
-                    return; }
-
+                    if (this.d5K  !== null && this.d5K  !== undefined) { if (this.d5K.checked ) { d = "5k" ; } }
+                    if (this.d10K !== null && this.d10K !== undefined) { if (this.d10K.checked) { d = "10k"; } }
+                    if (this.d21K !== null && this.d21K !== undefined) { if (this.d21K.checked) { d = "21k"; } }
+                    if (this.d42K !== null && this.d42K !== undefined) { if (this.d42K.checked) { d = "42k"; } }
+                    } catch (error) { this.displayEventMessage(error, 'danger'); return;
+                }
                 var r = "";
                 try {                    
                     if (this.Solo !== null) { if (this.Solo.checked) { r = "solo"; } }
