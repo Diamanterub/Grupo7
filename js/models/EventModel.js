@@ -65,16 +65,35 @@ export default class EventModel {
         return quant;
     }
 
-    searchEdition(name) {
-        let e = 1;
+    searchEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
+        var e = 1;
+        var id = null;
         try {
             this.events = JSON.parse(localStorage.getItem('events'));
             for (let index = 0; index < this.events.length; index++) {
                 if (this.events[index].name == name && this.events[index].edition >= e) {
                     e = parseInt(this.events[index].edition) + 1;
+                    id = index;
                 }
             }
         } catch (error) {}
+
+        if (id != null) {
+            country.value  = this.events[id].country;
+            city.value     = this.events[id].city;
+            time.value     = this.events[id].time;
+            capacity.value = this.events[id].capacity;
+            poster.value   = this.events[id].poster;
+            tshirt.value   = this.events[id].tshirt;
+            map.value      = this.events[id].map;
+            about.value    = this.events[id].about;
+            price.value    = this.events[id].price;
+            JSON.stringify(this.events[id].dist).includes("5K")  ? d5K.checked  = true : [] ;
+            JSON.stringify(this.events[id].dist).includes("10K") ? d10K.checked = true : [] ;
+            JSON.stringify(this.events[id].dist).includes("21K") ? d21K.checked = true : [] ;
+            JSON.stringify(this.events[id].dist).includes("42K") ? d42K.checked = true : [] ;
+            this.events[id].type == "race" ? race.checked = true : walk.checked = true;
+        }
         
         return e;
     }

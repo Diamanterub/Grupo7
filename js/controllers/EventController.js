@@ -10,8 +10,8 @@ export default class EventController {
         this.eventModel.create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about);
     }
 
-    checkEdition(name) {
-        return this.eventModel.searchEdition(name);
+    checkEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
+        return this.eventModel.searchEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about);
     }
 
     searchEvent(name, country, city, selected, d5K, d10K, d21K, d42K, race, walk, area) {
