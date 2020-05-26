@@ -320,9 +320,9 @@ export default class EventModel {
         this._persist();
     }
 
-    getEvents(opsEvent) {
+    getEvents(opsEvent, status) {
         for (let i = 0; i < this.events.length; i++) {
-            if (this.events[i].status == "ongoing") {
+            if (this.events[i].status == status) {
                 var option   = document.createElement("option");
                 option.text  = this.events[i].name;
                 option.value = this.events[i].id;
@@ -342,6 +342,25 @@ export default class EventModel {
         }
     }
 
+    getDistances(lbDist, eventId) {
+        if (JSON.stringify(this.events[eventId].dist).includes("5K")) {
+            var option   = document.createElement("option");
+            option.text  = "5K";  option.value = "5K";  lbDist.add(option);
+        }
+        if (JSON.stringify(this.events[eventId].dist).includes("10K")) {
+            var option   = document.createElement("option");
+            option.text  = "10K"; option.value = "10K"; lbDist.add(option);
+        }
+        if (JSON.stringify(this.events[eventId].dist).includes("21K")) {
+            var option   = document.createElement("option");
+            option.text  = "21K"; option.value = "21K"; lbDist.add(option);
+        }
+        if (JSON.stringify(this.events[eventId].dist).includes("42K")) {
+            var option   = document.createElement("option");
+            option.text  = "42K"; option.value = "42K"; lbDist.add(option);
+        }
+    }
+
     addToLeaderboard(eventId, runnerId, time) {
         const data = { runner: this.events[eventId].runners[runnerId].data.runner, time:time }
         switch (this.events[eventId].runners[runnerId].data.dist) {
@@ -351,5 +370,35 @@ export default class EventModel {
             case "42K": this.events[eventId].dist.d42K.Leaderboard.push(data); break;
         }
         this._persist();
+    }
+
+    getFromLeaderboard(eventId, dists, tBody) {
+        var sorted = [], km;
+        switch (dists) {
+            case "5K":  sorted = this.events[eventId].dist.d5K.Leaderboard.slice().sort((a, b)  => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 5000;  break;
+            case "10K": sorted = this.events[eventId].dist.d10K.Leaderboard.slice().sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 10000; break;
+            case "21K": sorted = this.events[eventId].dist.d21K.Leaderboard.slice().sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 21000; break;
+            case "42K": sorted = this.events[eventId].dist.d42K.Leaderboard.slice().sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 42000; break;
+        }
+        for (let i = 0; i < sorted.length; i++) {
+            tBody.innerHTML +=
+            `<tr>
+                <th scope="row">${i+1}</th>
+                <td>${sorted[i].time}</td>
+                <td>${Math.round((km / this._getSeconds(sorted[i].time)) * 3.6 * 100) / 100 + " km/h"}</td>
+                <td>${sorted[i].runner}</td>
+                <td>---</td>
+                <td>---</td>
+            </tr>`
+        }
+    }
+
+    _getSeconds(time) {
+        const h  = parseInt(time[0] + time[1]);
+        const m  = parseInt(time[3] + time[4]);
+        const s  = parseInt(time[6] + time[7]);
+        const ms = parseInt(time[9] + time[10] + time[11]);
+
+        return (h * 60 * 60 + m * 60 + s + ms / 100) 
     }
 }

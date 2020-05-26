@@ -47,10 +47,34 @@
         </div>              
     </div>
     <div class="outside-box">
-     <div class="inside-box">
-         <!-- Inserir o código da respetiva página aqui dentro -->
-        
-         <!-- Inserir o código da respetiva página aqui dentro -->
+     <div class="inside-box"> <!-- Inserir o código da respetiva página aqui dentro -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <form action="" id="frmLB">
+                            <div class="form-group"> <select class="form-control" id="lbEvent" required> <option value="" disabled selected> Event </option> </select> </div>
+                            <div class="form-group"> <select class="form-control" id="lbDist" disabled required> <option value="" disabled selected> Distance </option> </select> </div>
+                            <div class="form-group"> <input class="form-control" id="lbSubmit" type="submit" value="SEARCH" disabled> </div>
+                        </form>
+                    </div>
+                    <div class="col-1"> <hr class=Linha> </div>
+                    <div class="col-9">
+                        <table class="table table-responsive-xl">
+                            <thead>
+                                <tr>
+                                <th scope="col">POS</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Pace</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Team</th>
+                                <th scope="col">Rank</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
       </div>
      </div>
     <script src="../js/general.js"></script> 

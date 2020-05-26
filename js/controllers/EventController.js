@@ -26,15 +26,23 @@ export default class EventController {
         this.eventModel.addRunner(dist, run, id);
     }
 
-    importEvents(opsEvent) {
-        this.eventModel.getEvents(opsEvent)
+    importEvents(opsEvent, status) {
+        this.eventModel.getEvents(opsEvent, status)
     }
 
     importRunners(opsRunner, eventId) {
         this.eventModel.getRunners(opsRunner, eventId)
     }
 
+    importDistances(lbDist, eventId) {
+        this.eventModel.getDistances(lbDist, eventId)
+    }
+
     exportToLeaderBoard(eventId, runnerId, time) {
         this.eventModel.addToLeaderboard(eventId, runnerId, time)
+    }
+
+    importFromLeaderboard(eventId, dists, tBody) {
+        this.eventModel.getFromLeaderboard(eventId, dists, tBody)
     }
 }
