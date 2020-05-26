@@ -34,27 +34,12 @@ export default class EventModel {
     }
 
     _dist(d5K, d10K, d21K, d42K) {
-        let quant = '{', i = 0, e = 0;
+        let quant = '{', e = 0;
 
-        if (d5K) { 
-            quant += '"'+i+'": "5K"'; 
-            i++; 
-        } else { e++; }
-        if (d10K) {
-            if (i > 0) {quant += ', ';}
-            quant += '"'+i+'": "10K"'; 
-            i++;  
-        } else { e++; }
-        if (d21K) {
-            if (i > 0) {quant += ', ';}
-            quant += '"'+i+'": "21K"'; 
-            i++;  
-        } else { e++; }
-        if (d42K) { 
-            if (i > 0) {quant += ', ';}
-            quant += '"'+i+'": "42K"'; 
-            i++;  
-        } else { e++; }
+        if (d5K)  { quant += '"d5k":{"Leaderboard: {}}"'; } else { e++; }
+        if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard: {}}'; } else { e++; }
+        if (d21K) { if (i > 0) {quant += ', ';} quant += '"d21K":{"Leaderboard: {}}"'; } else { e++; }
+        if (d42K) { if (i > 0) {quant += ', ';} quant += '"d42K":{"Leaderboard: {}}"'; } else { e++; }
 
         quant += '}';
 
@@ -165,7 +150,7 @@ export default class EventModel {
     show(area, array, selected) {
         try {
             var sortedActivities = [];
-            if (selected == 0) {
+            if (selected.value == "recent") {
                 sortedActivities = array.slice().sort((a, b) => -(new Date(b.date) - new Date(a.date)));                
             } else {
                 sortedActivities = array.slice().sort((a, b) => (parseInt(b.enrolled) - parseInt(a.enrolled)));
@@ -302,7 +287,7 @@ export default class EventModel {
         const enroll = {
             id: this.events[id].runners.length,
             data: {
-                id: 0, runner: localStorage.getItem('loggedUser'), dist: dist, run: run
+                runner: localStorage.getItem('loggedUser'), dist: dist, run: run
             }
         }
         this.events[id].runners.push(enroll);
@@ -332,6 +317,39 @@ export default class EventModel {
 
     isOver(id) {
         this.events[id].status = "close";
+        this._persist();
+    }
+
+    getEvents(opsEvent) {
+        for (let i = 0; i < this.events.length; i++) {
+            if (this.events[i].status == "ongoing") {
+                var option   = document.createElement("option");
+                option.text  = this.events[i].name;
+                option.value = this.events[i].id;
+                opsEvent.add(option);
+            }
+        }
+    }
+
+    getRunners(opsRunner, eventId) {
+        for (let i = 0; i < this.events[eventId].runners.length; i++) {
+            if (!JSON.stringify(this.events[id].dist).includes(this.events[eventId].runners[i].data.runner)) {
+                var option   = document.createElement("option");
+                option.text  = this.events[eventId].runners[i].data.runner;
+                option.value = this.events[eventId].runners[i].id;
+                opsRunner.add(option);
+            }
+        }
+    }
+
+    addToLeaderboard(eventId, runnerId, time) {
+        const data = { runner: this.events[eventId].runners[runnerId].data.runner, time:time }
+        switch (this.events[eventId].runners[runnerId].data.dist) {
+            case "5K" : this.events[eventId].dist.d5K.Leaderboard.push(data);  break;
+            case "10K": this.events[eventId].dist.d10K.Leaderboard.push(data); break;
+            case "21K": this.events[eventId].dist.d21K.Leaderboard.push(data); break;
+            case "42K": this.events[eventId].dist.d42K.Leaderboard.push(data); break;
+        }
         this._persist();
     }
 }

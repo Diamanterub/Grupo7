@@ -25,4 +25,16 @@ export default class EventController {
     enroll(dist, run, id) {
         this.eventModel.addRunner(dist, run, id);
     }
+
+    importEvents(opsEvent) {
+        this.eventModel.getEvents(opsEvent)
+    }
+
+    importRunners(opsRunner, eventId) {
+        this.eventModel.getRunners(opsRunner, eventId)
+    }
+
+    exportToLeaderBoard(eventId, runnerId, time) {
+        this.eventModel.addToLeaderboard(eventId, runnerId, time)
+    }
 }

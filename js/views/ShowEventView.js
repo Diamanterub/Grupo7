@@ -44,10 +44,10 @@ export default class EventView {
             try {
                 var d = ""
                 try {
-                    if (this.d5K  !== null && this.d5K  !== undefined) { if (this.d5K.checked ) { d = "5k" ; } }
-                    if (this.d10K !== null && this.d10K !== undefined) { if (this.d10K.checked) { d = "10k"; } }
-                    if (this.d21K !== null && this.d21K !== undefined) { if (this.d21K.checked) { d = "21k"; } }
-                    if (this.d42K !== null && this.d42K !== undefined) { if (this.d42K.checked) { d = "42k"; } }
+                    if (this.d5K  !== null && this.d5K  !== undefined) { if (this.d5K.checked ) { d = "5K" ; } }
+                    if (this.d10K !== null && this.d10K !== undefined) { if (this.d10K.checked) { d = "10K"; } }
+                    if (this.d21K !== null && this.d21K !== undefined) { if (this.d21K.checked) { d = "21K"; } }
+                    if (this.d42K !== null && this.d42K !== undefined) { if (this.d42K.checked) { d = "42K"; } }
                     } catch (error) { this.displayEventMessage(error, 'danger'); return;
                 }
                 var r = "";

@@ -4,6 +4,7 @@ import SignStatusView from './views/SignStatusView.js'
 import CreateEventView from './views/CreateEventView.js'
 import SearchEventView from './views/SearchEventView.js'
 import ShowEventView from './views/ShowEventView.js'
+import CompleteEventView from './views/CompleteEventView.js'
 
 
 class App {
@@ -22,6 +23,10 @@ class App {
 
             case "/html/admin/events/create.html":
                 this.createEventView = new CreateEventView();
+                break;
+
+            case "/html/admin/events/complete.html":
+                this.completeEventView = new CompleteEventView();
                 break;
 
             case "/html/events.html":
