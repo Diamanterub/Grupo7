@@ -5,6 +5,7 @@ import CreateEventView from './views/CreateEventView.js'
 import SearchEventView from './views/SearchEventView.js'
 import ShowEventView from './views/ShowEventView.js'
 import CompleteEventView from './views/CompleteEventView.js'
+import LeaderboardView from './views/LeaderboardView.js';
 
 
 class App {
@@ -35,6 +36,10 @@ class App {
 
             case "/html/event.html":
                 this.showEventView = new ShowEventView();
+                break;
+
+            case "/html/leaderboard.html":
+                this.leaderboardView = new LeaderboardView();
                 break;
         
             default:                

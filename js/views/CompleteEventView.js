@@ -11,7 +11,7 @@ export default class EventView {
         this.Message   = document.getElementById('frmMessage');
         this.Submit    = document.getElementById('btnSubmit');
 
-        this.eventController.importEvents(this.opsEvent);
+        this.eventController.importEvents(this.opsEvent, "ongoing");
         this.opsRunner.addEventListener('change', (event) => {
             this.opsRunner.value != "" ? this.runTime.disabled = false : {} ;
         });
