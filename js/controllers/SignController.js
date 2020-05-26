@@ -16,4 +16,20 @@ export default class SignUpController {
     logoutUser() {
         this.userModel.logout();
     }
+
+    checkSignStatus() {
+        return this.userModel.isSigned();
+    }
+
+    loginUser(username, password, staysigned) {
+        if (this.userModel.getAll().some(user => { return user.username === username && user.password === password })) {
+            return this.userModel.login(username, staysigned);
+        } else {
+            throw Error('Invalid login!');
+        }    
+    }
+
+    logoutUser() {
+        this.userModel.logout();
+    }
 }

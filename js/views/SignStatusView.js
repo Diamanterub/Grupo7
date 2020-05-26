@@ -1,15 +1,15 @@
-import SignStatusController from '../controllers/SignStatusController.js'
+import SignController from '../controllers/SignController.js'
 
 export default class SignStatusView {
     constructor()
     {
-        this.signStatusController = new SignStatusController();
+        this.signController = new SignController();
 
         this.checkLoginStatus();
     }
     
     checkLoginStatus() {
-        if (!this.signStatusController.checkSignStatus()) {
+        if (!this.signController.checkSignStatus()) {
             window.location.replace("/html/sign-in.html");
         }
     }

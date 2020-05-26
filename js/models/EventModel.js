@@ -34,27 +34,12 @@ export default class EventModel {
     }
 
     _dist(d5K, d10K, d21K, d42K) {
-        let quant = '{', i = 0, e = 0;
+        let quant = '{', e = 0;
 
-        if (d5K) { 
-            quant += '"'+i+'": "5K"'; 
-            i++; 
-        } else { e++; }
-        if (d10K) {
-            if (i > 0) {quant += ', ';}
-            quant += '"'+i+'": "10K"'; 
-            i++;  
-        } else { e++; }
-        if (d21K) {
-            if (i > 0) {quant += ', ';}
-            quant += '"'+i+'": "21K"'; 
-            i++;  
-        } else { e++; }
-        if (d42K) { 
-            if (i > 0) {quant += ', ';}
-            quant += '"'+i+'": "42K"'; 
-            i++;  
-        } else { e++; }
+        if (d5K)  { quant += '"d5k":{"Leaderboard: {}}"'; } else { e++; }
+        if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard: {}}'; } else { e++; }
+        if (d21K) { if (i > 0) {quant += ', ';} quant += '"d21K":{"Leaderboard: {}}"'; } else { e++; }
+        if (d42K) { if (i > 0) {quant += ', ';} quant += '"d42K":{"Leaderboard: {}}"'; } else { e++; }
 
         quant += '}';
 
@@ -65,16 +50,41 @@ export default class EventModel {
         return quant;
     }
 
-    searchEdition(name) {
-        let e = 1;
+    searchEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
+        var e = 1;
+        var id = null;
         try {
             this.events = JSON.parse(localStorage.getItem('events'));
             for (let index = 0; index < this.events.length; index++) {
                 if (this.events[index].name == name && this.events[index].edition >= e) {
                     e = parseInt(this.events[index].edition) + 1;
+                    id = index;
                 }
             }
         } catch (error) {}
+
+        if (id != null) {
+            country.value  = this.events[id].country;
+            city.value     = this.events[id].city;
+            time.value     = this.events[id].time;
+            capacity.value = this.events[id].capacity;
+            poster.value   = this.events[id].poster;
+            tshirt.value   = this.events[id].tshirt;
+            map.value      = this.events[id].map;
+            about.value    = this.events[id].about;
+            price.value    = this.events[id].price;
+            JSON.stringify(this.events[id].dist).includes("5K")  ? d5K.checked  = true : [] ;
+            JSON.stringify(this.events[id].dist).includes("10K") ? d10K.checked = true : [] ;
+            JSON.stringify(this.events[id].dist).includes("21K") ? d21K.checked = true : [] ;
+            JSON.stringify(this.events[id].dist).includes("42K") ? d42K.checked = true : [] ;
+            this.events[id].type == "race" ? race.checked = true : walk.checked = true;
+        } else {
+            country.value   = ""; city.value      = ""; time.value      = "";
+            capacity.value  = ""; poster.value    = ""; tshirt.value    = "";
+            map.value       = ""; about.value     = ""; price.value     = "";
+            d5K.checked  = false; d10K.checked = false; d21K.checked = false;
+            d42K.checked = false; race.checked = false; walk.checked = false;
+        }
         
         return e;
     }
@@ -140,7 +150,7 @@ export default class EventModel {
     show(area, array, selected) {
         try {
             var sortedActivities = [];
-            if (selected == 0) {
+            if (selected.value == "recent") {
                 sortedActivities = array.slice().sort((a, b) => -(new Date(b.date) - new Date(a.date)));                
             } else {
                 sortedActivities = array.slice().sort((a, b) => (parseInt(b.enrolled) - parseInt(a.enrolled)));
@@ -277,7 +287,7 @@ export default class EventModel {
         const enroll = {
             id: this.events[id].runners.length,
             data: {
-                id: 0, runner: localStorage.getItem('loggedUser'), dist: dist, run: run
+                runner: localStorage.getItem('loggedUser'), dist: dist, run: run
             }
         }
         this.events[id].runners.push(enroll);
@@ -307,6 +317,39 @@ export default class EventModel {
 
     isOver(id) {
         this.events[id].status = "close";
+        this._persist();
+    }
+
+    getEvents(opsEvent) {
+        for (let i = 0; i < this.events.length; i++) {
+            if (this.events[i].status == "ongoing") {
+                var option   = document.createElement("option");
+                option.text  = this.events[i].name;
+                option.value = this.events[i].id;
+                opsEvent.add(option);
+            }
+        }
+    }
+
+    getRunners(opsRunner, eventId) {
+        for (let i = 0; i < this.events[eventId].runners.length; i++) {
+            if (!JSON.stringify(this.events[id].dist).includes(this.events[eventId].runners[i].data.runner)) {
+                var option   = document.createElement("option");
+                option.text  = this.events[eventId].runners[i].data.runner;
+                option.value = this.events[eventId].runners[i].id;
+                opsRunner.add(option);
+            }
+        }
+    }
+
+    addToLeaderboard(eventId, runnerId, time) {
+        const data = { runner: this.events[eventId].runners[runnerId].data.runner, time:time }
+        switch (this.events[eventId].runners[runnerId].data.dist) {
+            case "5K" : this.events[eventId].dist.d5K.Leaderboard.push(data);  break;
+            case "10K": this.events[eventId].dist.d10K.Leaderboard.push(data); break;
+            case "21K": this.events[eventId].dist.d21K.Leaderboard.push(data); break;
+            case "42K": this.events[eventId].dist.d42K.Leaderboard.push(data); break;
+        }
         this._persist();
     }
 }
