@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    background-color: rgba(218, 218, 218, 1);
+}
+.outside-box {
+  background: rgba(218, 218, 218, 1);
+  height: 94vh;
+  padding-bottom: 20px;
+}
+.inside-box {
+  background: rgba(194, 194, 194, 1);
+  height: 100%;
+  border-radius: 10px;
+  margin: 0 20px;
+}
+.flex-container-top {
+    display: flex;
+    justify-content: space-between;
+    height: 6vh;
+    background-color: rgba(218, 218, 218, 1);
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+.flex-container-left {
+    background: url("../imgs/logo-mini-admin.svg") no-repeat center ;
+    width: 100px;
+    height: 5vh;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+  align-items: center;
+  height: 100%;
+}
+.box {
+  width: 25%;
+  height: 300px;
+  background: rgba(218, 218, 218, 1);
+  margin: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 5vw;
+  display: flex;
+  align-items: center;
+}
+.box:hover, .box:hover a {
+  background: rgba(38, 38, 38, 1);
+  color: rgba(218, 218, 218, 1);
+}
+.box h1 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.box a {
+  text-decoration: none;
+  text-align: center;
+  color: rgba(38, 38, 38, 1);
+}
+@media screen and (max-width:1200px){
+  .box {
+    width:40%;
+  }
+}
+@media screen and (max-width:600px){
+  .box{
+    width: 90%;
+  }
+  .inside-box {
+    height: 149.5%;
+  }
+}
