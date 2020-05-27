@@ -1,0 +1,208 @@
+/* Home + Manage Events + IET */
+body {
+margin: 0;
+background-color: rgba(218, 218, 218, 1);
+}
+.outside-box {
+background: rgba(218, 218, 218, 1);
+height: 94vh;
+padding-bottom: 20px;
+}
+.flex-container-top {
+display: flex;
+justify-content: space-between;
+height: 6vh;
+background-color: rgba(218, 218, 218, 1);
+margin-left: 20px;
+margin-right: 20px;
+}
+.flex-container-left {
+background: url("../imgs/logo-mini-admin.svg") no-repeat center ;
+width: 100px;
+height: 5vh;
+margin-top: 0.5vh;
+margin-bottom: 0.5vh;
+}
+/* Apenas para Home */
+.inside-box {
+background: rgba(194, 194, 194, 1);
+height: 100%;
+border-radius: 10px;
+margin: 0 20px;
+}
+.container {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+flex-flow: wrap;
+align-items: center;
+height: 100%;
+}
+.box {
+width: 30%;
+height: 300px;
+background: rgba(218, 218, 218, 1);
+margin: 20px;
+border-radius: 10px;
+box-sizing: border-box;
+font-size: 5vw;
+display: flex;
+align-items: center;
+}
+.box:hover, .box:hover a {
+background: rgba(48, 48, 48, 1);
+color: rgba(218, 218, 218, 1);
+}
+.box h1 {
+display: flex;
+justify-content: center;
+width: 100%;
+}
+.box a {
+text-decoration: none;
+text-align: center;
+color: rgba(48, 48, 48, 1);
+}
+@media screen and (max-width:1200px){
+.box {
+ width:40%;
+}
+}
+@media screen and (max-width:600px){
+.box{
+ width: 90%;
+}
+.inside-box {
+ height: 200%;
+ margin-bottom:20px;
+}
+}
+/* Apenas para Manage Events */
+.inside-box-events {
+background: rgba(194, 194, 194, 1);
+height: 100%;
+border-radius: 10px;
+margin: 0 20px;
+}
+.container-events {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+flex-flow: wrap;
+align-items: center;
+height: 100%;
+}
+#upper-bar-events, .row {
+margin-left: 10px;
+margin-right: 10px;
+}
+.box-events {
+width: 40%;
+height: 400px;
+background: rgba(218, 218, 218, 1);
+margin: 20px;
+border-radius: 10px;
+box-sizing: border-box;
+font-size: 5vw;
+display: flex;
+align-items: center;
+}
+.box-events:hover, .box-events:hover a {
+background: rgba(48, 48, 48, 1);
+color: rgba(218, 218, 218, 1);
+}
+.box-events h1 {
+display: flex;
+justify-content: center;
+width: 100%;
+}
+.box-events a {
+text-decoration: none;
+text-align: center;
+color: rgba(48, 48, 48, 1);
+}
+@media screen and (max-width:1200px){
+.box-events {
+ width:40%;
+ }
+}
+@media screen and (max-width:600px){
+.box-events{
+ width: 90%;
+}
+.inside-box-events {
+ height: 135%;
+ margin-bottom:20px;
+}
+}
+/* Apenas para IET (Insert Event Times) */
+.container-iet{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inside-box-iet {
+    background: rgba(194, 194, 194, 1);
+    height: 100%;
+    border-radius: 10px;
+    margin: 0 20px;
+    }
+#frmComplete {
+    width: 100%;
+}
+.form-check-label{
+    padding-left: 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+.form-control{
+    margin: 2px 0px;
+    padding: 4px 4px;
+    min-width: 200px;
+    border-radius: 5px;;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(48, 48, 48, 1);
+    background-color: rgba(240, 240, 240, 1);
+    outline:1px !important;
+    box-shadow: none !important;
+}
+/* Propriedade que remove o outline azul */
+textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus
+{
+outline:0px !important;
+-webkit-appearance:none;
+box-shadow: none !important;
+}
+/* Propriedades que alteram a cor das caixas input e da cor dos seus textos (quando ocorre autofill) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+-webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
+-webkit-text-fill-color: rgba(240, 240, 240, 1) !important;
+}
+input[type=submit]{
+    margin-top: 20px;
+    width: 100%;
+    min-width: 200px;
+    background-color: rgba(48, 48, 48, 1);
+    border-radius: 5px;
+    border: none;
+    padding: 7px 55px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(240, 240, 240, 1);
+    cursor: pointer;
+    }
+@media screen and (max-width:600px){
+    .inside-box-iet {
+     height: 100%;
+     margin-bottom:20px;
+    }
+    }

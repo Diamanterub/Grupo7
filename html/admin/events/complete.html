@@ -1,14 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Swift Admin - Home</title>
+<title>Swift Admin - IET</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../CSS/admin.css">
+<link rel="icon" href="../../../imgs/favicon-admin.ico">
 </head>
 <body>
-    <div class="container">
+    
+<div class="flex-container-top">
+    <div id="logo" class="flex-container-left"></div>
+</div>
+<div class="outside-box">
+ <div class="inside-box-iet">
+    <div class="container-iet">
         <form action="" id="frmComplete">
             <div class="form-group row justify-content-center">
                 <div class="col-6">
@@ -21,9 +28,14 @@
             </div>
         </form>
     </div>
-    
+  </div>
+ </div>
+    <script>
+    // Logo Home Page //
+    document.getElementById("logo").style.cursor = "pointer";
+    document.getElementById('logo').addEventListener('click', (event) => { window.location.href = "../../admin/home.html" });
+    </script>
     <script type="module" src="../../../js/app.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
