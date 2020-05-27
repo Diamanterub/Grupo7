@@ -3,10 +3,10 @@ document.getElementById('logo').addEventListener('click', (event) => { window.lo
 document.getElementById("home").style.cursor = "pointer";
 document.getElementById('home').addEventListener('click', (event) => { window.location.href = "home.html" });
 document.getElementById("events").style.cursor = "pointer";
-document.getElementById('events').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById('events').addEventListener('click', (event) => { window.location.href = "events.html" });
 document.getElementById("teams").style.cursor = "pointer";
 document.getElementById('teams').addEventListener('click', (event) => { window.location.href = "#" });
 document.getElementById("leaderboards").style.cursor = "pointer";
-document.getElementById('leaderboards').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById('leaderboards').addEventListener('click', (event) => { window.location.href = "leaderboard.html" });
 document.getElementById("stats").style.cursor = "pointer";
 document.getElementById('stats').addEventListener('click', (event) => { window.location.href = "#" });
