@@ -1,5 +1,5 @@
-document.getElementById("test").style.cursor = "pointer";
-document.getElementById('test').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById("logo").style.cursor = "pointer";
+document.getElementById('logo').addEventListener('click', (event) => { window.location.href = "home.html" });
 document.getElementById("home").style.cursor = "pointer";
 document.getElementById('home').addEventListener('click', (event) => { window.location.href = "home.html" });
 document.getElementById("events").style.cursor = "pointer";

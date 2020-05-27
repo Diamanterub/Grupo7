@@ -1,3 +1,6 @@
+// Logo Home Page //
+document.getElementById("logo").style.cursor = "pointer";
+document.getElementById('logo').addEventListener('click', (event) => { window.location.href = "home.html" });
 // Manage Events //
 document.getElementById("box1").style.cursor = "pointer";
 document.getElementById('box1').addEventListener('click', (event) => { window.location.href = "events/manage_events.html" });
