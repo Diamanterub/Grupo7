@@ -143,6 +143,12 @@ color: rgba(48, 48, 48, 1);
     justify-content: center;
     align-items: center;
 }
+.inside-box-iet {
+    background: rgba(194, 194, 194, 1);
+    height: 100%;
+    border-radius: 10px;
+    margin: 0 20px;
+    }
 #frmComplete {
     width: 100%;
 }
@@ -195,7 +201,7 @@ input[type=submit]{
     cursor: pointer;
     }
 @media screen and (max-width:600px){
-    .inside-box-events {
+    .inside-box-iet {
      height: 100%;
      margin-bottom:20px;
     }
