@@ -1,9 +1,11 @@
 import SignInView from './views/SignInView.js'
 import SignUpView from './views/SignUpView.js'
 import SignStatusView from './views/SignStatusView.js'
-import EventView from './views/EventView.js'
+import CreateEventView from './views/CreateEventView.js'
 import SearchEventView from './views/SearchEventView.js'
 import ShowEventView from './views/ShowEventView.js'
+import CompleteEventView from './views/CompleteEventView.js'
+import LeaderboardView from './views/LeaderboardView.js';
 
 
 class App {
@@ -20,8 +22,12 @@ class App {
                 this.signUpView = new SignUpView();
                 break;
 
-            case "/html/admin/events.html":
-                this.eventView = new EventView();
+            case "/html/admin/events/create.html":
+                this.createEventView = new CreateEventView();
+                break;
+
+            case "/html/admin/events/complete.html":
+                this.completeEventView = new CompleteEventView();
                 break;
 
             case "/html/events.html":
@@ -30,6 +36,10 @@ class App {
 
             case "/html/event.html":
                 this.showEventView = new ShowEventView();
+                break;
+
+            case "/html/leaderboard.html":
+                this.leaderboardView = new LeaderboardView();
                 break;
         
             default:                
