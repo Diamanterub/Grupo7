@@ -1,4 +1,4 @@
-import SignController from '../controllers/SignController.js'
+import SignController from '../controllers/UserController.js'
 
 export default class SignStatusView {
     constructor()
