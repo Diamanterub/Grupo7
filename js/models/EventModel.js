@@ -12,6 +12,7 @@ export default class EventModel {
     }
 
     create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
+        alert(this._dist(d5K, d10K, d21K, d42K))
         const dist = JSON.parse(this._dist(d5K, d10K, d21K, d42K))
         let type;
         const runners = [];
@@ -36,10 +37,10 @@ export default class EventModel {
     _dist(d5K, d10K, d21K, d42K) {
         let quant = '{', i = 0, e = 0;
 
-        if (d5K)  { quant += '"d5k":{"Leaderboard: {}}"'; } else { e++; }
-        if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard: {}}'; } else { e++; }
-        if (d21K) { if (i > 0) {quant += ', ';} quant += '"d21K":{"Leaderboard: {}}"'; } else { e++; }
-        if (d42K) { if (i > 0) {quant += ', ';} quant += '"d42K":{"Leaderboard: {}}"'; } else { e++; }
+        if (d5K)  { quant += '"d5k":{"Leaderboard: []"'; } else { e++; }
+        if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard: []'; } else { e++; }
+        if (d21K) { if (i > 0) {quant += ', ';} quant += '"d21K":{"Leaderboard: []"'; } else { e++; }
+        if (d42K) { if (i > 0) {quant += ', ';} quant += '"d42K":{"Leaderboard: []"'; } else { e++; }
 
         quant += '}';
 
