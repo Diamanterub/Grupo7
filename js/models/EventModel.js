@@ -34,7 +34,7 @@ export default class EventModel {
     }
 
     _dist(d5K, d10K, d21K, d42K) {
-        let quant = '{', e = 0;
+        let quant = '{', i = 0, e = 0;
 
         if (d5K)  { quant += '"d5k":{"Leaderboard: {}}"'; } else { e++; }
         if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard: {}}'; } else { e++; }
