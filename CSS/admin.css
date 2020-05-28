@@ -52,15 +52,15 @@ flex-flow: wrap;
 justify-content: center;
 }
 .box h1{
-    margin-top: 8vh;
+    margin-top: 6vh;
 }
 .svg-content {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 4vh;
-    margin-top: -6vh;
+    margin-bottom: 3vh;
+    margin-top: -4vh;
 }
 .svg-content svg {
     display: flex;
