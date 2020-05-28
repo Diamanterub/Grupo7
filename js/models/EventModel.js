@@ -16,9 +16,9 @@ export default class EventModel {
         let type;
         const runners = [];
         if (race) {
-            type = "race";
+            type = "Race";
         } else if (walk) {
-            type = "walk";
+            type = "Walk";
         } else {
             throw Error(`Invalid create! (type)`);
         }
@@ -128,9 +128,9 @@ export default class EventModel {
             if (!flag) { continue; }
             if (!((!race && !walk) || (race && walk))) {
                 if (race) {
-                    flag = this.events[index].type == "race";
+                    flag = this.events[index].type == "Race";
                 } else {
-                    flag = this.events[index].type == "walk";
+                    flag = this.events[index].type == "Walk";
                 }
             } else { flag = true; }
             if (!flag) { continue; }
@@ -167,14 +167,14 @@ export default class EventModel {
         try {
             poster.innerHTML = `<img src="${this.events[id].poster}" class="img-fluid" alt="Poster">`
             info.innerHTML =
-            `<h1>${this.events[id].name}</h1><br>
-            <p>(${this.events[id].edition}${this._getNth(this.events[id].edition)} Edition)</p><br>
-            <p>Location: ${this.events[id].country}, ${this.events[id].city}</p><br>
-            <p>Date: ${this.events[id].date}</p><br>
-            <p>Time: ${this.events[id].time}</p><br>
-            <p>Type: ${this.events[id].type}</p><br>
-            <p>Distance(s): ${this._getDist(id, dists)}</p><br>
-            <p>Capacity: ${this.events[id].capacity} participants</p><br>
+            `<h1>${this.events[id].name}</h1>
+            <h2>(${this.events[id].edition}${this._getNth(this.events[id].edition)} Edition)</h2><br>
+            <p>Location: ${this.events[id].city} (${this.events[id].country})</p>
+            <p>Date: ${this.events[id].date}</p>
+            <p>Time: ${this.events[id].time}</p>
+            <p>Type: ${this.events[id].type}</p>
+            <p>Distance(s): ${this._getDist(id, dists)}</p>
+            <p>Accomodation: ${this.events[id].capacity}</p>
             <p>Price: ${this.events[id].price}€</p>`
             if (this.events[id].status == "open") {                
                 buttons.innerHTML = `<input type="button" value="REGISTER" id="btnReg" data-toggle="modal" data-target="#mdlRegister">`
@@ -187,7 +187,7 @@ export default class EventModel {
                 buttons.innerHTML = ``
             }
             about.innerHTML = 
-            `<h1>About this event:</h1><br>
+            `<h1>About this event:</h1>
             <p>${this.events[id].about}</p>`
             map.innerHTML = `<img src="${this.events[id].map}" class="img-fluid" alt="Map">`
             gauge.innerHTML =
