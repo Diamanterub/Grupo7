@@ -7,6 +7,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="../CSS/general.css">
+<link rel="stylesheet" href="../CSS/event.css">
 <link rel="icon" href="../imgs/favicon.ico">
 
 <script src="../js/gauge.js-gh-pages/dist/gauge.min.js"></script>
@@ -38,10 +39,21 @@
     </div>              
 </div>
 <div class="outside-box">
- <div class="inside-box">
+ <div class="inside-box-event">
 
 
-    <div class="modal fade" id="mdlRegister" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    
+
+
+
+
+        <div class="row" id="content">
+            <div class="col1">
+                <a href="events.html">← Return</a><br>
+                <div id="imgPoster"></div>
+                <div id="txtInfo"></div>
+                <div id="divBtn"></div>
+                <div class="modal fade" id="mdlRegister" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -73,29 +85,19 @@
             </div>
         </div>
     </div>
-
-
-
-
-        <div class="row" id="content">
-            <div class="col-3">
-                <a href="events.html">← Return</a><br>
-                <div id="imgPoster"></div>
-                <div id="txtInfo"></div>
-                <div id="divBtn"></div>
             </div>
-            <div class="col-3">
+            <div class="col2">
                 <div id="divGauge"></div>
                 <div id="txtAbout"></div>
             </div>
-            <div class="col-6">
+            <div class="col3">
                 <div id="imgMap"></div>
             </div>
         </div>
     </div>
     
     <script type="module" src="../js/app.js"></script>
-
+    <script src="../js/general.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
