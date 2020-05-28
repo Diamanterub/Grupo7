@@ -37,10 +37,10 @@ export default class EventModel {
     _dist(d5K, d10K, d21K, d42K) {
         let quant = '{', i = 0, e = 0;
 
-        if (d5K)  { quant += '"d5k":{"Leaderboard: []"'; } else { e++; }
-        if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard: []'; } else { e++; }
-        if (d21K) { if (i > 0) {quant += ', ';} quant += '"d21K":{"Leaderboard: []"'; } else { e++; }
-        if (d42K) { if (i > 0) {quant += ', ';} quant += '"d42K":{"Leaderboard: []"'; } else { e++; }
+        if (d5K)  { quant += '"d5k":{"Leaderboard": []}'; i++;} else { e++; }
+        if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard": []}'; i++;} else { e++; }
+        if (d21K) { if (i > 0) {quant += ', ';} quant += '"d21K":{"Leaderboard": []}'; i++;} else { e++; }
+        if (d42K) { if (i > 0) {quant += ', ';} quant += '"d42K":{"Leaderboard": []}'; i++;} else { e++; }
 
         quant += '}';
 
