@@ -1,6 +1,7 @@
 body{
     margin: 0;
     background-color: rgba(38, 38, 38, 1);
+    min-width: 424px;
 }
 .outside-box {
   background: rgba(38, 38, 38, 1);
@@ -69,7 +70,8 @@ svg:hover {
 }
 
 .flex-container-right {
-    width: 100px;
+    width: 10vw;
+    max-width: 100px;
     height: 7vh;
     justify-content: flex-end;
     display: flex;

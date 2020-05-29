@@ -44,3 +44,8 @@
     font-size: 16px;
     margin: 4px 0px;
 }
+.card{
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+}

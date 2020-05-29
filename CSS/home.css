@@ -1,4 +1,4 @@
-/* Slidwshow com borda e botões costumizados */
+/* Slideshow com borda e botões costumizados */
 #i1, #i2, #i3, #i4{ 
 display: none;
 }
@@ -16,11 +16,14 @@ border-radius:10px;
 position: absolute;
 width: 100%;;
 height: 100%;
-
+object-fit: scale-down;
 }
 .slide-container .slide_img img{
 width: inherit;
 height: inherit;
+}
+.object-fit_cover { 
+	object-fit: cover; 
 }
 .slide_img img {
 	border-radius:8px;
@@ -46,7 +49,7 @@ height: 18px;
 margin: 0 4px;
 position: relative;
 border-radius: 5px;
-border: 2px solid rgba(163, 163, 163, 1);
+border: 1.5px solid rgba(163, 163, 163, 1);
 display: inline-block;
 background-color: rgba(26, 26, 26, 0.75);
 transition: .4s;
