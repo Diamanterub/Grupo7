@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Swift - Sign In</title>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/sign.css">
     <link rel="icon" href="../imgs/favicon.ico">
 </head>
-
 <body>
-<!-- Código Do Login  -->
     <div class="container-position-helper1">
         <div class="container-position-helper2">
             <div id="container_si" class="container flex-container">
                 <form action="" id="frmLogin">
-                    <!-- Logotipo Da Aplicação -->
+                    <!-- Logótipo da aplicação -->
                     <div id="logo" class="row justify-content-center">
                         <img src="../imgs/logo.svg" class="img-fluid" alt="Responsive image">
                     </div>
-                    <!-- Botões Signin e Signup -->
-                    <div class="row justify-content-around" id="SI_SU">
+                    <!-- Botões Link Sign In e Sign Up -->
+                    <div class="row" id="SI_SU">
                         <a id="SI" href="#" style="text-decoration:none">SIGN IN</a>
                         <a id="SU" href="sign-up.html" style="text-decoration:none">SIGN UP</a>
                     </div>
-                    <!-- Informações para o Login  -->
+                    <!-- Barra sob o Sign In, de modo a mostrar em que página o utilizador se encontra -->
+                    <div class="si-underline-bar"> 
+                    </div>
+                    <!-- Informações para o Sign In  -->
                     <div class="form-group row justify-content-center">
                         <input type="text" class="form-control" id="txtUsername" placeholder="Username" required>
                     </div>
-
                     <div class="form-group row justify-content-center">
                         <input type="password" class="form-control" id="txtPassword" placeholder="Password" required>
                     </div>
-                    <!-- Opção para se Manter Logado na Sessão   -->
+                    <!-- Opção para se manter logado na sessão -->
                     <div id="cbtxt" class="form-group row justify-content-between">
                         <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="checkStaySigned"> Stay signed in
                             <span class="checkmark"></span>
                         </label>
+                    <!-- Ligação que ajuda o utilizador a recuperar a passe -->
                         <a id="csi" href="#">Can't sign in?</a>
                     </div>
-
+                    <!-- Botão Submit do Sign In -->
                     <div class="form-group row justify-content-center">
                         <input type="submit" value="SIGN IN">
                     </div>
                 </form>
+                <!-- Aviso em caso de erro -->
                 <div class="row" id="LoginMessage"></div>
             </div>
         </div>
