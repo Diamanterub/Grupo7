@@ -12,8 +12,6 @@ export default class EventModel {
     }
 
     create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
-        alert(this._dist(d5K, d10K, d21K, d42K))
-        const dist = JSON.parse(this._dist(d5K, d10K, d21K, d42K))
         let type;
         const runners = [];
         if (race) {
