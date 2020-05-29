@@ -11,11 +11,10 @@ export default class UserModel {
         let admin;
         username == "adminP" || username == "adminY" || username == "adminR" ? admin = true : admin = false;
         const user = {
-            id: this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 1,
-            username: username,
-            password: password,
-            email: email,
-            admin: admin
+            id: this.users.length, username: username, password: password, email: email, admin: admin, pfp: "", rank: 2000,
+            medals: {
+                copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: []
+            }
         }
         this.users.push(user);
         this._persist();
