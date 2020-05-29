@@ -26,7 +26,6 @@ export default class SignUpView {
                     throw Error('Password e Confirm Password não são iguais');   
                 }
                 this.signController.createUser(this.registerUsername.value, this.registerPassword.value, this.registerEmail.value);
-                // this.displayRegisterMessage('User registado com successo!', 'success');
                 window.location.href = "/html/sign-in.html";
             } catch(e) {
                 this.displayRegisterMessage(e, 'danger');

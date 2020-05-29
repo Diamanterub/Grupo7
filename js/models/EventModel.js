@@ -11,7 +11,8 @@ export default class EventModel {
         localStorage.setItem('events', JSON.stringify(this.events));
     }
 
-    create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
+    create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, map, about) {
+        const dist = JSON.parse(this._dist(d5K, d10K, d21K, d42K))
         let type;
         const runners = [];
         if (race) {
@@ -25,7 +26,7 @@ export default class EventModel {
             id: this.events.length,
             name: name, edition: edition, country: country, city: city, date: date,
             time: time, capacity: capacity, price: price, dist: dist, type: type,
-            poster: poster, tshirt: tshirt, map: map, enrolled: 0, runners: runners,
+            poster: poster, map: map, enrolled: 0, runners: runners,
             about: about, status: "open"
         }
         this.events.push(event);
@@ -49,7 +50,7 @@ export default class EventModel {
         return quant;
     }
 
-    searchEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
+    searchEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, map, about) {
         var e = 1;
         var id = null;
         try {
@@ -68,7 +69,6 @@ export default class EventModel {
             time.value     = this.events[id].time;
             capacity.value = this.events[id].capacity;
             poster.value   = this.events[id].poster;
-            tshirt.value   = this.events[id].tshirt;
             map.value      = this.events[id].map;
             about.value    = this.events[id].about;
             price.value    = this.events[id].price;
@@ -79,10 +79,10 @@ export default class EventModel {
             this.events[id].type == "race" ? race.checked = true : walk.checked = true;
         } else {
             country.value   = ""; city.value      = ""; time.value      = "";
-            capacity.value  = ""; poster.value    = ""; tshirt.value    = "";
-            map.value       = ""; about.value     = ""; price.value     = "";
-            d5K.checked  = false; d10K.checked = false; d21K.checked = false;
-            d42K.checked = false; race.checked = false; walk.checked = false;
+            capacity.value  = ""; poster.value    = ""; map.value       = "";
+            about.value     = ""; price.value     = ""; d5K.checked  = false;
+            d10K.checked = false; d21K.checked = false; d42K.checked = false;
+            race.checked = false; walk.checked = false;
         }
         
         return e;

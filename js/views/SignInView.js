@@ -26,7 +26,6 @@ export default class SignInView {
                 } else {
                     window.location.href = "/html/admin/home.html";
                 }
-                //this.displayLoginMessage();
             } catch(e) {
                 this.displayLoginMessage(e, 'danger');
             }
