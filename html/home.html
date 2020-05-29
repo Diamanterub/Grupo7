@@ -1,96 +1,126 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<title>Swift - Home</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/general.css">
-<link rel="stylesheet" href="../css/home.css">
-<link rel="icon" href="../imgs/favicon.ico">
+    <title>Swift - Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="icon" href="../imgs/favicon.ico">
 </head>
+
 <body>
-    <!-- General -->
+    <!-- Geral -->
     <div class="flex-container-top">
         <div id="logo" class="flex-container-left"></div>
         <div class="flex-container-center">
+            <!-- Ícones das Páginas  -->
+            <!-- Ícone da Home -->
             <div class="box-home">
-                        <svg class="in-home" id="home" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>
+                <svg class="in-home" id="home" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                    viewBox="0 0 24 24">
+                    <path
+                        d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z" />
+                    </svg>
             </div>
+            <!-- Ícone dos Eventos -->
             <div class="box">
-                        <svg id="events" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M4 24h-2v-24h2v24zm18-21.387s-1.621 1.43-3.754 1.43c-3.361 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v12.085c1.183-.819 2.979-1.681 4.922-1.681 3.685 0 4.201 2.754 7.485 2.754 2.121 0 3.593-1.359 3.593-1.359-1.742-1.253-3.071-2.954-3.778-4.932 1.464-1.278 3.508-4.962 3.778-7.096z"/></svg>                       
+                <svg id="events" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                  <path
+                        d="M4 24h-2v-24h2v24zm18-21.387s-1.621 1.43-3.754 1.43c-3.361 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v12.085c1.183-.819 2.979-1.681 4.922-1.681 3.685 0 4.201 2.754 7.485 2.754 2.121 0 3.593-1.359 3.593-1.359-1.742-1.253-3.071-2.954-3.778-4.932 1.464-1.278 3.508-4.962 3.778-7.096z" />
+                    </svg>
             </div>
-            <div class="box">              
-                        <svg id="teams" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M10.644 17.08c2.866-.662 4.539-1.241 3.246-3.682-3.932-7.427-1.042-11.398 3.111-11.398 4.235 0 7.054 4.124 3.11 11.398-1.332 2.455.437 3.034 3.242 3.682 2.483.574 2.647 1.787 2.647 3.889v1.031h-18c0-2.745-.22-4.258 2.644-4.92zm-12.644 4.92h7.809c-.035-8.177 3.436-5.313 3.436-11.127 0-2.511-1.639-3.873-3.748-3.873-3.115 0-5.282 2.979-2.333 8.549.969 1.83-1.031 2.265-3.181 2.761-1.862.43-1.983 1.34-1.983 2.917v.773z"/></svg>
-            </div>
+            <!-- Ícone das Equipas -->
             <div class="box">
-                        <svg id="leaderboards" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M24 3c-.372 4.105-2.808 8.091-6.873 9.438.297-.552.596-1.145.882-1.783 2.915-1.521 4.037-4.25 4.464-6.251h-2.688c.059-.45.103-.922.139-1.405h4.076zm-24 0c.372 4.105 2.808 8.091 6.873 9.438-.297-.552-.596-1.145-.882-1.783-2.915-1.521-4.037-4.25-4.464-6.251h2.688c-.058-.449-.102-.922-.138-1.404h-4.077zm19-2c0 9.803-5.094 13.053-5.592 17h-2.805c-.498-3.947-5.603-7.197-5.603-17h14zm-7.305 13.053c-1.886-3.26-2.635-7.432-2.646-11.053h-1.699c.205 4.648 1.99 8.333 4.345 11.053zm1.743 4.947h-2.866c-.202 1.187-.63 2.619-2.571 2.619v1.381h8v-1.381c-1.999 0-2.371-1.432-2.563-2.619z"/></svg>
+                <svg id="teams" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                    <path
+                        d="M10.644 17.08c2.866-.662 4.539-1.241 3.246-3.682-3.932-7.427-1.042-11.398 3.111-11.398 4.235 0 7.054 4.124 3.11 11.398-1.332 2.455.437 3.034 3.242 3.682 2.483.574 2.647 1.787 2.647 3.889v1.031h-18c0-2.745-.22-4.258 2.644-4.92zm-12.644 4.92h7.809c-.035-8.177 3.436-5.313 3.436-11.127 0-2.511-1.639-3.873-3.748-3.873-3.115 0-5.282 2.979-2.333 8.549.969 1.83-1.031 2.265-3.181 2.761-1.862.43-1.983 1.34-1.983 2.917v.773z" />
+                    </svg>
             </div>
+            <!-- Ícone das Tabelas de Classificação -->
             <div class="box">
-                        <svg id="stats" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z"/></svg>
-            </div>       
+                <svg id="leaderboards" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                    <path
+                        d="M24 3c-.372 4.105-2.808 8.091-6.873 9.438.297-.552.596-1.145.882-1.783 2.915-1.521 4.037-4.25 4.464-6.251h-2.688c.059-.45.103-.922.139-1.405h4.076zm-24 0c.372 4.105 2.808 8.091 6.873 9.438-.297-.552-.596-1.145-.882-1.783-2.915-1.521-4.037-4.25-4.464-6.251h2.688c-.058-.449-.102-.922-.138-1.404h-4.077zm19-2c0 9.803-5.094 13.053-5.592 17h-2.805c-.498-3.947-5.603-7.197-5.603-17h14zm-7.305 13.053c-1.886-3.26-2.635-7.432-2.646-11.053h-1.699c.205 4.648 1.99 8.333 4.345 11.053zm1.743 4.947h-2.866c-.202 1.187-.63 2.619-2.571 2.619v1.381h8v-1.381c-1.999 0-2.371-1.432-2.563-2.619z" />
+                    </svg>
+            </div>
+            <!-- Ícone das Estatisticas Pessoais -->
+            <div class="box">
+                <svg id="stats" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                    <path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z" />
+                    </svg>
+            </div>
         </div>
+        <!-- Foto de Perfil do utilizador -->
         <div class="flex-container-right">
             <div class="user-box">
                 <img id="user-photo" src="../imgs/haile.jpg" width="100%" height="100%">
-            </div>         
-        </div>              
+            </div>
+        </div>
     </div>
     <div class="outside-box">
-     <div class="inside-box">
-         <!-- Home -->
-        <div class="slide-container">	
-            <input type="radio" id="i1" name="images" checked /> 
-            <input type="radio" id="i2" name="images" />
-            <input type="radio" id="i3" name="images" />
-            <input type="radio" id="i4" name="images" />	          
-            <div class="slide_img" id="one">        
-                    <img src="../imgs/home-events.jpg"> 
+        <div class="inside-box">
+            <!-- Home -->
+            <div class="slide-container">
+                <!-- Slide das Imagens e Texto Relacionadas as Páginas da Aplicação -->
+                <input type="radio" id="i1" name="images" checked />
+                <input type="radio" id="i2" name="images" />
+                <input type="radio" id="i3" name="images" />
+                <input type="radio" id="i4" name="images" />
+                <!-- Imagem das Eventos -->
+                <div class="slide_img" id="one">
+                    <img src="../imgs/home-events.jpg">
                     <div class="block-left">
                         <div class="text-block-events">
-                        <h4>Challenge<br>yourself</h4>
-                        <a href="#" style="text-decoration:none;">Join events</a>
+                            <h4>Challenge<br>yourself</h4>
+                            <a href="#" style="text-decoration:none;">Join events</a>
                         </div>
-                      </div>       
-            </div>         
-            <div class="slide_img" id="two">              
+                    </div>
+                </div>
+                <!-- Imagem das Equipas -->
+                <div class="slide_img" id="two">
                     <img src="../imgs/home-teams.jpg">
                     <div class="block-center">
                         <div class="text-block-teams">
-                        <h4>Don't do<br>it alone</h4>
-                        <a href="#" style="text-decoration:none;">Join or create a team</a>
+                            <h4>Don't do<br>it alone</h4>
+                            <a href="#" style="text-decoration:none;">Join or create a team</a>
                         </div>
-                      </div>                 
-            </div>                   
-            <div class="slide_img" id="three">
+                    </div>
+                </div>
+                <!--  Imagem das Tabelas de Classificação -->
+                <div class="slide_img" id="three">
                     <img src="../imgs/home-leaderboards.jpg">
                     <div class="block-right">
                         <div class="text-block-leaderboards">
-                        <h4>Run fast<br>or be last</h4>
-                        <a href="#" style="text-decoration:none;">Check the leaderboards</a>
+                            <h4>Run fast<br>or be last</h4>
+                            <a href="#" style="text-decoration:none;">Check the leaderboards</a>
                         </div>
-                      </div>   	
-            </div>        
-            <div class="slide_img" id="four">
+                    </div>
+                </div>
+                <!--  Imagem das Estatisticas Pessoais -->
+                <div class="slide_img" id="four">
                     <img src="../imgs/home-stats.jpg">
                     <div class="block-center">
                         <div class="text-block-stats">
-                        <h4>Strive for<br>the best</h4>
-                        <a href="#" style="text-decoration:none;">Analyse your statistics</a>
+                            <h4>Strive for<br>the best</h4>
+                            <a href="#" style="text-decoration:none;">Analyse your statistics</a>
                         </div>
-                      </div>    	
-            </div>      
-            <div id="nav_slide">
-                <label for="i1" class="dots" id="dot1"></label>
-                <label for="i2" class="dots" id="dot2"></label>
-                <label for="i3" class="dots" id="dot3"></label>
-                <label for="i4" class="dots" id="dot4"></label>
-            </div>               
+                    </div>
+                </div>
+                <div id="nav_slide">
+                    <label for="i1" class="dots" id="dot1"></label>
+                    <label for="i2" class="dots" id="dot2"></label>
+                    <label for="i3" class="dots" id="dot3"></label>
+                    <label for="i4" class="dots" id="dot4"></label>
+                </div>
+            </div>
+            <!-- Fim do Home -->
         </div>
-        <!-- Home End -->
-      </div>
-     </div>
-    <!-- General End-->
+    </div>
+    <!-- Fim do Geral -->
+    <!-- Script Necessários -->
     <script src="../js/home.js"></script>
     <script src="../js/general.js"></script>
     <script type="module" src="../js/app.js"></script>
@@ -98,4 +128,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

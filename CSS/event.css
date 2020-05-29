@@ -1,0 +1,46 @@
+.inside-box-event {
+    background: rgba(26, 26, 26, 1);
+    height: 100%;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.row {
+    margin: 0px 0px;
+    width: 96%;
+    height: 96%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.col1{
+    width: 250px;
+}
+.col2{
+    width: 250px;
+}
+.col3{
+    width: 40vw;
+    min-width: 250px;
+}
+#txtInfo, #txtAbout{
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(218, 218, 218, 1);
+    font-weight: 500;
+}
+#txtInfo h1, #txtAbout h1{
+    font-size: 26px;
+    color: rgba(199, 249, 66, 1);
+    font-weight: 700;
+}
+#txtInfo h2{
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 0px;
+}
+#txtInfo p, #txtAbout p{
+    font-size: 16px;
+    margin: 4px 0px;
+}
