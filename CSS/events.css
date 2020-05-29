@@ -1,1 +1,63 @@
-/* Por fazer */
+/* Barra de Separação */
+hr {
+    border: 1px solid rgba(112, 112, 112, 1);
+    height: 690px;
+    width: 0.1px;
+}
+
+/* Botão de Submit */
+#button {
+    background-color: rgba(199, 249, 66, 1);
+    border-color: rgba(199, 249, 66, 1);
+    border-style: hidden;
+    width: 270px;
+    height: 48px;
+
+}
+
+/* Caixa de texto para o nome da maratona */
+#txtName {
+    background-color: rgba(38, 38, 38, 1);
+    border-color: rgba(218, 218, 218, 1);
+    border-width: 3px;
+    color: rgba(218, 218, 218, 1);
+
+}
+
+/* Drop down Menu */
+#selectOps {
+    width: 150px;
+    background-color: rgba(218, 218, 218, 1);
+    color: rgba(26, 26, 26, 1);
+}
+
+/* Caixa de texto para o nome do pais onde a maratona se situa */
+#txtCountry {
+    color: rgba(26, 26, 26, 1);
+    text-decoration-color: rgba(26, 26, 26, 1);
+
+}
+
+/* Botão de reset */
+#reset {
+    display: flex;
+    background-color: rgba(218, 218, 218, 1);
+    align-items: flex-end;
+}
+
+/* Div das checkboxs */
+#div1 {
+    border: none;
+    background-color: rgba(26, 26, 26, 1);
+
+}
+
+/* Meter a Lista sem estilo nenhum */
+ul {
+    list-style: none;
+}
+
+/* Cor da letra */
+li {
+    color: rgba(218, 218, 218, 1);
+}
