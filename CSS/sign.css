@@ -11,15 +11,15 @@
  }
 /* Centralização do container na área visível */ 
  .container-position-helper1 {
-    display: table;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
+ display: table;
+ height: 100%;
+ position: absolute;
+ overflow: hidden;
+ width: 100%;
  }
  .container-position-helper2 {
-    display: table-cell;
-    vertical-align: middle;
+ display: table-cell;
+ vertical-align: middle;
  }
  /* Definição da cor e estilo dos elementos href */
  a, a:hover {
@@ -34,9 +34,9 @@
  padding-top: 8px;
  }
  #SI_SU{
-   display: flex;
-   align-items: center;
-   justify-content: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
  }
  /* Padding, tamanho e peso da fonte dos elementos no container */
  div.form-group {
@@ -46,7 +46,7 @@
  }
  /* Posicionamento de certos elementos através de id's + underline costumizado + tamanho do logo*/
  .img-fluid{
-    max-width: 70%;
+ max-width: 70%;
  }
  #logo{
  padding-top: 55.2px;
@@ -55,16 +55,12 @@
  #cbtxt{
  padding-left: 54.5px;
  }
- #csi{
- padding-right: 48.4px;
- padding-top: 1.5px;
- }
  #SI{
-    padding-right: 20px;
+ padding-right: 20px;
  }
  #SU{
-   padding-left: 20px;
-}
+ padding-left: 20px;
+ }
  /* Botão submit (SIGN IN/SIGN UP) personalizado */
  input[type=submit]{
  background-color: rgba(218, 218, 218, 1);
