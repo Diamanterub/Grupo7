@@ -23,7 +23,7 @@ width: inherit;
 height: inherit;
 }
 .object-fit_cover { 
-	object-fit: cover 
+	object-fit: cover; 
 }
 .slide_img img {
 	border-radius:8px;
