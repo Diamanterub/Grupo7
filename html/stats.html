@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Swift - Event</title>
+<title>Swift - Stats</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="../CSS/general.css">
-<link rel="stylesheet" href="../CSS/event.css">
+<link rel="stylesheet" href="../CSS/stats.css">
 <link rel="icon" href="../imgs/favicon.ico">
-<script src="../js/gauge.js-gh-pages/dist/gauge.min.js"></script>
 </head>
 <body>
     <!-- Barra de cima -->
@@ -23,7 +22,7 @@
             </div>
             <!-- Ícone dos Eventos -->
             <div class="box">
-                <svg class="in-events" id="events" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 24h-2v-24h2v24zm18-21.387s-1.621 1.43-3.754 1.43c-3.361 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v12.085c1.183-.819 2.979-1.681 4.922-1.681 3.685 0 4.201 2.754 7.485 2.754 2.121 0 3.593-1.359 3.593-1.359-1.742-1.253-3.071-2.954-3.778-4.932 1.464-1.278 3.508-4.962 3.778-7.096z"/></svg>                       
+                <svg id="events" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 24h-2v-24h2v24zm18-21.387s-1.621 1.43-3.754 1.43c-3.361 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v12.085c1.183-.819 2.979-1.681 4.922-1.681 3.685 0 4.201 2.754 7.485 2.754 2.121 0 3.593-1.359 3.593-1.359-1.742-1.253-3.071-2.954-3.778-4.932 1.464-1.278 3.508-4.962 3.778-7.096z"/></svg>                       
             </div>
             <!-- Ícone das Equipas -->
             <div class="box">              
@@ -35,7 +34,7 @@
             </div>
             <!-- Ícone das Estatísticas Pessoais -->
             <div class="box">
-                <svg id="stats" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z"/></svg>
+                <svg class="in-stats" id="stats" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z"/></svg>
             </div>       
         </div>
         <!-- Barra Interior Direita -->
@@ -47,61 +46,13 @@
         </div>              
     </div>
     <div class="outside-box">
-    <div class="inside-box-event">
-        <div class="row" id="content">
-            <div class="col1">
-                <div class="return_link">
-                <a href="events.html">⬅ Return</a>
-                </div>
-                <div class="card" id="imgPoster">
-                </div>
-                <div id="txtInfo"></div>
-                <div id="divBtn"></div>
-                <div class="modal fade" id="mdlRegister" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Register</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="frmRegister">
-                        <div class="form-check" id="frmDists"></div>
-                        <div class="form-check">
-                            <br><label class="form-check-label">
-                                <input class="form-check-input" name="run" type="radio" id="frmSolo" checked> Solo
-                            </label>
-                            <br><label class="form-check-label">
-                                <input class="form-check-input" name="run" type="radio" id="frmTeam" disabled> Team
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <button type="submit" id="frmSubmit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <div id="mdlRegisterMessage"></div>
-                </div>
-            </div>
-        </div>
+    <div class="inside-box">
+    <!-- Contéudo da Página dentro do .inside-box -->
     </div>
-            </div>
-            <div class="col2">
-                <div id="divGauge"></div>
-                <div id="txtAbout"></div>
-            </div>
-            <div class="col3">
-                <div class="cardMap" id="imgMap"></div>
-            </div>
-        </div>
     </div>
     <!-- Script Necessários -->
     <script type="module" src="../js/app.js"></script>
-    <script src="../js/general.js"></script>
+    <script type="module" src="../js/general.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
