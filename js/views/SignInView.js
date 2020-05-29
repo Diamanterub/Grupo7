@@ -1,10 +1,10 @@
-import SignController from '../controllers/UserController.js'
+import UserController from '../controllers/UserController.js'
 
 export default class SignInView {
     constructor() {
-        this.signController = new SignController();
+        this.userController = new UserController();
 
-        this.signController.logoutUser();
+        this.userController.logoutUser();
 
         // login DOM
         this.loginForm = document.getElementById('frmLogin');
@@ -21,7 +21,7 @@ export default class SignInView {
             event.preventDefault(); 
 
             try {
-                if (!this.signController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.checked)) {
+                if (!this.userController.loginUser(this.loginUsername.value, this.loginPassword.value, this.loginStaySigned.checked)) {
                     window.location.href = "/html/home.html";
                 } else {
                     window.location.href = "/html/admin/home.html";

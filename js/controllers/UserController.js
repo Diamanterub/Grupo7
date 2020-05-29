@@ -1,6 +1,6 @@
 import UserModel from '../models/UserModel.js'
 
-export default class SignUpController {
+export default class UserController {
     constructor() {
         this.userModel = new UserModel();
     }
@@ -31,5 +31,13 @@ export default class SignUpController {
 
     logoutUser() {
         this.userModel.logout();
+    }
+
+    getInfo() {
+        for (let i = 0; i < this.userModel.getAll().length; i++) {
+            if (localStorage.getItem('loggedUser') == this.userModel.getAll()[i].username) {
+                return this.userModel.getAll()[i];
+            }
+        }
     }
 }
