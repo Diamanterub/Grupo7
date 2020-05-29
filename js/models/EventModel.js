@@ -167,7 +167,7 @@ export default class EventModel {
             poster.innerHTML = `<img src="${this.events[id].poster}" class="img-fluid" alt="Poster">`
             info.innerHTML =
             `<h1>${this.events[id].name}</h1>
-            <h2>(${this.events[id].edition}${this._getNth(this.events[id].edition)} Edition)</h2><br>
+            <h2>(${this.events[id].edition}${this._getNth(this.events[id].edition)} Edition)</h2>
             <p>Location: ${this.events[id].city} (${this.events[id].country})</p>
             <p>Date: ${this.events[id].date}</p>
             <p>Time: ${this.events[id].time}</p>
@@ -176,11 +176,11 @@ export default class EventModel {
             <p>Accomodation: ${this.events[id].capacity}</p>
             <p>Price: ${this.events[id].price}€</p>`
             if (this.events[id].status == "open") {                
-                buttons.innerHTML = `<input type="button" value="REGISTER" id="btnReg" data-toggle="modal" data-target="#mdlRegister">`
+                buttons.innerHTML = `<input type="button" value="Register" id="btnReg" data-toggle="modal" data-target="#mdlRegister">`
                 if (this.events[id].capacity == this.events[id].enrolled || JSON.stringify(this.events[id].runners).includes(localStorage.getItem('loggedUser'))) {
                     document.getElementById("btnReg").disabled = true;
                 }
-            } else if (this.events[id].status == "closed") {
+            } else if (this.events[id].status == "Closed") {
                 buttons.innerHTML = `<input type="button" value="LEADERBOARDS" id="btnLeadB">`
             } else {
                 buttons.innerHTML = ``
