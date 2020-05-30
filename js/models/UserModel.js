@@ -1,3 +1,5 @@
+import {EditEvent} from './EventModel.js';
+
 export default class UserModel {
     constructor() {
         this.users = localStorage.users ? JSON.parse(localStorage.users) : [];
@@ -5,6 +7,10 @@ export default class UserModel {
 
     getAll() {
         return this.users;
+    }
+
+    _persist() {
+        localStorage.setItem('users', JSON.stringify(this.users));
     }
 
     create(username, password, email) {
@@ -70,7 +76,27 @@ export default class UserModel {
         }
     }
 
-    _persist() {
-        localStorage.setItem('users', JSON.stringify(this.users));
+    applyEdit(option, info, id) {
+        switch (option) {
+            case "username":
+                this.editEvent = new EditEvent();
+                this.editEvent.applyEdit(this.users[id].username, info);
+                localStorage.loggedUser ? localStorage.setItem('loggedUser', info) : sessionStorage.setItem('loggedUser', info);
+                this.users[id].username = info;
+                break;
+
+            case "email":
+                this.users[id].email = info;
+                break;
+
+            case "password":
+                this.users[id].password = info;
+                break;
+
+            case "pfp":
+                this.users[id].pfp = info;
+                break;
+        }
+        this._persist();
     }
 }
