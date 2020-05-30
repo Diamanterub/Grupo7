@@ -57,6 +57,7 @@ export default class EventView {
                     this.event5K.checked, this.event10K.checked, this.event21K.checked, this.event42K.checked,
                     this.eventRace.checked, this.eventWalk.checked, this.eventPoster.value, this.eventMap.value,
                     this.eventAbout.value);
+                    this.eventForm.reset();
                 this.displayEventMessage('Evento registado com successo!', 'success');
             } catch(e) {
                 this.displayEventMessage(e, 'danger');

@@ -401,3 +401,9 @@ export default class EventModel {
         return (h * 60 * 60 + m * 60 + s + ms / 100) 
     }
 }
+
+export class EditEvent {
+    applyEdit(oldUser, newUser) {
+        localStorage.events ? JSON.stringify(localStorage.events).includes(oldUser) ? localStorage.setItem('events', localStorage.events.replace(oldUser, newUser)) : {} : {} ;
+    }
+}
