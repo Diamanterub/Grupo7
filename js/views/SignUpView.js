@@ -23,7 +23,7 @@ export default class SignUpView {
 
             try {
                 if (this.registerPassword.value !==this.registerPassword2.value) {
-                    throw Error('Password e Confirm Password não são iguais');   
+                    throw Error('Password and Confirm Password are not equal!');   
                 }
                 this.userController.createUser(this.registerUsername.value, this.registerPassword.value, this.registerEmail.value);
                 window.location.href = "/html/sign-in.html";
