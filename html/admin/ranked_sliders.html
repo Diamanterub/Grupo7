@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../CSS/admin.css">
+<link rel="stylesheet" href="../../CSS/admin-rs.css">
 <link rel="icon" href="../../imgs/favicon-admin.ico">
 </head>
 <body>
@@ -15,11 +16,75 @@
         <div id="logo" class="flex-container-left"></div>
     </div>
     <div class="outside-box">
-     <div class="inside-box">
-          <!-- Contéudo da Página dentro do .inside-box -->
+     <div class="inside-box-rs">
+      <div class="content-container">
+        <div class="range-sliders-container-1">
+            <h1 id="c_text">Copper</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="copper" class="limit"></span>x</label>
+            </div>
+            <h1 id="s_text">Silver</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="silver" class="limit"></span>x</label>
+            </div>
+            <h1 id="p_text">Platinum</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="platinum" class="limit"></span>x</label>
+            </div>
+            <h1 id="m_text">Master</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="master" class="limit"></span>x</label>
+            </div>
+        </div>    
+        <div class="range-sliders-container-2">
+            <h1 id="b_text">Bronze</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="bronze" class="limit"></span>x</label>
+            </div>
+            <h1 id="g_text">Gold</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="gold" class="limit"></span>x</label>
+            </div>
+            <h1 id="d_text">Diamond</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="diamond" class="limit"></span>x</label>
+            </div>
+            <h1 id="sw_text">Swift</h1>
+            <div class="slidecontainer">
+                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
+                <label>Multiplier: <span id="swift" class="limit"></span>x</label>
+            </div>
+        </div>
+        <div class="sumbit-container">
+            <input type="submit" id="submit-rs" value="SUBMIT">
+        </div>    
       </div>
      </div>
+    </div>
     <!-- Script Necessários -->
+    <script>
+    // Logo que leva o Admin de volta a Home //
+    document.getElementById("logo").style.cursor = "pointer";
+    document.getElementById('logo').addEventListener('click', (event) => { window.location.href = "home.html" });
+    // Script que revela o valor dos Range Sliders //
+    function updateLabel() {
+    var limit = this.parentElement.getElementsByClassName("limit")[0];
+    limit.innerHTML = this.value;
+    }
+    var slideContainers = document.getElementsByClassName("slidecontainer");
+    for (var i = 0; i < slideContainers.length; i++) {
+    var slider = slideContainers[i].getElementsByClassName("slider")[0];
+    updateLabel.call(slider);
+    slider.oninput = updateLabel;
+    }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
