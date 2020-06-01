@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Swift - Teams</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/general.css">
-    <link rel="stylesheet" href="../CSS/teams.css">
-    <link rel="icon" href="../imgs/favicon.ico">
+<title>Swift - Create Team</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../CSS/general.css">
+<link rel="stylesheet" href="../CSS/team-c.css">
+<link rel="icon" href="../imgs/favicon.ico">
 </head>
 <body>
     <!-- Barra de cima -->
@@ -41,62 +41,13 @@
         <div class="flex-container-right">
             <!-- Imagem de Perfil do Utilizador -->
             <div class="user-box">
-                <img id="user-photo" src="../imgs/haile.jpg" width="46" height="46">
+                <img id="user-photo" src="../imgs/haile.jpg">
             </div>         
         </div>              
     </div>
     <div class="outside-box">
     <div class="inside-box">
-    <div class="row rounded" id="content">
-        <div class="col-3" id="frmSearchEvent">
-            <form action="">
-                <div class="form-group">
-                    <input id="button" type="submit" value="SEARCH">
-                </div>
-                <!-- Pesquisar o nome da maratona -->
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name" id="txtName">
-                </div>
-                <div class="form-control" id="div1">
-                    <select class="form-control" id="selectOps">
-                        <option>Recent</option>
-                        <option>Popular</option>
-                    </select>
-                    <input id="reset" type="reset" value="reset">
-                </div>
-                <!-- Para pesquisar o pais e/ou a cidade da maratona -->
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Country" id="txtCountry">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="City" id="txtCity">
-                </div>
-                <!-- Checkboxs para pesquisar o tipo de maratona que a equipa participa -->
-                <div id="Opcoes" class="form-check">
-                    <ul>                   
-                        <li> <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="chkRace"> Race
-                    </label></li>
-                    <li> <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="chkWalk"> Walk
-                    </label></li>
-                    </ul>
-                </div>
-                <!-- Mensagem de Aviso -->
-                <div class="row" id="EventMessage"></div>
-            </form>            
-            <input type="text" class="form-control" placeholder="*team_name*" id="txtName">
-            <div class="form-group">
-                <input  id="button" type="submit" value="Create Team">
-            </div>
-        </div>
-        <!--         Por editar - depois removam o comment          -->
-        <div class="col-1">
-            <hr class=Linha>
-        </div>
-        <div class="col-9" id="EventArea"></div>
-        <!--                       Até aqui                         -->
-    </div>
+    <!-- Contéudo da Página dentro do .inside-box -->
     </div>
     </div>
     <!-- Script Necessários -->

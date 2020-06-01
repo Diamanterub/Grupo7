@@ -13,7 +13,7 @@ export default class ProfileView {
         this.divPassword = document.getElementById('divPassword'); //div para input da pass
         this.divPassConf = document.getElementById('divPassConf'); //div para input da passconf
         this.divPFP      = document.getElementById('divPFP');      //div para input da pfp
-        this.divButton   = document.getElementById('divButton');   //div para butões
+        this.divButton   = document.getElementById('divButton');   //div para botões
 
         this.buildProfile();
     }
@@ -34,9 +34,9 @@ export default class ProfileView {
     buildForm() {
         this.divUsername.innerHTML = `<input type="text" value="${this.info.username}" id="inputUsername" placeholder="Username">`;
         this.divEmail.innerHTML    = `<input type="text" value="${this.info.email}" id="inputEmail" placeholder="Email">`;
-        this.divPassword.innerHTML = `<input type="password" id="inputPassword" placeholder="Password">`;
+        this.divPassword.innerHTML = `<input type="password" id="inputPassword" placeholder="New Password">`;
         this.divPassConf.innerHTML = `<input type="password" id="inputPassConf" placeholder="Confirm Password">`;
-        this.divPFP.innerHTML      = `<input type="text" value="${this.info.pfp}" id="inputPFP" placeholder="Profile Picture ULR">`;
+        this.divPFP.innerHTML      = `<input type="text" value="${this.info.pfp}" id="inputPFP" placeholder="Profile Picture URL">`;
         this.divButton.innerHTML   = `<input type="button" value="SUBMIT" id="btnSubmit">`;
 
         this.inputUsername = document.getElementById('inputUsername'); //input para mudar o user
