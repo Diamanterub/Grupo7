@@ -1,50 +1,189 @@
-/* */
+.event-search-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+.search-container{
+    display: flex;
+    justify-content: center;
+    width: 364px;
+    min-width: 364px;
+    margin: 10px 20px;
+    background-color: rgba(38, 38, 38, 0.5) ;
+    border-radius: 10px;
+}
+#sco{
+ width: 90%;
+ min-width: 328px;
+ margin: 20px 0px;
+}
 /* Barra de Separação */
 hr {
     border: 1px solid rgba(112, 112, 112, 1);
-    height: 600px;
+    height: 80vh;
     width: 0.1px;
 }
-
-/* Botão de Submit */
+#btns{
+    display: flex;
+}
+/* Botão Submit */
 #button {
     background-color: rgba(199, 249, 66, 1);
-    border-color: rgba(199, 249, 66, 1);
-    border-style: hidden;
-    width: 270px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 0px;
+    margin-right: 16.4px;
+    width: 70%;
     height: 48px;
-
+    font-weight: 600;
+    cursor: pointer;
 }
-
-/* Caixa de texto para o nome da maratona */
-#txtName {
-    background-color: rgba(38, 38, 38, 1);
-    border-color: rgba(218, 218, 218, 1);
-    border-width: 3px;
+#button:hover{
+    background-color: rgba(166, 202, 70, 1);
+}
+#reset{
+    display: flex;
+    color: rgba(120, 120, 120, 1);
+    background-color: rgba(48, 48, 48, 1);
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid rgba(120, 120, 120, 1);
+    padding: 5px 0px;
+    width: 25%;
+    height: 48px;
+    font-weight: 500;
+    cursor: pointer;
+}
+#reset:hover{
+    color: rgba(48, 48, 48, 1);
+    background-color: rgba(120, 120, 120, 1);
+    border: 2px solid rgba(48, 48, 48, 1);
+}
+input[type=text]:focus, input[type=text], select{
+    background-color: rgba(48, 48, 48, 1);
     color: rgba(218, 218, 218, 1);
-
+    width: 100%;
+    height: 41px;
+    padding: 13px 11px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    }
+    input[type=text]::placeholder{
+    color: rgba(218, 218, 218, 1);
+    }
+#div1{
+    display: flex;
+    justify-content: center;
 }
-
 /* Drop down Menu */
 #selectOps {
-    width: 150px;
+    width: 100%;
     background-color: rgba(218, 218, 218, 1);
     color: rgba(26, 26, 26, 1);
+    margin-top: 15px;
 }
-
-/* Caixa de texto para o nome do pais onde a maratona se situa */
-#txtCountry {
-    color: rgba(26, 26, 26, 1);
-    text-decoration-color: rgba(26, 26, 26, 1);
-
+.form-group{
+    margin-bottom: 0px;
 }
-
-/* Botão de reset */
-#reset {
+.form-check{
+    margin-bottom: 0px;
+}
+ /* Propriedade que remove o outline azul */
+ textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus
+ {
+ outline:0px !important;
+ -webkit-appearance:none;
+ box-shadow: none !important;
+ }
+ /* Propriedades que alteram a cor das caixas input e da cor dos seus textos (quando ocorre autofill) */
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover, 
+ input:-webkit-autofill:focus, 
+ input:-webkit-autofill:active  {
+ -webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
+ -webkit-text-fill-color: rgba(218, 218, 218, 1) !important;
+ }
+#cb-options-distance, #cb-options-type{
     display: flex;
-    background-color: rgba(218, 218, 218, 1);
-    align-items: flex-end;
+    align-items: center;
+    background-color: rgba(48, 48, 48, 1);
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 48px;
 }
+
+/* Botão checkbox Personalizado para Sign In e Sign Up */
+.form-check-label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 55px;
+    margin-left: 20px;
+    padding-top: 3px;
+    color: rgba(218, 218, 218, 1);
+    font-weight: 500;
+    }
+    /* Remove o botão original */
+    .form-check-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    }
+    /* Cria uma checkbox */
+    .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(26, 26, 26, 1);
+    }
+    /* Quando clicado, altera-se o background */
+    .form-check-input:checked ~ .checkmark {
+    background-color: rgba(141, 141, 141, 1);
+    }
+    /* Cria um checkmark (escondido/não checked) */
+    .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    }
+    /* Revela o checkmark quando se clica na checkbox */
+    .form-check-input:checked ~ .checkmark:after {
+    display: block;
+    } 
+    /* Estilo do checkmark */
+    .form-check-label .checkmark:after {
+    left: 2.4px;
+    top: 2.4px;  
+    width: 17.2px;
+    height: 17.2px;
+    background: rgba(199, 249, 66, 1);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    } 
+
+
+
+
+
+
+
+
+
+
+
 
 /* Div das checkboxs */
 #div1 {
@@ -56,6 +195,7 @@ hr {
 /* Meter a Lista sem estilo nenhum */
 ul {
     list-style: none;
+    padding-left: 0px;
 }
 
 /* Cor da letra */
