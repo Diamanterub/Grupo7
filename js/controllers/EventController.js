@@ -45,4 +45,8 @@ export default class EventController {
     importFromLeaderboard(eventId, dists, tBody) {
         this.eventModel.getFromLeaderboard(eventId, dists, tBody)
     }
+
+    closeEvent(id) {
+        this.eventModel.isOver(id);
+    }
 }

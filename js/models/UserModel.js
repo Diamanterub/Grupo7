@@ -1,5 +1,3 @@
-import {EditEvent} from './EventModel.js';
-
 export default class UserModel {
     constructor() {
         this.users = localStorage.users ? JSON.parse(localStorage.users) : [];
@@ -17,7 +15,8 @@ export default class UserModel {
         let admin;
         username == "adminP" || username == "adminY" || username == "adminR" ? admin = true : admin = false;
         const user = {
-            id: this.users.length, username: username, password: password, email: email, admin: admin, pfp: "", rank: 2000,
+            id: this.users.length, username: username, password: password,
+            email: email, admin: admin, pfp: "", rank: 2000, team: "",
             medals: {
                 copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: []
             }
@@ -79,9 +78,8 @@ export default class UserModel {
     applyEdit(option, info, id) {
         switch (option) {
             case "username":
-                this.editEvent = new EditEvent();
-                this.editEvent.applyEdit(this.users[id].username, info);
-                localStorage.loggedUser ? localStorage.setItem('loggedUser', info) : sessionStorage.setItem('loggedUser', info);
+                localStorage.events ? JSON.stringify(localStorage.events).includes(this.users[id].username) ? localStorage.setItem('events', localStorage.events.replace(this.users[id].username, info)) : {} : {} ;
+                localStorage.loggedUser ? localStorage.setItem('loggedUser', info) : {} ;
                 this.users[id].username = info;
                 break;
 

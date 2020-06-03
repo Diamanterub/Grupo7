@@ -27,7 +27,7 @@ class App {
                 this.createEventView = new CreateEventView();
                 break;
 
-            case "/html/admin/events/complete.html":
+            case "/html/admin/events/iet.html":
                 this.completeEventView = new CompleteEventView();
                 break;
 
