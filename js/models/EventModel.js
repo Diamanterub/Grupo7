@@ -315,8 +315,132 @@ export default class EventModel {
     }
 
     isOver(id) {
-        this.events[id].status = "close";
+        this.events[id].status = "closed";
         this._persist();
+        this._setScores(id);
+    }
+
+    _setScores(eventId) {
+        if (JSON.stringify(this.events[eventId].dist).includes("5K")) {
+            this.events[eventId].dist.d5K .Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
+            this.events[eventId].dist.d5K .Leaderboard.length > 0 ?
+            this._giveMedalAndRank(this.events[eventId].dist.d5K .Leaderboard, JSON.parse(localStorage.users), "5K" , eventId) : {} ;
+        }
+
+        if (JSON.stringify(this.events[eventId].dist).includes("10K")) {
+            this.events[eventId].dist.d10K.Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
+            this.events[eventId].dist.d10K.Leaderboard.length > 0 ?
+            this._giveMedalAndRank(this.events[eventId].dist.d10K.Leaderboard, JSON.parse(localStorage.users), "10K", eventId) : {} ;
+        }
+
+        if (JSON.stringify(this.events[eventId].dist).includes("21K")) {
+            this.events[eventId].dist.d21K.Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
+            this.events[eventId].dist.d21K.Leaderboard.length > 0 ?
+            this._giveMedalAndRank(this.events[eventId].dist.d21K.Leaderboard, JSON.parse(localStorage.users), "21K", eventId) : {} ;
+        }
+
+        if (JSON.stringify(this.events[eventId].dist).includes("42K")) {
+            this.events[eventId].dist.d42K.Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
+            this.events[eventId].dist.d42K.Leaderboard.length > 0 ?
+            this._giveMedalAndRank(this.events[eventId].dist.d42K.Leaderboard, JSON.parse(localStorage.users), "42K", eventId) : {} ;
+        }
+    }
+
+    _giveMedalAndRank(arrayLB, users, dist, eventId) {
+        for (let pos = 0; pos < arrayLB.length; pos++) {
+            var userId = this._getUserId(arrayLB[pos].runner);
+            var medal = this._calculateMedal(arrayLB.length, pos+1);
+            var data = { event: this.events[eventId].name, edition: this.events[eventId].edition, dist: dist }
+            switch (medal) {
+                case "Swift":    users[userId].medals.swift  .push(data); break;
+                case "Master":   users[userId].medals.master .push(data); break;
+                case "Diamond":  users[userId].medals.diamond.push(data); break;
+                case "Platinum": users[userId].medals.plat   .push(data); break;
+                case "Gold":     users[userId].medals.gold   .push(data); break;
+                case "Silver":   users[userId].medals.silver .push(data); break;
+                case "Bronze":   users[userId].medals.bronze .push(data); break;
+                case "Copper":   users[userId].medals.copper .push(data); break;
+            }
+
+            var rank = users[userId].rank;
+            var rsm = this._getRankSliderMultiplier(rank);
+            var mm = this._getMedalMultiplier(medal);
+            var rm = this._getRankMultiplier(rank);
+            rank = rank + (rsm * ((((2000 - (500 * (3 - mm)))/1000)*rm*(mm^2)) - (rm*(1-mm)) - ((rank/90)*(2 - mm))));
+            rank < 0 ? rank = 0 : {} ;
+            rank > 5000 ? rank = 5000 : {} ;
+            users[userId].rank = rank;
+        }
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    _calculateMedal(runners, pos) {
+        const Diam = Math.round((runners - 3) * 0.01);
+        const Plat = Math.round((runners - 3) * 0.03) + Diam;
+        const Gold = Math.round((runners - 3) * 0.16) + Plat;
+        const Silv = Math.round((runners - 3) * 0.20) + Gold;
+        const Bron = Math.round((runners - 3) * 0.25) + Silv;
+        const Copp = Math.round((runners - 3) * 0.35) + Bron;
+
+        if (pos == 1) { return "Swift" }
+        else if (pos == 2 || pos == 3) { return "Master" }
+        else if (pos - 3 < Diam) { return "Diamond" }
+        else if (pos - 3 < Plat) { return "Platinum" }
+        else if (pos - 3 < Gold) { return "Gold" }
+        else if (pos - 3 < Silv) { return "Silver" }
+        else if (pos - 3 < Bron) { return "Bronze" }
+        else if (pos - 3 < Copp) { return "Copper" }
+    }
+
+    _calculateRank(rank) {
+        if (rank < 1000) { return "Copper" }
+        else if (rank < 1500) { return "Bronze" }
+        else if (rank < 2000) { return "Silver" }
+        else if (rank < 2500) { return "Gold" }
+        else if (rank < 3000) { return "Platinum" }
+        else if (rank < 3500) { return "Diamond" }
+        else if (rank < 4000) { return "Master" }
+        else { return "Swift" }
+    }
+
+    _getRankSliderMultiplier(rank) {
+        const slider = JSON.parse(localStorage.rankedSliders);
+        switch (this._calculateRank(rank)) {
+            case "Copper"  :  return slider.copper;
+            case "Bronze"  :  return slider.bronze;
+            case "Silver"  :  return slider.silver;
+            case "Gold"    :  return slider.gold;
+            case "Platinum":  return slider.platinum;
+            case "Diamond" :  return slider.diamond;
+            case "Master"  :  return slider.master;
+            case "Swift"   :  return slider.swift;
+        }
+    }
+
+    _getRankMultiplier(rank) {
+        switch (this._calculateRank(rank)) {
+            case "Copper"  : return 120;
+            case "Bronze"  : return 110;
+            case "Silver"  : return 100;
+            case "Gold"    : return 90;
+            case "Platinum": return 80;
+            case "Diamond" : return 60;
+            case "Master"  : return 40;
+            case "Swift"   : return 20;
+        }
+    }
+
+    _getMedalMultiplier(medal) {
+        switch (medal) {
+            case "Copper"  : return 0.8;
+            case "Bronze"  : return 0.86;
+            case "Silver"  : return 0.93;
+            case "Gold"    : return 1;
+            case "Platinum": return 1.2;
+            case "Diamond" : return 1.4;
+            case "Master"  : return 1.6;
+            case "Swift"   : return 2;
+        }
     }
 
     getEvents(opsEvent, status) {
@@ -332,7 +456,7 @@ export default class EventModel {
 
     getRunners(opsRunner, eventId) {
         for (let i = 0; i < this.events[eventId].runners.length; i++) {
-            if (!JSON.stringify(this.events[id].dist).includes(this.events[eventId].runners[i].data.runner)) {
+            if (!JSON.stringify(this.events[eventId].dist).includes(this.events[eventId].runners[i].data.runner)) {
                 var option   = document.createElement("option");
                 option.text  = this.events[eventId].runners[i].data.runner;
                 option.value = this.events[eventId].runners[i].id;
@@ -372,22 +496,22 @@ export default class EventModel {
     }
 
     getFromLeaderboard(eventId, dists, tBody) {
-        var sorted = [], km;
+        var arrayLB = [], km;
         switch (dists) {
-            case "5K":  sorted = this.events[eventId].dist.d5K.Leaderboard.slice().sort((a, b)  => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 5000;  break;
-            case "10K": sorted = this.events[eventId].dist.d10K.Leaderboard.slice().sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 10000; break;
-            case "21K": sorted = this.events[eventId].dist.d21K.Leaderboard.slice().sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 21000; break;
-            case "42K": sorted = this.events[eventId].dist.d42K.Leaderboard.slice().sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time))); km = 42000; break;
+            case "5K":  arrayLB = this.events[eventId].dist.d5K .Leaderboard.slice(); km = 5000;  break;
+            case "10K": arrayLB = this.events[eventId].dist.d10K.Leaderboard.slice(); km = 10000; break;
+            case "21K": arrayLB = this.events[eventId].dist.d21K.Leaderboard.slice(); km = 21000; break;
+            case "42K": arrayLB = this.events[eventId].dist.d42K.Leaderboard.slice(); km = 42000; break;
         }
-        for (let i = 0; i < sorted.length; i++) {
+        for (let i = 0; i < arrayLB.length; i++) {
             tBody.innerHTML +=
             `<tr>
                 <th scope="row">${i+1}</th>
-                <td>${sorted[i].time}</td>
-                <td>${Math.round((km / this._getSeconds(sorted[i].time)) * 3.6 * 100) / 100 + " km/h"}</td>
-                <td>${sorted[i].runner}</td>
-                <td>---</td>
-                <td>---</td>
+                <td>${arrayLB[i].time}</td>
+                <td>${Math.round((km / this._getSeconds(arrayLB[i].time)) * 3.6 * 100) / 100 + " km/h"}</td>
+                <td>${arrayLB[i].runner}</td>
+                <td>${this._getRunnerData(arrayLB[i].runner, "team")}</td>
+                <td>${this._getRunnerData(arrayLB[i].runner, "rank")}</td>
             </tr>`
         }
     }
@@ -400,10 +524,24 @@ export default class EventModel {
 
         return (h * 60 * 60 + m * 60 + s + ms / 100) 
     }
-}
 
-export class EditEvent {
-    applyEdit(oldUser, newUser) {
-        localStorage.events ? JSON.stringify(localStorage.events).includes(oldUser) ? localStorage.setItem('events', localStorage.events.replace(oldUser, newUser)) : {} : {} ;
+    _getRunnerData(runner, option) {
+        const users = JSON.parse(localStorage.users);
+        var data = [];
+        data = users[this._getUserId(runner)];
+        switch (option) {
+            case "team": return data.team;
+            
+            case "rank": return data.rank;
+        }
+    }
+
+    _getUserId(runner) {
+        const users = JSON.parse(localStorage.users);
+        for (let i = 0; i < users.length; i++) {
+            if (runner == users[i].username) {
+                return i;
+            }
+        }
     }
 }
