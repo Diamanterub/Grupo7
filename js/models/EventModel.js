@@ -316,8 +316,8 @@ export default class EventModel {
 
     isOver(id) {
         this.events[id].status = "closed";
-        this._persist();
         this._setScores(id);
+        this._persist();
     }
 
     _setScores(eventId) {
@@ -369,7 +369,7 @@ export default class EventModel {
             rank = rank + (rsm * ((((2000 - (500 * (3 - mm)))/1000)*rm*(mm^2)) - (rm*(1-mm)) - ((rank/90)*(2 - mm))));
             rank < 0 ? rank = 0 : {} ;
             rank > 5000 ? rank = 5000 : {} ;
-            users[userId].rank = rank;
+            users[userId].rank = Math.round(rank);
         }
         localStorage.setItem('users', JSON.stringify(users));
     }
