@@ -206,7 +206,7 @@ input:-webkit-autofill:active  {
 -webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
 -webkit-text-fill-color: rgba(240, 240, 240, 1) !important;
 }
-input[type=submit]{
+input[type=submit], input[type=button]{
     margin-top: 20px;
     width: 100%;
     min-width: 200px;
@@ -220,6 +220,40 @@ input[type=submit]{
     color: rgba(240, 240, 240, 1);
     cursor: pointer;
     }
+#btnSubmit:disabled{
+    cursor: not-allowed;
+}
+#btnSubmit:enabled{
+    margin-top: 20px;
+    width: 100%;
+    min-width: 200px;
+    background-color: rgb(126, 207, 94);
+    border-radius: 5px;
+    border: 2px solid rgba(48, 48, 48, 1);
+    padding: 7px 55px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(48, 48, 48, 1);
+    cursor: pointer;
+}
+#btnClose:disabled{
+    cursor: not-allowed;
+}
+#btnClose:enabled{
+    margin-top: 20px;
+    width: 100%;
+    min-width: 200px;
+    background-color: rgb(209, 49, 49);
+    border-radius: 5px;
+    border: 2px solid rgba(48, 48, 48, 1);
+    padding: 7px 55px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(48, 48, 48, 1);
+    cursor: pointer;
+}    
 @media screen and (max-width:600px){
     .inside-box-iet {
      height: 100%;
