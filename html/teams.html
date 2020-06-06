@@ -47,55 +47,54 @@
     </div>
     <div class="outside-box">
     <div class="inside-box">
-    <div class="row rounded" id="content">
-        <div class="col-3" id="frmSearchEvent">
-            <form action="">
-                <div class="form-group">
+     <div class="teams-search-container" id="content">
+      <div class="search-container" id="frmSearchTeam">
+            <form id="sco" action="">   
+                <div id="btns" class="form-group">
                     <input id="button" type="submit" value="SEARCH">
+                    <input id="reset" type="reset" value="Reset">
                 </div>
-                <!-- Pesquisar o nome da maratona -->
+                    <select class="form-control" id="selectOps">
+                        <option value="recent">Recent</option>
+                        <option value="popular">Popular</option>
+                    </select>
+                <!-- Pesquisar o nome da maratona   -->
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Name" id="txtName">
                 </div>
-                <div class="form-control" id="div1">
-                    <select class="form-control" id="selectOps">
-                        <option>Recent</option>
-                        <option>Popular</option>
-                    </select>
-                    <input id="reset" type="reset" value="reset">
-                </div>
-                <!-- Para pesquisar o pais e/ou a cidade da maratona -->
+                <!-- Para pesquisar o pais e/ou a cidade da maratona  -->
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Country" id="txtCountry">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="City" id="txtCity">
                 </div>
-                <!-- Checkboxs para pesquisar o tipo de maratona que a equipa participa -->
-                <div id="Opcoes" class="form-check">
-                    <ul>                   
-                        <li> <label class="form-check-label">
+                <!-- Checkboxs para pesquisar o tipo de maratona -->
+                <div id="cb-options-type" class="form-check">
+                         <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" id="chkRace"> Race
-                    </label></li>
-                    <li> <label class="form-check-label">
+                        <span class="checkmark"></span>
+                    </label>
+                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" id="chkWalk"> Walk
-                    </label></li>
-                    </ul>
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
                 <!-- Mensagem de Aviso -->
                 <div class="row" id="EventMessage"></div>
-            </form>            
-            <input type="text" class="form-control" placeholder="*team_name*" id="txtName">
-            <div class="form-group">
-                <input  id="button" type="submit" value="Create Team">
-            </div>
+                <div id="btns" class="form-group">
+                    <input  id="buttonopt" type="submit" value="*team_name*">
+                </div>
+                <div id="btns" class="form-group">
+                    <input  id="buttonopt" type="submit" value="Create Team">
+                </div>
+            </form>          
         </div>
-        <!--         Por editar - depois removam o comment          -->
-        <div class="col-1">
-            <hr class=Linha>
         </div>
-        <div class="col-9" id="EventArea"></div>
-        <!--                       Até aqui                         -->
+        <div class="scroll">
+            <div class="teams-container" id="TeamArea"></div>
+        </div>
+    </div>
     </div>
     </div>
     </div>
