@@ -45,6 +45,7 @@ export default class EventView {
         this.opsRunner.disabled = true;
         this.runTime.value = "";
         this.runTime.disabled = true;
+        this.Close.disabled = true;
     }
 
     send() {
