@@ -10,3 +10,5 @@ document.getElementById("leaderboards").style.cursor = "pointer";
 document.getElementById('leaderboards').addEventListener('click', (event) => { window.location.href = "leaderboard.html" });
 document.getElementById("stats").style.cursor = "pointer";
 document.getElementById('stats').addEventListener('click', (event) => { window.location.href = "stats.html" });
+document.getElementById("user-photo").style.cursor = "pointer";
+document.getElementById('user-photo').addEventListener('click', (event) => { window.location.href = "profile.html" });
