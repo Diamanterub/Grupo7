@@ -283,10 +283,11 @@ export default class EventModel {
     }
 
     addRunner(dist, run, id) {
+        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const enroll = {
             id: this.events[id].runners.length,
             data: {
-                runner: localStorage.getItem('loggedUser'), dist: dist, run: run
+                runner: user, dist: dist, run: run
             }
         }
         this.events[id].runners.push(enroll);
