@@ -283,10 +283,11 @@ export default class EventModel {
     }
 
     addRunner(dist, run, id) {
+        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const enroll = {
             id: this.events[id].runners.length,
             data: {
-                runner: localStorage.getItem('loggedUser'), dist: dist, run: run
+                runner: user, dist: dist, run: run
             }
         }
         this.events[id].runners.push(enroll);
@@ -316,8 +317,8 @@ export default class EventModel {
 
     isOver(id) {
         this.events[id].status = "closed";
-        this._persist();
         this._setScores(id);
+        this._persist();
     }
 
     _setScores(eventId) {
@@ -399,7 +400,7 @@ export default class EventModel {
             // - -
             rank < 0 ? rank = 0 : {} ;
             rank > 5000 ? rank = 5000 : {} ;
-            users[userId].rank = rank;
+            users[userId].rank = Math.round(rank);
         }
         localStorage.setItem('users', JSON.stringify(users));
     }
