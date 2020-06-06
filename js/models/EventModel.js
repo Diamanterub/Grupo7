@@ -157,7 +157,7 @@ export default class EventModel {
             area.innerHTML = ``;
             for (let index = 0; index < sortedActivities.length; index++) {
                 area.innerHTML += 
-                `<a href="event.html?id=${sortedActivities[index].id}"><img src="${sortedActivities[index].url}" class="img-fluid" alt="Poster" width="25%"></a>`
+                `<a href="event.html?id=${sortedActivities[index].id}"><img src="${sortedActivities[index].url}" class="card" alt="Poster"></a>`
             }
         } catch (error) {}
     }

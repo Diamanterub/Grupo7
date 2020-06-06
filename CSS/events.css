@@ -174,7 +174,27 @@ input[type=text]:focus, input[type=text], select{
     cursor: pointer;
     } 
 
-
+#EventArea{
+    width: 100%;
+    min-width: 364px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    background-color: rgba(38, 38, 38, 0.5) ;
+    border-radius: 10px;
+}    
+#EventArea a{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+#EventArea .card{
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(199, 249, 66, 1);
+    border-radius: 5px;
+    object-fit: scale-down;
+}
 
 
 
