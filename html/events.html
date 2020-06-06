@@ -47,22 +47,20 @@
     </div>
     <div class="outside-box">
      <div class="inside-box">
-         <div class="row rounded" id="content">
-            <div class="col-3" id="frmSearchEvent">
-                <form action="">   
-                    <div class="form-group">
+         <div class="event-search-container" id="content">
+            <div class="search-container" id="frmSearchEvent">
+                <form id="sco" action="">   
+                    <div id="btns" class="form-group">
                         <input id="button" type="submit" value="SEARCH">
+                        <input id="reset" type="reset" value="Reset">
                     </div>
-                    <!-- Pesquisar o nome da maratona   -->
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name" id="txtName">
-                    </div>
-                    <div class="form-control" id="div1">
                         <select class="form-control" id="selectOps">
                             <option value="recent">Recent</option>
                             <option value="popular">Popular</option>
                         </select>
-                        <input id="reset" type="reset" value="reset">
+                    <!-- Pesquisar o nome da maratona   -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name" id="txtName">
                     </div>
                     <!-- Para pesquisar o pais e/ou a cidade da maratona  -->
                     <div class="form-group">
@@ -72,41 +70,40 @@
                         <input type="text" class="form-control" placeholder="City" id="txtCity">
                     </div>
                     <!-- Checkboxs para pesquisar a distancia da marotona -->
-                    <div  id = "Opcoes" class="form-check">
-                        <ul>                   
-                        <li><label class="form-check-label">
+                    <div id="cb-options-distance" class="form-check">
+                            <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" id="chk5K"> 5K
-                            </label></li>
-                        <li> <label class="form-check-label">
+                                <span class="checkmark"></span>
+                            </label>
+                        <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" id="chk10K"> 10K
-                            </label></li>
-                        <li><label class="form-check-label">
+                                <span class="checkmark"></span>
+                            </label>
+                        <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="chk21K"> 21K
-                        </label></li>
-                        <li><label class="form-check-label">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" id="chk42K"> 42K
-                            </label></li>
-                        </ul>
+                                <span class="checkmark"></span>
+                            </label>
                     </div>
-                    <!-- Checkboxs para pesquisar o tipo de maratona  -->
-                    <div id="Opcoes" class="form-check">
-                        <ul>        
-                            <li> <label class="form-check-label">
+                    <!-- Checkboxs para pesquisar o tipo de maratona -->
+                    <div id="cb-options-type" class="form-check">
+                             <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="chkRace"> Race
-                        </label></li>
-                        <li> <label class="form-check-label">
+                            <span class="checkmark"></span>
+                        </label>
+                         <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="chkWalk"> Walk
-                        </label></li>
-                        </ul>
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
                     <!-- Mensagem de Aviso -->
                     <div class="row" id="EventMessage"></div>
                 </form>
             </div>
-            <div class="col-1">
-                <hr class=Linha>
-            </div>
-            <div class="col-8" id="EventArea"></div>
+            <div class="events-container" id="EventArea"></div>
         </div>
       </div>
      </div>

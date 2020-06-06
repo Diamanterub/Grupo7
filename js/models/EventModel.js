@@ -157,7 +157,7 @@ export default class EventModel {
             area.innerHTML = ``;
             for (let index = 0; index < sortedActivities.length; index++) {
                 area.innerHTML += 
-                `<a href="event.html?id=${sortedActivities[index].id}"><img src="${sortedActivities[index].url}" class="img-fluid" alt="Poster" width="25%"></a>`
+                `<a href="event.html?id=${sortedActivities[index].id}"><img src="${sortedActivities[index].url}" class="card" alt="Poster"></a>`
             }
         } catch (error) {}
     }
@@ -366,8 +366,38 @@ export default class EventModel {
             var rank = users[userId].rank;
             var rsm = this._getRankSliderMultiplier(rank);
             var mm = this._getMedalMultiplier(medal);
-            var rm = this._getRankMultiplier(rank);
-            rank = rank + (rsm * ((((2000 - (500 * (3 - mm)))/1000)*rm*(mm^2)) - (rm*(1-mm)) - ((rank/90)*(2 - mm))));
+            var pg = this._getPointsGivenByRankTier(rank);
+            // - - 
+
+            // Fórmula de cálculo de atribuição de pontos relativa ao rank, posição e multiplicador (slider)
+            // Versão Completa: 
+            // rank = rank + (rsm * ((((2000 - (500 * (3 - mm)))/1000)*rm*(mm^2)) - (rm*(1-mm)) - ((rank/90)*(2 - mm))));
+            // Esta foi cortada em várias partes (como dá para ver em baixo), visto que "ignorava" as casas decimais.
+
+            // Primeira Parte     
+            var c1 = ((2000-(500*(3-mm)))/1000); // Primeira cálculo da fórmula
+            var p1 = c1.toFixed(3); // Ajuste do primeiro cálculo (c1) para ter três casas decimais
+            var c2 = p1*pg; // Segundo cálculo da fórmula
+            var p2 = c2.toFixed(3); // Ajuste do segundo cálculo (c2) para ter três casas decimais
+            var c3 = p2*(mm*mm); // Terceiro cálculo da fórmula
+            var p3 = c3.toFixed(3); // Ajuste do terceiro cálculo (c3) para ter três casas decimais
+            // Segunda Parte
+            var c4 = pg*(1-mm); // Quarto cálculo da fórmula
+            var p4 = c4.toFixed(3); // Ajuste do quarto cálculo (c4) para ter três casas decimais
+            // Terceira Parte
+            var c5 = rank/90; // Quinto cálculo da fórmula
+            var p5 = c5.toFixed(3); // Ajuste do quinto cálculo (c4) para ter três casas decimais
+            var c6 = 2-mm; // Sexto cálculo da fórmula
+            var p6 = c6.toFixed(2); // Ajuste do sexto cálculo (c4) para ter duas casas decimais
+            var c7 = p5*p6; // Sétimo cálculo da fórmula
+            var p7 = c7.toFixed(3); // Ajuste do sétimo cálculo (c4) para ter três casas decimais
+            // Fase Final de Cálculo dos Pontos a atribuir
+            var points = rsm*((p3-p4)-p7); // Multiplicador * Fórmula "simplificada" que atribui pontos
+            var pe = points.toFixed(0); // PE (Points Earned) - Pontos Ganhos/Obtidos - Ajuste de modo a que o número seja inteiro
+            // Soma desses pontos ao rank (o número de pontos a atribuir tanto pode ser positivo como negativo)
+            rank = rank + pe; // Atribuição do pontos e mudança do rank
+
+            // - -
             rank < 0 ? rank = 0 : {} ;
             rank > 5000 ? rank = 5000 : {} ;
             users[userId].rank = Math.round(rank);
@@ -418,7 +448,7 @@ export default class EventModel {
         }
     }
 
-    _getRankMultiplier(rank) {
+    _getPointsGivenByRankTier(rank) {
         switch (this._calculateRank(rank)) {
             case "Copper"  : return 120;
             case "Bronze"  : return 110;
