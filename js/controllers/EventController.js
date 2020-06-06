@@ -49,4 +49,14 @@ export default class EventController {
     closeEvent(id) {
         this.eventModel.isOver(id);
     }
+
+    sendRankedSliders(copper, bronze, silver, gold, plat, diamond, master, swift) {
+        this.eventModel.updateRankedSliders(
+            parseFloat(copper), parseFloat(bronze), parseFloat(silver), parseFloat(gold),
+            parseFloat(plat), parseFloat(diamond), parseFloat(master), parseFloat(swift))
+    }
+
+    recieveRankedSliders() {
+        return this.eventModel.getRankedSliders();
+    }
 }
