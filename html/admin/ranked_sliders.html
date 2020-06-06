@@ -16,57 +16,58 @@
         <div id="logo" class="flex-container-left"></div>
     </div>
     <div class="outside-box">
-     <div class="inside-box-rs">
-      <div class="content-container">
-        <div class="range-sliders-container-1">
-            <h1 id="c_text">Copper</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="copper" class="limit"></span>x</label>
-            </div>
-            <h1 id="s_text">Silver</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="silver" class="limit"></span>x</label>
-            </div>
-            <h1 id="p_text">Platinum</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="platinum" class="limit"></span>x</label>
-            </div>
-            <h1 id="m_text">Master</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="master" class="limit"></span>x</label>
-            </div>
-        </div>    
-        <div class="range-sliders-container-2">
-            <h1 id="b_text">Bronze</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="bronze" class="limit"></span>x</label>
-            </div>
-            <h1 id="g_text">Gold</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="gold" class="limit"></span>x</label>
-            </div>
-            <h1 id="d_text">Diamond</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="diamond" class="limit"></span>x</label>
-            </div>
-            <h1 id="sw_text">Swift</h1>
-            <div class="slidecontainer">
-                <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider">
-                <label>Multiplier: <span id="swift" class="limit"></span>x</label>
+        <div class="inside-box-rs">
+            <div class="content-container">
+                <div class="range-sliders-container-1">
+                    <h1 id="c_text">Copper</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slideCopper">
+                        <label>Multiplier: <span id="lblCopper" class="limit"></span>x</label>
+                    </div>
+                    <h1 id="s_text">Silver</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slideSilver">
+                        <label>Multiplier: <span id="lblSilver" class="limit"></span>x</label>
+                    </div>
+                    <h1 id="p_text">Platinum</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slidePlatinum">
+                        <label>Multiplier: <span id="lblPlatinum" class="limit"></span>x</label>
+                    </div>
+                    <h1 id="m_text">Master</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slideMaster">
+                        <label>Multiplier: <span id="lblMaster" class="limit"></span>x</label>
+                    </div>
+                </div>    
+                <div class="range-sliders-container-2">
+                    <h1 id="b_text">Bronze</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slideBronze">
+                        <label>Multiplier: <span id="lblBronze" class="limit"></span>x</label>
+                    </div>
+                    <h1 id="g_text">Gold</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slideGold">
+                        <label>Multiplier: <span id="lblGold" class="limit"></span>x</label>
+                    </div>
+                    <h1 id="d_text">Diamond</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slideDiamond">
+                        <label>Multiplier: <span id="lblDiamond" class="limit"></span>x</label>
+                    </div>
+                    <h1 id="sw_text">Swift</h1>
+                    <div class="slidecontainer">
+                        <input type="range" min="0.00" max="2.00" value="1.00" step="0.01" class="slider" id="slideSwift">
+                        <label>Multiplier: <span id="lblSwift" class="limit"></span>x</label>
+                    </div>
+                </div>
+                <div class="sumbit-container">
+                    <input type="button" id="submit-rs" value="SUBMIT"><br>
+                    <input type="button" id="reset-rs" value="RESET">
+                </div>
             </div>
         </div>
-        <div class="sumbit-container">
-            <input type="submit" id="submit-rs" value="SUBMIT">
-        </div>    
-      </div>
-     </div>
     </div>
     <!-- Script Necessários -->
     <script>
@@ -85,6 +86,7 @@
     slider.oninput = updateLabel;
     }
     </script>
+    <script type="module" src="../../../js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>

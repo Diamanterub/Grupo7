@@ -5,8 +5,9 @@ import CreateEventView   from './views/CreateEventView.js'
 import SearchEventView   from './views/SearchEventView.js'
 import ShowEventView     from './views/ShowEventView.js'
 import CompleteEventView from './views/CompleteEventView.js'
-import LeaderboardView   from './views/LeaderboardView.js';
-import ProfileView       from './views/ProfileView.js';
+import LeaderboardView   from './views/LeaderboardView.js'
+import ProfileView       from './views/ProfileView.js'
+import RankedSlidersView from './views/RankedSlidersView.js'
 
 
 class App {
@@ -45,6 +46,10 @@ class App {
 
             case "/html/profile.html":
                 this.profileView = new ProfileView();
+                break;
+
+            case "/html/admin/ranked_sliders.html":
+                this.rankedSlidersView = new RankedSlidersView();
                 break;
         
             default:                

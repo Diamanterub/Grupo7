@@ -135,7 +135,7 @@ export default class EventModel {
             if (!flag) { continue; }
             if (flag) {
                 const ph = {
-                    id: send.length,
+                    id: this.events[index].id,
                     url: this.events[index].poster,
                     date: this.events[index].date,
                     enrolled: this.events[index].enrolled
@@ -302,7 +302,7 @@ export default class EventModel {
     isToday() {
         var now = new Date();
         var year = '' + now.getUTCFullYear();
-        var month = '' + now.getUTCMonth() + 1;
+        var month = '' + (now.getUTCMonth() + 1);
         if (month.length < 2) { month = '0' + month; }
         var day = '' + now.getUTCDate();
         if (day.length < 2) { day = '0' + day; }
@@ -436,7 +436,7 @@ export default class EventModel {
     }
 
     _getRankSliderMultiplier(rank) {
-        const slider = JSON.parse(localStorage.rankedSliders);
+        const slider = this.getRankedSliders();
         switch (this._calculateRank(rank)) {
             case "Copper"  :  return slider.copper;
             case "Bronze"  :  return slider.bronze;
@@ -475,11 +475,23 @@ export default class EventModel {
         }
     }
 
+    updateRankedSliders(copper, bronze, silver, gold, plat, diamond, master, swift) {
+        const rankedSlider = {
+            copper: copper, bronze: bronze, silver: silver, gold: gold,
+            platinum: plat, diamond: diamond, master: master, swift: swift 
+        }
+        localStorage.setItem('rankedSliders', JSON.stringify(rankedSlider))
+    }
+
+    getRankedSliders() {
+        return JSON.parse(localStorage.rankedSliders);
+    }
+
     getEvents(opsEvent, status) {
         for (let i = 0; i < this.events.length; i++) {
             if (this.events[i].status == status) {
                 var option   = document.createElement("option");
-                option.text  = this.events[i].name;
+                option.text  = this.events[i].name + ", " + this.events[i].edition;
                 option.value = this.events[i].id;
                 opsEvent.add(option);
             }
