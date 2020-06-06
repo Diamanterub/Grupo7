@@ -157,7 +157,7 @@ export default class EventModel {
             area.innerHTML = ``;
             for (let index = 0; index < sortedActivities.length; index++) {
                 area.innerHTML += 
-                `<a href="event.html?id=${sortedActivities[index].id}"><img src="${sortedActivities[index].url}" class="card" alt="Poster"></a>`
+                `<a href="event.html?id=${sortedActivities[index].id}"><div class="card"><img src="${sortedActivities[index].url}" class="img-fluid" alt="Poster"></div></a>`
             }
         } catch (error) {}
     }
@@ -392,9 +392,10 @@ export default class EventModel {
             var p7 = c7.toFixed(3); // Ajuste do sétimo cálculo (c4) para ter três casas decimais
             // Fase Final de Cálculo dos Pontos a atribuir
             var points = rsm*((p3-p4)-p7); // Multiplicador * Fórmula "simplificada" que atribui pontos
-            var pe = points.toFixed(0); // PE (Points Earned) - Pontos Ganhos/Obtidos - Ajuste de modo a que o número seja inteiro
+            var pe = points.toFixed(0); // PE (Points Earned) - Pontos Ganhos/Obtidos 
+            var pe_parseint = parseInt(pe); // Converte para número inteiro
             // Soma desses pontos ao rank (o número de pontos a atribuir tanto pode ser positivo como negativo)
-            rank = rank + pe; // Atribuição do pontos e mudança do rank
+            rank = rank + pe_parseint; // Atribuição do pontos e mudança do rank
 
             // - -
             rank < 0 ? rank = 0 : {} ;
