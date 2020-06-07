@@ -286,10 +286,11 @@ input:-webkit-autofill:active  {
             padding-bottom: 25px;
             
         }
-        }
-    @media screen and (max-height:753px){
+        @media screen and (max-height:740px){
             .inside-box-create{
              height: 148vh;
              margin-bottom:20px;
             }
             }
+
+        }
