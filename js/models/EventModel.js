@@ -325,33 +325,34 @@ export default class EventModel {
         if (JSON.stringify(this.events[eventId].dist).includes("5K")) {
             this.events[eventId].dist.d5K .Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
             this.events[eventId].dist.d5K .Leaderboard.length > 0 ?
-            this._giveMedalAndRank(this.events[eventId].dist.d5K .Leaderboard, JSON.parse(localStorage.users), "5K" , eventId) : {} ;
+            this._giveMedalAndRank(this.events[eventId].dist.d5K .Leaderboard, JSON.parse(localStorage.users), "5K" , this.events[eventId].type, eventId) : {} ;
         }
 
         if (JSON.stringify(this.events[eventId].dist).includes("10K")) {
             this.events[eventId].dist.d10K.Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
             this.events[eventId].dist.d10K.Leaderboard.length > 0 ?
-            this._giveMedalAndRank(this.events[eventId].dist.d10K.Leaderboard, JSON.parse(localStorage.users), "10K", eventId) : {} ;
+            this._giveMedalAndRank(this.events[eventId].dist.d10K.Leaderboard, JSON.parse(localStorage.users), "10K", this.events[eventId].type, eventId) : {} ;
         }
 
         if (JSON.stringify(this.events[eventId].dist).includes("21K")) {
             this.events[eventId].dist.d21K.Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
             this.events[eventId].dist.d21K.Leaderboard.length > 0 ?
-            this._giveMedalAndRank(this.events[eventId].dist.d21K.Leaderboard, JSON.parse(localStorage.users), "21K", eventId) : {} ;
+            this._giveMedalAndRank(this.events[eventId].dist.d21K.Leaderboard, JSON.parse(localStorage.users), "21K", this.events[eventId].type, eventId) : {} ;
         }
 
         if (JSON.stringify(this.events[eventId].dist).includes("42K")) {
             this.events[eventId].dist.d42K.Leaderboard.sort((a, b) => -(this._getSeconds(b.time) - this._getSeconds(a.time)));
             this.events[eventId].dist.d42K.Leaderboard.length > 0 ?
-            this._giveMedalAndRank(this.events[eventId].dist.d42K.Leaderboard, JSON.parse(localStorage.users), "42K", eventId) : {} ;
+            this._giveMedalAndRank(this.events[eventId].dist.d42K.Leaderboard, JSON.parse(localStorage.users), "42K", this.events[eventId].type, eventId) : {} ;
         }
     }
 
-    _giveMedalAndRank(arrayLB, users, dist, eventId) {
+    _giveMedalAndRank(arrayLB, users, dist, type, eventId) {
         for (let pos = 0; pos < arrayLB.length; pos++) {
             var userId = this._getUserId(arrayLB[pos].runner);
             var medal = this._calculateMedal(arrayLB.length, pos+1);
-            var data = { event: this.events[eventId].name, edition: this.events[eventId].edition, dist: dist }
+            var data = { event: this.events[eventId].name, edition: this.events[eventId].edition, dist: dist, type: type, pos: pos, time: arrayLB[pos].time }
+            users[userId].stats = this._updateUserStats(data, users[userId].stats);
             switch (medal) {
                 case "Swift":    users[userId].medals.swift  .push(data); break;
                 case "Master":   users[userId].medals.master .push(data); break;
@@ -404,6 +405,25 @@ export default class EventModel {
             users[userId].rank = Math.round(rank);
         }
         localStorage.setItem('users', JSON.stringify(users));
+    }
+
+    _updateUserStats(data, user) {
+        switch (data.type) {
+            case "race":
+                user.race.dist += parseInt(data.dist.replace('K', ''));
+                user.race.time += this._getSeconds(data.time);
+                user.race.pace = Math.round(((user.race.dist * 1000) / user.race.time) * 3.6 * 100) / 100;
+                user.race.pos = user.race.pos == "X" ? data.pos : data.pos < user.race.pos ? data.pos : user.race.pos;
+            break;
+        
+            case "walk":
+                user.walk.dist += parseInt(data.dist.replace('K', ''));
+                user.walk.time += this._getSeconds(data.time);
+                user.walk.pace = Math.round(((user.walk.dist * 1000) / user.walk.time) * 3.6 * 100) / 100;
+                user.walk.pos = user.walk.pos == "X" ? data.pos : data.pos < user.walk.pos ? data.pos : user.walk.pos;
+            break;
+        }
+        return user;
     }
 
     _calculateMedal(runners, pos) {

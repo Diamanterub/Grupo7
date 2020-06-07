@@ -12,14 +12,12 @@ export default class UserModel {
     }
 
     create(username, password, email) {
-        let admin;
-        username == "adminP" || username == "adminY" || username == "adminR" ? admin = true : admin = false;
+        const admin = username == "adminP" || username == "adminY" || username == "adminR" ? true : false;
         const user = {
             id: this.users.length, username: username, password: password,
-            email: email, admin: admin, pfp: "", rank: 2000, team: "",
-            medals: {
-                copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: []
-            }
+            email: email, admin: admin, pfp: "", team: "", rank: 500,
+            medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
+            stats: { race: { dist: 0, time: 0, pace: 0, pos: "X" }, walk: { dist: 0, time: 0, pace: 0, pos: "X" } }
         }
         this.users.push(user);
         this._persist();
