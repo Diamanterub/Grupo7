@@ -418,7 +418,7 @@ export default class EventModel {
             var pf = pf.toFixed(3);
 
             // Segunda Fase: (lmhrp*((((240/pg)*(pg*(1-mm)))*(3-mm))*(170/(pg+50))))
-            (lmhrp*((((240/pg)*(pg*(1-mm)))*(3-mm))*(170/(pg+50))))
+            
             var c1f2 = 240/pg;
             var c1f2 = c1f2.toFixed(3);
             var c2f2 = 1-mm;
