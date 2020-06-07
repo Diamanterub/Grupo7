@@ -363,46 +363,105 @@ export default class EventModel {
                 case "Bronze":   users[userId].medals.bronze .push(data); break;
                 case "Copper":   users[userId].medals.copper .push(data); break;
             }
-
-            var rank = users[userId].rank;
-            var rsm = this._getRankSliderMultiplier(rank);
-            var mm = this._getMedalMultiplier(medal);
-            var pg = this._getPointsGivenByRankTier(rank);
             // - - 
 
-            // Fórmula de cálculo de atribuição de pontos relativa ao rank, posição e multiplicador (slider)
-            // Versão Completa: 
-            // rank = rank + (rsm * ((((2000 - (500 * (3 - mm)))/1000)*rm*(mm^2)) - (rm*(1-mm)) - ((rank/90)*(2 - mm))));
-            // Esta foi cortada em várias partes (como dá para ver em baixo), visto que "ignorava" as casas decimais.
+            // Fórmula de Cálculo de Atribuição de Pontos Relativa ao Rank, Posição (Medalha),
+            // Multiplicador (Ranked Sliders) e Penalização (Posição baixa relativa ao Rank).
+            //
+            // A fórmula foi feita por nós. Não se compara com o sistema de Elo Ranking, na qual
+            // a mesma compara o Rank entre os utilizadores participantes. Aqui apenas tem-se em
+            // conta a relação do Rank - Posição - Multiplicador - Penalização.
+            //
+            // xx  Primeira Versão (descartada): 
+            // xx
+            // xx  rank = rank + (rsm * ((((2000 - (500 * (3 - mm)))/1000)*pg*(mm^2)) - (pg*(1-mm)) - ((rank/90)*(2 - mm))));
+            // xx
+            // xx  A primeira versão apresentava várias falhas, como por exemplo apenas ser possível descer de rank
+            // xx  caso o mesmo fosse acima de 3900. Desta forma decidimos investir mais tempo na sua complexidade
+            // xx  e fizemos uma versão melhorada que estabilizava melhor a distribuição dos utilizadores. Dependendo
+            // xx  do número de utilizadores e participantes por prova, sendo um utilizador ativo é expectável que a
+            // xx  maioria se situe entre Bronze e Ouro.
+            //
+            // Segunda Versão (aprovada - final): 
+            //
+            // rank = rank + ((rsm*(((3-mm)*pg)*(mm*mm))) - (lmhrp*((((240/pg)*(pg*(1-mm)))*(3-mm))*(170/(pg+50)))) - ((rank/90)*(2-mm)));
+            //
+            // Tal como já foi escrito antes, esta versão permite uma melhor distribuição dos utilizadores, como também:
+            // - O Multiplicador passa a fazer mais sentido e permite facilitar ou dificultar a evolução do jogador *;
+            // - Nova variável dependente "lmhrp" (Low Medal High Rank Punishment), que aumenta a perda de pontos **;
+            //
+            // * exemplo: se (rsm*200) - 100 - 50, logo pontos ganhos serão -150 (rsm = 0); +50 (rsm = 1); +250 (rsm = 2).
+            // ** ocorre apenas se rank(medal): Platinum(Copper), Diamond (Copper), Master (Copper e Bronze) e Swift (Copper a Silver). 
+            //
+            // A fórmula foi dividida em vários partes de modo a que o processo seja corretamente feito e que os números decimais
+            // não sejam arredondados nas partes mais importantes do cálculo (usando a propriedade .toFixed - esta é usada em
+            // praticamente todas as variáveis, pois caso sejam alterados os valores de mm e pg no código, não ocorrerá problemas futuros.
 
-            // Primeira Parte     
-            var c1 = ((2000-(500*(3-mm)))/1000); // Primeira cálculo da fórmula
-            var p1 = c1.toFixed(3); // Ajuste do primeiro cálculo (c1) para ter três casas decimais
-            var c2 = p1*pg; // Segundo cálculo da fórmula
-            var p2 = c2.toFixed(3); // Ajuste do segundo cálculo (c2) para ter três casas decimais
-            var c3 = p2*(mm*mm); // Terceiro cálculo da fórmula
-            var p3 = c3.toFixed(3); // Ajuste do terceiro cálculo (c3) para ter três casas decimais
-            // Segunda Parte
-            var c4 = pg*(1-mm); // Quarto cálculo da fórmula
-            var p4 = c4.toFixed(3); // Ajuste do quarto cálculo (c4) para ter três casas decimais
-            // Terceira Parte
-            var c5 = rank/90; // Quinto cálculo da fórmula
-            var p5 = c5.toFixed(3); // Ajuste do quinto cálculo (c4) para ter três casas decimais
-            var c6 = 2-mm; // Sexto cálculo da fórmula
-            var p6 = c6.toFixed(2); // Ajuste do sexto cálculo (c4) para ter duas casas decimais
-            var c7 = p5*p6; // Sétimo cálculo da fórmula
-            var p7 = c7.toFixed(3); // Ajuste do sétimo cálculo (c4) para ter três casas decimais
-            // Fase Final de Cálculo dos Pontos a atribuir
-            var points = rsm*((p3-p4)-p7); // Multiplicador * Fórmula "simplificada" que atribui pontos
-            var pe = points.toFixed(0); // PE (Points Earned) - Pontos Ganhos/Obtidos 
-            var pe_parseint = parseInt(pe); // Converte para número inteiro
-            // Soma desses pontos ao rank (o número de pontos a atribuir tanto pode ser positivo como negativo)
-            rank = rank + pe_parseint; // Atribuição do pontos e mudança do rank
+            var rank = users[userId].rank; // Transfere o Rank do Utilizador
+            var rsm = this._getRankSliderMultiplier(rank); // Obtém-se o Multiplicador relativo ao seu Rank
+            var mm = this._getMedalMultiplier(medal); // Variável dependente relativa a medalha obtida
+            var pg = this._getPointsGivenByRankTier(rank); // Variável dependente relativa ao rank atual (com o qual participou no evento)
+            var lmhrp = this._getLowMedalHighRankPunishment(mm, pg); // Variável dependente da relação entre rank e medalha (1 é o valor neutro)
 
-            // - -
+            // Significado das variáveis abaixo, exemplo: c1f1 = cálculo 1 fase 1 ; pf = primeira fase
+            // Primeira Fase: (rsm*(((3-mm)*pg)*(mm*mm)))
+
+            var c1f1 = 3-mm; 
+            var c1f1 = c1f1.toFixed(3);
+            var c2f1 = c1f1*pg;
+            var c2f1 = c2f1.toFixed(3);
+            var c3f1 = mm*mm;
+            var c3f1 = c3f1.toFixed(3);
+            var c4f1 = c2f1*c3f1;
+            var c4f1 = c4f1.toFixed(3);
+            var pf = rsm*c4f1;
+            var pf = pf.toFixed(3);
+
+            // Segunda Fase: (lmhrp*((((240/pg)*(pg*(1-mm)))*(3-mm))*(170/(pg+50))))
+            (lmhrp*((((240/pg)*(pg*(1-mm)))*(3-mm))*(170/(pg+50))))
+            var c1f2 = 240/pg;
+            var c1f2 = c1f2.toFixed(3);
+            var c2f2 = 1-mm;
+            var c2f2 = c2f2.toFixed(3);
+            var c3f2 = pg*c2f2;
+            var c3f2 = c3f2.toFixed(3);
+            var c4f2 = c1f2*c3f2;
+            var c4f2 = c4f2.toFixed(3);
+            var c5f2 = 3-mm;
+            var c5f2 = c5f2.toFixed(3);
+            var c6f2 = c4f2*c5f2;
+            var c6f2 = c6f2.toFixed(3);
+            var c7f2 = pg+50;
+            var c7f2 = c7f2.toFixed(3);
+            var c8f2 = 170/c7f2;
+            var c8f2 = c8f2.toFixed(3);
+            var c9f2 = c6f2*c8f2;
+            var c9f2 = c9f2.toFixed(3);
+            var sf = lmhrp*c9f2;
+            var sf = sf.toFixed(3);
+            
+            // Terceira Fase: ((rank/90)*(2-mm))
+            var c1f3 = rank/90;
+            var c1f3 = c1f3.toFixed(3);
+            var c2f3 = 2-mm;
+            var c2f3 = c2f3.toFixed(3);
+            var tf = c1f3*c2f3;
+            var tf = tf.toFixed(3)
+
+            // Fase Final - agrupa todas as fases (simplificando a fórmula)
+            
+            var points = pf-sf-tf;
+            var points = points.toFixed(0);
+            var pta = parseInt(points); // pta (Points to Award)
+            rank = rank + pta; // Atribuição do pontos e mudança do rank
+
+            // Condições barreira que não permitem descer o rank abaixo de 0 ou subir acima de 5000
+
             rank < 0 ? rank = 0 : {} ;
             rank > 5000 ? rank = 5000 : {} ;
             users[userId].rank = Math.round(rank);
+            
+            // - -
         }
         localStorage.setItem('users', JSON.stringify(users));
     }
@@ -492,6 +551,33 @@ export default class EventModel {
             case "Diamond" : return 1.4;
             case "Master"  : return 1.6;
             case "Swift"   : return 2;
+        }
+    }
+
+    _getLowMedalHighRankPunishment(mm, pg){
+        if (pg == 80 && mm == 0.8){
+            lmhrp = 1.5;
+        }
+        else if (pg == 60 && mm == 0.8){
+            lmhrp = 1.75;
+        }
+        else if (pg == 40 && mm == 0.8){
+            lmhrp = 2.5;
+        }
+        else if (pg == 40 && mm == 0.86){
+            lmhrp = 2;
+        }
+        else if (pg == 20 && mm == 0.8){
+            lmhrp = 3.25;
+        }
+        else if (pg == 20 && mm == 0.86){
+            lmhrp = 2.75;
+        }
+        else if (pg == 20 && mm == 0.93){
+            lmhrp = 2.25;
+        }
+        else {
+            lmhrp = 1;
         }
     }
 
