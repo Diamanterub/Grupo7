@@ -48,7 +48,37 @@
     <div class="outside-box">
      <div class="inside-box">
          <div class="event-search-container" id="content">
-            <div class="search-container" id="frmSearchEvent">
+            <div class="search-container" id="frmSearchEvent"><div class="modal fade" id="mdlFilters" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Search Event - Filters</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="frmFilters">
+                                <div class="form-check" id="frmDists"></div>
+                                <div class="form-check">
+                                    <br><label class="form-check-label">
+                                        <input class="form-check-input" name="run" type="radio" id="frmSolo" checked> Solo
+                                    </label>
+                                    <br><label class="form-check-label">
+                                        <input class="form-check-input" name="run" type="radio" id="frmTeam" disabled> Team
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <button type="submit" id="frmSubmit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div id="mdlRegisterMessage"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                 <form id="sco" action="">   
                     <div id="btns" class="form-group">
                         <input id="button" type="submit" value="SEARCH">
@@ -104,6 +134,44 @@
                 </form>
             </div>
             <div class="scroll">
+                <div class="mobile-search-container">
+                    <div id="btns-m" class="form-group">
+                        <input id="button-m" type="submit" value="FILTERS" data-toggle="modal" data-target="#mdlFilters">
+                    </div>
+                </div>
+                <!-- AQUI AQUI AQUI AQUI -->
+                <div class="modal fade" id="mdlFilters" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Search Event - Filters</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="frmFilters">
+                                    <div class="form-check" id="frmDists"></div>
+                                    <div class="form-check">
+                                        <br><label class="form-check-label">
+                                            <input class="form-check-input" name="run" type="radio" id="frmSolo" checked> Solo
+                                        </label>
+                                        <br><label class="form-check-label">
+                                            <input class="form-check-input" name="run" type="radio" id="frmTeam" disabled> Team
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <button type="submit" id="frmSubmit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <div id="mdlRegisterMessage"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- AQUI AQUI AQUI AQUI -->
             <div class="events-container" id="EventArea"></div>
             </div>
         </div>

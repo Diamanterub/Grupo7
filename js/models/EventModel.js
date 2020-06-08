@@ -441,6 +441,7 @@ export default class EventModel {
             var sf = sf.toFixed(3);
             
             // Terceira Fase: ((rank/90)*(2-mm))
+            
             var c1f3 = rank/90;
             var c1f3 = c1f3.toFixed(3);
             var c2f3 = 2-mm;
