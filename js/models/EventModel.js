@@ -556,30 +556,14 @@ export default class EventModel {
     }
 
     _getLowMedalHighRankPunishment(mm, pg){
-        if (pg == 80 && mm == 0.8){
-            lmhrp = 1.5;
-        }
-        else if (pg == 60 && mm == 0.8){
-            lmhrp = 1.75;
-        }
-        else if (pg == 40 && mm == 0.8){
-            lmhrp = 2.5;
-        }
-        else if (pg == 40 && mm == 0.86){
-            lmhrp = 2;
-        }
-        else if (pg == 20 && mm == 0.8){
-            lmhrp = 3.25;
-        }
-        else if (pg == 20 && mm == 0.86){
-            lmhrp = 2.75;
-        }
-        else if (pg == 20 && mm == 0.93){
-            lmhrp = 2.25;
-        }
-        else {
-            lmhrp = 1;
-        }
+        if (pg == 80 && mm == 0.8) { return 1.5; }
+        else if (pg == 60 && mm == 0.8){ return 1.75; }
+        else if (pg == 40 && mm == 0.8){ return 2.5; }
+        else if (pg == 40 && mm == 0.86){ return 2; }
+        else if (pg == 20 && mm == 0.8){ return 3.25; }
+        else if (pg == 20 && mm == 0.86){ return 2.75; }
+        else if (pg == 20 && mm == 0.93){ return 2.25; }
+        else { return 1; }
     }
 
     updateRankedSliders(copper, bronze, silver, gold, plat, diamond, master, swift) {
