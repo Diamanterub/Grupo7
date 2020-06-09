@@ -167,7 +167,7 @@ export default class EventModel {
             poster.innerHTML = `<img src="${this.events[id].poster}" class="img-fluid" alt="Poster">`
             info.innerHTML =
             `<h1>${this.events[id].name}</h1>
-            <h2>(${this.events[id].edition}${this._getNth(this.events[id].edition)} Edition)</h2>
+            <h2>(${this._getNth(this.events[id].edition)} Edition)</h2>
             <p>Location: ${this.events[id].city} (${this.events[id].country})</p>
             <p>Date: ${this.events[id].date}</p>
             <p>Time: ${this.events[id].time}</p>
@@ -234,12 +234,12 @@ export default class EventModel {
 
     _getNth(edition) {
         if (edition.length == 1) {
-            return this._lastDigit(edition);
+            return edition + this._lastDigit(edition);
         } else {
             if (edition[edition.length - 2] == 1) {
-                return "nt";
+                return edition + "nt";
             } else {
-                return this._lastDigit(edition[edition.length - 1]);
+                return edition + this._lastDigit(edition[edition.length - 1]);
             }
         }
     }
@@ -680,7 +680,7 @@ export default class EventModel {
     }
 
     _getUserId(runner) {
-        const users = JSON.parse(localStorage.users);
+        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         for (let i = 0; i < users.length; i++) {
             if (runner == users[i].username) {
                 return i;
