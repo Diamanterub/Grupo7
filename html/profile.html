@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<title>Swift - User</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/general.css">
-<link rel="stylesheet" href="../css/profile.css">
-<link rel="icon" href="../imgs/favicon.ico">
-</style>
+    <title>Swift - User</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="icon" href="../imgs/favicon.ico">
+    </style>
 </head>
+
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
@@ -19,7 +21,7 @@
         <div class="flex-container-center">
             <!-- Ícone da Home -->
             <div class="box-home">
-                <svg id="home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>
+                <svg class="in-home" id="home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>
             </div>
             <!-- Ícone dos Eventos -->
             <div class="box">
@@ -43,7 +45,7 @@
             <!-- Imagem de Perfil do Utilizador (Versão Página de Perfil) -->
             <div class="user-box_profile">
                 <img id="user-photo_profile" src="../imgs/haile.jpg">
-            </div>         
+            </div>
         </div>
     </div>
     <div class="outside-box">
@@ -53,25 +55,26 @@
                     <div class="profile-pic-container">
                         <!-- Imagem de perfil do utilizador -->
                         <img id="imgPFP" onerror="this.src='../imgs/default_pfp.png'" width="100%" height="100%">
-                    </div>    
-                        <!-- Info visível e alterável -->
-                        <div id="divUsername"></div>
-                        <div id="divEmail"></div>
-                        <!-- Info apenas alterável -->
-                        <div id="divPassword"></div>
-                        <div id="divPassConf"></div>
-                        <div id="divPFP"></div>
-                        <!-- Botão Edit/Submit-->
-                        <div id="divButton"></div>
+                    </div>
+                    <!-- Info visível e alterável -->
+                    <div id="divUsername"></div>
+                    <div id="divEmail"></div>
+                    <!-- Info apenas alterável -->
+                    <div id="divPassword"></div>
+                    <div id="divPassConf"></div>
+                    <div id="divPFP"></div>
+                    <!-- Botão Edit/Submit-->
+                    <div id="divButton"></div>
                 </div>
             </div>
         </div>
-     </div>
+    </div>
     <!-- Script Necessários -->
-    <script src="../js/general.js"></script> 
+    <script src="../js/general.js"></script>
     <script type="module" src="../js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
