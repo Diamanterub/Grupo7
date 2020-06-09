@@ -17,7 +17,20 @@ export default class UserModel {
             id: this.users.length, username: username, password: password,
             email: email, admin: admin, pfp: "", team: "", rank: 500,
             medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
-            stats: { race: { dist: 0, time: 0, pace: 0, pos: "X" }, walk: { dist: 0, time: 0, pace: 0, pos: "X" } }
+            stats: { 
+                race: { 
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"}
+                },
+                walk: { 
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"}
+                }
+            }
         }
         this.users.push(user);
         this._persist();
