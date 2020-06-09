@@ -46,6 +46,7 @@ export default class EventView {
         this.runTime.value = "";
         this.runTime.disabled = true;
         this.Close.disabled = true;
+        this.Submit.disabled = true;
     }
 
     send() {
