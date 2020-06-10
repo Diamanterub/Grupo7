@@ -26,7 +26,7 @@ export default class EventView {
     loadShow() {
         try {
             this.eventController.searchEvent(this.eventName.value, this.eventCountry.value, this.eventCity.value,
-                this.eventSelect.selectedIndex, this.event5K.checked, this.event10K.checked, this.event21K.checked,
+                this.eventSelect.value, this.event5K.checked, this.event10K.checked, this.event21K.checked,
                 this.event42K.checked, this.eventRace.checked, this.eventWalk.checked, this.eventArea);
         } catch(e) {
             this.displayEventMessage(e, 'danger');
