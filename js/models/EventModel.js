@@ -380,7 +380,7 @@ export default class EventModel {
         stats.sumDist += parseInt(data.dist.replace('K', ''));
         stats.sumTime += this._getSeconds(data.time);
         stats.pace = Math.round(((stats.sumDist * 1000) / stats.sumTime) * 3.6 * 100) / 100;
-        stats.bestTime = this._getSeconds(data.time) < this._getSeconds(eve.bestTime) ? data.time : stats.bestTime;
+        stats.bestTime = this._getSeconds(data.time) < this._getSeconds(stats.bestTime) ? data.time : stats.bestTime;
         stats.bestPos = stats.bestPos == "X" ? data.pos : data.pos < stats.bestPos ? data.pos : stats.bestPos;
 
         if (data.type == "Race") {
@@ -577,13 +577,20 @@ export default class EventModel {
 
     updateRankedSliders(copper, bronze, silver, gold, plat, diamond, master, swift) {
         const rankedSlider = {
-            copper: copper, bronze: bronze, silver: silver, gold: gold,
-            platinum: plat, diamond: diamond, master: master, swift: swift 
-        }
+                copper: copper, bronze: bronze, silver: silver, gold: gold,
+                platinum: plat, diamond: diamond, master: master, swift: swift 
+            }
         localStorage.setItem('rankedSliders', JSON.stringify(rankedSlider))
     }
 
     getRankedSliders() {
+        if (!localStorage.rankedSliders) {
+            const rankedSlider = {
+                copper: 1, bronze: 1, silver: 1, gold: 1,
+                platinum: 1, diamond: 1, master: 1, swift: 1 
+            }
+            localStorage.setItem('rankedSliders', JSON.stringify(rankedSlider))
+        }
         return JSON.parse(localStorage.rankedSliders);
     }
 
@@ -681,7 +688,7 @@ export default class EventModel {
     }
 
     _getUserId(runner) {
-        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+        const users = JSON.parse(localStorage.users);
         for (let i = 0; i < users.length; i++) {
             if (runner == users[i].username) {
                 return i;
