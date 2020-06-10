@@ -79,8 +79,4 @@ export default class UserController {
             }
         }
     }
-
-    getMedals() {
-        return this.userModel.getAll()[this.loggedId].medals();
-    }
 }

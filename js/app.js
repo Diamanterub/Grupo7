@@ -8,6 +8,7 @@ import CompleteEventView from './views/CompleteEventView.js'
 import LeaderboardView   from './views/LeaderboardView.js'
 import ProfileView       from './views/ProfileView.js'
 import RankedSlidersView from './views/RankedSlidersView.js'
+import StatusView        from './views/StatsView.js'
 
 
 class App {
@@ -16,44 +17,25 @@ class App {
             this.SignStatusView = new SignStatusView();
         }
         switch (window.location.pathname) {
-            case "/html/sign-in.html":
-                this.signInView = new SignInView();
-                break;
+            case "/html/sign-in.html": this.signInView = new SignInView(); break;
 
-            case "/html/sign-up.html":
-                this.signUpView = new SignUpView();
-                break;
+            case "/html/sign-up.html": this.signUpView = new SignUpView(); break;
 
-            case "/html/admin/events/create.html":
-                this.createEventView = new CreateEventView();
-                break;
+            case "/html/admin/events/create.html": this.createEventView = new CreateEventView(); break;
 
-            case "/html/admin/events/iet.html":
-                this.completeEventView = new CompleteEventView();
-                break;
+            case "/html/admin/events/iet.html": this.completeEventView = new CompleteEventView(); break;
 
-            case "/html/events.html":
-                this.searchEventView = new SearchEventView();
-                break;
+            case "/html/events.html": this.searchEventView = new SearchEventView(); break;
 
-            case "/html/event.html":
-                this.showEventView = new ShowEventView();
-                break;
+            case "/html/event.html": this.showEventView = new ShowEventView(); break;
 
-            case "/html/leaderboard.html":
-                this.leaderboardView = new LeaderboardView();
-                break;
+            case "/html/leaderboard.html": this.leaderboardView = new LeaderboardView(); break;
 
-            case "/html/profile.html":
-                this.profileView = new ProfileView();
-                break;
+            case "/html/profile.html": this.profileView = new ProfileView(); break;
 
-            case "/html/admin/ranked_sliders.html":
-                this.rankedSlidersView = new RankedSlidersView();
-                break;
-        
-            default:                
-                break;
+            case "/html/admin/ranked_sliders.html": this.rankedSlidersView = new RankedSlidersView(); break;
+
+            case "/html/stats.html": this.StatusView = new StatusView(); break;
         }
     }
 }
