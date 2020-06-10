@@ -20,10 +20,9 @@
 }
 .scroll {
     width: 100%;
-     background: none;
+    background: none;
     overflow: scroll;
-    margin: 10px 0px;
-    margin-right: 5px;
+    margin: 10px 20px;
     overflow-x: hidden;
  }
  .scroll::-webkit-scrollbar {
@@ -74,4 +73,31 @@
 }
 #text{
     display: none;
+}
+.leaderboard-container-outside{
+    background-color: rgba(38, 38, 38, 0.5);
+    border-radius: 10px;
+    padding: 10px 10px;
+    height: auto;
+}
+.leaderboard-container{
+        width: 100%;
+        min-width: 364px;
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 3px solid #dadada;
+}
+.table th, .table td {
+    padding: 10px;
+    border-top: 3px solid #dadada;
+}
+thead tr{
+    color: rgba(98, 158, 120, 1);
+}
+tr{
+    color:#dadada;
 }
