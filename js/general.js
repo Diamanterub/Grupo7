@@ -5,8 +5,10 @@ document.getElementById('home').addEventListener('click', (event) => { window.lo
 document.getElementById("events").style.cursor = "pointer";
 document.getElementById('events').addEventListener('click', (event) => { window.location.href = "events.html" });
 document.getElementById("teams").style.cursor = "pointer";
-document.getElementById('teams').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById('teams').addEventListener('click', (event) => { window.location.href = "teams.html" });
 document.getElementById("leaderboards").style.cursor = "pointer";
 document.getElementById('leaderboards').addEventListener('click', (event) => { window.location.href = "leaderboard.html" });
 document.getElementById("stats").style.cursor = "pointer";
-document.getElementById('stats').addEventListener('click', (event) => { window.location.href = "#" });
+document.getElementById('stats').addEventListener('click', (event) => { window.location.href = "stats.html" });
+document.getElementById("user-photo").style.cursor = "pointer";
+document.getElementById('user-photo').addEventListener('click', (event) => { window.location.href = "profile.html" });

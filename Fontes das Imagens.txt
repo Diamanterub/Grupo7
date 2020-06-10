@@ -1,0 +1,51 @@
+[Lista de ficheiros utilizados neste projeto]
+
+// Imagens (.jpg) - Todos sofreram alteração de cor //
+
+• Fundo/Background da página Sign In e Sign Up
+(https://unsplash.com/photos/nXSRrUD1sbc)
+
+• Imagem dos Eventos do Slideshow
+(https://wallpapercave.com/w/wp2042544)
+
+• Imagem das Equipas do Slideshow
+(http://getwallpapers.com/wallpaper/full/0/0/4/400366.jpg)
+
+• Imagem das Tabelas de Liderança do Slideshow
+(https://wallpapercave.com/w/wp4405372)
+
+• Imagem das Estatísticas Pessoais do Slideshow
+(https://www.pexels.com/photo/adventure-athlete-athletic-daylight-235922/)
+
+• Imagem Padrão/Inicial do Utilizador (alterado no Illustrator)
+(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTaLln9VaQLXW8G1QdMu_LK02_hCMaPxbRADW7l2qzNI3-fnrRc&usqp=CAU)
+
+// Ícones (.svg) //
+
+• Ícone da Página Home
+(https://iconmonstr.com/home-1-svg/)
+
+• Ícone dos Eventos
+(https://iconmonstr.com/flag-3-svg/)
+
+• Ícone das Equipas
+(https://iconmonstr.com/user-21-svg/)
+
+• Ícone das Tabelas de Liderança
+(https://iconmonstr.com/trophy-3-svg/)
+
+• Ícone das Estatísticas Pessoais 
+(https://iconmonstr.com/chart-3-svg/)
+
+• Ícone de Pesquisa
+(https://iconmonstr.com/magnifier-1-svg/)
+
+• Ícone de Utilizador (Utilizado na Página Home do Admin) 
+(https://iconmonstr.com/user-1-svg/)
+
+// Restantes ficheiros //
+
+O Logótipo e a Marca, sendo esta utilizada no favicon;
+e as medalhas foram feitas por nós com a ajuda de 
+programas como Adobe Photoshop e Adobe Illustrator.
+

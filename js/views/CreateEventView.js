@@ -20,10 +20,8 @@ export default class EventView {
         this.eventRace = document.getElementById('txtRace');
         this.eventWalk = document.getElementById('txtWalk');
         this.eventPoster = document.getElementById('txtPoster');
-        this.eventTshirt = document.getElementById('txtTshirt');
         this.eventMap = document.getElementById('txtMap');
         this.imagePoster = document.getElementById('imgPoster');
-        this.imageTshirt = document.getElementById('imgTshirt');
         this.imageMap = document.getElementById('imgMap');
         this.eventAbout = document.getElementById('txtAbout');
         this.eventMessage = document.getElementById('EventMessage');
@@ -34,10 +32,9 @@ export default class EventView {
             this.eventEdition.value = this.eventController.checkEdition(this.eventName.value, this.eventCountry,
                 this.eventCity, this.eventTime, this.eventCapacity, this.eventPrice, this.event5K,
                 this.event10K, this.event21K, this.event42K, this.eventRace, this.eventWalk,
-                this.eventPoster, this.eventTshirt, this.eventMap, this.eventAbout);});
+                this.eventPoster, this.eventMap, this.eventAbout);});
 
         this.eventPoster.addEventListener('input', (event) => { this.imagePoster.src = this.eventPoster.value});
-        this.eventTshirt.addEventListener('input', (event) => { this.imageTshirt.src = this.eventTshirt.value});
         this.eventMap.addEventListener('input', (event) => { this.imageMap.src = this.eventMap.value});
         
         this.bindAddEventForm();
@@ -58,8 +55,9 @@ export default class EventView {
                     this.eventName.value, this.eventEdition.value, this.eventCountry.value, this.eventCity.value,
                     this.eventDate.value, this.eventTime.value, this.eventCapacity.value, this.eventPrice.value,
                     this.event5K.checked, this.event10K.checked, this.event21K.checked, this.event42K.checked,
-                    this.eventRace.checked, this.eventWalk.checked, this.eventPoster.value, this.eventTshirt.value,
-                    this.eventMap.value, this.eventAbout.value);
+                    this.eventRace.checked, this.eventWalk.checked, this.eventPoster.value, this.eventMap.value,
+                    this.eventAbout.value);
+                    this.eventForm.reset();
                 this.displayEventMessage('Evento registado com successo!', 'success');
             } catch(e) {
                 this.displayEventMessage(e, 'danger');

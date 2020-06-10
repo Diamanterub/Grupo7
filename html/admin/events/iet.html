@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Swift Admin - IET</title> <!-- IET = Insert Event Times -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../../CSS/admin.css">
+<link rel="icon" href="../../../imgs/favicon-admin.ico">
+</head>
+<body>
+    <!-- Barra de cima -->
+    <div class="flex-container-top">
+        <!-- Logótipo / Barra Interior Esquerda (Admin) -->
+        <div id="logo" class="flex-container-left"></div>
+    </div>
+    <div class="outside-box">
+    <div class="inside-box-iet">
+        <div class="container-iet">
+            <!-- Formulário para inserir dados de testagem das funcionalidade e gamificação -->
+            <form action="" id="frmComplete">
+                <div class="form-group row justify-content-center">
+                    <div class="col-6">
+                        <label class="form-check-label"> Evento </label> <select class="form-control" id="opsEvents" required> <option value="" disabled selected>Select an event</option> </select>
+                        <label class="form-check-label"> Runner </label> <select class="form-control" id="opsRunners" disabled required> <option value="" disabled selected>Select a runner</option> </select>
+                        <label class="form-check-label"> Time </label> <input type="time" class="form-control" id="runTime" step="0.001" disabled required>
+                        <input type="submit" value="SUBMIT" id="btnSubmit" disabled>
+                        <input type="button" value="CLOSE EVENT" id="btnClose" disabled>
+                    <!-- Mensagem de Aviso -->
+                    <div class="row" id="frmMessage"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script>
+    // Logo que leva o Admin de volta a Home //
+    document.getElementById("logo").style.cursor = "pointer";
+    document.getElementById('logo').addEventListener('click', (event) => { window.location.href = "../../admin/home.html" });
+    </script>
+    <script type="module" src="../../../js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,10 +1,10 @@
-import SignController from '../controllers/UserController.js'
+import UserController from '../controllers/UserController.js'
 
 export default class SignUpView {
     constructor() {
-        this.signController = new SignController();
+        this.userController = new UserController();
 
-        this.signController.logoutUser();
+        this.userController.logoutUser();
 
         // register DOM
         this.registerForm = document.getElementById('frmRegister');
@@ -23,10 +23,9 @@ export default class SignUpView {
 
             try {
                 if (this.registerPassword.value !==this.registerPassword2.value) {
-                    throw Error('Password e Confirm Password não são iguais');   
+                    throw Error('Password and Confirm Password are not equal!');   
                 }
-                this.signController.createUser(this.registerUsername.value, this.registerPassword.value, this.registerEmail.value);
-                // this.displayRegisterMessage('User registado com successo!', 'success');
+                this.userController.createUser(this.registerUsername.value, this.registerPassword.value, this.registerEmail.value);
                 window.location.href = "/html/sign-in.html";
             } catch(e) {
                 this.displayRegisterMessage(e, 'danger');

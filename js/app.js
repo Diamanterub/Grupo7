@@ -1,11 +1,13 @@
-import SignInView from './views/SignInView.js'
-import SignUpView from './views/SignUpView.js'
-import SignStatusView from './views/SignStatusView.js'
-import CreateEventView from './views/CreateEventView.js'
-import SearchEventView from './views/SearchEventView.js'
-import ShowEventView from './views/ShowEventView.js'
+import SignInView        from './views/SignInView.js'
+import SignUpView        from './views/SignUpView.js'
+import SignStatusView    from './views/SignStatusView.js'
+import CreateEventView   from './views/CreateEventView.js'
+import SearchEventView   from './views/SearchEventView.js'
+import ShowEventView     from './views/ShowEventView.js'
 import CompleteEventView from './views/CompleteEventView.js'
-import LeaderboardView from './views/LeaderboardView.js';
+import LeaderboardView   from './views/LeaderboardView.js'
+import ProfileView       from './views/ProfileView.js'
+import RankedSlidersView from './views/RankedSlidersView.js'
 
 
 class App {
@@ -26,7 +28,7 @@ class App {
                 this.createEventView = new CreateEventView();
                 break;
 
-            case "/html/admin/events/complete.html":
+            case "/html/admin/events/iet.html":
                 this.completeEventView = new CompleteEventView();
                 break;
 
@@ -40,6 +42,14 @@ class App {
 
             case "/html/leaderboard.html":
                 this.leaderboardView = new LeaderboardView();
+                break;
+
+            case "/html/profile.html":
+                this.profileView = new ProfileView();
+                break;
+
+            case "/html/admin/ranked_sliders.html":
+                this.rankedSlidersView = new RankedSlidersView();
                 break;
         
             default:                

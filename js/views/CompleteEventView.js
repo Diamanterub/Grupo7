@@ -10,6 +10,7 @@ export default class EventView {
         this.runTime   = document.getElementById("runTime");
         this.Message   = document.getElementById('frmMessage');
         this.Submit    = document.getElementById('btnSubmit');
+        this.Close     = document.getElementById('btnClose');
 
         this.eventController.importEvents(this.opsEvent, "ongoing");
         this.opsRunner.addEventListener('change', (event) => {
@@ -20,6 +21,7 @@ export default class EventView {
         });
         this.inputEvent();
         this.send();
+        this.Close.addEventListener('click', (event) => this.close());
     }
 
     inputEvent() {
@@ -29,6 +31,7 @@ export default class EventView {
                 this.opsRunner.disabled = false;
                 this.opsRunner.selectedIndex = "0";
                 this.eventController.importRunners(this.opsRunner, this.opsEvent.value);
+                this.Close.disabled = false;
             }
         });
     }
@@ -42,6 +45,8 @@ export default class EventView {
         this.opsRunner.disabled = true;
         this.runTime.value = "";
         this.runTime.disabled = true;
+        this.Close.disabled = true;
+        this.Submit.disabled = true;
     }
 
     send() {
@@ -54,6 +59,13 @@ export default class EventView {
             this.clear();
             this.opsEvent.selectedIndex = "0";
         });
+    }
+
+    close() {
+        this.eventController.closeEvent(this.opsEvent.value);
+        this.opsEvent.remove(this.opsEvent.selectedIndex);
+        this.opsEvent.selectedIndex = "0";
+        this.clear();
     }
 
     displayEventMessage(message, type) {

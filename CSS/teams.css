@@ -1,4 +1,4 @@
-.event-search-container{
+.teams-search-container{
     display: flex;
     width: 100%;
     height: 100%;
@@ -24,19 +24,16 @@ hr {
     height: 80vh;
     width: 0.1px;
 }
-#btns, #btns-m{
+#btns{
     display: flex;
 }
-#btns-m{
-    display: none;
-    margin: 10px 0px;
-}
 /* Botão Submit */
-#button, #button-m {
-    background-color: rgba(199, 249, 66, 1);
+#button {
+    background-color: rgba(150, 205, 91, 1);
     border-radius: 5px;
-    border: 2px solid rgba(48, 48, 48, 1);
     color: rgba(48, 48, 48, 1);
+    border: 2px solid rgba(48, 48, 48, 1);
+    border: none;
     padding: 5px 0px;
     margin-right: 16.4px;
     width: 70%;
@@ -44,17 +41,22 @@ hr {
     font-weight: 600;
     cursor: pointer;
 }
-#button-m{
-    width: 300px;
+#buttonopt {
+    background-color: rgba(150, 205, 91, 1);
+    border-radius: 5px;
+    color: rgba(48, 48, 48, 1);
+    border: 2px solid rgba(48, 48, 48, 1);
+    padding: 5px 0px;
+    margin-top: 15px;
+    width: 100%;
+    height: 48px;
+    font-weight: 600;
+    cursor: pointer;
 }
-#button:hover, #buttonopt:hover, #button-m:hover{
-    border: 2px solid rgba(199, 249, 66, 1);
+#button:hover, #buttonopt:hover{
+    border: 2px solid rgba(150, 205, 91, 1);
     background-color: rgba(48, 48, 48, 1);
-    color: rgba(199, 249, 66, 1);
-}
-.mobile-search-container{
-    display: flex;
-    justify-content: center;
+    color: rgba(150, 205, 91, 1);
 }
 #reset{
     display: flex;
@@ -212,8 +214,8 @@ input[type=text]:focus, input[type=text], select{
 }
 
 .card .img-fluid{
-    width: 294px;
-    height: 394px;
+    width: 300px;
+    height: 400px;
     object-fit: scale-down;
     border-radius: 5px;
 }
@@ -239,58 +241,3 @@ input[type=text]:focus, input[type=text], select{
     background: rgba(166, 202, 70, 1); 
 }
  
-
-@media screen and (min-width:0px) and (max-width:825px){
-    #EventArea{
-        justify-content: center;
-    }
-    .search-container{
-        display: none;
-    }
-    #btns-m{
-        display: block;
-    }
-    #content{
-        display: flex;
-    }
-    .scroll{
-        margin: 0px 0px;
-    }
-    }
-@media screen and (max-width: 764px){
-    
-    .scroll::-webkit-scrollbar {
-        width: 0px;
-    }
-    a{
-        width: 366px;
-        height: 410px;
-    }
-}
-@media screen and (min-width:826px) and (max-width:1167px){
-    #EventArea{
-        justify-content: center;
-    }
-    
-    }
-
-
-
-
-/* Div das checkboxs */
-#div1 {
-    border: none;
-    background-color: rgba(26, 26, 26, 1);
-
-}
-
-/* Meter a Lista sem estilo nenhum */
-ul {
-    list-style: none;
-    padding-left: 0px;
-}
-
-/* Cor da letra */
-li {
-    color: rgba(218, 218, 218, 1);
-}

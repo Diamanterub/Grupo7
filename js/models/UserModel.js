@@ -7,15 +7,30 @@ export default class UserModel {
         return this.users;
     }
 
+    _persist() {
+        localStorage.setItem('users', JSON.stringify(this.users));
+    }
+
     create(username, password, email) {
-        let admin;
-        username == "adminP" || username == "adminY" || username == "adminR" ? admin = true : admin = false;
+        const admin = username == "adminP" || username == "adminY" || username == "adminR" ? true : false;
         const user = {
-            id: this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 1,
-            username: username,
-            password: password,
-            email: email,
-            admin: admin
+            id: this.users.length, username: username, password: password,
+            email: email, admin: admin, pfp: "", team: "", rank: 500,
+            medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
+            stats: { 
+                race: { 
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"}
+                },
+                walk: { 
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"}
+                }
+            }
         }
         this.users.push(user);
         this._persist();
@@ -71,7 +86,26 @@ export default class UserModel {
         }
     }
 
-    _persist() {
-        localStorage.setItem('users', JSON.stringify(this.users));
+    applyEdit(option, info, id) {
+        switch (option) {
+            case "username":
+                localStorage.events ? JSON.stringify(localStorage.events).includes(this.users[id].username) ? localStorage.setItem('events', localStorage.events.replace(this.users[id].username, info)) : {} : {} ;
+                localStorage.loggedUser ? localStorage.setItem('loggedUser', info) : {} ;
+                this.users[id].username = info;
+                break;
+
+            case "email":
+                this.users[id].email = info;
+                break;
+
+            case "password":
+                this.users[id].password = info;
+                break;
+
+            case "pfp":
+                this.users[id].pfp = info;
+                break;
+        }
+        this._persist();
     }
 }

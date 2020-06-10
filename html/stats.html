@@ -1,27 +1,24 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <title>Swift - User</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/profile.css">
-    <link rel="icon" href="../imgs/favicon.ico">
-    </style>
+<title>Swift - Stats</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../CSS/general.css">
+<link rel="stylesheet" href="../CSS/stats.css">
+<link rel="icon" href="../imgs/favicon.ico">
 </head>
-
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
-        <!-- Logótipo / Barra Interior Esquerda (Versão Página de Perfil) -->
-        <div id="logo_profile" class="flex-container-left_profile"></div>
+        <!-- Logótipo / Barra Interior Esquerda -->
+        <div id="logo" class="flex-container-left"></div>
         <!-- Ícones das Páginas / Barra Interior do Meio -->
         <div class="flex-container-center">
             <!-- Ícone da Home -->
             <div class="box-home">
-                <svg class="in-home" id="home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>
+                <svg id="home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>
             </div>
             <!-- Ícone dos Eventos -->
             <div class="box">
@@ -37,44 +34,45 @@
             </div>
             <!-- Ícone das Estatísticas Pessoais -->
             <div class="box">
-                <svg id="stats" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z"/></svg>
+                <svg class="in-stats" id="stats" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z"/></svg>
             </div>       
         </div>
         <!-- Barra Interior Direita -->
         <div class="flex-container-right">
-            <!-- Imagem de Perfil do Utilizador (Versão Página de Perfil) -->
-            <div class="user-box_profile">
-                <img id="user-photo_profile" src="../imgs/haile.jpg">
-            </div>
-        </div>
+            <!-- Imagem de Perfil do Utilizador -->
+            <div class="user-box">
+                <img id="user-photo" src="../imgs/haile.jpg">
+            </div>         
+        </div>              
     </div>
     <div class="outside-box">
-        <div class="inside-box">
-            <div class="border-container">
-                <div class="user-container">
-                    <div class="profile-pic-container">
-                        <!-- Imagem de perfil do utilizador -->
-                        <img id="imgPFP" onerror="this.src='../imgs/default_pfp.png'" width="100%" height="100%">
-                    </div>
-                    <!-- Info visível e alterável -->
-                    <div id="divUsername"></div>
-                    <div id="divEmail"></div>
-                    <!-- Info apenas alterável -->
-                    <div id="divPassword"></div>
-                    <div id="divPassConf"></div>
-                    <div id="divPFP"></div>
-                    <!-- Botão Edit/Submit-->
-                    <div id="divButton"></div>
+    <div class="inside-box">
+    <!-- Contéudo da Página dentro do .inside-box -->
+    <div class="modal fade" id="mdlRegister" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- <input type="image" src="../imgs/medals/copper_medal.svg" style="width: 100px;" data-toggle="modal" data-target="#mdlRegister"> -->
+
+    </div>
+    </div>
     <!-- Script Necessários -->
-    <script src="../js/general.js"></script>
     <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js/general.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

@@ -6,12 +6,12 @@ export default class EventController {
         this.eventModel.isToday();
     }
 
-    createEvent(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
-        this.eventModel.create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about);
+    createEvent(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, map, about) {
+        this.eventModel.create(name, edition, country, city, date, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, map, about);
     }
 
-    checkEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about) {
-        return this.eventModel.searchEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, tshirt, map, about);
+    checkEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, map, about) {
+        return this.eventModel.searchEdition(name, country, city, time, capacity, price, d5K, d10K, d21K, d42K, race, walk, poster, map, about);
     }
 
     searchEvent(name, country, city, selected, d5K, d10K, d21K, d42K, race, walk, area) {
@@ -44,5 +44,19 @@ export default class EventController {
 
     importFromLeaderboard(eventId, dists, tBody) {
         this.eventModel.getFromLeaderboard(eventId, dists, tBody)
+    }
+
+    closeEvent(id) {
+        this.eventModel.isOver(id);
+    }
+
+    sendRankedSliders(copper, bronze, silver, gold, plat, diamond, master, swift) {
+        this.eventModel.updateRankedSliders(
+            parseFloat(copper), parseFloat(bronze), parseFloat(silver), parseFloat(gold),
+            parseFloat(plat), parseFloat(diamond), parseFloat(master), parseFloat(swift))
+    }
+
+    recieveRankedSliders() {
+        return this.eventModel.getRankedSliders();
     }
 }

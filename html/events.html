@@ -1,72 +1,98 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <title>Swift - Events</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/general.css"> 
-    <link rel="stylesheet" href="../css/events.css"> 
-    <link rel="icon" href="../imgs/favicon.ico">
+<title>Swift - Events</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/general.css"> 
+<link rel="stylesheet" href="../css/events.css"> 
+<link rel="icon" href="../imgs/favicon.ico">
 </head>
-
 <body>
+    <!-- Barra de cima -->
     <div class="flex-container-top">
+        <!-- Logótipo / Barra Interior Esquerda -->
         <div id="logo" class="flex-container-left"></div>
+        <!-- Ícones das Páginas / Barra Interior do Meio -->
         <div class="flex-container-center">
+            <!-- Ícone da Home -->
             <div class="box-home">
-                        <svg id="home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>
+                <svg id="home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 6.453l9 8.375v9.172h-6v-6h-6v6h-6v-9.172l9-8.375zm12 5.695l-12-11.148-12 11.133 1.361 1.465 10.639-9.868 10.639 9.883 1.361-1.465z"/></svg>
             </div>
+            <!-- Ícone dos Eventos -->
             <div class="box">
-                        <svg class="in-events" id="events" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 24h-2v-24h2v24zm18-21.387s-1.621 1.43-3.754 1.43c-3.361 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v12.085c1.183-.819 2.979-1.681 4.922-1.681 3.685 0 4.201 2.754 7.485 2.754 2.121 0 3.593-1.359 3.593-1.359-1.742-1.253-3.071-2.954-3.778-4.932 1.464-1.278 3.508-4.962 3.778-7.096z"/></svg>                       
+                <svg class="in-events" id="events" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 24h-2v-24h2v24zm18-21.387s-1.621 1.43-3.754 1.43c-3.36 0-3.436-2.895-7.337-2.895-2.108 0-4.075.98-4.909 1.694v12.085c1.184-.819 2.979-1.681 4.923-1.681 3.684 0 4.201 2.754 7.484 2.754 2.122 0 3.593-1.359 3.593-1.359v-12.028z"/></svg>
             </div>
+            <!-- Ícone das Equipas -->
             <div class="box">              
-                        <svg id="teams" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.644 17.08c2.866-.662 4.539-1.241 3.246-3.682-3.932-7.427-1.042-11.398 3.111-11.398 4.235 0 7.054 4.124 3.11 11.398-1.332 2.455.437 3.034 3.242 3.682 2.483.574 2.647 1.787 2.647 3.889v1.031h-18c0-2.745-.22-4.258 2.644-4.92zm-12.644 4.92h7.809c-.035-8.177 3.436-5.313 3.436-11.127 0-2.511-1.639-3.873-3.748-3.873-3.115 0-5.282 2.979-2.333 8.549.969 1.83-1.031 2.265-3.181 2.761-1.862.43-1.983 1.34-1.983 2.917v.773z"/></svg>
+                <svg id="teams" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.644 17.08c2.866-.662 4.539-1.241 3.246-3.682-3.932-7.427-1.042-11.398 3.111-11.398 4.235 0 7.054 4.124 3.11 11.398-1.332 2.455.437 3.034 3.242 3.682 2.483.574 2.647 1.787 2.647 3.889v1.031h-18c0-2.745-.22-4.258 2.644-4.92zm-12.644 4.92h7.809c-.035-8.177 3.436-5.313 3.436-11.127 0-2.511-1.639-3.873-3.748-3.873-3.115 0-5.282 2.979-2.333 8.549.969 1.83-1.031 2.265-3.181 2.761-1.862.43-1.983 1.34-1.983 2.917v.773z"/></svg>
             </div>
+            <!-- Ícone das Tabelas de Liderança -->
             <div class="box">
-                        <svg id="leaderboards" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 3c-.372 4.105-2.808 8.091-6.873 9.438.297-.552.596-1.145.882-1.783 2.915-1.521 4.037-4.25 4.464-6.251h-2.688c.059-.45.103-.922.139-1.405h4.076zm-24 0c.372 4.105 2.808 8.091 6.873 9.438-.297-.552-.596-1.145-.882-1.783-2.915-1.521-4.037-4.25-4.464-6.251h2.688c-.058-.449-.102-.922-.138-1.404h-4.077zm19-2c0 9.803-5.094 13.053-5.592 17h-2.805c-.498-3.947-5.603-7.197-5.603-17h14zm-7.305 13.053c-1.886-3.26-2.635-7.432-2.646-11.053h-1.699c.205 4.648 1.99 8.333 4.345 11.053zm1.743 4.947h-2.866c-.202 1.187-.63 2.619-2.571 2.619v1.381h8v-1.381c-1.999 0-2.371-1.432-2.563-2.619z"/></svg>
+                <svg id="leaderboards" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 3c-.372 4.105-2.808 8.091-6.873 9.438.297-.552.596-1.145.882-1.783 2.915-1.521 4.037-4.25 4.464-6.251h-2.688c.059-.45.103-.922.139-1.405h4.076zm-24 0c.372 4.105 2.808 8.091 6.873 9.438-.297-.552-.596-1.145-.882-1.783-2.915-1.521-4.037-4.25-4.464-6.251h2.688c-.058-.449-.102-.922-.138-1.404h-4.077zm19-2c0 9.803-5.094 13.053-5.592 17h-2.805c-.498-3.947-5.603-7.197-5.603-17h14zm-7.305 13.053c-1.886-3.26-2.635-7.432-2.646-11.053h-1.699c.205 4.648 1.99 8.333 4.345 11.053zm1.743 4.947h-2.866c-.202 1.187-.63 2.619-2.571 2.619v1.381h8v-1.381c-1.999 0-2.371-1.432-2.563-2.619z"/></svg>
             </div>
+            <!-- Ícone das Estatísticas Pessoais -->
             <div class="box">
-                        <svg id="stats" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z"/></svg>
+                <svg id="stats" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 19h-4v-8h4v8zm6 0h-4v-18h4v18zm6 0h-4v-12h4v12zm6 0h-4v-4h4v4zm1 2h-24v2h24v-2z"/></svg>
             </div>       
         </div>
+        <!-- Barra Interior Direita -->
         <div class="flex-container-right">
+            <!-- Imagem de Perfil do Utilizador -->
             <div class="user-box">
-                <img id="user-photo" src="../imgs/haile.jpg" width="46" height="46">
+                <img id="user-photo" src="../imgs/haile.jpg">
             </div>         
         </div>              
     </div>
     <div class="outside-box">
      <div class="inside-box">
-         <!-- Inserir o código da respetiva página aqui dentro -->
-         <div class="row rounded" id="content">
-            <div class="col-3" id="frmSearchEvent">
-                <form action="">
-    
-                    <div class="form-group">
-    
+         <div class="event-search-container" id="content">
+            <div class="search-container" id="frmSearchEvent">
+            <div class="modal fade" id="mdlFilters" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Search Event - Filters</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="frmFilters">
+                                <div class="form-check" id="frmDists"></div>
+                                <div class="form-check">
+                                    <br><label class="form-check-label">
+                                        <input class="form-check-input" name="run" type="radio" id="frmSolo" checked> Solo
+                                    </label>
+                                    <br><label class="form-check-label">
+                                        <input class="form-check-input" name="run" type="radio" id="frmTeam" disabled> Team
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <button type="submit" id="frmSubmit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div id="mdlRegisterMessage"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <form id="sco" action="">   
+                    <div id="btns" class="form-group">
                         <input id="button" type="submit" value="SEARCH">
+                        <input id="reset" type="reset" value="Reset">
                     </div>
-                    <!-- Pesquisar o nome da maratona   -->
-                    <div class="form-group">
-    
-                        <input type="text" class="form-control" placeholder="Name" id="txtName">
-                    </div>
-    
-                    <div class="form-control" id="div1">
-    
                         <select class="form-control" id="selectOps">
                             <option value="recent">Recent</option>
                             <option value="popular">Popular</option>
                         </select>
-    
-    
-                        <input id="reset" type="reset" value="reset">
-    
+                    <!-- Pesquisar o nome da maratona   -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name" id="txtName">
                     </div>
-    
                     <!-- Para pesquisar o pais e/ou a cidade da maratona  -->
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Country" id="txtCountry">
@@ -75,55 +101,89 @@
                         <input type="text" class="form-control" placeholder="City" id="txtCity">
                     </div>
                     <!-- Checkboxs para pesquisar a distancia da marotona -->
-    
-                    <div  id = "Opcoes" class="form-check">
-                        <ul>                   
-                        <li><label class="form-check-label">
+                    <div id="cb-options-distance" class="form-check">
+                            <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" id="chk5K"> 5K
-                            </label></li>
-                        <li> <label class="form-check-label">
+                                <span class="checkmark"></span>
+                            </label>
+                        <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" id="chk10K"> 10K
-                            </label></li>
-                        <li><label class="form-check-label">
+                                <span class="checkmark"></span>
+                            </label>
+                        <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="chk21K"> 21K
-                        </label></li>
-                        <li><label class="form-check-label">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="form-check-label">
                                 <input class="form-check-input" type="checkbox" id="chk42K"> 42K
-                            </label></li>
-                        </ul>
+                                <span class="checkmark"></span>
+                            </label>
                     </div>
-                    <!-- Checkboxs para pesquisar o tipo de maratona  -->
-                    <div id="Opcoes" class="form-check">
-                        <ul>
-    
-                        
-                            <li> <label class="form-check-label">
+                    <!-- Checkboxs para pesquisar o tipo de maratona -->
+                    <div id="cb-options-type" class="form-check">
+                             <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="chkRace"> Race
-                        </label></li>
-                        <li> <label class="form-check-label">
+                            <span class="checkmark"></span>
+                        </label>
+                         <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="chkWalk"> Walk
-                        </label></li>
-                        </ul>
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
+                    <!-- Mensagem de Aviso -->
                     <div class="row" id="EventMessage"></div>
                 </form>
-    
             </div>
-            <div class="col-1">
-                <hr class=Linha>
+            <div class="scroll">
+                <div class="mobile-search-container">
+                    <div id="btns-m" class="form-group">
+                        <input id="button-m" type="submit" value="FILTERS" data-toggle="modal" data-target="#mdlFilters">
+                    </div>
+                </div>
+                <!-- AQUI AQUI AQUI AQUI -->
+                <div class="modal fade" id="mdlFilters" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Search Event - Filters</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="frmFilters">
+                                    <div class="form-check" id="frmDists"></div>
+                                    <div class="form-check">
+                                        <br><label class="form-check-label">
+                                            <input class="form-check-input" name="run" type="radio" id="frmSolo" checked> Solo
+                                        </label>
+                                        <br><label class="form-check-label">
+                                            <input class="form-check-input" name="run" type="radio" id="frmTeam" disabled> Team
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <button type="submit" id="frmSubmit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <div id="mdlRegisterMessage"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- AQUI AQUI AQUI AQUI -->
+            <div class="events-container" id="EventArea"></div>
             </div>
-            <div class="col-8" id="EventArea"></div>
         </div>
-        
-         <!-- Inserir o código da respetiva página aqui dentro -->
       </div>
      </div>
+    <!-- Script Necessários -->
     <script src="../js/general.js"></script> 
     <script type="module" src="../js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
 
