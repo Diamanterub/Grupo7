@@ -380,7 +380,7 @@ export default class EventModel {
         stats.sumDist += parseInt(data.dist.replace('K', ''));
         stats.sumTime += this._getSeconds(data.time);
         stats.pace = Math.round(((stats.sumDist * 1000) / stats.sumTime) * 3.6 * 100) / 100;
-        stats.bestTime = this._getSeconds(data.time) < this._getSeconds(eve.bestTime) ? data.time : stats.bestTime;
+        stats.bestTime = this._getSeconds(data.time) < this._getSeconds(stats.bestTime) ? data.time : stats.bestTime;
         stats.bestPos = stats.bestPos == "X" ? data.pos : data.pos < stats.bestPos ? data.pos : stats.bestPos;
 
         if (data.type == "Race") {
