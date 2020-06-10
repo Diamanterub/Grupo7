@@ -681,7 +681,7 @@ export default class EventModel {
     }
 
     _getUserId(runner) {
-        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+        const users = JSON.parse(localStorage.users);
         for (let i = 0; i < users.length; i++) {
             if (runner == users[i].username) {
                 return i;
