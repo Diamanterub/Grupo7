@@ -36,7 +36,7 @@ export default class EventModel {
     _dist(d5K, d10K, d21K, d42K) {
         let quant = '{', i = 0, e = 0;
 
-        if (d5K)  { quant += '"d5k":{"Leaderboard": []}'; i++;} else { e++; }
+        if (d5K)  { quant += '"d5K":{"Leaderboard": []}'; i++;} else { e++; }
         if (d10K) { if (i > 0) {quant += ', ';} quant += '"d10K":{"Leaderboard": []}'; i++;} else { e++; }
         if (d21K) { if (i > 0) {quant += ', ';} quant += '"d21K":{"Leaderboard": []}'; i++;} else { e++; }
         if (d42K) { if (i > 0) {quant += ', ';} quant += '"d42K":{"Leaderboard": []}'; i++;} else { e++; }
@@ -149,7 +149,7 @@ export default class EventModel {
     show(area, array, selected) {
         try {
             var sortedActivities = [];
-            if (selected.value == "recent") {
+            if (selected == "recent") {
                 sortedActivities = array.slice().sort((a, b) => -(new Date(b.date) - new Date(a.date)));                
             } else {
                 sortedActivities = array.slice().sort((a, b) => (parseInt(b.enrolled) - parseInt(a.enrolled)));
@@ -177,7 +177,8 @@ export default class EventModel {
             <p>Price: ${this.events[id].price}€</p>`
             if (this.events[id].status == "open") {                
                 buttons.innerHTML = `<input type="button" value="Register" id="btnReg" data-toggle="modal" data-target="#mdlRegister">`
-                if (this.events[id].capacity == this.events[id].enrolled || JSON.stringify(this.events[id].runners).includes(localStorage.getItem('loggedUser'))) {
+                const loggedUser = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+                if (this.events[id].capacity == this.events[id].enrolled || JSON.stringify(this.events[id].runners).includes(loggedUser)) {
                     document.getElementById("btnReg").disabled = true;
                 }
             } else if (this.events[id].status == "Closed") {
