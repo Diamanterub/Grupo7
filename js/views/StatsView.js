@@ -4,118 +4,146 @@ export default class SignInView {
     constructor() {
         this.userController = new UserController();
 
-        this.slcType     = document.getElementById('');
-        this.slcDist     = document.getElementById('');
+        this.slcType     = document.getElementById('slcType');
+        this.slcDist     = document.getElementById('slcDist');
 
-        this.divSumDist  = document.getElementById('');
-        this.divSumTime  = document.getElementById('');
-        this.divPace     = document.getElementById('');
-        this.divBestTime = document.getElementById('');
-        this.divBestPos  = document.getElementById('');
-        this.divRank     = document.getElementById('');
+        this.divSumDist  = document.getElementById('divSumDist');
+        this.divSumTime  = document.getElementById('divSumTime');
+        this.divPace     = document.getElementById('divPace');
+        this.divBestTime = document.getElementById('divBestTime');
+        this.divBestPos  = document.getElementById('divBestPos');
+        this.divRank     = document.getElementById('divRank');
 
-        this.mdlCopper   = document.getElementById('');
-        this.mdlBronze   = document.getElementById('');
-        this.mdlSilver   = document.getElementById('');
-        this.mdlGold     = document.getElementById('');
-        this.mdlPlat     = document.getElementById('');
-        this.mdlDiamond  = document.getElementById('');
-        this.mdlMaster   = document.getElementById('');
-        this.mdlSwift    = document.getElementById('');
+        this.mdlCopper   = document.getElementById('mdlCopper');
+        this.mdlBronze   = document.getElementById('mdlBronze');
+        this.mdlSilver   = document.getElementById('mdlSilver');
+        this.mdlGold     = document.getElementById('mdlGold');
+        this.mdlPlat     = document.getElementById('mdlPlat');
+        this.mdlDiamond  = document.getElementById('mdlDiamond');
+        this.mdlMaster   = document.getElementById('mdlMaster');
+        this.mdlSwift    = document.getElementById('mdlSwift');
 
         this.loadStats();
         this.loadMedals();
 
-        this.slcType.addEventListener('change', (event) => { this.loadStats(); });
-        this.slcDist.addEventListener('change', (event) => { this.loadStats(); });
+        this.slcType.addEventListener('change', (event) => { this.loadStats();});
+        this.slcDist.addEventListener('change', (event) => { this.loadStats();});
     }
 
     loadStats() {
         const userStats = this.userController.getStats(this.slcType.value, this.slcDist.value);
-        this.divSumDist.innerHTML  = userStats.sumDist;  this.divSumTime.innerHTML = userStats.sumTime;
-        this.divBestTime.innerHTML = userStats.bestTime; this.divBestPos.innerHTML = userStats.bestPos;
-        this.divPace.innerHTML     = userStats.Pace;     this.divRank.innerHTML = this.userController.userModel.getAll(this.userController.getId()).rank;
+        this.divSumDist.innerHTML  = `<p>Total Distance ${userStats.sumDist} Km</p>`;
+        this.divSumTime.innerHTML  = `<p>Total Time ${Math.round((userStats.sumTime / 3600) * 100) / 100} Hours</p>`;
+        this.divBestTime.innerHTML = `<p>Best Time ${userStats.bestTime}</p>`;
+        this.divBestPos.innerHTML  = `<p>Best Position ${this._getNth(userStats.bestPos)} Place</p>`;
+        this.divPace.innerHTML     = `<p>Average Pace ${userStats.pace} Km/h</p>`;
+        this.divRank.innerHTML     = `<p>Rank: ${this.userController.userModel.getAll()[this.userController.getId()].rank}</p>`;
     }
 
     loadMedals() {
-        const userMedals = this.userController.getMedals();
+        const userMedals = this.userController.userModel.getAll()[this.userController.getId()].medals;
 
         for (let i = 0; i < userMedals.copper.length; i++) {
             this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.copper.event} - ${this._getNth(userMedals.copper.edition)}</p><br>
-                <p>${userMedals.copper.dist} ${userMedals.copper.type}</p><br>
-                <p>${this._getNth(userMedals.copper.pos)} place: ${userMedals.copper.time}</p>
-            <div>`
+            `<tr>
+                <th scope="row">${userMedals.copper[i].event}</th>
+                <td>${this._getNth(userMedals.copper[i].edition)}</td>
+                <td>${userMedals.copper[i].dist}</td>
+                <td>${userMedals.copper[i].type}</td>
+                <td>${this._getNth(userMedals.copper[i].pos)}</td>
+                <td>${userMedals.copper[i].time}</td>
+            </tr>`
         }
         
         for (let i = 0; i < userMedals.bronze.length; i++) {
-            this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.bronze.event} - ${this._getNth(userMedals.bronze.edition)}</p><br>
-                <p>${userMedals.bronze.dist} ${userMedals.bronze.type}</p><br>
-                <p>${this._getNth(userMedals.bronze.pos)} place: ${userMedals.bronze.time}</p>
-            <div>`
+            this.mdlBronze.innerHTML +=
+            `<tr>
+                <th scope="row">${userMedals.bronze[i].event}</th>
+                <td>${this._getNth(userMedals.bronze[i].edition)}</td>
+                <td>${userMedals.bronze[i].dist}</td>
+                <td>${userMedals.bronze[i].type}</td>
+                <td>${this._getNth(userMedals.bronze[i].pos)}</td>
+                <td>${userMedals.bronze[i].time}</td>
+            </tr>`
         }
         
         for (let i = 0; i < userMedals.silver.length; i++) {
-            this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.silver.event} - ${this._getNth(userMedals.silver.edition)}</p><br>
-                <p>${userMedals.silver.dist} ${userMedals.silver.type}</p><br>
-                <p>${this._getNth(userMedals.silver.pos)} place: ${userMedals.silver.time}</p>
-            <div>`
+            this.mdlSilver.innerHTML +=
+            `<tr>
+                <th scope="row">${userMedals.silver[i].event}</th>
+                <td>${this._getNth(userMedals.silver[i].edition)}</td>
+                <td>${userMedals.silver[i].dist}</td>
+                <td>${userMedals.silver[i].type}</td>
+                <td>${this._getNth(userMedals.silver[i].pos)}</td>
+                <td>${userMedals.silver[i].time}</td>
+            </tr>`
         }
         
         for (let i = 0; i < userMedals.gold.length; i++) {
-            this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.gold.event} - ${this._getNth(userMedals.gold.edition)}</p><br>
-                <p>${userMedals.gold.dist} ${userMedals.gold.type}</p><br>
-                <p>${this._getNth(userMedals.gold.pos)} place: ${userMedals.gold.time}</p>
-            <div>`
+            this.mdlGold.innerHTML +=
+            `<tr>
+                <th scope="row">${userMedals.gold[i].event}</th>
+                <td>${this._getNth(userMedals.gold[i].edition)}</td>
+                <td>${userMedals.gold[i].dist}</td>
+                <td>${userMedals.gold[i].type}</td>
+                <td>${this._getNth(userMedals.gold[i].pos)}</td>
+                <td>${userMedals.gold[i].time}</td>
+            </tr>`
         }
         
         for (let i = 0; i < userMedals.plat.length; i++) {
-            this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.plat.event} - ${this._getNth(userMedals.plat.edition)}</p><br>
-                <p>${userMedals.plat.dist} ${userMedals.plat.type}</p><br>
-                <p>${this._getNth(userMedals.plat.pos)} place: ${userMedals.plat.time}</p>
-            <div>`
+            this.mdlPlat.innerHTML +=
+            `<tr>
+                <th scope="row">${userMedals.plat[i].event}</th>
+                <td>${this._getNth(userMedals.plat[i].edition)}</td>
+                <td>${userMedals.plat[i].dist}</td>
+                <td>${userMedals.plat[i].type}</td>
+                <td>${this._getNth(userMedals.plat[i].pos)}</td>
+                <td>${userMedals.plat[i].time}</td>
+            </tr>`
         }
         
         for (let i = 0; i < userMedals.diamond.length; i++) {
-            this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.diamond.event} - ${this._getNth(userMedals.diamond.edition)}</p><br>
-                <p>${userMedals.diamond.dist} ${userMedals.diamond.type}</p><br>
-                <p>${this._getNth(userMedals.diamond.pos)} place: ${userMedals.diamond.time}</p>
-            <div>`
+            this.mdlDiamond.innerHTML +=
+            `<tr>
+                <th scope="row">${userMedals.diamond[i].event}</th>
+                <td>${this._getNth(userMedals.diamond[i].edition)}</td>
+                <td>${userMedals.diamond[i].dist}</td>
+                <td>${userMedals.diamond[i].type}</td>
+                <td>${this._getNth(userMedals.diamond[i].pos)}</td>
+                <td>${userMedals.diamond[i].time}</td>
+            </tr>`
         }
         
         for (let i = 0; i < userMedals.master.length; i++) {
-            this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.master.event} - ${this._getNth(userMedals.master.edition)}</p><br>
-                <p>${userMedals.master.dist} ${userMedals.master.type}</p><br>
-                <p>${this._getNth(userMedals.master.pos)} place: ${userMedals.master.time}</p>
-            <div>`
+            this.mdlMaster.innerHTML +=
+            `<tr>
+                <th scope="row">${userMedals.master[i].event}</th>
+                <td>${this._getNth(userMedals.master[i].edition)}</td>
+                <td>${userMedals.master[i].dist}</td>
+                <td>${userMedals.master[i].type}</td>
+                <td>${this._getNth(userMedals.master[i].pos)}</td>
+                <td>${userMedals.master[i].time}</td>
+            </tr>`
         }
         
         for (let i = 0; i < userMedals.swift.length; i++) {
-            this.mdlCopper.innerHTML +=
-            `<div>
-                <p>${userMedals.swift.event} - ${this._getNth(userMedals.swift.edition)}</p><br>
-                <p>${userMedals.swift.dist} ${userMedals.swift.type}</p><br>
-                <p>${this._getNth(userMedals.swift.pos)} place: ${userMedals.swift.time}</p>
-            <div>`
+            this.mdlSwift.innerHTML +=
+            `<tr>
+                <th scope="row">${userMedals.swift[i].event}</th>
+                <td>${this._getNth(userMedals.swift[i].edition)}</td>
+                <td>${userMedals.swift[i].dist}</td>
+                <td>${userMedals.swift[i].type}</td>
+                <td>${this._getNth(userMedals.swift[i].pos)}</td>
+                <td>${userMedals.swift[i].time}</td>
+            </tr>`
         }
     }
 
     _getNth(number) {
+        number = number.toString();
         if (number.length == 1) {
-            return number + this._lastDigit(number);
+            return number == "X" ? number : number + this._lastDigit(number);
         } else {
             if (number[number.length - 2] == 1) {
                 return number + "nt";
