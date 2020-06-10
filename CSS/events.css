@@ -220,7 +220,7 @@ input[type=text]:focus, input[type=text], select{
 
 .scroll {
     width: 100%;
-     background: none;
+    background: none;
     overflow: scroll;
     margin: 10px 0px;
     margin-right: 5px;
