@@ -660,9 +660,9 @@ export default class EventModel {
             `<tr>
                 <th scope="row">${i+1}</th>
                 <td>${arrayLB[i].time}</td>
-                <td>${Math.round((km / this._getSeconds(arrayLB[i].time)) * 3.6 * 100) / 100 + " km/h"}</td>
+                <td id="pc-only">${Math.round((km / this._getSeconds(arrayLB[i].time)) * 3.6 * 100) / 100 + " km/h"}</td>
                 <td>${arrayLB[i].runner}</td>
-                <td>${this._getRunnerData(arrayLB[i].runner, "team")}</td>
+                <td id="pc-only">${this._getRunnerData(arrayLB[i].runner, "team")}</td>
                 <td>${this._getRunnerData(arrayLB[i].runner, "rank")}</td>
             </tr>`
         }
