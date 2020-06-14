@@ -37,7 +37,9 @@
     border-radius: 5px;
     background: rgba(98, 158, 120, 1); 
 }
-.scroll::-webkit-scrollbar-corner { background: none }
+.scroll::-webkit-scrollbar-corner { 
+    background: none 
+}
 #lbEvent, #lbDist {
     width: 100%;
     background-color: rgba(48, 48, 48, 1);
@@ -130,6 +132,11 @@ tr{
 }
 .scroll::-webkit-scrollbar {
     width: 0px;
+}
+@media screen and (max-height:740px){
+    .leaderboard-container-outside{
+        height: 51vh;
+    }
 }
 }
 @media screen and (max-width: 650px){

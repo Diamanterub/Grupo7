@@ -274,41 +274,45 @@
 
     <div class="outside-box">
         <div class="inside-box">
+            <div class="stats-container">
             <!-- Contéudo da Página dentro do .inside-box -->
-            <div> <!-- Selects -->
-                <div class="form-group">
+            <div class="stats-options">
+                <div class="form-group" id="statselect">
                     <select class="form-control" id="slcType">
                         <option value="Race" selected> Race </option>
                         <option value="Walk"> Walk </option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="statselect">
                     <select class="form-control" id="slcDist">
-                        <option value="5K" selected> 5K </option>
-                        <option value="10K"> 10K </option>
-                        <option value="21K"> 21K </option>
-                        <option value="42K"> 42K </option>
+                    <option value="5K" selected> 5K </option>
+                    <option value="10K"> 10K </option>
+                    <option value="21K"> 21K </option>
+                    <option value="42K"> 42K </option>
                     </select>
                 </div>
             </div>
-            <div> <!-- Infos -->
-                <div id="divSumDist"></div>
-                <div id="divSumTime"></div>
-                <div id="divPace"></div>
-                <div id="divBestTime"></div>
-                <div id="divBestPos"></div>
+            <div class="stats">
+                <div id="stats-info"> <!-- Infos -->
+                    <div id="divSumDist"></div>
+                    <div id="divSumTime"></div>
+                    <div id="divPace"></div>
+                    <div id="divBestTime"></div>
+                    <div id="divBestPos"></div>
+                </div>
             </div>
-            <div> <!-- Rank & Medals -->
-                <div id="divRank"></div>
-                <div>
-                    <input type="image" width="100px" src="../imgs/medals/copper_medal.svg" data-toggle="modal" data-target="#Copper">
-                    <input type="image" width="100px" src="../imgs/medals/bronze_medal.svg" data-toggle="modal" data-target="#Bronze">
-                    <input type="image" width="100px" src="../imgs/medals/silver_medal.svg" data-toggle="modal" data-target="#Silver">
-                    <input type="image" width="100px" src="../imgs/medals/gold_medal.svg" data-toggle="modal" data-target="#Gold">
-                    <input type="image" width="100px" src="../imgs/medals/platinum_medal.svg" data-toggle="modal" data-target="#Plat">
-                    <input type="image" width="100px" src="../imgs/medals/diamond_medal.svg" data-toggle="modal" data-target="#Diamond">
-                    <input type="image" width="100px" src="../imgs/medals/master_medal.svg" data-toggle="modal" data-target="#Master">
-                    <input type="image" width="100px" src="../imgs/medals/swift_medal.svg" data-toggle="modal" data-target="#Swift">
+                <div class="medals">
+                    <div id="divRank"></div>
+                    <div id="medalsbox">
+                        <input id="medalbox" type="image" src="../imgs/medals/copper_medal.svg" data-toggle="modal" data-target="#Copper">
+                        <input id="medalbox" type="image" src="../imgs/medals/bronze_medal.svg" data-toggle="modal" data-target="#Bronze">
+                        <input id="medalbox" type="image" src="../imgs/medals/silver_medal.svg" data-toggle="modal" data-target="#Silver">
+                        <input id="medalbox" type="image" src="../imgs/medals/gold_medal.svg" data-toggle="modal" data-target="#Gold">
+                        <input id="medalbox" type="image" src="../imgs/medals/platinum_medal.svg" data-toggle="modal" data-target="#Plat">
+                        <input id="medalbox" type="image" src="../imgs/medals/diamond_medal.svg" data-toggle="modal" data-target="#Diamond">
+                        <input id="medalbox" type="image" src="../imgs/medals/master_medal.svg" data-toggle="modal" data-target="#Master">
+                        <input id="medalbox" type="image" src="../imgs/medals/swift_medal.svg" data-toggle="modal" data-target="#Swift">
+                    </div>
                 </div>
             </div>
         </div>
