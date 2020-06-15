@@ -5,7 +5,9 @@ export default class SignStatusView {
     {
         this.userController = new UserController();
         this.checkLoginStatus();
-        this.userProfilePicture();
+        if (!window.location.pathname.includes("admin")) {
+            this.userProfilePicture();
+        }
     }
     
     checkLoginStatus() {

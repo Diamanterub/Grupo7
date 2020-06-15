@@ -17,7 +17,11 @@ export default class UserController {
 
     createUser(username, password, email) {
         if (!this.userModel.getAll().some(user => user.username === username)) {
-            this.userModel.create(username, password, email);
+            const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var flag = false;
+            for (let i = 0; i < alpha.length; i++) { username.includes(alpha[i]) ? flag = true : {}; }
+            if (flag) { this.userModel.create(username, password, email); }
+            else { throw Error(`Username must contain letters!`); }
         } else {
             throw Error(`Username "${username}" already taken!`);
         }
@@ -51,9 +55,13 @@ export default class UserController {
         if (password != passconf) { alert('Password and Confirm Password are not equal!'); return false; }
         if (username != this.userModel.getAll()[this.userId].username && username != "") {
             if (!this.userModel.getAll().some(user => user.username === username)) {
-                this.userModel.applyEdit("username", username, this.userId);
+                const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                var flag = false;
+                for (let i = 0; i < alpha.length; i++) { username.includes(alpha[i]) ? flag = true : {}; }
+                if (flag) {this.userModel.applyEdit("username", username, this.userId); }
+                else { alert(`Username must contain letters!`); }
             } else {
-                alert('Username already in use');
+                alert('Username already in use!');
             }
         }
         email != this.userModel.getAll()[this.userId].email && email != "" ? this.userModel.applyEdit("email", email, this.userId) : {} ;

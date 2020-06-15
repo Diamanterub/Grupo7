@@ -89,7 +89,8 @@ export default class UserModel {
     applyEdit(option, info, id) {
         switch (option) {
             case "username":
-                localStorage.events ? JSON.stringify(localStorage.events).includes(this.users[id].username) ? localStorage.setItem('events', localStorage.events.replace(this.users[id].username, info)) : {} : {} ;
+                this._editEvents(info, this.users[id].username);
+                this._editTeams(info, this.users[id].username)
                 localStorage.loggedUser ? localStorage.setItem('loggedUser', info) : {} ;
                 this.users[id].username = info;
                 break;
@@ -107,5 +108,69 @@ export default class UserModel {
                 break;
         }
         this._persist();
+    }
+
+    _editEvents(newUser, currUser) {
+        const events = localStorage.events ? JSON.parse(localStorage.events) : [];
+        for (let eventId = 0; eventId < events.length; eventId++) {
+            for (let runnerId = 0; runnerId < events[eventId].length; runnerId++) {
+                if (events[eventId].runners[runnerId].data.runner == currUser) {
+                    events[eventId].runners[runnerId].data.runner = newUser;
+                    switch (events.runners[runnerId].data.dist) {
+                        case "5K":
+                            for (let pos = 0; pos < events[eventId].dist.d5k.Leaderboard.length; pos++) {
+                                if (events[eventId].dist.d5k.Leaderboard[pos].runner == currUser) {
+                                    events[eventId].dist.d5k.Leaderboard[pos].runner = newUser;
+                                    break;
+                                }
+                            }
+                        break;
+                        case "10K":
+                            for (let pos = 0; pos < events[eventId].dist.d10k.Leaderboard.length; pos++) {
+                                if (events[eventId].dist.d10k.Leaderboard[pos].runner == currUser) {
+                                    events[eventId].dist.d10k.Leaderboard[pos].runner = newUser;
+                                    break;
+                                }
+                            }
+                        break;
+                        case "21K":
+                            for (let pos = 0; pos < events[eventId].dist.d21k.Leaderboard.length; pos++) {
+                                if (events[eventId].dist.d21k.Leaderboard[pos].runner == currUser) {
+                                    events[eventId].dist.d21k.Leaderboard[pos].runner = newUser;
+                                    break;
+                                }
+                            }
+                        break;
+                        case "42K":
+                            for (let pos = 0; pos < events[eventId].dist.d42k.Leaderboard.length; pos++) {
+                                if (events[eventId].dist.d42k.Leaderboard[pos].runner == currUser) {
+                                    events[eventId].dist.d42k.Leaderboard[pos].runner = newUser;
+                                    break;
+                                }
+                            }
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+        localStorage.setItem('events', JSON.stringify(events));
+    }
+
+    _editTeams(newUser, currUser) {
+        const teams = localStorage.teams ? JSON.parse(localStorage.teams) : [];
+        var found = false;
+        for (let teamId = 0; teamId < teams.length; teamId++) {
+            for (let memberId = 0; memberId < teams[teamId].length; memberId++) {
+                if (teams[teamId].members[memberId].name == currUser) {
+                    teams[teamId].members[memberId].name = newUser;
+                    
+                    found = true;
+                    break;
+                }
+            }
+            if (found) { break; }
+        }
+        localStorage.setItem('events', JSON.stringify(teams));
     }
 }
