@@ -19,16 +19,16 @@ export default class UserModel {
             medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
             stats: { 
                 race: { 
-                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
-                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
-                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
-                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"}
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"}
                 },
                 walk: { 
-                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
-                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
-                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"},
-                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestPos: "X"}
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestPos: "N/A"}
                 }
             }
         }

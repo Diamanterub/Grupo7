@@ -2,6 +2,7 @@ body{
     margin: 0;
     background-color: rgba(38, 38, 38, 1);
     min-width: 424px;
+    font-family: 'Montserrat', sans-serif;
 }
 .outside-box {
   background: rgba(38, 38, 38, 1);
