@@ -58,7 +58,7 @@ export default class UserController {
         }
         email != this.userModel.getAll()[this.userId].email && email != "" ? this.userModel.applyEdit("email", email, this.userId) : {} ;
         password != this.userModel.getAll()[this.userId].password && password != "" ? this.userModel.applyEdit("password", password, this.userId) : {} ;
-        pfp != this.userModel.getAll()[this.userId].pfp && pfp != "" ? this.userModel.applyEdit("pfp", pfp, this.userId) : {} ;
+        pfp != this.userModel.getAll()[this.userId].pfp ? this.userModel.applyEdit("pfp", pfp, this.userId) : {} ;
         return true;
     }
 
