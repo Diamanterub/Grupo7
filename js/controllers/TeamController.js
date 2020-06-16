@@ -9,15 +9,16 @@ export default class TeamController {
     getId() {
         const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const users = JSON.parse(localStorage.users);
-        for (let i = 0; i < users.length; i++) {
-            if (user == users[i].username) {
-                for (let i = 0; i < this.teamModel.getAll().length; i++) {
-                    if (users[i].team == this.teamModel.getAll()[i].name) {
-                        return i;
+        for (let userID = 0; userID < users.length; userID++) {
+            if (user == users[userID].username) {
+                for (let teamId = 0; teamId < this.teamModel.getAll().length; teamId++) {
+                    if (users[userID].team == this.teamModel.getAll()[teamId].name) {
+                        return teamId;
                     }
                 }
             }
         }
+        return false;
     }
 
     createTeam(name, country, city, shirt) {
@@ -39,38 +40,33 @@ export default class TeamController {
     searchTeam(name, country, city, selected) {
         const teams = this.teamModel.getAll();
         var send = [];
-        for (let index = 0; index < team.length; index++) {
+        for (let index = 0; index < teams.length; index++) {
             let flag = false;
             if (name !== "") {
-                flag = name == team[index].name;
+                flag = name == teams[index].name;
             } else { flag = true; }
             if (!flag) { continue; }
             if (country !== "") {
-                flag = country == team[index].country;
+                flag = country == teams[index].country;
             } else { flag = true; }
             if (!flag) { continue; }
             if (city !== "") {
-                flag = city == team[index].city;
+                flag = city == teams[index].city;
             } else { flag = true; }
             if (!flag) { continue; }
             if (flag) {
                 const ph = {
-                    id: team[index].id,
-                    url: team[index].shirt,
-                    enrolled: team[index].members.length
+                    id: teams[index].id,
+                    url: teams[index].shirt,
+                    enrolled: teams[index].members.length
                 }
                 send.push(ph);
             }
         }
         if (selected == "recent") {
-            return array.slice().sort((a, b) => -(b.id - a.id));                
+            return teams.slice().sort((a, b) => -(b.id - a.id));                
         } else {
-            return array.slice().sort((a, b) => (b.enrolled - a.enrolled));
-        }
-        // to be moved to the respective view
-        for (let index = 0; index < sortedActivities.length; index++) {
-            area.innerHTML += 
-            `<a href="Team.html?id=${sortedActivities[index].id}"><div class="card"><img src="${sortedActivities[index].url}" class="img-fluid" alt="Tshirt"></div></a>`
+            return teams.slice().sort((a, b) => (b.enrolled - a.enrolled));
         }
     }
 }

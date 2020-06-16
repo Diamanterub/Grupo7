@@ -1,6 +1,6 @@
 import UserController from '../controllers/UserController.js'
 
-export default class SignInView {
+export default class StatsView {
     constructor() {
         this.userController = new UserController();
 

@@ -47,10 +47,6 @@ export default class UserController {
         this.userModel.logout();
     }
 
-    getInfo() {
-        return this.userModel.getAll()[this.getId()];
-    }
-
     editInfo(username, email, password, passconf, pfp) {
         if (password != passconf) { alert('Password and Confirm Password are not equal!'); return false; }
         if (username != this.userModel.getAll()[this.userId].username && username != "") {
