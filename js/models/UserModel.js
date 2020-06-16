@@ -90,7 +90,7 @@ export default class UserModel {
         switch (option) {
             case "username":
                 this._editEvents(info, this.users[id].username);
-                this._editTeams(info, this.users[id].username)
+                this._editTeams(info, this.users[id].username);
                 localStorage.loggedUser ? localStorage.setItem('loggedUser', info) : {} ;
                 this.users[id].username = info;
                 break;
@@ -159,18 +159,46 @@ export default class UserModel {
 
     _editTeams(newUser, currUser) {
         const teams = localStorage.teams ? JSON.parse(localStorage.teams) : [];
-        var found = false;
         for (let teamId = 0; teamId < teams.length; teamId++) {
             for (let memberId = 0; memberId < teams[teamId].length; memberId++) {
                 if (teams[teamId].members[memberId].name == currUser) {
                     teams[teamId].members[memberId].name = newUser;
-                    
-                    found = true;
                     break;
                 }
             }
-            if (found) { break; }
+            for (let i = 0; i < teams[teamId].medals.copper .length; i++)
+                { teams[teamId].medals.copper [i].member == currUser ? teams[teamId].medals.copper [i].member = newUser : {} }
+            for (let i = 0; i < teams[teamId].medals.bronze .length; i++)
+                { teams[teamId].medals.bronze [i].member == currUser ? teams[teamId].medals.bronze [i].member = newUser : {} }
+            for (let i = 0; i < teams[teamId].medals.silver .length; i++)
+                { teams[teamId].medals.silver [i].member == currUser ? teams[teamId].medals.silver [i].member = newUser : {} }
+            for (let i = 0; i < teams[teamId].medals.gold   .length; i++)
+                { teams[teamId].medals.gold   [i].member == currUser ? teams[teamId].medals.gold   [i].member = newUser : {} }
+            for (let i = 0; i < teams[teamId].medals.plat   .length; i++)
+                { teams[teamId].medals.plat   [i].member == currUser ? teams[teamId].medals.plat   [i].member = newUser : {} }
+            for (let i = 0; i < teams[teamId].medals.diamond.length; i++)
+                { teams[teamId].medals.diamond[i].member == currUser ? teams[teamId].medals.diamond[i].member = newUser : {} }
+            for (let i = 0; i < teams[teamId].medals.master .length; i++)
+                { teams[teamId].medals.master [i].member == currUser ? teams[teamId].medals.master [i].member = newUser : {} }
+            for (let i = 0; i < teams[teamId].medals.swift  .length; i++)
+                { teams[teamId].medals.swift  [i].member == currUser ? teams[teamId].medals.swift  [i].member = newUser : {} }
+            teams[teamId].stats.race.d5k .bestTimeMember == currUser ? teams[teamId].stats.race.d5k .bestTimeMember = newUser : {};
+            teams[teamId].stats.race.d5k .bestPosMember  == currUser ? teams[teamId].stats.race.d5k .bestPosMember  = newUser : {};
+            teams[teamId].stats.race.d10k.bestTimeMember == currUser ? teams[teamId].stats.race.d10k.bestTimeMember = newUser : {};
+            teams[teamId].stats.race.d10k.bestPosMember  == currUser ? teams[teamId].stats.race.d10k.bestPosMember  = newUser : {};
+            teams[teamId].stats.race.d21k.bestTimeMember == currUser ? teams[teamId].stats.race.d21k.bestTimeMember = newUser : {};
+            teams[teamId].stats.race.d21k.bestPosMember  == currUser ? teams[teamId].stats.race.d21k.bestPosMember  = newUser : {};
+            teams[teamId].stats.race.d42k.bestTimeMember == currUser ? teams[teamId].stats.race.d42k.bestTimeMember = newUser : {};
+            teams[teamId].stats.race.d42k.bestPosMember  == currUser ? teams[teamId].stats.race.d42k.bestPosMember  = newUser : {};
+            teams[teamId].stats.walk.d5k .bestTimeMember == currUser ? teams[teamId].stats.walk.d5k .bestTimeMember = newUser : {};
+            teams[teamId].stats.walk.d5k .bestPosMember  == currUser ? teams[teamId].stats.walk.d5k .bestPosMember  = newUser : {};
+            teams[teamId].stats.walk.d10k.bestTimeMember == currUser ? teams[teamId].stats.walk.d10k.bestTimeMember = newUser : {};
+            teams[teamId].stats.walk.d10k.bestPosMember  == currUser ? teams[teamId].stats.walk.d10k.bestPosMember  = newUser : {};
+            teams[teamId].stats.walk.d21k.bestTimeMember == currUser ? teams[teamId].stats.walk.d21k.bestTimeMember = newUser : {};
+            teams[teamId].stats.walk.d21k.bestPosMember  == currUser ? teams[teamId].stats.walk.d21k.bestPosMember  = newUser : {};
+            teams[teamId].stats.walk.d42k.bestTimeMember == currUser ? teams[teamId].stats.walk.d42k.bestTimeMember = newUser : {};
+            teams[teamId].stats.walk.d42k.bestPosMember  == currUser ? teams[teamId].stats.walk.d42k.bestPosMember  = newUser : {};
         }
-        localStorage.setItem('events', JSON.stringify(teams));
+        localStorage.setItem('teams', JSON.stringify(teams));
     }
 }
