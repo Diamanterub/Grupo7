@@ -4,9 +4,9 @@ export default class ProfileView {
     constructor() {
         this.userController = new UserController();
         
-        this.Form        = document.getElementById('form');        //form
+        this.Form = document.getElementById('form'); //form
 
-        this.imgPFP      = document.getElementById('imgPFP');      //imagem onde está a pfp
+        this.imgPFP = document.getElementById('imgPFP'); //imagem onde está a pfp
 
         this.divUsername = document.getElementById('divUsername'); //div para alternar o txt e input do user
         this.divEmail    = document.getElementById('divEmail');    //div para alternar o txt e input do email
@@ -19,7 +19,7 @@ export default class ProfileView {
     }
 
     buildProfile() {
-        this.info = this.userController.getInfo();
+        this.info = this.userController.userModel.getAll()[this.getId()];
 
         this.imgPFP.src            = this.info.pfp;
         this.divUsername.innerHTML = `<h1>${this.info.username}</h1>`;

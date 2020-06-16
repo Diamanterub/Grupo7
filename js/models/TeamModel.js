@@ -12,10 +12,9 @@ export default class TeamModel {
     }
 
     create(name, country, city, shirt) {
-        const leader = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const team = {
             id: this.teams.length, name: name, country: country, city: city, shirt: shirt,
-            leader: leader, members: [], requests: [],
+            leader: 0, members: [], requests: [],
             medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
             stats: { 
                 race: { 
@@ -34,6 +33,17 @@ export default class TeamModel {
         }
         this.teams.push(team);
         this._persist();
+
+        
+        const leaderName = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+        const leaderID = function() {
+            for (let id = 0; id < localStorage.users.length; id++) {
+                if (leaderName == localStorage.users[id].username) {
+                    return id;
+                }
+            }
+        } 
+        this.enroll(leaderName, leaderID(), team.id)
     }
 
     addRequest(userName, userId, reason, teamId) {
