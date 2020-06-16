@@ -118,9 +118,44 @@ background-color: rgba(166, 202, 70, 1);
     .row {
         margin: 0px 0px;
         width: 90%;
-        height: 90%;
         display: flex;
         justify-content: center;
         align-items: flex-start;
+    }
+    .col2{
+        height: auto;
+        margin: 0px 0px;
+    }
+    .col3{
+        margin: 20px 0px;
+    }
+    .cardMap{
+        margin: auto;
+    }
+    .outside-box{
+        height: auto;
+    }
+}
+@media screen and (max-height: 740px){
+    .card{
+        width: 250px;
+        height: 233.3px;
+    }
+    .card .img-fluid {
+        width: 250px;
+        height: 227.3px;
+    }
+}
+@media screen and (min-width:640px) and (max-width: 1104px){
+    .outside-box{
+        height: auto;
+    }
+    .row{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .col3{
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }

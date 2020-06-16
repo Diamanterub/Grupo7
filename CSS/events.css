@@ -24,15 +24,11 @@ hr {
     height: 80vh;
     width: 0.1px;
 }
-#btns, #btns-m{
+#btns{
     display: flex;
 }
-#btns-m{
-    display: none;
-    margin: 10px 0px;
-}
 /* Botão Submit */
-#button, #button-m {
+#button{
     background-color: rgba(199, 249, 66, 1);
     border-radius: 5px;
     border: 2px solid rgba(48, 48, 48, 1);
@@ -44,17 +40,16 @@ hr {
     font-weight: 600;
     cursor: pointer;
 }
-#button-m{
-    width: 300px;
-}
 #button:hover, #buttonopt:hover, #button-m:hover{
     border: 2px solid rgba(199, 249, 66, 1);
     background-color: rgba(48, 48, 48, 1);
     color: rgba(199, 249, 66, 1);
 }
-.mobile-search-container{
-    display: flex;
-    justify-content: center;
+.events-container-outside{
+    background-color: rgba(26, 26, 26, 1);
+    border-radius: 10px;
+    padding: 10px 10px;
+    height: auto;
 }
 #reset{
     display: flex;
@@ -206,8 +201,8 @@ input[type=text]:focus, input[type=text], select{
     height: 400px;
     border: 3px solid rgba(199, 249, 66, 1);
     background-color: rgba(26, 26, 26, 1);
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
     margin-bottom: 10px;
 }
 
@@ -240,28 +235,38 @@ input[type=text]:focus, input[type=text], select{
 }
  
 
-@media screen and (min-width:0px) and (max-width:825px){
+@media screen and (max-width:825px){
     #EventArea{
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
-    }
-    .search-container{
-        display: none;
-    }
-    #btns-m{
-        display: block;
     }
     #content{
         display: flex;
     }
     .scroll{
-        margin: 0px 0px;
+        margin-bottom: 20px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
+    .event-search-container{
+        flex-wrap: wrap;
+        justify-content: center;
     }
-@media screen and (max-width: 764px){
-    
+    .leaderboard-container-outside{
+        width: 380px;
+        min-width: 400px;
+    }
     .scroll::-webkit-scrollbar {
         width: 0px;
     }
+    a{
+    display: flex;
+    justify-content: center;
+    }
+    }
+@media screen and (max-width: 764px){
     a{
         width: 366px;
         height: 410px;
@@ -271,9 +276,14 @@ input[type=text]:focus, input[type=text], select{
     #EventArea{
         justify-content: center;
     }
-    
+    .leaderboard-container-outside{
+        display: flex;
+        justify-content: center;
     }
-
+    .scroll{
+        justify-content: center;
+    }
+    }
 
 
 
