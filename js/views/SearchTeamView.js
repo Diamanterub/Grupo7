@@ -25,9 +25,10 @@ export default class EventView {
         try {
             const teamCatalog = this.teamController.searchTeam(
                 this.Name.value, this.Country.value, this.City.value, this.Select.value);
+                this.Catalog.innerHTML += ``
             for (let i = 0; i < teamCatalog.length; i++) {
                 this.Catalog.innerHTML += 
-                `<a href="Team.html?id=${teamCatalog[i].id}"><div class="card"><img src="${teamCatalog[i].url}" class="img-fluid" alt="Tshirt"></div></a>`
+                `<a href="Team.html?id=${teamCatalog[i].id}"><div class="card"><img src="${teamCatalog[i].shirt}" class="img-fluid" alt="Tshirt"></div></a>`
             }
         } catch(e) {
             this.displayMessage(e, 'danger');
@@ -37,7 +38,7 @@ export default class EventView {
 
     loadBtn() {
         const userTeamID = this.teamController.getId();
-        if (userTeamID != false) {
+        if (userTeamID !== false) {
             this.Btns.innerHTML =
             `<input id="buttonopt" type="submit" onclick="window.location.href='/html/Team.html?id=${userTeamID}'"
             value="${this.teamController.teamModel.getAll()[userTeamID].name}">`
