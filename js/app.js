@@ -8,8 +8,9 @@ import CompleteEventView from './views/CompleteEventView.js'
 import LeaderboardView   from './views/LeaderboardView.js'
 import ProfileView       from './views/ProfileView.js'
 import RankedSlidersView from './views/RankedSlidersView.js'
-import StatsView        from './views/StatsView.js'
+import StatsView         from './views/StatsView.js'
 import SearchTeamView    from './views/SearchTeamView.js'
+import CreateTeamView    from './views/CreateTeamView.js'
 
 
 class App {
@@ -39,6 +40,8 @@ class App {
             case "/html/stats.html": this.statsView = new StatsView(); break;
 
             case "/html/teams.html": this.searchTeamView = new SearchTeamView(); break;
+
+            case "/html/team-c.html": this.createTeamView = new CreateTeamView(); break;
         }
     }
 }
