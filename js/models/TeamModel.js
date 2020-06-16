@@ -34,16 +34,15 @@ export default class TeamModel {
         this.teams.push(team);
         this._persist();
 
-        
         const leaderName = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
-        const leaderID = function() {
-            for (let id = 0; id < localStorage.users.length; id++) {
-                if (leaderName == localStorage.users[id].username) {
+        const leaderID = function(ldnm) {
+            for (let id = 0; id < JSON.parse(localStorage.users).length; id++) {
+                if (ldnm == JSON.parse(localStorage.users)[id].username) {
                     return id;
                 }
             }
         } 
-        this.enroll(leaderName, leaderID(), team.id)
+        this.enroll(leaderName, leaderID(leaderName), team.id)
     }
 
     addRequest(userName, userId, reason, teamId) {
@@ -53,8 +52,11 @@ export default class TeamModel {
     }
 
     enroll(userName, userId, teamId) {
-        const member = { memberId: teams[teamId].members.length, name: userName, userId: userId }
+        const member = { memberId: this.teams[teamId].members.length, name: userName, userId: userId }
         this.teams[teamId].members.push(member);
         this._persist();
+        const users = JSON.parse(localStorage.users)
+        users[userId].team = this.teams[teamId].name;
+        localStorage.setItem('users', JSON.stringify(users));
     }
 }

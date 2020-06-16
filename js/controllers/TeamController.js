@@ -10,6 +10,7 @@ export default class TeamController {
         const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const users = JSON.parse(localStorage.users);
         for (let userID = 0; userID < users.length; userID++) {
+            //alert(users[userID].team)
             if (user == users[userID].username) {
                 for (let teamId = 0; teamId < this.teamModel.getAll().length; teamId++) {
                     if (users[userID].team == this.teamModel.getAll()[teamId].name) {
