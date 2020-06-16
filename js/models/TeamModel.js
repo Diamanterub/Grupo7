@@ -36,6 +36,12 @@ export default class TeamModel {
         this._persist();
     }
 
+    addRequest(userName, userId, reason, teamId) {
+        const request = {requestId: teams[teamId].requests.length, name: userName, userId: userId, reason: reason }
+        this.teams[teamId].requests.push(request);
+        this._persist();
+    }
+
     enroll(userName, userId, teamId) {
         const member = { memberId: teams[teamId].members.length, name: userName, userId: userId }
         this.teams[teamId].members.push(member);

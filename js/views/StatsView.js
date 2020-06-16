@@ -141,12 +141,13 @@ export default class SignInView {
     }
 
     _getNth(number) {
-        number = number.toString();
+        number = number.toString();        
         if (number.length == 1) {
-            return number == "X" ? number : number + this._lastDigit(number);
+            return number + this._lastDigit(number);
         } else {
+            if (number == "N/A") { return number; }
             if (number[number.length - 2] == 1) {
-                return number + "nt";
+                return number + "th";
             } else {
                 return number + this._lastDigit(number[number.length - 1]);
             }
@@ -155,10 +156,10 @@ export default class SignInView {
 
     _lastDigit(num) {
         switch (num) {
-            case "1": return "st"; break;
-            case "2": return "nd"; break;
-            case "3": return "rd"; break;
-            default: return "th"; break;
+            case "1": return "st";
+            case "2": return "nd";
+            case "3": return "rd";
+            default:  return "th";
         }
     }
 }
