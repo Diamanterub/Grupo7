@@ -285,20 +285,60 @@ export default class EventModel {
     }
 
     addRunner(dist, run, id) {
-        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
-        const enroll = {
-            id: this.events[id].runners.length,
-            data: {
-                runner: user, dist: dist, run: run
-            }
-        }
-        this.events[id].runners.push(enroll);
-        this.events[id].enrolled++;
-        this._persist();
+        run == "solo" ? this._addSolo(dist, id) : this._addTeam(dist, id) ;
         document.getElementById("frmSubmit").disabled = true;
         document.getElementById("btnReg").disabled = true;
         var perc = Math.round((this.events[id].enrolled / this.events[id].capacity) * 100);
         document.getElementById("preview-textfield").innerHTML = perc + "% - " + this.events[id].enrolled;
+    }
+
+    _addSolo(dist, eventId) {
+        const runner = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+        const enroll = {
+            id: this.events[eventId].runners.length,
+            data: {
+                runner: runner, dist: dist, run: "solo"
+            }
+        }
+        this.events[eventId].runners.push(enroll);
+        this.events[eventId].enrolled++;
+        this._persist();
+    }
+
+    _addTeam(dist, eventId) {
+        const teamMembers = function() {
+            const leader = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+            const users = JSON.parse(localStorage.users);
+            const teams = JSON.parse(localStorage.teams);
+            for (let userId = 0; userId < users.length; userId++) {
+                if (leader == users[userId].username) {
+                    for (let teamId = 0; teamId < teams.length; teamId++) {
+                        if (users[userId].team == teams[teamId].name) {
+                            return teams[teamId].members;
+                        }
+                    }
+                }
+            }
+        }
+        for (let memberId = 0; memberId < teamMembers().length; memberId++) {
+            let flag = false;
+            for (let runnerId = 0; runnerId < array.length; runnerId++) {
+                if (this.events[eventId].runners[runnerId].data.runner == teamMembers()[memberId].name) {
+                    this.events[eventId].runners[runnerId].data.run = "team"; flag = true;
+                }
+            }
+            if (!flag) {
+                const enroll = {
+                    id: this.events[eventId].runners.length,
+                    data: {
+                        runner: teamMembers()[memberId].name, dist: dist, run: "team"
+                    }
+                }
+                this.events[eventId].runners.push(enroll);
+                this.events[eventId].enrolled++;
+            }
+        }
+        this._persist();
     }
 
     isToday() {
@@ -381,8 +421,8 @@ export default class EventModel {
         stats.sumDist += parseInt(data.dist.replace('K', ''));
         stats.sumTime += this._getSeconds(data.time);
         stats.pace = Math.round(((stats.sumDist * 1000) / stats.sumTime) * 3.6 * 100) / 100;
-        stats.bestTime = stats.bestTime == "X" ? data.time : this._getSeconds(data.time) < this._getSeconds(stats.bestTime) ? data.time : stats.bestTime;
-        stats.bestPos = stats.bestPos == "X" ? data.pos : data.pos < stats.bestPos ? data.pos : stats.bestPos;
+        stats.bestTime = stats.bestTime == "N/A" ? data.time : this._getSeconds(data.time) < this._getSeconds(stats.bestTime) ? data.time : stats.bestTime;
+        stats.bestPos = stats.bestPos == "N/A" ? data.pos : data.pos < stats.bestPos ? data.pos : stats.bestPos;
 
         if (data.type == "Race") {
             switch (data.dist) {
