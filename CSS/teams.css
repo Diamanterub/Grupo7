@@ -33,7 +33,6 @@ hr {
     border-radius: 5px;
     color: rgba(48, 48, 48, 1);
     border: 2px solid rgba(48, 48, 48, 1);
-    border: none;
     padding: 5px 0px;
     margin-right: 16.4px;
     width: 70%;
@@ -240,4 +239,6 @@ input[type=text]:focus, input[type=text], select{
     border-radius: 5px;
     background: rgba(166, 202, 70, 1); 
 }
- 
+.row{
+    margin: 0px 0px;
+}

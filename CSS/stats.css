@@ -109,6 +109,9 @@
     background-color: rgba(26, 26, 26, 0.5);
     transition: 0.3s ease-in-out;
 }
+#divBestTime p{
+    font-size: 14px;
+}
 
 @media screen and (max-width:932px){
     .stats-container{
@@ -142,5 +145,14 @@
 @media screen and (max-width:960px) and (min-width:932px){
     .medals [type=image]{
         width: 90px;
+    }
+}
+@media screen and (max-width: 620px){
+    .stats-options, .stats {
+        width: 100%;
+    }
+    #stats-info{
+        margin: 0 auto;
+        width: 90%;
     }
 }
