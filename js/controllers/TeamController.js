@@ -10,7 +10,6 @@ export default class TeamController {
         const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const users = JSON.parse(localStorage.users);
         for (let userID = 0; userID < users.length; userID++) {
-            //alert(users[userID].team)
             if (user == users[userID].username) {
                 for (let teamId = 0; teamId < this.teamModel.getAll().length; teamId++) {
                     if (users[userID].team == this.teamModel.getAll()[teamId].name) {
@@ -22,9 +21,9 @@ export default class TeamController {
         return false;
     }
 
-    createTeam(name, country, city, shirt) {
+    createTeam(name, country, city, shirt, chat) {
         if (!this.teamModel.getAll().some(team => team.name === name)) {
-            this.teamModel.create(name, country, city, shirt);
+            this.teamModel.create(name, country, city, shirt, chat);
         } else {
             throw Error(`Team "${name}" alrealdy exists!`);
         }
