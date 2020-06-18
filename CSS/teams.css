@@ -242,3 +242,9 @@ input[type=text]:focus, input[type=text], select{
 .row{
     margin: 0px 0px;
 }
+.teams-container-outside{
+    background-color: rgba(26, 26, 26, 1);
+    border-radius: 10px;
+    padding: 10px 10px;
+    height: auto;
+}
