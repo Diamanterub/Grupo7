@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <title>Swift - Create Team</title>
     <meta charset="utf-8">
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="../CSS/team-c.css">
     <link rel="icon" href="../imgs/favicon.ico">
 </head>
-
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
@@ -48,10 +46,11 @@
     </div>
     <div class="outside-box">
         <div class="inside-box">
+            <div class="create-team-container">
             <form id="frmCreateTeam">
                 <div class="form-group row justify-content-center">
                     <!-- Url da imagem da camisola -->
-                    <img src="" onerror="this.src='../imgs/default_pfp.png'" class="img-fluid" id="imgShirt">
+                    <img src="" onerror="this.src='../imgs/default_pfp.png'" class="card" id="imgShirt">
                     <input type="url" class="form-control" id="txtShirt" placeholder="Shirt Image URL" required>
                 </div>
                 <div class="form-group row justify-content-center">
@@ -76,11 +75,7 @@
                 </div>
                 <div class="row" id="Message"></div>
             </form>
-
-
-
-
-
+            </div>
         </div>
     </div>
     <!-- Script Necessários -->
