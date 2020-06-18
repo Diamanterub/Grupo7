@@ -34,7 +34,7 @@ export default class StatsView {
         const userStats = this.userController.getStats(this.slcType.value, this.slcDist.value);
         this.divSumDist.innerHTML  = `<p>Total Distance: ${userStats.sumDist} km</p>`;
         this.divSumTime.innerHTML  = `<p>Total Time: ${Math.round((userStats.sumTime / 3600) * 100) / 100} hours</p>`;
-        this.divBestTime.innerHTML = `<p>Best Time: ${userStats.bestTime}</p>`;
+        this.divBestTime.innerHTML = `<p>Record: ${userStats.bestTime}</p>`;
         this.divBestPos.innerHTML  = `<p>Best Position: ${this._getNth(userStats.bestPos)}</p>`;
         this.divPace.innerHTML     = `<p>Average Pace: ${userStats.pace} km/h</p>`;
         this.divRank.innerHTML     = `<p>Medals (Rank: ${this.userController.userModel.getAll()[this.userController.getId()].rank})</p>`;
