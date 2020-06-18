@@ -406,6 +406,7 @@ export default class EventModel {
                 case "Copper":   users[userId].medals.copper .push(data); break;
             }
             users[userId].rank = this._RankFormula(users[userId].rank, medal);
+            arrayLB.run == "team" ? this._giveToTeam(data, users[userId].user) : {} ;
         }
         localStorage.setItem('users', JSON.stringify(users));
     }
@@ -421,8 +422,8 @@ export default class EventModel {
         stats.sumDist += parseInt(data.dist.replace('K', ''));
         stats.sumTime += this._getSeconds(data.time);
         stats.pace = Math.round(((stats.sumDist * 1000) / stats.sumTime) * 3.6 * 100) / 100;
-        stats.bestTime = stats.bestTime == "N/A" ? data.time : this._getSeconds(data.time) < this._getSeconds(stats.bestTime) ? data.time : stats.bestTime;
-        stats.bestPos = stats.bestPos == "N/A" ? data.pos : data.pos < stats.bestPos ? data.pos : stats.bestPos;
+        stats.bestTime = stats.bestTime == "N/A" || this._getSeconds(data.time) < this._getSeconds(stats.bestTime) ? data.time : stats.bestTime;
+        stats.bestPos = stats.bestPos == "N/A" || data.pos < stats.bestPos ? data.pos : stats.bestPos;
 
         if (data.type == "Race") {
             switch (data.dist) {
@@ -436,6 +437,65 @@ export default class EventModel {
             }
         }
         return user;
+    }
+
+    _giveToTeam(data, user) {
+        data = JSON.parse(JSON.stringify(data).replace('}', `,"member":"${user.username}"}`))
+        const teams = JSON.parse(localStorage.teams);
+        const teamId = _getTeamId(teams, user);
+        teams[teamId].stats = this._updateTeamStats(data, teams[teamId].stats);
+        switch (medal) {
+            case "Swift":    teams[teamId].medals.swift  .push(data); break;
+            case "Master":   teams[teamId].medals.master .push(data); break;
+            case "Diamond":  teams[teamId].medals.diamond.push(data); break;
+            case "Platinum": teams[teamId].medals.plat   .push(data); break;
+            case "Gold":     teams[teamId].medals.gold   .push(data); break;
+            case "Silver":   teams[teamId].medals.silver .push(data); break;
+            case "Bronze":   teams[teamId].medals.bronze .push(data); break;
+            case "Copper":   teams[teamId].medals.copper .push(data); break;
+        }
+        localStorage.setItem('teams', JSON.stringify(teams));
+    }
+
+    _getTeamId(teams, user) {
+        for (let teamId = 0; teamId < teams.length; teamId++) {
+            if (user.team == teams[teamId].name) {
+                return teamId;
+            }
+        }
+    }
+
+    _updateTeamStats(data, team) {
+        var stats = data.type == "Race" ? team.race : team.walk;
+        switch (data.dist) {
+            case "5K":  stats = stats.d5k;  break; case "10K": stats = stats.d10k; break;
+            case "21K": stats = stats.d21k; break; case "42K": stats = stats.d42k; break;
+        }
+
+        stats.sumDist += parseInt(data.dist.replace('K', ''));
+        stats.sumTime += this._getSeconds(data.time);
+        stats.pace = Math.round(((stats.sumDist * 1000) / stats.sumTime) * 3.6 * 100) / 100;
+        if (stats.bestTime == "N/A" || this._getSeconds(data.time) < this._getSeconds(stats.bestTime)) {
+            stats.bestTime = data.time;
+            stats.bestTimeMember = data.member;
+        }
+        if (stats.bestPos == "N/A" || data.pos < stats.bestPos) {
+            stats.bestPos = data.pos;
+            stats.bestPosMember = data.member;
+        }
+
+        if (data.type == "Race") {
+            switch (data.dist) {
+                case "5K":  team.race.d5k  = stats; break; case "10K": team.race.d10k = stats; break;
+                case "21K": team.race.d21k = stats; break; case "42K": team.race.d42k = stats; break;
+            }
+        } else {
+            switch (data.dist) {
+                case "5K":  team.walk.d5k  = stats; break; case "10K": team.walk.d10k = stats; break;
+                case "21K": team.walk.d21k = stats; break; case "42K": team.walk.d42k = stats; break;
+            }
+        }
+        return team;
     }
 
     _calculateMedal(runners, pos) {
@@ -677,9 +737,9 @@ export default class EventModel {
     }
 
     addToLeaderboard(eventId, runnerId, time) {
-        const data = { runner: this.events[eventId].runners[runnerId].data.runner, time:time }
+        const data = { runner: this.events[eventId].runners[runnerId].data.runner, time:time, run: this.events[eventId].runners[runnerId].data.run }
         switch (this.events[eventId].runners[runnerId].data.dist) {
-            case "5K" : this.events[eventId].dist.d5K.Leaderboard.push(data);  break;
+            case "5K" : this.events[eventId].dist.d5K. Leaderboard.push(data); break;
             case "10K": this.events[eventId].dist.d10K.Leaderboard.push(data); break;
             case "21K": this.events[eventId].dist.d21K.Leaderboard.push(data); break;
             case "42K": this.events[eventId].dist.d42K.Leaderboard.push(data); break;
