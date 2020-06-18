@@ -695,13 +695,13 @@ export default class EventModel {
         return JSON.parse(localStorage.rankedSliders);
     }
 
-    getEvents(opsEvent, status) {
-        for (let i = 0; i < this.events.length; i++) {
-            if (this.events[i].status == status) {
-                var option   = document.createElement("option");
-                option.text  = this.events[i].name + ", " + this.events[i].edition;
-                option.value = this.events[i].id;
-                opsEvent.add(option);
+    getEvents(opsEvent, status) { //Coloca dentro do dropdown de Eventos os eventos com o status pedido pelo View
+        for (let i = 0; i < this.events.length; i++) { //Loop que percorre todos os eventos
+            if (this.events[i].status == status) { //Se o status desse evento for igual ao status pedido...
+                var option   = document.createElement("option"); //Cria um elemento <option>
+                option.text  = this.events[i].name + ", " + this.events[i].edition; //Atribui ao texto da option o nome e edição do evento
+                option.value = this.events[i].id; //Atruibui ao valor da option o id do evento
+                opsEvent.add(option); //Adiciona ao dropdown a option
             }
         }
     }
@@ -717,20 +717,22 @@ export default class EventModel {
         }
     }
 
-    getDistances(lbDist, eventId) {
-        if (JSON.stringify(this.events[eventId].dist).includes("5K")) {
-            var option   = document.createElement("option");
-            option.text  = "5K";  option.value = "5K";  lbDist.add(option);
+    getDistances(lbDist, eventId) { //Coloca dentro do dropdown de Distancias as distâncias de um evento selecionado
+        if (JSON.stringify(this.events[eventId].dist).includes('"5k"')) { //Verificar se o evento tem a distância 5K
+            var option   = document.createElement("option"); //Cria um elemento <option>
+            option.text  = "5K";  option.value = "5K"; //Atribui ao text e valor da option a distância
+            lbDist.add(option); //Adiciona ao dropdown a option
         }
-        if (JSON.stringify(this.events[eventId].dist).includes("10K")) {
+        //Igual para todos os seguintes, com a respetiva distância
+        if (JSON.stringify(this.events[eventId].dist).includes('"10k"')) {
             var option   = document.createElement("option");
             option.text  = "10K"; option.value = "10K"; lbDist.add(option);
         }
-        if (JSON.stringify(this.events[eventId].dist).includes("21K")) {
+        if (JSON.stringify(this.events[eventId].dist).includes('"21k"')) {
             var option   = document.createElement("option");
             option.text  = "21K"; option.value = "21K"; lbDist.add(option);
         }
-        if (JSON.stringify(this.events[eventId].dist).includes("42K")) {
+        if (JSON.stringify(this.events[eventId].dist).includes('"42k"')) {
             var option   = document.createElement("option");
             option.text  = "42K"; option.value = "42K"; lbDist.add(option);
         }
@@ -747,52 +749,62 @@ export default class EventModel {
         this._persist();
     }
 
-    getFromLeaderboard(eventId, dists, tBody) {
-        var arrayLB = [], km;
-        switch (dists) {
-            case "5K":  arrayLB = this.events[eventId].dist.d5K .Leaderboard.slice(); km = 5000;  break;
-            case "10K": arrayLB = this.events[eventId].dist.d10K.Leaderboard.slice(); km = 10000; break;
-            case "21K": arrayLB = this.events[eventId].dist.d21K.Leaderboard.slice(); km = 21000; break;
-            case "42K": arrayLB = this.events[eventId].dist.d42K.Leaderboard.slice(); km = 42000; break;
+    getFromLeaderboard(eventId, dists, tBody) { //Adiciona ao corpo da tabela o Leaderboard do evento e distância escolhidos
+        var arrayLB = [], meters; //Declaração de variáveis, cujos valores dependerão da distância escolhida
+        switch (dists) { //Se a distância for "xK", arrayLB = Leaderboard de xK, meters = x * 1000
+            case "5K":  arrayLB = this.events[eventId].dist.d5K .Leaderboard.slice(); meters = 5000;  break;
+            case "10K": arrayLB = this.events[eventId].dist.d10K.Leaderboard.slice(); meters = 10000; break;
+            case "21K": arrayLB = this.events[eventId].dist.d21K.Leaderboard.slice(); meters = 21000; break;
+            case "42K": arrayLB = this.events[eventId].dist.d42K.Leaderboard.slice(); meters = 42000; break;
         }
-        for (let i = 0; i < arrayLB.length; i++) {
-            tBody.innerHTML +=
+        for (let i = 0; i < arrayLB.length; i++) { //Loop que percorre o Leaderboard atribuído
+            tBody.innerHTML += //Coloca dentro do HTML do corpo da tabela
             `<tr>
-                <th scope="row">${i+1}</th>
+                <th scope="row">${i+1}</th> 
                 <td>${arrayLB[i].time}</td>
-                <td id="pc-only">${Math.round((km / this._getSeconds(arrayLB[i].time)) * 3.6 * 100) / 100 + " km/h"}</td>
+                <td id="pc-only">${Math.round((meters / this._getSeconds(arrayLB[i].time)) * 3.6 * 100) / 100 + " km/h"}</td>
                 <td>${arrayLB[i].runner}</td>
                 <td id="pc-only">${this._getRunnerData(arrayLB[i].runner, "team")}</td>
                 <td>${this._getRunnerData(arrayLB[i].runner, "rank")}</td>
             </tr>`
+            //(por ordem:)
+            //posição = index do array + 1, pois começa em 0
+            //tempo do atleta
+            //calculo do km/h, começando por m/s, devido a ser mais fácil calcular os segundos no tempo levado multiplicado...
+            //...por 3.6 pois km/h = m/s * 3.6, multiplicado por 100, arredondado, e dividido por 100, para manter 2 casas decimais
+            //username do atleta
+            //equipa do atleta
+            //rank do atleta
+            //(id="pc-only": só é mostrado em desktop pois a tabela completa não cabe em mobile, feito em css)
         }
     }
 
-    _getSeconds(time) {
-        const h  = parseInt(time[0] + time[1]);
-        const m  = parseInt(time[3] + time[4]);
-        const s  = parseInt(time[6] + time[7]);
-        const ms = parseInt(time[9] + time[10] + time[11]);
-
-        return (h * 60 * 60 + m * 60 + s + ms / 100) 
+    _getSeconds(time) { //Transforma o tempo do atleta em segundos
+        const h  = parseInt(time[0] + time[1]); //primeiro e segundo characteres da string são as horas
+        const m  = parseInt(time[3] + time[4]); //quarto e quinto characteres da string são os minutos
+        const s  = parseInt(time[6] + time[7]); //sétimo e oitavo characteres da string são os segundos
+        const ms = parseInt(time[9] + time[10] + time[11]);  //décimo, décimo primeiro, e décimo segundo characteres da string são os milisegundos
+        //horas para segundos = horas * 60mins * 60s
+        //minutos para segundos = minutos * 60s
+        //milisegundos para segundos = milisegundos * 0.01s ou / 100
+        return (h * 60 * 60 + m * 60 + s + ms / 100) //retorna a soma
     }
 
-    _getRunnerData(runner, option) {
-        const users = JSON.parse(localStorage.users);
-        var data = [];
-        data = users[this._getUserId(runner)];
-        switch (option) {
-            case "team": return data.team;
+    _getRunnerData(runner, option) { //Retorna dados do atleta pedidos
+        const users = JSON.parse(localStorage.users); //Vai buscar os users à localStorage
+        var data = users[this._getUserId(runner)]; //Dados do user logado
+        switch (option) { //Se a opção for...
+            case "team": return data.team; //Retorna a equipa do user
             
-            case "rank": return data.rank;
+            case "rank": return data.rank; //Retorna o rank do user
         }
     }
 
-    _getUserId(runner) {
-        const users = JSON.parse(localStorage.users);
-        for (let i = 0; i < users.length; i++) {
-            if (runner == users[i].username) {
-                return i;
+    _getUserId(runner) { //Retorna o id do atleta
+        const users = JSON.parse(localStorage.users); //Vai buscar os users à localStorage
+        for (let id = 0; id < users.length; id++) { //Loop que percorre todos os users
+            if (runner == users[id].username) { //Se o username do atleta for igual ao username do user selecionado...
+                return id; //...Retorna o id deste
             }
         }
     }
