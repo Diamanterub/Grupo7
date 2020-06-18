@@ -11,23 +11,23 @@ export default class TeamModel {
         localStorage.setItem('teams', JSON.stringify(this.teams));
     }
 
-    create(name, country, city, shirt) {
+    create(name, country, city, shirt, chat) {
         const team = {
-            id: this.teams.length, name: name, country: country, city: city, shirt: shirt,
+            id: this.teams.length, name: name, country: country, city: city, shirt: shirt, chat: chat,
             leader: 0, members: [], requests: [],
             medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
             stats: { 
                 race: { 
-                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"},
-                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"},
-                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"},
-                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"}
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"}
                 },
                 walk: { 
-                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"},
-                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"},
-                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"},
-                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "X", bestTimeMember:"X", bestPos: "X", bestPosMember: "X"}
+                    d5k  : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"},
+                    d10k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"},
+                    d21k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"},
+                    d42k : {sumDist: 0, sumTime: 0, pace: 0, bestTime: "N/A", bestTimeMember:"N/A", bestPos: "N/A", bestPosMember: "N/A"}
                 }
             }
         }
