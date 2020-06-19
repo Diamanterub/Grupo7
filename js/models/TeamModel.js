@@ -42,21 +42,27 @@ export default class TeamModel {
                 }
             }
         } 
-        this.enroll(leaderName, leaderID(leaderName), team.id)
+        alert(team.id)
+        this.enroll(true, false, leaderName, leaderID(leaderName), team.id)
     }
 
     addRequest(userName, userId, reason, teamId) {
-        const request = {requestId: teams[teamId].requests.length, name: userName, userId: userId, reason: reason }
+        const request = {requestId: this.teams[teamId].requests.length, name: userName, userId: userId, reason: reason }
         this.teams[teamId].requests.push(request);
         this._persist();
     }
 
-    enroll(userName, userId, teamId) {
-        const member = { memberId: this.teams[teamId].members.length, name: userName, userId: userId }
-        this.teams[teamId].members.push(member);
+    enroll(result, requestId, userName, userId, teamId) {
+        if (result) {
+            const member = { memberId: this.teams[teamId].members.length, name: userName, userId: userId }
+            this.teams[teamId].members.push(member);
+            const users = JSON.parse(localStorage.users)
+            users[userId].team = this.teams[teamId].name;
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+        if (requestId !== false) {
+            this.teams[teamId].requests.splice(requestId, 1);
+        }
         this._persist();
-        const users = JSON.parse(localStorage.users)
-        users[userId].team = this.teams[teamId].name;
-        localStorage.setItem('users', JSON.stringify(users));
     }
 }
