@@ -79,16 +79,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-responsive-xl">
-                        <thead>
-                            <tr>
-                                <th scope="col">Req. Id</th>
-                                <th scope="col">User</th>
-                                <th scope="col">Reason</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tblReqs"></tbody>
-                    </table>
+                    <select class="form-control" id="slcRequest">
+                        <option value="" disabled selected>Select a request</option>
+                    </select>
+                    <input type="button" value="Read" id="reqRead" disabled>
+                    <input type="button" value="Accept" id="reqAccept" disabled>
+                    <input type="button" value="Decline" id="reqDecline" disabled>
                 </div>
             </div>
         </div>
@@ -350,7 +346,6 @@
             <div class="form-group row justify-content-center">
                 <!-- Ingressar/Deixar a equipa -->
                 <div id="divBtnJL"></div>
-                <!-- <input id="btnJoin" type="button" value="Join Team"> -->
             </div>
             <div class="form-group row justify-content-center">
                 <!-- Lider ver os pedidos de entrada na equipa -->
