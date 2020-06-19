@@ -1,1 +1,84 @@
-/* Por fazer */
+.inside-box, .create-team-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#frmCreateTeam, .create-team-container{
+    width: 348px;
+}
+.create-team-container{
+    height: 86vh;
+    background-color: rgba(38, 38, 38, 0.5);
+    border-radius: 10px;
+}
+#image-url{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    width: 200px;
+    height: 200px;
+    border: 3px solid rgba(150, 205, 91, 1);
+    background-color: rgba(38, 38, 38, 1);
+}
+.card {
+    width: 200px;
+    height: 194px;
+    object-fit: scale-down;
+    border-radius: 3px;
+}
+input[type=text]:focus, input[type=text], input[type=url]:focus, input[type=url], select{
+    background-color: rgba(48, 48, 48, 1);
+    color: rgba(218, 218, 218, 1);
+    width: 80%;
+    height: 41px;
+    padding: 13px 11px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    }
+    input[type=text]::placeholder, input[type=url]::placeholder{
+    color: rgba(218, 218, 218, 1);
+    }
+    .form-group{
+        margin-bottom: 0px;
+    }
+    textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus 
+ {
+ outline:0px !important;
+ -webkit-appearance:none;
+ box-shadow: none !important;
+ }
+/* Condição para o caso do autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px rgba(48, 48, 48, 1) inset !important;
+    -webkit-text-fill-color: rgba(218, 218, 218, 1) !important;
+}
+#submit {
+    background-color: rgba(150, 205, 91, 1);
+    border-radius: 5px;
+    color: rgba(48, 48, 48, 1);
+    border: 2px solid rgba(48, 48, 48, 1);
+    padding: 5px 0px;
+    width: 80%;
+    margin-top: 15px;
+    height: 48px;
+    font-weight: 600;
+    cursor: pointer;
+}
+#submit:hover{
+    border: 2px solid rgba(150, 205, 91, 1);
+    background-color: rgba(48, 48, 48, 1);
+    color: rgba(150, 205, 91, 1);
+}
+@media screen and (max-height: 700px){
+    input[type=text]:focus, input[type=text], input[type=url]:focus, input[type=url], select{
+        height: 32px;
+        border-radius: 2px;
+    }
+}
