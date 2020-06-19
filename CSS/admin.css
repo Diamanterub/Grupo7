@@ -122,9 +122,13 @@ margin-left: 10px;
 margin-right: 10px;
 }
 /* Estilização das caixas (Manage Events) que levam a determinada página */
+#upper-bar-events{
+width: 100%;
+margin: 10px 10px;
+}
 .box-events{
-width: 40%;
-height: 400px;
+width: 30%;
+height: 50vh;
 background: rgba(218, 218, 218, 1);
 margin: 20px;
 border-radius: 10px;
@@ -148,17 +152,21 @@ text-align: center;
 color: rgba(48, 48, 48, 1);
 }
 /* Responsividade das caixas (Manage Events) */
-@media screen and (max-width:1200px){
+@media screen and (max-width:1260px){
 .box-events{
- width:40%;
- }
+width:20%;
+}
+@media screen and (min-width:600px) and (max-width:850px){
+a{
+font-size: 2rem;
+}
 }
 @media screen and (max-width:600px){
 .box-events{
  width: 90%;
 }
 .inside-box-events{
- height: 135%;
+ height: auto;
  margin-bottom:20px;
 }
 }
@@ -270,5 +278,4 @@ cursor: pointer;
 .inside-box-iet{
 height: 100%;
 margin-bottom:20px;
-}
 }

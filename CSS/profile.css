@@ -70,11 +70,11 @@ width: 90%;
 margin-top: 8px;
 }
 @media screen and (max-height: 700px){
-    .profile-pic-container {
-        height: 220px;
-    }
-    #imgPFP{
-        width: 180px;
-        height: 180px;
-        }
+.profile-pic-container {
+height: 220px;
+}
+#imgPFP{
+width: 180px;
+height: 180px;
+}
 }
