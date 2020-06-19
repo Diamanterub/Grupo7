@@ -23,10 +23,10 @@ width: inherit;
 height: inherit;
 }
 .object-fit_cover { 
-	object-fit: cover; 
+object-fit: cover; 
 }
 .slide_img img {
-	border-radius:8px;
+border-radius:8px;
 }
 label span{
 position: absolute;
@@ -70,115 +70,115 @@ background-color: rgba(218, 218, 218, 1);
 }
 /* Posicionamento das caixas de texto de cada slide */
 .block-left {
-    position: absolute;
-    bottom: 20px;
-	right: 0;
-	left: 0;
-	justify-content: flex-start;
-	display: flex;
-	align-items: center;
-	height: 87vh;
+position: absolute;
+bottom: 20px;
+right: 0;
+left: 0;
+justify-content: flex-start;
+display: flex;
+align-items: center;
+height: 87vh;
 }
 .block-center {
-    position: absolute;
-    bottom: 20px;
-	right: 0;
-	left: 0;
-	justify-content: center;
-	display: flex;
-	align-items: center;
-	height: 87vh;
+position: absolute;
+bottom: 20px;
+right: 0;
+left: 0;
+justify-content: center;
+display: flex;
+align-items: center;
+height: 87vh;
 }
 .block-right {
-    position: absolute;
-    bottom: 20px;
-	right: 0;
-	left: 0;
-	justify-content: flex-end;
-	display: flex;
-	align-items: center;
-	height: 87vh;
+position: absolute;
+bottom: 20px;
+right: 0;
+left: 0;
+justify-content: flex-end;
+display: flex;
+align-items: center;
+height: 87vh;
 }
 /* Posicionamento do texto do slide 1 e 3 - será alterado devido a responsividade) */
 .text-block-events{
-	padding-left: 10vh;
+padding-left: 10vh;
 }
 .text-block-leaderboards{
-	padding-right: 10vh;
+padding-right: 10vh;
 }
 /* Tamanho, posição e cor do texto principal */
 .text-block-teams h4, .text-block-stats h4{
-	font-size: 10vw;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
-	text-align: center;
+font-size: 10vw;
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+text-align: center;
 }
 .text-block-events h4{
-	font-size: 10vw;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
-	text-align: left;
+font-size: 10vw;
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+text-align: left;
 }
 .text-block-leaderboards h4{
-	font-size: 10vw;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
-	text-align: right;
+font-size: 10vw;
+font-family: 'Montserrat', sans-serif;
+font-weight: 700;
+text-align: right;
 }
 .text-block-events h4{
-	color: rgba(199, 249, 66, 1);
+color: rgba(199, 249, 66, 1);
 }
 .text-block-teams h4{
-	color: rgba(150, 205, 91, 1);
+color: rgba(150, 205, 91, 1);
 }
 .text-block-leaderboards h4{
-	color: rgba(98, 158, 120, 1);
+color: rgba(98, 158, 120, 1);
 }
 .text-block-stats h4 {
-	color: rgba(30, 123, 154, 1);
+color: rgba(30, 123, 154, 1);
 }
 /* Tamanho, posição e cor do texto (secundário) link*/
 a, a:hover {
-	color: rgba(255, 255, 255, 1);
-	font-size: 3vw;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 500;
-	text-shadow: 1px 0 0 rgba(163, 163, 163, 1), -1px 0 0 rgba(163, 163, 163, 1), 0 1px 0 rgba(163, 163, 163, 1), 0 -1px 0 rgba(163, 163, 163, 1), 1px 1px rgba(163, 163, 163, 1), -1px -1px 0 rgba(163, 163, 163, 1), 1px -1px 0 rgba(163, 163, 163, 1), -1px 1px 0 rgba(163, 163, 163, 1);
+color: rgba(255, 255, 255, 1);
+font-size: 3vw;
+font-family: 'Montserrat', sans-serif;
+font-weight: 500;
+text-shadow: 1px 0 0 rgba(163, 163, 163, 1), -1px 0 0 rgba(163, 163, 163, 1), 0 1px 0 rgba(163, 163, 163, 1), 0 -1px 0 rgba(163, 163, 163, 1), 1px 1px rgba(163, 163, 163, 1), -1px -1px 0 rgba(163, 163, 163, 1), 1px -1px 0 rgba(163, 163, 163, 1), -1px 1px 0 rgba(163, 163, 163, 1);
 }
 .text-block-events a{
-	text-align: left;
-	justify-content: flex-start;
-	display: flex;
+text-align: left;
+justify-content: flex-start;
+display: flex;
 }
 .text-block-teams a{
-	text-align: center;
-	justify-content: center;
-	display: flex;
+text-align: center;
+justify-content: center;
+display: flex;
 }
 .text-block-leaderboards a{
-	text-align: right;
-	justify-content: flex-end;
-	display: flex;
+text-align: right;
+justify-content: flex-end;
+display: flex;
 }
 .text-block-stats a{
-	text-align: center;
-	justify-content: center;
-	display: flex;
+text-align: center;
+justify-content: center;
+display: flex;
 }
 
 /* Responsividade - ainda por fazer */
 @keyframes scroll{
-	0%{	opacity:.4;}
-	100%{opacity:1;}
+0%{	opacity:.4;}
+100%{opacity:1;}
 }		
 @media screen and (max-width: 685px){
-	.container{
-		border: none;
-		width: 100%;
-		height: 0;
-		padding-bottom: 55%; 
-	}	
+.container{
+border: none;
+width: 100%;
+height: 0;
+padding-bottom: 55%; 
+}	
 }
 @media screen  and(min-width: 970px){
-	.me{ display: none;}
+.me{ display: none;}
 }

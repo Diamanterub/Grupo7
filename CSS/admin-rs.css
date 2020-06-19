@@ -1,78 +1,85 @@
-
+/* Ranked Sliders */
 .inside-box-rs{
-        background: rgba(194, 194, 194, 1);
-        height: 100%;
-        border-radius: 10px;
-        margin: 0 20px;
-        display: flex;
-        justify-content: center;
+background: rgba(194, 194, 194, 1);
+height: 100%;
+border-radius: 10px;
+margin: 0 20px;
+display: flex;
+justify-content: center;
 }
 .content-container{
-    width: 400px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 7vh 0vw;
+width: 400px;
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+padding: 7vh 0vw;
 }
+/* Divisão em 2 partes dos sliders */
 .range-sliders-container-1{
-    width: 200px;
-    min-width: 200px;
-    padding-right: 10px;
+width: 200px;
+min-width: 200px;
+padding-right: 10px;
 }
 .range-sliders-container-2{
-    width: 200px;
-    min-width: 200px;
-    padding-left: 10px;
+width: 200px;
+min-width: 200px;
+padding-left: 10px;
 }
 .slidecontainer {
-    width: 100%;
+width: 100%;
 }
-  
-  .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 15px;
-    border-radius: 5px;
-    background: rgba(218, 218, 218, 1);
-    outline: none;
-    opacity: 1;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-  
- 
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 5px;
-    background: rgba(48, 48, 48, 1);
-    border: 2px solid rgba(88, 88, 88, 1);
-    cursor: pointer;
-  }
-
-  .slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    background: rgba(48, 48, 48, 1);
-    cursor: pointer;
-  }
+/* Estilização do slider */
+.slider {
+-webkit-appearance: none;
+width: 100%;
+height: 15px;
+border-radius: 5px;
+background: rgba(218, 218, 218, 1);
+outline: none;
+opacity: 1;
+-webkit-transition: .2s;
+transition: opacity .2s;
+}
+.slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 24px;
+height: 24px;
+border-radius: 5px;
+background: rgba(48, 48, 48, 1);
+border: 2px solid rgba(88, 88, 88, 1);
+cursor: pointer;
+}
+.slider::-moz-range-thumb {
+width: 24px;
+height: 24px;
+border-radius: 4px;
+background: rgba(48, 48, 48, 1);
+cursor: pointer;
+}
+/* Botões */
 #submit-rs, #reset-rs{
-    width: 100%;
-    background-color: rgba(48, 48, 48, 1);
-    border-radius: 5px;
-    border: 2px solid rgba(48, 48, 48, 1);
-    padding: 7px 55px;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgba(240, 240, 240, 1);
-    cursor: pointer;
-    }
+width: 100%;
+background-color: rgba(48, 48, 48, 1);
+border-radius: 5px;
+border: 2px solid rgba(48, 48, 48, 1);
+padding: 7px 55px;
+font-weight: 500;
+font-size: 16px;
+color: rgba(240, 240, 240, 1);
+cursor: pointer;
+}
 #submit-rs:hover, #reset-rs:hover{
-    background-color: rgba(88, 88, 88, 1);
-    color: rgba(0, 0, 0, 1);
-    border: 2px solid rgba(48, 48, 48, 1);
+background-color: rgba(88, 88, 88, 1);
+color: rgba(0, 0, 0, 1);
+border: 2px solid rgba(48, 48, 48, 1);
+}
+/* Responsividade */
+@media screen and (max-height: 700px){
+.content-container{
+padding: 0vh 0vw;
+}
+h1{
+font-size: 2rem;
+}
 }

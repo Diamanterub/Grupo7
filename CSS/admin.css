@@ -1,15 +1,16 @@
 /* Home + Manage Events + IET */
-body {
+body{
 margin: 0;
 background-color: rgba(218, 218, 218, 1);
 min-width: 424px;
 }
-.outside-box {
+.outside-box{
 background: rgba(218, 218, 218, 1);
 height: 94vh;
 padding-bottom: 20px;
 }
-.flex-container-top {
+/* Barra de cima com o logo */
+.flex-container-top{
 display: flex;
 justify-content: space-between;
 height: 6vh;
@@ -17,7 +18,7 @@ background-color: rgba(218, 218, 218, 1);
 margin-left: 20px;
 margin-right: 20px;
 }
-.flex-container-left {
+.flex-container-left{
 background: url("../imgs/logo-mini-admin.svg") no-repeat center ;
 width: 100px;
 height: 5vh;
@@ -25,13 +26,14 @@ margin-top: 0.5vh;
 margin-bottom: 0.5vh;
 }
 /* Apenas para Home */
-.inside-box {
+.inside-box{
 background: rgba(194, 194, 194, 1);
 height: 100%;
 border-radius: 10px;
 margin: 0 20px;
 }
-.container {
+/* Área das "caixas" link */
+.container{
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -39,7 +41,8 @@ flex-flow: wrap;
 align-items: center;
 height: 100%;
 }
-.box {
+/* Estilização das caixas que levam a determinada página */
+.box{
 width: 30%;
 height: 40vh;
 background: rgba(218, 218, 218, 1);
@@ -53,38 +56,39 @@ flex-flow: wrap;
 justify-content: center;
 }
 .box h1{
-    margin-top: 6vh;
+margin-top: 6vh;
 }
-.svg-content {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 3vh;
-    margin-top: -4vh;
+.svg-content{
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 3vh;
+margin-top: -4vh;
 }
-.svg-content svg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    fill: rgba(48, 48, 48, 1);
+.svg-content svg{
+display: flex;
+justify-content: center;
+align-items: center;
+fill: rgba(48, 48, 48, 1);
 }
 .box:hover, .box:hover a{
 background: rgba(48, 48, 48, 1);
 color: rgba(218, 218, 218, 1);
 }
-.box h1 {
+.box h1{
 display: flex;
 justify-content: center;
 width: 100%;
 }
-.box a {
+.box a{
 text-decoration: none;
 text-align: center;
 color: rgba(48, 48, 48, 1);
 }
+/* Responsividade das caixas */
 @media screen and (max-width:1200px){
-.box {
+.box{
  width:40%;
 }
 }
@@ -92,19 +96,20 @@ color: rgba(48, 48, 48, 1);
 .box{
  width: 90%;
 }
-.inside-box {
+.inside-box{
  height: 202%;
  margin-bottom:20px;
 }
 }
+
 /* Apenas para Manage Events */
-.inside-box-events {
+.inside-box-events{
 background: rgba(194, 194, 194, 1);
 height: 100%;
 border-radius: 10px;
 margin: 0 20px;
 }
-.container-events {
+.container-events{
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -112,11 +117,12 @@ flex-flow: wrap;
 align-items: center;
 height: 100%;
 }
-#upper-bar-events, .row {
+#upper-bar-events, .row{
 margin-left: 10px;
 margin-right: 10px;
 }
-.box-events {
+/* Estilização das caixas (Manage Events) que levam a determinada página */
+.box-events{
 width: 40%;
 height: 400px;
 background: rgba(218, 218, 218, 1);
@@ -127,22 +133,23 @@ font-size: 5vw;
 display: flex;
 align-items: center;
 }
-.box-events:hover, .box-events:hover a {
+.box-events:hover, .box-events:hover a{
 background: rgba(48, 48, 48, 1);
 color: rgba(218, 218, 218, 1);
 }
-.box-events h1 {
+.box-events h1{
 display: flex;
 justify-content: center;
 width: 100%;
 }
-.box-events a {
+.box-events a{
 text-decoration: none;
 text-align: center;
 color: rgba(48, 48, 48, 1);
 }
+/* Responsividade das caixas (Manage Events) */
 @media screen and (max-width:1200px){
-.box-events {
+.box-events{
  width:40%;
  }
 }
@@ -150,50 +157,51 @@ color: rgba(48, 48, 48, 1);
 .box-events{
  width: 90%;
 }
-.inside-box-events {
+.inside-box-events{
  height: 135%;
  margin-bottom:20px;
 }
 }
+
 /* Apenas para IET (Insert Event Times) */
 .container-iet{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
 }
-.inside-box-iet {
-    background: rgba(194, 194, 194, 1);
-    height: 100%;
-    border-radius: 10px;
-    margin: 0 20px;
-    }
-#frmComplete {
-    width: 100%;
+.inside-box-iet{
+background: rgba(194, 194, 194, 1);
+height: 100%;
+border-radius: 10px;
+margin: 0 20px;
+}
+#frmComplete{
+width: 100%;
 }
 .form-check-label{
-    padding-left: 0px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
+padding-left: 0px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 600;
+font-size: 20px;
 }
 .form-control{
-    margin: 2px 0px;
-    padding: 4px 4px;
-    min-width: 200px;
-    border-radius: 5px;;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    color: rgba(48, 48, 48, 1);
-    background-color: rgba(240, 240, 240, 1);
-    outline:1px !important;
-    box-shadow: none !important;
+margin: 2px 0px;
+padding: 4px 4px;
+min-width: 200px;
+border-radius: 5px;;
+font-family: 'Montserrat', sans-serif;
+font-weight: 400;
+font-size: 14px;
+color: rgba(48, 48, 48, 1);
+background-color: rgba(240, 240, 240, 1);
+outline:1px !important;
+box-shadow: none !important;
 }
+
 /* Propriedade que remove o outline azul */
-textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus
-{
+textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus{
 outline:0px !important;
 -webkit-appearance:none;
 box-shadow: none !important;
@@ -202,61 +210,65 @@ box-shadow: none !important;
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
+input:-webkit-autofill:active {
 -webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
 -webkit-text-fill-color: rgba(240, 240, 240, 1) !important;
 }
+
+/* Insert Event Times */
+/* Estilização dos botões ("quando desativados") */
 input[type=submit], input[type=button]{
-    margin-top: 20px;
-    width: 100%;
-    min-width: 200px;
-    background-color: rgba(48, 48, 48, 1);
-    border-radius: 5px;
-    border: none;
-    padding: 7px 55px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgba(240, 240, 240, 1);
-    cursor: pointer;
-    }
-#btnSubmit:disabled{
-    cursor: not-allowed;
+margin-top: 20px;
+width: 100%;
+min-width: 200px;
+background-color: rgba(48, 48, 48, 1);
+border-radius: 5px;
+border: none;
+padding: 7px 55px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 500;
+font-size: 16px;
+color: rgba(240, 240, 240, 1);
+cursor: pointer;
 }
-#btnSubmit:enabled{
-    margin-top: 20px;
-    width: 100%;
-    min-width: 200px;
-    background-color: rgb(126, 207, 94);
-    border-radius: 5px;
-    border: 2px solid rgba(48, 48, 48, 1);
-    padding: 7px 55px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgba(48, 48, 48, 1);
-    cursor: pointer;
-}
-#btnClose:disabled{
-    cursor: not-allowed;
-}
-#btnClose:enabled{
-    margin-top: 20px;
-    width: 100%;
-    min-width: 200px;
-    background-color: rgb(209, 49, 49);
-    border-radius: 5px;
-    border: 2px solid rgba(48, 48, 48, 1);
-    padding: 7px 55px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: rgba(48, 48, 48, 1);
-    cursor: pointer;
+/* Alteração do cursor quando ambos os botões estão desativados */
+#btnSubmit:disabled, #btnClose:disabled{
+cursor: not-allowed;
 }    
+/* Botão Submit - apenas quando ativado */
+#btnSubmit:enabled{
+margin-top: 20px;
+width: 100%;
+min-width: 200px;
+background-color: rgb(126, 207, 94);
+border-radius: 5px;
+border: 2px solid rgba(48, 48, 48, 1);
+padding: 7px 55px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 500;
+font-size: 16px;
+color: rgba(48, 48, 48, 1);
+cursor: pointer;
+}
+/* Botão Close - apenas quando ativado */ 
+#btnClose:enabled{
+margin-top: 20px;
+width: 100%;
+min-width: 200px;
+background-color: rgb(209, 49, 49);
+border-radius: 5px;
+border: 2px solid rgba(48, 48, 48, 1);
+padding: 7px 55px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 500;
+font-size: 16px;
+color: rgba(48, 48, 48, 1);
+cursor: pointer;
+}
+/* Não sei o que é isto, de certeza que tmb não vão ler o código, isto é POO /s */
 @media screen and (max-width:600px){
-    .inside-box-iet {
-     height: 100%;
-     margin-bottom:20px;
-    }
-    }
+.inside-box-iet{
+height: 100%;
+margin-bottom:20px;
+}
+}

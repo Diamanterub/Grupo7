@@ -72,6 +72,11 @@
     </div>
     </div>
     <!-- Script Necessários -->
+    <script>
+    // Logo que leva o Admin de volta a Home //
+    document.getElementById("logo").style.cursor = "pointer";
+    document.getElementById('logo').addEventListener('click', (event) => { window.location.href = "../../admin/home.html" });
+    </script>
     <script type="module" src="../../../js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
