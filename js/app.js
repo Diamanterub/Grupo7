@@ -1,16 +1,17 @@
-import SignInView        from './views/SignInView.js'
-import SignUpView        from './views/SignUpView.js'
-import SignStatusView    from './views/SignStatusView.js'
-import CreateEventView   from './views/CreateEventView.js'
-import SearchEventView   from './views/SearchEventView.js'
-import ShowEventView     from './views/ShowEventView.js'
-import CompleteEventView from './views/CompleteEventView.js'
-import LeaderboardView   from './views/LeaderboardView.js'
-import ProfileView       from './views/ProfileView.js'
-import RankedSlidersView from './views/RankedSlidersView.js'
-import StatsView         from './views/StatsView.js'
-import SearchTeamView    from './views/SearchTeamView.js'
-import CreateTeamView    from './views/CreateTeamView.js'
+import SignInView        from './views/SignInView.js';
+import SignUpView        from './views/SignUpView.js';
+import SignStatusView    from './views/SignStatusView.js';
+import CreateEventView   from './views/CreateEventView.js';
+import SearchEventView   from './views/SearchEventView.js';
+import ShowEventView     from './views/ShowEventView.js';
+import CompleteEventView from './views/CompleteEventView.js';
+import LeaderboardView   from './views/LeaderboardView.js';
+import ProfileView       from './views/ProfileView.js';
+import RankedSlidersView from './views/RankedSlidersView.js';
+import StatsView         from './views/StatsView.js';
+import SearchTeamView    from './views/SearchTeamView.js';
+import CreateTeamView    from './views/CreateTeamView.js';
+import ShowTeamView      from './views/ShowTeamView.js';
 
 
 class App {
@@ -42,6 +43,8 @@ class App {
             case "/html/teams.html": this.searchTeamView = new SearchTeamView(); break;
 
             case "/html/team-c.html": this.createTeamView = new CreateTeamView(); break;
+
+            case "/html/Team.html": this.showTeamView = new ShowTeamView(); break;
         }
     }
 }
