@@ -19,7 +19,7 @@ export default class ProfileView {
     }
 
     buildProfile() {
-        this.info = this.userController.userModel.getAll()[this.getId()];
+        this.info = this.userController.userModel.getAll()[this.userController.getId()];
 
         this.imgPFP.src            = this.info.pfp;
         this.divUsername.innerHTML = `<h1>${this.info.username}</h1>`;
