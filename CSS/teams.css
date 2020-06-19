@@ -148,64 +148,19 @@ input[type=text]:focus, input[type=text], select{
     color: rgba(218, 218, 218, 1);
     font-weight: 500;
     }
-    /* Remove o botão original */
-    .form-check-input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    }
-    /* Cria uma checkbox */
-    .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 22px;
-    width: 22px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(26, 26, 26, 1);
-    }
-    /* Quando clicado, altera-se o background */
-    .form-check-input:checked ~ .checkmark {
-    background-color: rgba(141, 141, 141, 1);
-    }
-    /* Cria um checkmark (escondido/não checked) */
-    .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    }
-    /* Revela o checkmark quando se clica na checkbox */
-    .form-check-input:checked ~ .checkmark:after {
-    display: block;
-    } 
-    /* Estilo do checkmark */
-    .form-check-label .checkmark:after {
-    left: 2.4px;
-    top: 2.4px;  
-    width: 17.2px;
-    height: 17.2px;
-    background: rgba(199, 249, 66, 1);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    } 
-
-#EventArea{
+#areaCatalog{
     width: 100%;
-    min-width: 364px;
+    min-width: 234px;
     border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
 }    
 
-#EventArea .card{
-    width: 300px;
-    height: 400px;
-    border: 3px solid rgba(199, 249, 66, 1);
+#areaCatalog .card{
+    width: 200px;
+    height: 200px;
+    border: 3px solid rgba(150, 205, 91, 1);
     background-color: rgba(26, 26, 26, 1);
     margin-left: 25px;
     margin-right: 25px;
@@ -213,17 +168,17 @@ input[type=text]:focus, input[type=text], select{
 }
 
 .card .img-fluid{
-    width: 300px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     object-fit: scale-down;
     border-radius: 5px;
 }
 
 .scroll {
     width: 100%;
-     background: none;
+    background: none;
     overflow: scroll;
-    margin: 10px 0px;
+    margin: 25px 0px;
     margin-right: 5px;
     overflow-x: hidden;
  }
@@ -237,7 +192,7 @@ input[type=text]:focus, input[type=text], select{
  }
  .scroll::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background: rgba(166, 202, 70, 1); 
+    background: rgba(150, 205, 91, 1); 
 }
 .row{
     margin: 0px 0px;
@@ -247,4 +202,34 @@ input[type=text]:focus, input[type=text], select{
     border-radius: 10px;
     padding: 10px 10px;
     height: auto;
+}
+@media screen and (max-width:750px){
+    #areaCatalog{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #content{
+        display: flex;
+    }
+    .scroll{
+        margin-bottom: 20px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .teams-search-container{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .scroll::-webkit-scrollbar {
+        width: 0px;
+    }
+    a{
+    display: flex;
+    justify-content: center;
+    }
+}
+@media screen and (max-width: 576px){
+    
 }
