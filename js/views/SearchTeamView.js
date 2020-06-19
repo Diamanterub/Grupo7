@@ -25,7 +25,7 @@ export default class EventView {
         try {
             const teamCatalog = this.teamController.searchTeam(
                 this.Name.value, this.Country.value, this.City.value, this.Select.value);
-                this.Catalog.innerHTML += ``
+                this.Catalog.innerHTML = ``
             for (let i = 0; i < teamCatalog.length; i++) {
                 this.Catalog.innerHTML += 
                 `<a href="Team.html?id=${teamCatalog[i].id}"><div class="card"><img src="${teamCatalog[i].shirt}" class="img-fluid" alt="Tshirt"></div></a>`

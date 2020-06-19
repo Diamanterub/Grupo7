@@ -10,7 +10,6 @@ export default class TeamController {
         const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const users = JSON.parse(localStorage.users);
         for (let userID = 0; userID < users.length; userID++) {
-            //alert(users[userID].team)
             if (user == users[userID].username) {
                 for (let teamId = 0; teamId < this.teamModel.getAll().length; teamId++) {
                     if (users[userID].team == this.teamModel.getAll()[teamId].name) {
@@ -22,20 +21,29 @@ export default class TeamController {
         return false;
     }
 
-    createTeam(name, country, city, shirt) {
+    createTeam(name, country, city, shirt, chat) {
         if (!this.teamModel.getAll().some(team => team.name === name)) {
-            this.teamModel.create(name, country, city, shirt);
+            this.teamModel.create(name, country, city, shirt, chat);
         } else {
             throw Error(`Team "${name}" alrealdy exists!`);
         }
     }
 
-    sendRequest(userName, userId, reason, teamId) {
-        this.teamModel.addRequest(userName, userId, reason, teamId);
+    sendRequest(reason, teamId) {
+        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+        const userId = function(user) {
+            const users = JSON.parse(localStorage.users);
+            for (let userID = 0; userID < users.length; userID++) {
+                if (user == users[userID].username) {
+                    return userID;
+                }
+            }
+        }
+        this.teamModel.addRequest(user, userId(user), reason, teamId);
     }
 
-    addMember(userName, userId) {
-        this.teamModel.enroll(userName, userId, this.teamId);
+    addMember(result, requestId, userName, userId, teamId) {
+        this.teamModel.enroll(result, requestId, userName, userId, teamId);
     }
 
     searchTeam(name, country, city, selected) {
@@ -68,6 +76,29 @@ export default class TeamController {
             return teams.slice().sort((a, b) => -(b.id - a.id));                
         } else {
             return teams.slice().sort((a, b) => (b.enrolled - a.enrolled));
+        }
+    }
+
+    getMain(teamInfo) {
+        return {name: teamInfo.name, country: teamInfo.country, city: teamInfo.city,
+                shirt: teamInfo.shirt, chat: teamInfo.chat}
+    }
+
+    getStats(type, dist, teamStats) {
+        if (type == "Race") {
+            switch (dist) {
+                case "5K":  return teamStats.race.d5k;
+                case "10K": return teamStats.race.d10k;
+                case "21K": return teamStats.race.d21k;
+                case "42K": return teamStats.race.d42k;
+            }
+        } else {
+            switch (dist) {
+                case "5K":  return teamStats.walk.d5k;
+                case "10K": return teamStats.walk.d10k;
+                case "21K": return teamStats.walk.d21k;
+                case "42K": return teamStats.walk.d42k;
+            }
         }
     }
 }

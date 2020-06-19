@@ -1,95 +1,117 @@
-body {
-    margin: 0;
-    background-color: rgba(218, 218, 218, 1);
-    min-width: 424px;
-    }
-    .outside-box {
-    background: rgba(218, 218, 218, 1);
-    height: 94vh;
-    padding-bottom: 20px;
-    }
-    .flex-container-top {
-    display: flex;
-    justify-content: space-between;
-    height: 6vh;
-    background-color: rgba(218, 218, 218, 1);
-    margin-left: 20px;
-    margin-right: 20px;
-    }
-    .flex-container-left {
-    background: url("../imgs/logo-mini-admin.svg") no-repeat center ;
-    width: 100px;
-    height: 5vh;
-    margin-top: 0.5vh;
-    margin-bottom: 0.5vh;
-    }
+/* Admin Create Event, certo código foi repetido (do admin.css), para não haver conflito */
+body{
+margin: 0;
+background-color: rgba(218, 218, 218, 1);
+min-width: 424px;
+}
+.outside-box{
+background: rgba(218, 218, 218, 1);
+height: 94vh;
+padding-bottom: 20px;
+}
+/* Barra de cima com o logo */
+.flex-container-top{
+display: flex;
+justify-content: space-between;
+height: 6vh;
+background-color: rgba(218, 218, 218, 1);
+margin-left: 20px;
+margin-right: 20px;
+}
+.flex-container-left{
+background: url("../imgs/logo-mini-admin.svg") no-repeat center ;
+width: 100px;
+height: 5vh;
+margin-top: 0.5vh;
+margin-bottom: 0.5vh;
+}
+/* Divisão do form em duas partes, facilitando a responsividade + organização */
 .first-container, .second-container{
-    min-width: 400px;
+min-width: 400px;
 }
 .form-group{
-    margin: 0 0;
+margin: 0 0;
 }
 .container{
-    height: 100%;
-    display: flex;
-    align-items: center;
+height: 100%;
+display: flex;
+align-items: center;
 }
 #frmEvent{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+width: 100%;
+display: flex;
+justify-content: center;
 }
 #divEvent{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+width: 100%;
+display: flex;
+justify-content: space-between;
 }
+.inside-box-create{
+background: rgba(194, 194, 194, 1);
+height: 91.4vh;
+border-radius: 10px;
+margin: 0 20px;
+display: flex;
+align-items: center;
+}
+.container-create{
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+flex-flow: wrap;
+align-items: flex-start;
+height: 71%;
+}    
+/* Caixas de texto */
 .form-check-label{
-    padding-left: 0px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
+padding-left: 0px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 600;
+font-size: 20px;
 }
 .form-check-label-rb{
-    padding-left: 0px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    padding-left: 22px;
+padding-left: 0px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 600;
+font-size: 20px;
+padding-left: 22px;
 }
 .form-control, .form-control select, .form-control:focus{
-    margin: 2px 0px;
-    padding: 4px 4px;
-    min-width: 200px;
-    border-radius: 5px;;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    color: rgba(48, 48, 48, 1);
-    background-color: rgba(240, 240, 240, 1);
-    outline:1px !important;
-    box-shadow: none !important;
+margin: 2px 0px;
+padding: 4px 4px;
+min-width: 200px;
+border-radius: 5px;;
+font-family: 'Montserrat', sans-serif;
+font-weight: 400;
+font-size: 14px;
+color: rgba(48, 48, 48, 1);
+background-color: rgba(240, 240, 240, 1);
+outline:1px !important;
+box-shadow: none !important;
 }
 .form-control::placeholder{
-    color: rgba(30, 30, 30, 1);
-    }
-    input[type=submit]{
-        margin-top: 10px;
-        width: 100%;
-        min-width: 200px;
-        background-color: rgba(48, 48, 48, 1);
-        border-radius: 5px;
-        border: none;
-        padding: 7px 55px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-        font-size: 16px;
-        color: rgba(240, 240, 240, 1);
-        cursor: pointer;
-        }
+color: rgba(30, 30, 30, 1);
+}
+/* Botões */
+input[type=submit]{
+margin-top: 10px;
+width: 100%;
+min-width: 200px;
+background-color: rgba(48, 48, 48, 1);
+border-radius: 5px;
+border: none;
+padding: 7px 55px;
+font-family: 'Montserrat', sans-serif;
+font-weight: 500;
+font-size: 16px;
+color: rgba(240, 240, 240, 1);
+cursor: pointer;
+}
+
 /* Propriedade que remove o outline azul */
-textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus
-{
+textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus{
 outline:0px !important;
 -webkit-appearance:none;
 box-shadow: none !important;
@@ -98,199 +120,159 @@ box-shadow: none !important;
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
+input:-webkit-autofill:active{
 -webkit-box-shadow: 0 0 0 40px rgba(240, 240, 240, 1) inset !important;
 -webkit-text-fill-color: rgba(48, 48, 48, 1) !important;
 }
 
-/* Apenas para Create Event */    
-.inside-box-create {
-    background: rgba(194, 194, 194, 1);
-    height: 91.4vh;
-    border-radius: 10px;
-    margin: 0 20px;
-    display: flex;
-    align-items: center;
-    }
-    .container-create {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-flow: wrap;
-    align-items: flex-start;
-    height: 71%;
-    }
-
-    #fg-event{
-    width: 80%;
-    margin: 0px 0px;
-    }
-    .box1, .box2 {
-        width: 500px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    .box1 {
-        height: 500px;
-    }
-    .box2 {
-        height: 250px;
-    }
-    #submit_btn{
-        margin-top:275px;
-    }
-
-    /* Botão checkbox Personalizado para Sign In e Sign Up */
-    .form-check-label {
-    position: relative;
-    padding-left: 30px;
-    margin-top: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    width: 55px;
-    }
-    /* Remove o botão original */
-    .form-check-input, .form-check-input-rb {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    }
-    /* Cria uma checkbox */
-    .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(240, 240, 240, 1);
-    }
-    /* Quando clicado, altera-se o background */
-    .form-check-input:checked ~ .checkmark {
-    background-color: rgba(141, 141, 141, 1);
-    }
-    /* Cria um checkmark (escondido/não checked) */
-    .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    }
-    /* Revela o checkmark quando se clica na checkbox */
-    .form-check-input:checked ~ .checkmark:after {
-    display: block;
-    } 
-    /* Estilo do checkmark */
-    .form-check-label .checkmark:after {
-    left: 2.4px;
-    top: 2.4px;  
-    width: 15.2px;
-    height: 15.2px;
-    background: rgba(48, 48, 48, 1);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    } 
-
-   /* Botão checkbox Personalizado para Sign In e Sign Up */
-   .form-check-label-rb {
-    position: relative;
-    padding-left: 24px;
-    padding-top: 2px;
-    margin-top: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    width: 55px;
-    }
-    /* Remove o botão original */
-    .form-check-input-rb {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    }
-    /* Cria uma checkbox */
-    .checkmark-rb {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    border: none;
-    border-radius: 50%;
-    background-color: rgba(240, 240, 240, 1);
-    }
-    /* Quando clicado, altera-se o background */
-    .form-check-input-rb:checked ~ .checkmark-rb {
-    background-color: rgba(141, 141, 141, 1);
-    }
-    /* Cria um checkmark (escondido/não checked) */
-    .checkmark-rb:after {
-    content: "";
-    position: absolute;
-    display: none;
-    }
-    /* Revela o checkmark quando se clica na checkbox */
-    .form-check-input-rb:checked ~ .checkmark-rb:after {
-    display: block;
-    } 
-    /* Estilo do checkmark */
-    .form-check-label-rb .checkmark-rb:after {
-    left: 2.4px;
-    top: 2.4px;  
-    width: 15.2px;
-    height: 15.2px;
-    background: rgba(48, 48, 48, 1);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    } 
-
-    #imgPoster {
-    width: 400px;
-    height: 100px;
-    border: 3px solid rgba(38, 38, 38, 1);
-    border-radius: 3px;
-    background-color: rgba(38, 38, 38, 1);
-    }
-    #imgMap {
-        width: 400px;
-        height: 100px;
-        border: 3px solid rgba(38, 38, 38, 1);
-        border-radius: 3px;
-        background-color: rgba(38, 38, 38, 1);
-        }
-    .img-fluid{
-    width: 400px;
-    height: 100px;
-    object-fit: scale-down;
-    border-radius: 3px;
-    }
-    @media screen and (max-width:992px){
-        .inside-box-create{
-         height: 125vh;
-         margin-bottom:20px;
-        }
-        #divEvent{
-            display: flex;
-            justify-content: center;
-        }
-        .container{
-            display: flex;
-            align-items: flex-start;
-            padding-top: 25px;
-            padding-bottom: 25px;
-            
-        }
-        @media screen and (max-height:740px){
-            .inside-box-create{
-             height: 148vh;
-             margin-bottom:20px;
-            }
-            }
-
-        }
+/* Botão checkbox personalizado*/
+.form-check-label{
+position: relative;
+padding-left: 30px;
+margin-top: 5px;
+cursor: pointer;
+font-size: 12px;
+width: 55px;
+}
+/* Remove o botão original */
+.form-check-input, .form-check-input-rb{
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+/* Cria uma checkbox */
+.checkmark{
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+border: none;
+border-radius: 5px;
+background-color: rgba(240, 240, 240, 1);
+}
+/* Quando clicado, altera-se o background */
+.form-check-input:checked ~ .checkmark{
+background-color: rgba(141, 141, 141, 1);
+}
+/* Cria um checkmark (escondido/não checked) */
+.checkmark:after{
+content: "";
+position: absolute;
+display: none;
+}
+/* Revela o checkmark quando se clica na checkbox */
+.form-check-input:checked ~ .checkmark:after{
+display: block;
+} 
+/* Estilo do checkmark */
+.form-check-label .checkmark:after{
+left: 2.4px;
+top: 2.4px;  
+width: 15.2px;
+height: 15.2px;
+background: rgba(48, 48, 48, 1);
+border: none;
+border-radius: 3px;
+cursor: pointer;
+} 
+/* Botão checkbox Personalizado para Sign In e Sign Up */
+.form-check-label-rb{
+position: relative;
+padding-left: 24px;
+padding-top: 2px;
+margin-top: 5px;
+cursor: pointer;
+font-size: 12px;
+width: 55px;
+}
+/* Remove o botão original */
+.form-check-input-rb{
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+/* Cria uma checkbox */
+.checkmark-rb{
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+border: none;
+border-radius: 50%;
+background-color: rgba(240, 240, 240, 1);
+}
+/* Quando clicado, altera-se o background */
+.form-check-input-rb:checked ~ .checkmark-rb{
+background-color: rgba(141, 141, 141, 1);
+}
+/* Cria um checkmark (escondido/não checked) */
+.checkmark-rb:after{
+content: "";
+position: absolute;
+display: none;
+}
+/* Revela o checkmark quando se clica na checkbox */
+.form-check-input-rb:checked ~ .checkmark-rb:after{
+display: block;
+} 
+/* Estilo do checkmark */
+.form-check-label-rb .checkmark-rb:after{
+left: 2.4px;
+top: 2.4px;  
+width: 15.2px;
+height: 15.2px;
+background: rgba(48, 48, 48, 1);
+border: none;
+border-radius: 50%;
+cursor: pointer;
+}
+/* Aparência das imagens url */ 
+#imgPoster{
+width: 400px;
+height: 100px;
+border: 3px solid rgba(38, 38, 38, 1);
+border-radius: 3px;
+background-color: rgba(38, 38, 38, 1);
+}
+#imgMap{
+width: 400px;
+height: 100px;
+border: 3px solid rgba(38, 38, 38, 1);
+border-radius: 3px;
+background-color: rgba(38, 38, 38, 1);
+}
+.img-fluid{
+width: 400px;
+height: 100px;
+object-fit: scale-down;
+border-radius: 3px;
+}
+/* Responsividade */
+@media screen and (max-width:992px){
+.inside-box-create{
+height: 125vh;
+margin-bottom:20px;
+}
+#divEvent{
+display: flex;
+justify-content: center;
+}
+.container{
+display: flex;
+align-items: flex-start;
+padding-top: 25px;
+padding-bottom: 25px;
+}
+@media screen and (max-height:740px){
+.inside-box-create{
+height: 148vh;
+margin-bottom:20px;
+}
+}
+}

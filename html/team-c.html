@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <title>Swift - Create Team</title>
     <meta charset="utf-8">
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="../CSS/team-c.css">
     <link rel="icon" href="../imgs/favicon.ico">
 </head>
-
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
@@ -48,15 +46,16 @@
     </div>
     <div class="outside-box">
         <div class="inside-box">
+            <div class="create-team-container">
             <form id="frmCreateTeam">
                 <div class="form-group row justify-content-center">
-                    <!-- Url -->
-                    <img src="" class="img-fluid" id="imgShirt">
+                    <!-- Url da imagem da camisola -->
+                    <img src="" onerror="this.src='../imgs/tsi_error.jpg'" class="card" id="imgShirt">
                     <input type="url" class="form-control" id="txtShirt" placeholder="Shirt Image URL" required>
                 </div>
                 <div class="form-group row justify-content-center">
                     <!-- Nome da equipa -->
-                    <input id="txtName" class="form-control" placeholder="Team name" type="text" required>
+                    <input id="txtName" class="form-control" placeholder="Team Name" type="text" required>
                 </div>
                 <div class="form-group row justify-content-center">
                     <!-- País em que se situa a equipa -->
@@ -67,16 +66,16 @@
                     <input id="txtCity" class="form-control" placeholder="City" type="text" required>
                 </div>
                 <div class="form-group row justify-content-center">
+                    <!-- Chat da equipa, fora da app -->
+                    <input id="txtChat" class="form-control" placeholder="Team Chat URL" type="url" required>
+                </div>
+                <div class="form-group row justify-content-center">
                     <!-- Butão do submit -->
                     <input id="submit" value="Create" type="submit">
                 </div>
                 <div class="row" id="Message"></div>
             </form>
-
-
-
-
-
+            </div>
         </div>
     </div>
     <!-- Script Necessários -->
