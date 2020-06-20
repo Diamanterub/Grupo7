@@ -105,3 +105,10 @@ width: 5.5vh;
 margin-top: 2px;
 margin-bottom: 2px;
 }
+.modal-content{
+background-color: rgba(38, 38, 38, 1);
+margin: 0px auto;
+}
+.modal-title, .modal-body, button.close, button.close:hover{
+color: rgba(218, 218, 218, 1);
+}
