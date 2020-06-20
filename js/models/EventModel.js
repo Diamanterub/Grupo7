@@ -697,7 +697,7 @@ export default class EventModel {
 
     getEvents(opsEvent, status) { //Coloca dentro do dropdown de Eventos os eventos com o status pedido pelo View
         for (let i = 0; i < this.events.length; i++) { //Loop que percorre todos os eventos
-            if (this.events[i].status == status) { //Se o status desse evento for igual ao status pedido...
+            if (this.events[i].status == status || status == "all") { //Se o status desse evento for igual ao status pedido ou "todos"...
                 var option   = document.createElement("option"); //Cria um elemento <option>
                 option.text  = this.events[i].name + ", " + this.events[i].edition; //Atribui ao texto da option o nome e edição do evento
                 option.value = this.events[i].id; //Atruibui ao valor da option o id do evento
@@ -707,11 +707,11 @@ export default class EventModel {
     }
 
     getRunners(opsRunner, eventId) {
-        for (let i = 0; i < this.events[eventId].runners.length; i++) {
-            if (!JSON.stringify(this.events[eventId].dist).includes(this.events[eventId].runners[i].data.runner)) {
+        for (let runnerId = 0; runnerId < this.events[eventId].runners.length; runnerId++) {
+            if (!JSON.stringify(this.events[eventId].dist).includes(this.events[eventId].runners[runnerId].data.runner)) {
                 var option   = document.createElement("option");
-                option.text  = this.events[eventId].runners[i].data.runner;
-                option.value = this.events[eventId].runners[i].id;
+                option.text  = this.events[eventId].runners[runnerId].data.runner;
+                option.value = this.events[eventId].runners[runnerId].id;
                 opsRunner.add(option);
             }
         }
