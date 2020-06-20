@@ -25,7 +25,7 @@ export default class TeamController {
         if (!this.teamModel.getAll().some(team => team.name === name)) {
             this.teamModel.create(name, country, city, shirt, chat);
         } else {
-            throw Error(`Team "${name}" alrealdy exists!`);
+            throw Error(`Team "${name}" already exists!`);
         }
     }
 
