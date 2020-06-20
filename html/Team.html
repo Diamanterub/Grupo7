@@ -323,41 +323,32 @@
     </div>
 
     <div class="outside-box">
-        <div class="inside-box">
+        <div class="inside-box-team">
+            <div class="row" id="content">
             <div class="col1">
                 <!-- Texto de hiperligação a página de pesquisa de equipas -->
                 <div class="return_link">
                     <a href="teams.html">⬅ Return</a>
                 </div>
-            <div class="form-group row justify-content-center">
                 <!-- Imagem da T-Shirt  -->
                 <img src="" class="card" id="imgShirt">
-            </div>
-            <div class="form-group row justify-content-center">
+            <div class="team-info">
                 <!-- Nome da Equipa -->
                 <h1 id="txtName"></h1>
-            </div>
-            <div class="form-group row justify-content-center">
                 <!-- Localização da equipa  -->
-                <!-- PEDRO nao te esqueças que o país tem de estar entre parenteses  -->
                 <h2 id="txtCity"></h2>
                 <h2 id="txtCountry"></h2>
             </div>
-            <div class="form-group row justify-content-center">
+            <div class="team-buttons">
                 <!-- Ingressar/Deixar a equipa -->
                 <div id="divBtnJL"></div>
-            </div>
-            <div class="form-group row justify-content-center">
+                <!-- Chat da equipa -->
+                <input id="btnChat" type="button" value="Team Chat">
                 <!-- Lider ver os pedidos de entrada na equipa -->
                 <div id="divBtnReq"></div>
             </div>
-            <div class="form-group row justify-content-center">
-                <!-- Chat da equipa -->
-                <input id="btnChat" type="button" value="Team Chat">
-            </div>
             </div>
             <div class="col2">
-            <div class="form-group row justify-content-center">
                 <div class="stats-container">
                     <!-- Opcões para pesquisar as stats -->
                     <div class="stats-options">
@@ -376,22 +367,24 @@
                             </select>
                         </div>
                     </div>
+                    
                     <!-- Stats -->
                     <div class="stats">
                         <div id="stats-info">
                             <!-- Infos -->
-                            <div><p id="txtSumDist"></p></div>
-                            <div><p id="txtSumTime"></p></div>
-                            <div><p id="txtPace"></p></div>
-                            <div><p id="txtBestTime"></p></div>
-                            <div><p id="txtBTMember"></p></div>
-                            <div><p id="txtBestPos"></p></div>
-                            <div><p id="txtBPMember"></p></div>
+                            <p id="txtSumDist"></p>
+                            <p id="txtSumTime"></p>
+                            <p id="txtPace"></p>
+                            <p id="txtBestTime"></p>
+                            <p id="txtBTMember"></p>
+                            <p id="txtBestPos"></p>
+                            <p id="txtBPMember"></p>
                         </div>
                     </div>
                 </div>
+            </div>
+                <div class="col3">
                 <div class="medals">
-                    <div><p id="txtRank"></p></div>
                     <div id="medalsbox">
                         <input id="medalbox" type="image" src="../imgs/medals/copper_medal.svg"   data-toggle="modal" data-target="#Copper">
                         <input id="medalbox" type="image" src="../imgs/medals/bronze_medal.svg"   data-toggle="modal" data-target="#Bronze">
@@ -404,13 +397,12 @@
                     </div>
                 </div>
                 </div>
-                </div> <!-- -->
-                <div class="col3">
-                    <div class="form-group row justify-content-center">
+                <div class="col4">
+                    <div class="form-group">
                     <!-- leaderboards -->
                         <div class="scroll">
-                            <div class="leaderboard-container-outside">
-                                <div class="leaderboard-container" id="LDRBRDArea">
+                            <div class="teams-container-outside">
+                                <div class="teams-container" id="TEAMSArea">
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -426,6 +418,7 @@
                     </div>
                 </div>
             </div>
+         </div>
         </div>
         </div>
         <!-- Script Necessários -->
