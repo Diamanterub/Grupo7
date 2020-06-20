@@ -59,4 +59,8 @@ export default class EventController {
     recieveRankedSliders() {
         return this.eventModel.getRankedSliders();
     }
+
+    getRunners(eventId) {
+        return this.eventModel.getAll()[eventId].runners;
+    }
 }
