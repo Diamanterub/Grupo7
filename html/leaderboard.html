@@ -42,7 +42,7 @@
         <div class="flex-container-right">         
             <!-- Imagem de Perfil do Utilizador -->
             <div class="user-box">
-                <img id="user-photo" src="../imgs/haile.jpg" width="46" height="46">
+                <img id="user-photo" onerror="this.src='../imgs/default_pfp.png'" width="46" height="46">
             </div>
         </div>
     </div>
@@ -64,20 +64,22 @@
                     </div>
                     <!-- Leaderboard -->
                     <div class="scroll">
+                    <div class="leaderboard-container-outside">
                     <div class="leaderboard-container" id="LDRBRDArea">
-                        <table class="table table-responsive-xl">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">POS</th>
                                     <th scope="col">Time</th>
-                                    <th scope="col">Pace</th>
+                                    <th id="pc-only" scope="col">Pace</th>
                                     <th scope="col">Username</th>
-                                    <th scope="col">Team</th>
+                                    <th id="pc-only" scope="col">Team</th>
                                     <th scope="col">Rank</th>
                                 </tr>
                             </thead>
                             <tbody id="tBody"></tbody>
                         </table>
+                    </div>
                     </div>
                     </div>
                 </div>

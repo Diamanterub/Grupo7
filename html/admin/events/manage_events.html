@@ -26,6 +26,11 @@
                 <div class="box-events" id="box6">
                     <h1><a>Insert Event Times</a></h1>
                 </div>
+                <!-- Link para gerir participantes nos Eventos -->
+                <div class="box-events" id="box7">
+                    <h1><a>Manage Runners</a></h1>
+                </div>
+                
             </div>
         </div>
       </div>
@@ -41,6 +46,9 @@
     // Link para Gerar Valores da Prova - Testagem das Funcionalidades e Gamificação //
     document.getElementById("box6").style.cursor = "pointer";
     document.getElementById('box6').addEventListener('click', (event) => { window.location.href = "iet.html" });
+    // Link para Gerir determinado Evento //
+    document.getElementById("box7").style.cursor = "pointer";
+    document.getElementById('box7').addEventListener('click', (event) => { window.location.href = "manage_runners.html" });
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>

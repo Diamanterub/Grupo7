@@ -3,7 +3,7 @@ import UserModel from '../models/UserModel.js'
 export default class UserController {
     constructor() {
         this.userModel = new UserModel();
-        this.loggedId = this.getId();
+        this.userId = this.getId();
     }
 
     getId() {
@@ -17,9 +17,13 @@ export default class UserController {
 
     createUser(username, password, email) {
         if (!this.userModel.getAll().some(user => user.username === username)) {
-            this.userModel.create(username, password, email);
+            const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var flag = false;
+            for (let i = 0; i < alpha.length; i++) { username.includes(alpha[i]) ? flag = true : {}; }
+            if (flag) { this.userModel.create(username, password, email); }
+            else { throw Error(`Username must contain letters!`); }
         } else {
-            throw Error(`User com username "${username}" já existe!`);
+            throw Error(`Username "${username}" already taken!`);
         }
     }
 
@@ -43,44 +47,40 @@ export default class UserController {
         this.userModel.logout();
     }
 
-    getInfo() {
-        return this.userModel.getAll()[this.getId()];
-    }
-
     editInfo(username, email, password, passconf, pfp) {
         if (password != passconf) { alert('Password and Confirm Password are not equal!'); return false; }
-        if (username != this.userModel.getAll()[this.loggedId].username && username != "") {
+        if (username != this.userModel.getAll()[this.userId].username && username != "") {
             if (!this.userModel.getAll().some(user => user.username === username)) {
-                this.userModel.applyEdit("username", username, this.loggedId);
+                const alpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                var flag = false;
+                for (let i = 0; i < alpha.length; i++) { username.includes(alpha[i]) ? flag = true : {}; }
+                if (flag) {this.userModel.applyEdit("username", username, this.userId); }
+                else { alert(`Username must contain letters!`); }
             } else {
-                alert('Username already in use');
+                alert('Username already in use!');
             }
         }
-        email != this.userModel.getAll()[this.loggedId].email && email != "" ? this.userModel.applyEdit("email", email, this.loggedId) : {} ;
-        password != this.userModel.getAll()[this.loggedId].password && password != "" ? this.userModel.applyEdit("password", password, this.loggedId) : {} ;
-        pfp != this.userModel.getAll()[this.loggedId].pfp && pfp != "" ? this.userModel.applyEdit("pfp", pfp, this.loggedId) : {} ;
+        email != this.userModel.getAll()[this.userId].email && email != "" ? this.userModel.applyEdit("email", email, this.userId) : {} ;
+        password != this.userModel.getAll()[this.userId].password && password != "" ? this.userModel.applyEdit("password", password, this.userId) : {} ;
+        pfp != this.userModel.getAll()[this.userId].pfp ? this.userModel.applyEdit("pfp", pfp, this.userId) : {} ;
         return true;
     }
 
     getStats(type, dist) {
         if (type == "Race") {
             switch (dist) {
-                case "5K":  return this.userModel.getAll()[this.loggedId].stats.race.d5k;
-                case "10K": return this.userModel.getAll()[this.loggedId].stats.race.d10k;
-                case "21K": return this.userModel.getAll()[this.loggedId].stats.race.d21k;
-                case "42K": return this.userModel.getAll()[this.loggedId].stats.race.d42k;
+                case "5K":  return this.userModel.getAll()[this.userId].stats.race.d5k;
+                case "10K": return this.userModel.getAll()[this.userId].stats.race.d10k;
+                case "21K": return this.userModel.getAll()[this.userId].stats.race.d21k;
+                case "42K": return this.userModel.getAll()[this.userId].stats.race.d42k;
             }
         } else {
             switch (dist) {
-                case "5K":  return this.userModel.getAll()[this.loggedId].stats.walk.d5k;
-                case "10K": return this.userModel.getAll()[this.loggedId].stats.walk.d10k;
-                case "21K": return this.userModel.getAll()[this.loggedId].stats.walk.d21k;
-                case "42K": return this.userModel.getAll()[this.loggedId].stats.walk.d42k;
+                case "5K":  return this.userModel.getAll()[this.userId].stats.walk.d5k;
+                case "10K": return this.userModel.getAll()[this.userId].stats.walk.d10k;
+                case "21K": return this.userModel.getAll()[this.userId].stats.walk.d21k;
+                case "42K": return this.userModel.getAll()[this.userId].stats.walk.d42k;
             }
         }
-    }
-
-    getMedals() {
-        return this.userModel.getAll()[this.loggedId].medals();
     }
 }

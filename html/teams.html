@@ -41,62 +41,47 @@
         <div class="flex-container-right">
             <!-- Imagem de Perfil do Utilizador -->
             <div class="user-box">
-                <img id="user-photo" src="../imgs/haile.jpg" width="46" height="46">
+                <img id="user-photo" onerror="this.src='../imgs/default_pfp.png'" width="46" height="46">
             </div>         
         </div>              
     </div>
     <div class="outside-box">
-    <div class="inside-box">
-     <div class="teams-search-container" id="content">
-      <div class="search-container" id="frmSearchTeam">
-            <form id="sco" action="">   
-                <div id="btns" class="form-group">
-                    <input id="button" type="submit" value="SEARCH">
-                    <input id="reset" type="reset" value="Reset">
+        <div class="inside-box">
+            <div class="teams-search-container" id="content">
+                <div class="search-container" id="frmSearchTeam">
+                    <form id="sco" action="">   
+                        <div id="btns" class="form-group">
+                            <input id="button" type="submit" value="SEARCH">
+                            <input id="reset" type="reset" value="Reset">
+                        </div>
+                            <select class="form-control" id="selectOps">
+                                <option value="recent">Recent</option>
+                                <option value="popular">Popular</option>
+                            </select>
+                        <!-- Pesquisar o nome da equipa -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name" id="txtName">
+                        </div>
+                        <!-- Para pesquisar o pais e/ou a cidade da equipa -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Country" id="txtCountry">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="City" id="txtCity">
+                        </div>
+                        <!-- Espaço botões -->
+                        <div id="areaBtns" class="form-group"></div>
+                        <!-- Mensagem de Aviso -->
+                        <div class="row" id="areaMessage"></div>
+                    </form>          
                 </div>
-                    <select class="form-control" id="selectOps">
-                        <option value="recent">Recent</option>
-                        <option value="popular">Popular</option>
-                    </select>
-                <!-- Pesquisar o nome da maratona   -->
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Name" id="txtName">
+                <div class="scroll">
+                    <div class="teams-container-outside">
+                        <div class="teams-container" id="areaCatalog"></div>
+                    </div>
                 </div>
-                <!-- Para pesquisar o pais e/ou a cidade da maratona  -->
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Country" id="txtCountry">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="City" id="txtCity">
-                </div>
-                <!-- Checkboxs para pesquisar o tipo de maratona -->
-                <div id="cb-options-type" class="form-check">
-                         <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="chkRace"> Race
-                        <span class="checkmark"></span>
-                    </label>
-                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" id="chkWalk"> Walk
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                <!-- Mensagem de Aviso -->
-                <div class="row" id="EventMessage"></div>
-                <div id="btns" class="form-group">
-                    <input  id="buttonopt" type="submit" value="*team_name*">
-                </div>
-                <div id="btns" class="form-group">
-                    <input  id="buttonopt" type="submit" value="Create Team">
-                </div>
-            </form>          
+            </div>
         </div>
-        </div>
-        <div class="scroll">
-            <div class="teams-container" id="TeamArea"></div>
-        </div>
-    </div>
-    </div>
-    </div>
     </div>
     <!-- Script Necessários -->
     <script type="module" src="../js/app.js"></script>

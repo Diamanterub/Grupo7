@@ -1,6 +1,6 @@
 import EventController from '../controllers/EventController.js'
 
-export default class EventView {
+export default class CompleteEventView {
     constructor() {
         this.eventController = new EventController();
 

@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<title>Swift - Team Page</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="../CSS/general.css">
-<link rel="stylesheet" href="../CSS/team.css">
-<link rel="icon" href="../imgs/favicon.ico">
+    <title>Swift - Team Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/general.css">
+    <link rel="stylesheet" href="../CSS/team.css">
+    <link rel="icon" href="../imgs/favicon.ico">
 </head>
+
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
@@ -41,20 +43,389 @@
         <div class="flex-container-right">
             <!-- Imagem de Perfil do Utilizador -->
             <div class="user-box">
-                <img id="user-photo" src="../imgs/haile.jpg">
-            </div>         
-        </div>              
+                <img id="user-photo" onerror="this.src='../imgs/default_pfp.png'">
+            </div>
+        </div>
     </div>
+
+    <!-- Modals -->
+    <!-- Request Join -->
+    <div id="ReqJoin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Request Join</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmJoin">
+                        <textarea id="txtReason" rows="5" cols="10" class="form-control" placeholder="Reason (200 chars)" maxlength="200" required></textarea>
+                        <input type="submit" value="Request">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- See Requests -->
+    <div id="SeeReqs" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Requests</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-control" id="slcRequest">
+                        <option value="" disabled selected>Select a request</option>
+                    </select>
+                    <input type="button" value="Read" id="reqRead" disabled>
+                    <input type="button" value="Accept" id="reqAccept" disabled>
+                    <input type="button" value="Decline" id="reqDecline" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copper -->
+    <div id="Copper" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Copper</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlCopper"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bronze -->
+    <div id="Bronze" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bronze</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlBronze"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Silver -->
+    <div id="Silver" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Silver</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlSilver"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Gold -->
+    <div id="Gold" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Gold</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlGold"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Plat -->
+    <div id="Plat" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Platinum</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlPlat"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Diamond -->
+    <div id="Diamond" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Diamond</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlDiamond"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Master -->
+    <div id="Master" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Master</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlMaster"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Swift -->
+    <div id="Swift" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Swift</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive-xl">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event</th>
+                                <th scope="col">Edition</th>
+                                <th scope="col">Distance</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Member</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mdlSwift"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="outside-box">
-    <div class="inside-box">
-    <!-- Contéudo da Página dentro do .inside-box -->
-    </div>
-    </div>
-    <!-- Script Necessários -->
-    <script type="module" src="../js/app.js"></script>
-    <script type="module" src="../js/general.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <div class="inside-box-team">
+            <div class="row" id="content">
+            <div class="col1">
+                <!-- Texto de hiperligação a página de pesquisa de equipas -->
+                <div class="return_link">
+                    <a href="teams.html">⬅ Return</a>
+                </div>
+                <!-- Imagem da T-Shirt  -->
+                <img src="" class="card" id="imgShirt">
+            <div class="team-info">
+                <!-- Nome da Equipa -->
+                <h1 id="txtName"></h1>
+                <!-- Localização da equipa  -->
+                <h2 id="txtCity"></h2>
+                <h2 id="txtCountry"></h2>
+            </div>
+            <div class="team-buttons">
+                <!-- Ingressar/Deixar a equipa -->
+                <div id="divBtnJL"></div>
+                <!-- Chat da equipa -->
+                <input id="btnChat" type="button" value="Team Chat">
+                <!-- Lider ver os pedidos de entrada na equipa -->
+                <div id="divBtnReq"></div>
+            </div>
+            </div>
+            <div class="col2">
+                <div class="stats-container">
+                    <!-- Opcões para pesquisar as stats -->
+                    <div class="stats-options">
+                        <div class="form-group" id="statselect">
+                            <select class="form-control" id="slcType">
+                                <option value="Race" selected> Race </option>
+                                <option value="Walk"> Walk </option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="statselect">
+                            <select class="form-control" id="slcDist">
+                                <option value="5K" selected> 5K </option>
+                                <option value="10K"> 10K </option>
+                                <option value="21K"> 21K </option>
+                                <option value="42K"> 42K </option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="stats">
+                        <div id="stats-info">
+                            <!-- Infos -->
+                            <p id="txtSumDist"></p>
+                            <p id="txtSumTime"></p>
+                            <p id="txtPace"></p>
+                            <p id="txtBestTime"></p>
+                            <p id="txtBTMember"></p>
+                            <p id="txtBestPos"></p>
+                            <p id="txtBPMember"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col3">
+                <div class="medals">
+                    <div id="medalsbox">
+                        <input id="medalbox" type="image" src="../imgs/medals/copper_medal.svg"   data-toggle="modal" data-target="#Copper">
+                        <input id="medalbox" type="image" src="../imgs/medals/bronze_medal.svg"   data-toggle="modal" data-target="#Bronze">
+                        <input id="medalbox" type="image" src="../imgs/medals/silver_medal.svg"   data-toggle="modal" data-target="#Silver">
+                        <input id="medalbox" type="image" src="../imgs/medals/gold_medal.svg"     data-toggle="modal" data-target="#Gold">
+                        <input id="medalbox" type="image" src="../imgs/medals/platinum_medal.svg" data-toggle="modal" data-target="#Plat">
+                        <input id="medalbox" type="image" src="../imgs/medals/diamond_medal.svg"  data-toggle="modal" data-target="#Diamond">
+                        <input id="medalbox" type="image" src="../imgs/medals/master_medal.svg"   data-toggle="modal" data-target="#Master">
+                        <input id="medalbox" type="image" src="../imgs/medals/swift_medal.svg"    data-toggle="modal" data-target="#Swift">
+                    </div>
+                </div>
+                </div>
+                <div class="col4">
+                    <div class="form-group">
+                    <!-- leaderboards -->
+                        <div class="scroll">
+                            <div class="teams-container-outside">
+                                <div class="teams-container" id="TEAMSArea">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Rank</th>
+                                            </tr>
+                                        </thead>
+                                            <tbody id="tblMembers"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        </div>
+        </div>
+        <!-- Script Necessários -->
+        <script type="module" src="../js/app.js"></script>
+        <script type="module" src="../js/general.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
 </html>

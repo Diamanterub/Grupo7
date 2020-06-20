@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Swift Admin - Manage Runners</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../CSS/admin.css">
+    <link rel="icon" href="../../../imgs/favicon-admin.ico">
+</head>
+
+<body>
+    <!-- Barra de cima -->
+    <div class="flex-container-top">
+        <!-- Logótipo / Barra Interior Esquerda (Admin) -->
+        <div id="logo" class="flex-container-left"></div>
+    </div>
+    <div class="outside-box">
+        <div class="inside-box">
+            <!-- Opções de Pesquisa dos paste -->
+            <div>
+                <div class="search-container">
+                    <form id="runnerSearch">
+                        <div class="form-group"> <select class="form-control" id="slcEvent" required>
+                                <option value="" disabled selected> Event </option>
+                            </select> 
+                        </div>
+                    </form>
+                </div>
+                <!-- Leaderboard -->
+                <div class="scroll">
+                    <div class="leaderboard-container-outside">
+                        <div class="leaderboard-container" id="LDRBRDArea">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Username</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Script Necessários -->
+        <script>
+            // Logo que leva o Admin de volta a Home //
+            document.getElementById("logo").style.cursor = "pointer";
+            document.getElementById('logo').addEventListener('click', (event) => {
+                window.location.href = "../../admin/home.html"
+            });
+        </script>
+        <script type="module" src="../../../js/app.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -26,7 +26,7 @@ export default class EventController {
         this.eventModel.addRunner(dist, run, id);
     }
 
-    importEvents(opsEvent, status) {
+    importEvents(opsEvent, status) { //Importar eventos
         this.eventModel.getEvents(opsEvent, status)
     }
 
@@ -34,7 +34,7 @@ export default class EventController {
         this.eventModel.getRunners(opsRunner, eventId)
     }
 
-    importDistances(lbDist, eventId) {
+    importDistances(lbDist, eventId) { // Importar distâncias
         this.eventModel.getDistances(lbDist, eventId)
     }
 
@@ -42,7 +42,7 @@ export default class EventController {
         this.eventModel.addToLeaderboard(eventId, runnerId, time)
     }
 
-    importFromLeaderboard(eventId, dists, tBody) {
+    importFromLeaderboard(eventId, dists, tBody) { //Importar Leaderboard
         this.eventModel.getFromLeaderboard(eventId, dists, tBody)
     }
 
@@ -58,5 +58,9 @@ export default class EventController {
 
     recieveRankedSliders() {
         return this.eventModel.getRankedSliders();
+    }
+
+    getRunners(eventId) {
+        return this.eventModel.getAll()[eventId].runners;
     }
 }

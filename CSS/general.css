@@ -1,106 +1,107 @@
 body{
-    margin: 0;
-    background-color: rgba(38, 38, 38, 1);
-    min-width: 424px;
+margin: 0;
+background-color: rgba(38, 38, 38, 1);
+min-width: 424px;
+font-family: 'Montserrat', sans-serif;
 }
 .outside-box {
-  background: rgba(38, 38, 38, 1);
-  height: 93vh;
-  padding-bottom: 20px;
+background: rgba(38, 38, 38, 1);
+height: 93vh;
+padding-bottom: 20px;
 }
 .inside-box {
-  background: rgba(26, 26, 26, 1);
-  height: 100%;
-  border-radius: 10px;
-  margin: 0 20px;
+background: rgba(26, 26, 26, 1);
+height: 100%;
+border-radius: 10px;
+margin: 0 20px;
 }
 .flex-container-top {
-    display: flex;
-    justify-content: space-between;
-    height: 7vh;
-    background-color: rgba(38, 38, 38, 1);
-    margin-left: 20px;
-    margin-right: 20px;
-    align-items: center;
-  }
+display: flex;
+justify-content: space-between;
+height: 7vh;
+background-color: rgba(38, 38, 38, 1);
+margin-left: 20px;
+margin-right: 20px;
+align-items: center;
+}
 .flex-container-left {
-    background: url("../imgs/logo-mini.svg") no-repeat center ;
-    width: 100px;
-    height: 5vh;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    display: flex;
-    justify-content: center;
+background: url("../imgs/logo-mini.svg") no-repeat center ;
+width: 100px;
+height: 5vh;
+margin-top: 2px;
+margin-bottom: 2px;
+display: flex;
+justify-content: center;
 }
 .flex-container-center {
-    display: flex;
-    justify-content: center;
-    background-color: rgba(38, 38, 38, 1);
-    width: 250px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+display: flex;
+justify-content: center;
+background-color: rgba(38, 38, 38, 1);
+width: 250px;
+margin-top: 2px;
+margin-bottom: 2px;
 }
 .box, .box-home, .box-events, .box-teams, .box-leaderboards, .box-stats{
-    background-color: rgba(38, 38, 38, 1);
-    width: 48px;
+background-color: rgba(38, 38, 38, 1);
+width: 48px;
 
 }
 svg {
-    display: block;
-    margin: 2px auto;
-    fill: rgba(120, 120, 120, 1);
+display: block;
+margin: 2px auto;
+fill: rgba(120, 120, 120, 1);
 }
 svg:hover {
-    fill: rgba(60, 60, 60, 1);
+fill: rgba(60, 60, 60, 1);
 }
 .in-home, .in-home:hover {
-    fill: rgba(218, 218, 218, 1);
+fill: rgba(218, 218, 218, 1);
 }
 .in-events, .in-events:hover {
-    fill: rgba(199, 249, 66, 1);
+fill: rgba(199, 249, 66, 1);
 }
 .in-teams, .in-teams:hover {
-    fill: rgba(150, 205, 91, 1);
+fill: rgba(150, 205, 91, 1);
 }
 .in-leaderboards, .in-leaderboards:hover {
-    fill: rgba(98, 158, 120, 1);
+fill: rgba(98, 158, 120, 1);
 }
 .in-stats, .in-stats:hover {
-    fill: rgba(30, 123, 154, 1);
+fill: rgba(30, 123, 154, 1);
 }
 
 .flex-container-right {
-    width: 10vw;
-    max-width: 100px;
-    height: 7vh;
-    justify-content: flex-end;
-    display: flex;
-    border-radius: 10px;
-    align-items: center;
+width: 10vw;
+max-width: 100px;
+height: 7vh;
+justify-content: flex-end;
+display: flex;
+border-radius: 10px;
+align-items: center;
 }
-  #user-photo{
-   border: 1.5px solid rgba(163, 163, 163, 1);
-   border-radius: 10px;
-   height: 5.5vh;
-   width: 5.5vh;
-   margin-top: 2px;
-   margin-bottom: 2px;
-   object-fit: cover;
-  }
-  .flex-container-left_profile {
-    background: url("../imgs/logo-mini-profile.svg") no-repeat center ;
-    width: 100px;
-    height: 5vh;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    display: flex;
-    justify-content: center;
+#user-photo{
+border: 1.5px solid rgba(163, 163, 163, 1);
+border-radius: 10px;
+height: 5.5vh;
+width: 5.5vh;
+margin-top: 2px;
+margin-bottom: 2px;
+object-fit: cover;
+}
+.flex-container-left_profile {
+background: url("../imgs/logo-mini-profile.svg") no-repeat center ;
+width: 100px;
+height: 5vh;
+margin-top: 2px;
+margin-bottom: 2px;
+display: flex;
+justify-content: center;
 }
 #user-photo_profile{
-    border: 1.5px solid rgba(218, 218, 218, 1);
-    border-radius: 10px;
-    height: 5.5vh;
-    width: 5.5vh;
-    margin-top: 2px;
-    margin-bottom: 2px;
-   }
+border: 1.5px solid rgba(218, 218, 218, 1);
+border-radius: 10px;
+height: 5.5vh;
+width: 5.5vh;
+margin-top: 2px;
+margin-bottom: 2px;
+}
