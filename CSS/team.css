@@ -156,7 +156,7 @@ overflow-x: hidden;
 .scroll::-webkit-scrollbar {
 width: 0px;
 }
-#slcType, #slcDist {
+#slcType, #slcDist, #slcRequest {
 width: 100%;
 background-color: rgba(48, 48, 48, 1);
 color: rgba(218, 218, 218, 1);
