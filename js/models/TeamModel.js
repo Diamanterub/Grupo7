@@ -41,8 +41,7 @@ export default class TeamModel {
                     return id;
                 }
             }
-        } 
-        alert(team.id)
+        }
         this.enroll(true, false, leaderName, leaderID(leaderName), team.id)
     }
 

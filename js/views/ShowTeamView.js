@@ -21,8 +21,9 @@ export default class ShowTeamView {
         this.reqDecline = document.getElementById('reqDecline');
 
         //Modal de mandar Request
-        this.frmJoin   = document.getElementById('frmJoin');
-        this.txtReason = document.getElementById('txtReason');
+        this.frmJoin    = document.getElementById('frmJoin');
+        this.txtReason  = document.getElementById('txtReason');
+        this.btnRequest = document.getElementById('btnRequest');
 
         //Stats
         this.slcType     = document.getElementById('slcType');
@@ -75,11 +76,11 @@ export default class ShowTeamView {
                         true, this.slcReq.value, allInfo.requests[this.slcReq.value].name,
                         allInfo.requests[this.slcReq.value].userId, this.id
                     );
-                    this._reloadReqs();
+                    this._reload();
                 });
                 this.reqDecline.addEventListener('click', event => {
                     this.teamController.addMember( false, this.slcReq.value, "", "", this.id);
-                    this._reloadReqs();
+                    this._reload();
                 });
             }
         });
@@ -95,9 +96,11 @@ export default class ShowTeamView {
         //Carregar membros e respetivos ranks
         this.loadMembers(allInfo.members, allInfo.leader);
 
+        //Envio de pedido de entrada
         this.frmJoin.addEventListener('submit', event => {
             event.preventDefault();
             this.teamController.sendRequest(this.txtReason.value, this.id);
+            this.btnRequest.disabled = true;
         });
     }
 
@@ -145,7 +148,7 @@ export default class ShowTeamView {
         }
     }
 
-    _reloadReqs() {
+    _reload() {
         this.slcReq.selectedIndex = 0;
         this.reqRead.disabled = true;
         this.reqAccept.disabled = true;
