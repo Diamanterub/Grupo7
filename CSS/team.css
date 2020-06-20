@@ -1,1 +1,197 @@
-/* Por fazer */
+.inside-box-team {
+background: rgba(26, 26, 26, 1);
+border-radius: 10px;
+height: 100%;
+margin: 0 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.row {
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+}
+.col1, .col2, .col3, .col4{
+margin: 10px 20px;
+}
+.col1{
+width: 250px;
+height: 87vh; /* Isto é para que o restantes .col estejam numa height de 87vh, o mesmo para .row */
+}
+.col2{
+width: 300px;
+height: 100%;
+}
+.col3{
+display: flex;
+justify-content: center;
+width: 300px;
+height: auto;
+}
+.col4{
+width: 250px;
+height: 100%;
+}
+.return_link a{
+font-family: 'Montserrat', sans-serif;
+color: rgba(150, 205, 91, 1);
+font-weight: 600;
+}
+.card{
+width: 250px;
+height: 250px;
+border: 3px solid rgba(150, 205, 91, 1);
+object-fit: scale-down;
+border-radius: 3px;
+background-color: rgba(38, 38, 38, 1);
+}
+.team-info{
+margin: 10px 0px;
+}
+h1{
+color: rgba(150, 205, 91, 1);
+font-size: 30px;
+}
+h2{
+color: rgba(218, 218, 218, 1);
+font-size: 18px;
+}
+#txtCountry{
+font-size: 14px;
+}
+h1, h2{
+font-family: 'Montserrat', sans-serif;
+text-align: center;
+}
+input[type=button]{
+background-color: rgba(150, 205, 91, 1);
+border-radius: 5px;
+color: rgba(48, 48, 48, 1);
+border: 2px solid rgba(48, 48, 48, 1);
+padding: 5px 0px;
+margin-top: 15px;
+width: 100%;
+height: 40px;
+font-weight: 600;
+cursor: pointer;
+}
+input[type=button]:hover{
+border: 2px solid rgba(150, 205, 91, 1);
+background-color: rgba(48, 48, 48, 1);
+color: rgba(150, 205, 91, 1);
+}
+.stats-container, .medals{
+width: 100%;
+border-radius: 10px;
+background-color: rgba(38, 38, 38, 0.5);
+padding: 10px 10px;
+}
+#stats-info p{
+color: rgba(218, 218, 218, 1);
+font-size: 18px;
+text-align: center;
+}
+.medals{
+display: flex;
+align-items: center;
+}
+#medalsbox{
+width: 100%;
+height: 80%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+align-content: center;
+}
+.medals [type=image]{
+width: 100px;
+margin: 5px 5px;
+}
+#medalbox{
+background-color: rgba(26, 26, 26, 1);
+border-radius: 5px;
+padding: 10px 10px;
+}
+#medalbox:hover{
+background-color: rgba(26, 26, 26, 0.5);
+transition: 0.3s ease-in-out;
+}
+.table{
+width: 100%;
+margin-bottom: 0px;
+}
+.table thead th {
+vertical-align: bottom;
+border-bottom: 3px solid #dadada;
+}
+.table th, .table td {
+padding: 10px 2px;
+border-top: 3px solid #dadada;
+}
+thead tr{
+color: rgba(150, 205, 91, 1);
+}
+tr{
+color:#dadada;
+}
+.teams-container-outside{
+padding: 10px 10px;
+height: 87vh;
+}
+.teams-container{
+width: 100%;
+border-radius: 10px;
+display: flex;
+flex-wrap: wrap;
+}
+.scroll {
+width: 100%;
+background: none;
+overflow: scroll;
+overflow-x: hidden;
+}
+.scroll::-webkit-scrollbar {
+width: 0px;
+}
+#slcType, #slcDist {
+width: 100%;
+background-color: rgba(48, 48, 48, 1);
+color: rgba(218, 218, 218, 1);
+margin-top: 15px;
+border: none;
+padding: 3px 5px;
+font-size: 14px;
+font-weight: 500;
+box-shadow: none;
+}
+@media screen and (max-width:1300px){
+.outside-box{
+height: auto;
+}
+.teams-container-outside{
+height: 50vh;
+}
+}
+@media screen and (max-width:1060px){
+.row{
+justify-content: space-evenly;
+}
+}
+@media screen and (max-width:688px){
+.row{
+justify-content: center;
+}
+.col1{
+height: auto;
+}
+}
+@media screen and (max-height:700px){
+.card{
+width: 200px;
+height: 200px;
+margin: 0px auto;
+}
+}
