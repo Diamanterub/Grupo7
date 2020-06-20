@@ -104,7 +104,7 @@ export default class ShowTeamView {
     loadMain(mainInfo) { //Carrega as informações principais
         this.imgShirt.src = mainInfo.shirt;
         this.txtName.innerHTML = mainInfo.name;
-        this.txtCountry.innerHTML = `(${mainInfo.country})`;
+        this.txtCountry.innerHTML = mainInfo.country;
         this.txtCity.innerHTML = mainInfo.city;
         this.btnChat.onclick = function() { window.open(mainInfo.chat); }
     }
