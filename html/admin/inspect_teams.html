@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Swift Admin - Inspect Teams</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../CSS/admin.css">
-    <link rel="icon" href="../../imgs/favicon-admin.ico">
+<title>Swift Admin - Inspect Teams</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../CSS/admin.css">
+<link rel="icon" href="../../imgs/favicon-admin.ico">
 </head>
-
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
@@ -17,47 +16,54 @@
         <div id="logo" class="flex-container-left"></div>
     </div>
     <div class="outside-box">
-        <div class="inside-box">
+        <div class="eu-inside-box">
+            <div class="eu-container">
             <!-- Search de uma Team especifica -->
-            <div>
                 <form id="seachTeam">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Team name" id="txtSearchTeam">
                     </div>
-
                     <!-- Remover a Team da Aplicação -->
                     <div>
                         <input id="btnRemove" value="Remove" type="button" disabled>
                     </div>
                 </form>
-            </div>
             <!-- Tabela com o nome das Teams e seus respetivos Ids -->
-            <div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <!-- Teams com os seu respetivos Ids-->
-                            <th scope="col">ID</th>
-                            <th scope="col">Team</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tBody"></tbody>
-                </table>
+            <div id="it-scroll" class="scroll">
+                <div class="it-container-outside">
+                    <div class="it-container-inside" id="itArea">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <!-- Teams com os seu respetivos Ids-->
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Team</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+        </div>
     </div>
-    <!-- Script Necessários -->
-    <script>
-        // Logo que leva o Admin de volta a Home
-        document.getElementById("logo").style.cursor = "pointer";
-        document.getElementById('logo').addEventListener('click', (event) => {
-            window.location.href = "home.html"
-        });
-    </script>
-    <script type="module" src="../../js/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<!-- Script Necessários -->
+<script>
+// Logo que leva o Admin de volta a Home
+document.getElementById("logo").style.cursor = "pointer";
+document.getElementById('logo').addEventListener('click', (event) => {
+window.location.href = "home.html"
+});
+// Alter o fundo da tabela quando selecionado
+$("tr").click(function(){
+$(this).addClass("selected").siblings().removeClass("selected");
+});
+</script>
+<script type="module" src="../../js/app.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
