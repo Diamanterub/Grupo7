@@ -62,6 +62,7 @@ export default class ShowTeamView {
         this.loadMain(this.teamController.getMain(allInfo));
         this.loadBtns(this.isTeamMember(allInfo.members), allInfo.leader) ? this.loadReqs(allInfo.requests) : {} ;
         
+        //Carrega os pedidos de entrada
         this.slcReq.addEventListener('change', (event) => {
             if (this.slcReq.value != "") {
                 this.reqRead.disabled = false;
@@ -121,9 +122,11 @@ export default class ShowTeamView {
                 `<input type="button" value="Requests" id="" data-toggle="modal" data-target="#SeeReqs">`;
                 return true; //...Retorna verdadeiro para a função loadReqs correr
             }
-        } else { //Senão coloca o botão de Join
-            this.divBtnJL.innerHTML = `<input type="button" value="Join" id="" data-toggle="modal" data-target="#ReqJoin">`;
-            this.btnChat.disabled = true; //Impede o user de aceder ao chat da equipa a que não pertence
+        } else { //Senão coloca o botão de Join...
+            if (this.teamController.getId() === false) { //...caso o user não tenha uma equipa
+                this.divBtnJL.innerHTML = `<input type="button" value="Join" id="" data-toggle="modal" data-target="#ReqJoin">`;
+            }
+            this.btnChat.remove(); //Impede o user de aceder ao chat da equipa a que não pertence
         }
         return false; //Retorna falso para a função loadReqs não correr
     }

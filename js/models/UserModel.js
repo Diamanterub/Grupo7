@@ -14,8 +14,8 @@ export default class UserModel {
     create(username, password, email) {
         const admin = username == "adminP" || username == "adminY" || username == "adminR" ? true : false;
         const user = {
-            id: this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 0,
-            username: username, password: password, email: email, admin: admin, pfp: "", team: "", rank: 500,
+            id: this.users.length > 0 ? this.users[this.users.length - 1].id + 1 : 0, username: username,
+            password: password, email: email, admin: admin, pfp: "", team: "", rank: 500,
             medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
             stats: { 
                 race: { 
@@ -56,9 +56,9 @@ export default class UserModel {
 
         if (deleteId < this.users[this.users.length - 1].id) {
             for (let userId = deleteId; userId < this.users.length; userId++) {
-                if (this.users[userId].team != "") {
-                    const teams = localStorage.teams ? JSON.parse(localStorage.teams) : [];
-                    for (let teamId = 0; teamId < teams.length; teamId++) {
+                const teams = localStorage.teams ? JSON.parse(localStorage.teams) : [];
+                for (let teamId = 0; teamId < teams.length; teamId++) {
+                    if (this.users[userId].team != "") {
                         if (this.users[userId].team == teams[teamId].name) {
                             for (let memberId = 0; memberId < teams[teamId].members.length; memberId++) {
                                 if (this.users[userId].id == teams[teamId].members[memberId].userId) {
@@ -68,13 +68,19 @@ export default class UserModel {
                             }
                             break;
                         }
+                    } else {
+                        for (let requestId = 0; requestId < teams[teamId].requests.length; requestId++) {
+                            if (this.users[userId].id == teams[teamId].requests[requestId].userId) {
+                                teams[teamId].requests[requestId].userId = userId;
+                                break;
+                            }
+                        }
                     }
-                    localStorage.setItem('teams', JSON.stringify(teams));
                 }
+                localStorage.setItem('teams', JSON.stringify(teams));
                 this.users[userId].id = userId;
             }
         }
-
         this._persist();
     }
 

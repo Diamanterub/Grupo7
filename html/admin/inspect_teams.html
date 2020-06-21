@@ -18,44 +18,31 @@
     </div>
     <div class="outside-box">
         <div class="inside-box">
+            <!-- Search de uma Team especifica -->
+            <div>
+                <form id="seachTeam">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Team name" id="txtSearchTeam">
+                    </div>
+
+                    <!-- Remover a Team da Aplicação -->
+                    <div>
+                        <input id="btnRemove" value="Remove" type="button" disabled>
+                    </div>
+                </form>
+            </div>
             <!-- Tabela com o nome das Teams e seus respetivos Ids -->
             <div>
                 <table class="table">
-
                     <thead>
-
                         <tr>
-
                             <!-- Teams com os seu respetivos Ids-->
-                            <th scope="col">Team</th>
                             <th scope="col">ID</th>
-                            
+                            <th scope="col">Team</th>
                         </tr>
-
                     </thead>
-
                     <tbody id="tBody"></tbody>
-
                 </table>
-            </div>
-            <!-- Search de uma Team especifica -->
-            <div>
-                <form id="seachUser">
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username" id="txtName">
-                    </div>
-
-                    <div class="form-group">
-                        <input id="submit" value="Search" type="submit">
-                    </div>
-
-                </form>
-                <!-- Remover a Team da Aplicação -->
-                <div>
-                    <input id="remove" value="Remove" type="submit">
-                </div>
-
             </div>
         </div>
     </div>
@@ -67,6 +54,7 @@
             window.location.href = "home.html"
         });
     </script>
+    <script type="module" src="../../js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
