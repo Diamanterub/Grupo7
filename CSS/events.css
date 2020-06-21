@@ -118,7 +118,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active  {
--webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
+box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
 -webkit-text-fill-color: rgba(218, 218, 218, 1) !important;
 }
 #cb-options-distance, #cb-options-type{
