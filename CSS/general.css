@@ -112,3 +112,12 @@ margin: 0px auto;
 .modal-title, .modal-body, button.close, button.close:hover{
 color: rgba(218, 218, 218, 1);
 }
+button.close:hover{
+cursor: pointer;
+}
+.modal-header, .modal-footer {
+border: none;
+}
+.modal-footer{
+padding: 0px 0px;
+}

@@ -204,6 +204,7 @@ export default class EventModel {
             dists.innerHTML +=
             `<label class="form-check-label">
             <input class="form-check-input" name="dist" type="radio" id="frm5K"> 5K
+            <span class="checkmark"></span>
             </label><br>`
         }
         if (JSON.stringify(this.events[id].dist).includes("10K")) {
@@ -212,6 +213,7 @@ export default class EventModel {
             dists.innerHTML +=
             `<label class="form-check-label">
             <input class="form-check-input" name="dist" type="radio" id="frm10K"> 10K
+            <span class="checkmark"></span>
             </label><br>`
         }
         if (JSON.stringify(this.events[id].dist).includes("21K")) {
@@ -220,6 +222,7 @@ export default class EventModel {
             dists.innerHTML +=
             `<label class="form-check-label">
             <input class="form-check-input" name="dist" type="radio" id="frm21K"> 21K
+            <span class="checkmark"></span>
             </label><br>`
         }
         if (JSON.stringify(this.events[id].dist).includes("42K")) {
@@ -228,6 +231,7 @@ export default class EventModel {
             dists.innerHTML +=
             `<label class="form-check-label">
             <input class="form-check-input" name="dist" type="radio" id="frm42K"> 42K
+            <span class="checkmark"></span>
             </label><br>`
         }
         return vals;
