@@ -60,6 +60,14 @@ export default class TeamController {
         }
     }
 
+    removeMember(memberId, teamId) {
+        this.teamModel.leave(memberId, teamId);
+    }
+
+    newLeader(memberId, teamId) {
+        this.teamModel.reElect(memberId, teamId)
+    }
+
     searchTeam(name, country, city, selected) {
         const teams = this.teamModel.getAll();
         var send = [];
