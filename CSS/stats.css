@@ -112,7 +112,16 @@ transition: 0.3s ease-in-out;
 #divBestTime p{
 font-size: 14px;
 }
-
+.modal-dialog{
+    margin: 20px 15vw;
+}
+.modal-content{
+width: 70vw;
+}
+.table-responsive-xl{
+display: flex;
+justify-content: center;
+}
 @media screen and (max-width:932px){
 .stats-container{
 justify-content: center;
