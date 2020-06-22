@@ -216,6 +216,12 @@ export default class UserModel {
                     break;
                 }
             }
+            for (let requestId = 0; requestId < teams[teamId].requests.length; requestId++) {
+                if (teams[teamId].requests[requestId].name == currUser) {
+                    teams[teamId].requests[requestId].name = newUser;
+                    break;
+                }
+            }
             for (let i = 0; i < teams[teamId].medals.copper .length; i++)
                 { teams[teamId].medals.copper [i].member == currUser ? teams[teamId].medals.copper [i].member = newUser : {} }
             for (let i = 0; i < teams[teamId].medals.bronze .length; i++)
