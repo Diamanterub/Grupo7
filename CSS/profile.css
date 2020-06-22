@@ -44,7 +44,7 @@ color: rgba(218, 218, 218, 1);
 font-weight: 400;
 font-size: 20px;
 }
-#divButton, #divPassword, #divPassConf, #divPFP{
+#divButton, #divPassword, #divPassConf, #divPFP, #divLogout{
 display: flex;
 justify-content: center;
 }
