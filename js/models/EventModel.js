@@ -364,7 +364,7 @@ export default class EventModel {
     isOver(id) {
         this.events[id].status = "closed";
         this._setScores(id);
-        //this._persist();
+        this._persist();
     }
 
     _setScores(eventId) {
