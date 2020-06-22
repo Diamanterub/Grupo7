@@ -50,6 +50,10 @@ export default class ShowTeamView {
         //Tabela users
         this.tblMembers = document.getElementById('tblMembers');
 
+        //Modal de saida
+        this.mdlAlerts = document.getElementById('mdlAlerts');
+        this.mdlBtns   = document.getElementById('mdlBtns');
+
         //Carregar todas informações
         this.loadAll();        
     }
@@ -60,7 +64,7 @@ export default class ShowTeamView {
 
         //Carrega a informação da área 'principal', e o modal, se o user for o lider, com os pedidos de entrada
         this.loadMain(this.teamController.getMain(allInfo));
-        this.loadBtns(this.isTeamMember(allInfo.members), allInfo.leader) ? this.loadReqs(allInfo.requests) : {} ;
+        this.loadBtns(this.isTeamMember(allInfo.members), allInfo.leader, allInfo.members) ? this.loadReqs(allInfo.requests) : {} ;
         
         //Carrega os pedidos de entrada
         this.slcReq.addEventListener('change', (event) => {
@@ -103,6 +107,9 @@ export default class ShowTeamView {
             this.teamController.sendRequest(this.txtReason.value, this.id);
             this.btnRequest.disabled = true;
         });
+
+        //Formatar modal de saída consoante o membro que vai sair, e quantos membros a equipa tem
+        this.mdlLeave1 //this.leaveFailSafe(allInfo.leader, allInfo.members);
     }
 
     loadMain(mainInfo) { //Carrega as informações principais
@@ -113,9 +120,12 @@ export default class ShowTeamView {
         this.btnChat.onclick = function() { window.open(mainInfo.chat); }
     }
 
-    loadBtns(memberId, leader) { //Consoante duas verificações, coloca os botões de Join, Leave, e Requests
+    loadBtns(memberId, leader, members) { //Consoante duas verificações, coloca os botões de Join, Leave, e Requests
         if (memberId !== false) { //Se o user logado fizer parte da equipa...
-            this.divBtnJL.innerHTML = `<input type="button" value="Leave" id="">`; //...Coloca o botão de Leave
+            this.divBtnJL.innerHTML = `<input type="button" value="Leave" id="btnLeave" data-toggle="modal" data-target="#Leave">`; //...Coloca o botão de Leave
+
+            this.btnLeave = document.getElementById('btnLeave');
+            this.btnLeave.addEventListener('click', (event) => { this.loadLeave(leader, members); });
 
             if (memberId == leader) { //...Se o membro for o líder...
                 this.divBtnReq.innerHTML = //...Coloca o botão de ver Requests
@@ -131,7 +141,7 @@ export default class ShowTeamView {
         return false; //Retorna falso para a função loadReqs não correr
     }
 
-    isTeamMember(members) { //Verifica se é membro da equipa
+    isTeamMember(members) { //Verifica se é membro da equipa (e atalho para saber o id do membro)
         //Vai buscar o user logado
         const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         for (let memberId = 0; memberId < members.length; memberId++) { //Percorre os membros da equipa
@@ -143,6 +153,11 @@ export default class ShowTeamView {
     }
     
     loadReqs(requests) { //Coloca no modal de Requests os pedidos de entrada para serem aceites ou recusados
+        for ( ; this.slcReq.length > 1; ) {
+            this.slcReq.selectedIndex = "1";
+            this.slcReq.remove(this.slcReq.selectedIndex);
+        }
+        this.slcReq.selectedIndex = "0";
         for (let requestId = 0; requestId < requests.length; requestId++) {
             var option = document.createElement("option"); //Cria um elemento <option>
             option.text  = requests[requestId].name; //Atribui ao texto da option o username do user
@@ -313,6 +328,64 @@ export default class ShowTeamView {
                     <td>${users[members[memberId].userId].rank}</td>
                 </tr>`
             }
+        }
+    }
+
+    loadLeave(leader, members) { //Carrega o Modal de Leave para o seu estado normal
+        this.mdlAlerts.innerHTML =
+            `<div class="alert alert-warning" role="alert">Are you sure you want to leave this team?</div>`;
+        this.mdlBtns.innerHTML =
+            `<input type="button" value="Cancel" id="" data-dismiss="modal" aria-label="Close">
+            <input type="button" value="Leave" id="mdlLeave1">`;
+        this.mdlLeave1 = document.getElementById('mdlLeave1');
+        this.mdlLeave1.addEventListener('click', (event) => { this.leaveFailSafe(leader, members); });
+    }
+
+    leaveFailSafe(leader, members) { //Medidas de segurança caso o user seja o lider ou o último membro da equipa
+        if (this.isTeamMember(members) == leader) { //Ser o último membro da equipa implica ser o lider
+            this.mdlBtns.innerHTML =
+                `<input type="button" value="Cancel" id="" data-dismiss="modal" aria-label="Close">
+                <input type="button" value="Leave" id="mdlLeave2" disabled>`;
+            this.mdlLeave2 = document.getElementById('mdlLeave2');
+            if (members.length > 1) { //Se o líder não for o único, terá de passar a liderança a outro membro
+                this.mdlAlerts.innerHTML =
+                    `<div class="alert alert-info" role="alert">
+                    Since you are the team leader, you must pass leadership to another runner before leaving.</div>
+                    <select class="form-control" id="slcMember">
+                        <option value="" disabled selected>Select a Member</option>
+                    </select>`;
+                this.slcMember = document.getElementById('slcMember');
+                for (let memberId = 0; memberId < members.length; memberId++) {
+                    if(memberId != leader) {
+                        var option = document.createElement("option"); //Cria um elemento <option>
+                        option.text  = members[memberId].name; //Atribui ao texto da option o username do membro
+                        option.value = memberId; //Atruibui ao valor da option o id do membro
+                        this.slcMember.add(option); //Adiciona ao dropdown a option
+                    }
+                }
+                this.slcMember.addEventListener('change', (event) => {
+                    if (this.slcMember.value != "") {
+                        this.mdlLeave2.disabled = false; //Só poderá sair depois de efetivamente selecionar um novo líder
+                    }
+                });
+                this.mdlLeave2.addEventListener('click', (event) => {
+                    this.teamController.removeMember(leader, this.id);
+                    this.teamController.newLeader(this.slcMember.value, this.id);
+                    window.location.href = "teams.html"; //Sai da página da equipa
+                });
+            } else { //Se fôr o único, apaga-se a equipa no momento, pois não tem mais uso
+                this.mdlAlerts.innerHTML =
+                `<div class="alert alert-danger" role="alert">
+                    You are the only team member, if you leave, the team will be permanently deleted!</div>`;
+                this.mdlLeave2.disabled = false;
+                this.mdlLeave2.addEventListener('click', (event) => { 
+                    this.teamController.deleteTeam(this.id);
+                    window.location.href = "teams.html"; //Sai da página da equipa
+                });
+            }
+        } else { //Se não for o líder, simplesmente sai da equipa
+            this.teamController.removeMember(this.isTeamMember(members), this.id);
+            window.location.href = "teams.html"; //Sai da página da equipa
         }
     }
 }

@@ -53,9 +53,11 @@ export default class TeamModel {
         localStorage.setItem('users', JSON.stringify(users));
         this.teams.splice(deleteId, 1);
         
-        if (deleteId < this.teams[this.teams.length - 1].id) {
-            for (let teamId = deleteId; teamId < this.teams.length; teamId++) {
-                this.teams[teamId].id = teamId;
+        if (this.teams.length > 0) {
+            if (deleteId < this.teams[this.teams.length - 1].id) {
+                for (let teamId = deleteId; teamId < this.teams.length; teamId++) {
+                    this.teams[teamId].id = teamId;
+                }
             }
         }
         this._persist();
@@ -71,13 +73,31 @@ export default class TeamModel {
         if (result) {
             const member = { memberId: this.teams[teamId].members.length, name: userName, userId: userId }
             this.teams[teamId].members.push(member);
-            const users = JSON.parse(localStorage.users)
+            const users = JSON.parse(localStorage.users);
             users[userId].team = this.teams[teamId].name;
             localStorage.setItem('users', JSON.stringify(users));
         }
         if (requestId !== false) {
             this.teams[teamId].requests.splice(requestId, 1);
         }
+        this._persist();
+    }
+
+    leave(memberId, teamId) {
+        const users = JSON.parse(localStorage.users);
+        users[this.teams[teamId].members[memberId].userId].team = "";
+        localStorage.setItem('users', JSON.stringify(users));
+        this.teams[teamId].members.splice(memberId, 1);
+
+        for (let index = 0; index < this.teams[teamId].members.length; index++) {
+            this.teams[teamId].members[index].memberId = index;
+        }
+        this.teams[teamId].leader = this.teams[teamId].leader > memberId ? this.teams[teamId].leader - 1 : this.teams[teamId].leader ;
+        this._persist();
+    }
+
+    reElect(memberId, teamId) {
+        this.teams[teamId].leader = memberId - 1;
         this._persist();
     }
 }
