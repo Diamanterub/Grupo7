@@ -83,6 +83,17 @@ border: 2px solid rgba(150, 205, 91, 1);
 background-color: rgba(48, 48, 48, 1);
 color: rgba(150, 205, 91, 1);
 }
+input[type=button]:disabled, input[type=submit]:disabled{
+border: 2px solid rgba(101, 131, 68, 1);
+background-color: rgba(48, 48, 48, 1);
+color: rgba(101, 131, 68, 1);
+cursor: no-drop;
+}
+.alert-warning{
+background-color: rgba(48, 48, 48, 1);
+color: rgba(101, 131, 68, 1);
+border-color: rgba(101, 131, 68, 1);
+}
 .stats-container, .medals{
 width: 100%;
 border-radius: 10px;
@@ -166,6 +177,12 @@ padding: 3px 5px;
 font-size: 14px;
 font-weight: 500;
 box-shadow: none;
+}
+.modal-title, button.close, button.close:hover{
+color: rgba(150, 205, 91, 1); 
+}
+.modal-content{
+border: 2px solid rgba(150, 205, 91, 1);
 }
 @media screen and (max-width:1300px){
 .outside-box{

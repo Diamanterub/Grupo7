@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<title>Swift - Leaderboards</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">   
-<link rel="stylesheet" href="../css/general.css">
-<link rel="stylesheet" href="../css/leaderboards.css">
-<link rel="icon" href="../imgs/favicon.ico">
-</style>
+    <title>Swift - Leaderboards</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/leaderboards.css">
+    <link rel="icon" href="../imgs/favicon.ico">
+    </style>
 </head>
+
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
@@ -39,7 +41,7 @@
             </div>
         </div>
         <!-- Barra Interior Direita -->
-        <div class="flex-container-right">         
+        <div class="flex-container-right">
             <!-- Imagem de Perfil do Utilizador -->
             <div class="user-box">
                 <img id="user-photo" onerror="this.src='../imgs/default_pfp.png'" width="46" height="46">
@@ -49,41 +51,40 @@
     <div class="outside-box">
         <div class="inside-box">
             <!-- Opções de Pesquisa do Leaderboard -->
-                <div class="leaderboard-search-container" id="content">
-                    <div class="search-container" id="frmLB">
-                        <form action="" id="sco">
-                            <div class="form-group"> <input class="form-control" id="lbSubmit" type="submit"
-                                value="SEARCH" disabled> </div>
-                            <div class="form-group"> <select class="form-control" id="lbEvent" required>
-                                    <option value="" disabled selected> Event </option>
-                                </select> </div>
-                            <div class="form-group"> <select class="form-control" id="lbDist" disabled required>
-                                    <option value="" disabled selected> Distance </option>
-                                </select> </div>
-                        </form>
-                    </div>
-                    <!-- Leaderboard -->
-                    <div class="scroll">
+            <div class="leaderboard-search-container" id="content">
+                <div class="search-container" id="frmLB">
+                    <form action="" id="sco">
+                        <div class="form-group"> <input class="form-control" id="lbSubmit" type="submit" value="SEARCH"
+                                disabled> </div>
+                        <div class="form-group"> <select class="form-control" id="lbEvent" required>
+                                <option value="" disabled selected> Event </option>
+                            </select> </div>
+                        <div class="form-group"> <select class="form-control" id="lbDist" disabled required>
+                                <option value="" disabled selected> Distance </option>
+                            </select> </div>
+                    </form>
+                </div>
+                <!-- Leaderboard -->
+                <div class="scroll">
                     <div class="leaderboard-container-outside">
-                    <div class="leaderboard-container" id="LDRBRDArea">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">POS</th>
-                                    <th scope="col">Time</th>
-                                    <th id="pc-only" scope="col">Pace</th>
-                                    <th scope="col">Username</th>
-                                    <th id="pc-only" scope="col">Team</th>
-                                    <th scope="col">Rank</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tBody"></tbody>
-                        </table>
-                    </div>
-                    </div>
+                        <div class="leaderboard-container" id="LDRBRDArea">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">POS</th>
+                                        <th scope="col">Time</th>
+                                        <th id="pc-only" scope="col">Pace</th>
+                                        <th scope="col">Username</th>
+                                        <th id="pc-only" scope="col">Team</th>
+                                        <th scope="col">Rank</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tBody">
+                            </table>
+                        </div>
                     </div>
                 </div>
-            
+            </div>
         </div>
     </div>
     <!-- Script Necessários -->
@@ -93,4 +94,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

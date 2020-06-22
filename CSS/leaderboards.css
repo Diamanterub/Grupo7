@@ -74,6 +74,12 @@ border: 2px solid rgba(98, 158, 120, 1);
 background-color: rgba(48, 48, 48, 1);
 color: rgba(98, 158, 120, 1);
 }
+#lbSubmit:disabled{
+border: 2px solid rgba(56, 82, 65, 1);
+background-color: rgba(48, 48, 48, 1);
+color: rgba(56, 82, 65, 1);
+cursor: no-drop;
+}
 #text{
 display: none;
 }

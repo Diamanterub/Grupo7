@@ -17,35 +17,38 @@
         <div id="logo" class="flex-container-left"></div>
     </div>
     <div class="outside-box">
-        <div class="inside-box">
-            <!-- Search de um especifico Username -->
-            <div>
+        <div class="it-inside-box">
+            <div class="it-container">
+                <!-- Search de um especifico Username -->
                 <form id="seachUser">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Username" id="txtSearchUser">
                     </div>
-                    
                     <!-- Remover o Utilizador da Aplicação -->
                     <div>
                         <input id="btnRemove" value="Remove" type="button" disabled>
                     </div>
                 </form>
-            </div>
-
-            <!-- Table com Usernames e Ids -->
-            <div>
-                <table class="table">
-                    <thead>
-                        <tr disabled>
-                            <!-- Usernames com os seu respetivos Ids-->
-                            <th scope="col">ID</th>
-                            <th scope="col">Username</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tBody"></tbody>
-                </table>
+                <!-- Table com Usernames e Ids -->
+                <div id="eu-scroll" class="scroll">
+                    <div class="eu-container-outside">
+                        <div class="eu-container-inside" id="euArea">
+                            <table class="table">
+                                <thead>
+                                    <tr disabled>
+                                        <!-- Usernames com os seu respetivos Ids-->
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Username</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Script Necessários -->
     <script>

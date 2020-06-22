@@ -156,6 +156,7 @@ color: rgba(48, 48, 48, 1);
 .box-events{
 width:20%;
 }
+}
 @media screen and (min-width:600px) and (max-width:850px){
 a{
 font-size: 2rem;
@@ -170,7 +171,6 @@ font-size: 2rem;
  margin-bottom:20px;
 }
 }
-
 /* Apenas para IET (Insert Event Times) */
 .container-iet{
 height: 100%;
@@ -219,7 +219,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
--webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
+box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
 -webkit-text-fill-color: rgba(240, 240, 240, 1) !important;
 }
 
@@ -240,8 +240,9 @@ color: rgba(240, 240, 240, 1);
 cursor: pointer;
 }
 /* Alteração do cursor quando ambos os botões estão desativados */
-#btnSubmit:disabled, #btnClose:disabled{
+#btnSubmit:disabled, #btnClose:disabled, #btnRemove:disabled{
 cursor: not-allowed;
+background-color: rgba(60, 60, 60, 1);
 }    
 /* Botão Submit - apenas quando ativado */
 #btnSubmit:enabled{
@@ -273,9 +274,121 @@ font-size: 16px;
 color: rgba(48, 48, 48, 1);
 cursor: pointer;
 }
-/* Não sei o que é isto, de certeza que tmb não vão ler o código, isto é POO /s */
+/* Responsividade */
 @media screen and (max-width:600px){
 .inside-box-iet{
 height: 100%;
 margin-bottom:20px;
+}
+}
+/* Manage Runners + Inspect Teams + Examine Users*/
+.maru-container{
+margin: 10px 10px;
+width: 400px;
+background-color: rgba(218, 218, 218, 1);
+border-radius: 10px;
+padding: 10px 10px;
+}
+.maru-inside-box, .it-inside-box, .eu-inside-box{
+display: flex;
+justify-content: center;
+background: rgba(194, 194, 194, 1);
+height: 100%;
+border-radius: 10px;
+margin: 0 20px;
+}
+.form-group{
+margin-bottom: 10px;
+}
+#slcEvent{
+width: 100%;
+background-color: rgba(194, 194, 194, 1);
+color: rgba(48, 48, 48, 1);
+border: none;
+padding: 3px 5px;
+font-size: 14px;
+font-weight: 500;
+box-shadow: none;
+}
+/* Propriedade que remove o outline azul */
+#slcEvent:active, #slcEvent:hover, #slcEvent:focus
+{
+outline:0px !important;
+-webkit-appearance:none;
+box-shadow: none !important;
+}
+/* Propriedades que alteram a cor das caixas input e da cor dos seus textos (quando ocorre autofill) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
+-webkit-text-fill-color: rgba(218, 218, 218, 1) !important;
+}
+
+.it-container, .eu-container{
+margin: 10px 10px;
+width: 80vw;
+min-width: 400px;
+background-color: rgba(218, 218, 218, 1);
+border-radius: 10px;
+padding: 10px 10px;
+}
+#it-scroll, #eu-scroll{
+height: 72vh;
+}    
+#btnRemove{
+margin-bottom: 10px;
+margin-top: 0px;
+}
+.scroll {
+width: 100%;
+background: none;
+overflow: scroll;
+margin: 0px 0px;
+overflow-x: hidden;
+height: 80vh;
+}
+.scroll::-webkit-scrollbar {
+width: 0px;
+}
+.table thead th {
+vertical-align: bottom;
+border-bottom: 3px solid rgba(48, 48, 48, 1);
+}
+.table th, .table td {
+padding: 10px 2px;
+border-top: 3px solid rgba(48, 48, 48, 1);
+}
+.maru-container-outside{
+padding: 10px 10px;
+height: auto;
+}
+.maru-container-inside{
+width: auto;
+display: flex;
+flex-wrap: wrap;
+}
+input[type=text]:focus, input[type=text], select{
+background-color: rgba(194, 194, 194, 1);
+color: rgba(48, 48, 48, 1);
+width: 100%;
+height: 41px;
+padding: 13px 11px;
+margin-top: 15px;
+border: none;
+border-radius: 5px;
+font-weight: 500;
+font-size: 14px;
+}
+input[type=text]::placeholder{
+color: rgba(48, 48, 48, 1);
+}
+@media screen and (max-height: 720px){
+#it-scroll, #eu-scroll{
+height: 65vh;
+}
+.scroll{
+height:75vh;
+}
 }
