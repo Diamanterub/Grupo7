@@ -90,9 +90,9 @@ color: rgba(101, 131, 68, 1);
 cursor: no-drop;
 }
 .alert-warning{
-    background-color: rgba(48, 48, 48, 1);
-    color: rgba(101, 131, 68, 1);
-    border-color: rgba(101, 131, 68, 1);
+background-color: rgba(48, 48, 48, 1);
+color: rgba(101, 131, 68, 1);
+border-color: rgba(101, 131, 68, 1);
 }
 .stats-container, .medals{
 width: 100%;
