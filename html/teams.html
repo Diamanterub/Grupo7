@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>Swift - Teams</title>
     <meta charset="utf-8">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../CSS/teams.css">
     <link rel="icon" href="../imgs/favicon.ico">
 </head>
+
 <body>
     <!-- Barra de cima -->
     <div class="flex-container-top">
@@ -42,22 +44,22 @@
             <!-- Imagem de Perfil do Utilizador -->
             <div class="user-box">
                 <img id="user-photo" onerror="this.src='../imgs/default_pfp.png'" width="46" height="46">
-            </div>         
-        </div>              
+            </div>
+        </div>
     </div>
     <div class="outside-box">
         <div class="inside-box">
             <div class="teams-search-container" id="content">
                 <div class="search-container" id="frmSearchTeam">
-                    <form id="sco" action="">   
+                    <form id="sco" action="">
                         <div id="btns" class="form-group">
                             <input id="button" type="submit" value="SEARCH">
                             <input id="reset" type="reset" value="Reset">
                         </div>
-                            <select class="form-control" id="selectOps">
-                                <option value="recent">Recent</option>
-                                <option value="popular">Popular</option>
-                            </select>
+                        <select class="form-control" id="selectOps">
+                            <option value="recent">Recent</option>
+                            <option value="popular">Popular</option>
+                        </select>
                         <!-- Pesquisar o nome da equipa -->
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Name" id="txtName">
@@ -73,7 +75,7 @@
                         <div id="areaBtns" class="form-group"></div>
                         <!-- Mensagem de Aviso -->
                         <div class="row" id="areaMessage"></div>
-                    </form>          
+                    </form>
                 </div>
                 <div class="scroll">
                     <div class="teams-container-outside">
@@ -90,4 +92,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
