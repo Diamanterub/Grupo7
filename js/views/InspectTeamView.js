@@ -41,7 +41,7 @@ export default class InspectTeamsView {
             //No entanto apareceram outras equipas que ainda correspondam
             var flag = true; //Flag para determinar se a equipa é mostrada ou não
             for (let index = 0; index < search.length; index++) { //Percorre cada character do Search e do Nome
-                if (search[index] != this.teams[teamId].username[index]) { //Se os characteres não corresponderem...
+                if (search[index] != this.teams[teamId].name[index]) { //Se os characteres não corresponderem...
                     flag = false; break; //...A flag será falsa, e quebra-se o ciclo
                 } 
             }
