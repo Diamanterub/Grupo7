@@ -219,7 +219,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active {
--webkit-box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
+box-shadow: 0 0 0 40px rgba(48, 48, 48, 1) inset !important;
 -webkit-text-fill-color: rgba(240, 240, 240, 1) !important;
 }
 
@@ -240,8 +240,9 @@ color: rgba(240, 240, 240, 1);
 cursor: pointer;
 }
 /* Alteração do cursor quando ambos os botões estão desativados */
-#btnSubmit:disabled, #btnClose:disabled{
+#btnSubmit:disabled, #btnClose:disabled, #btnRemove:disabled{
 cursor: not-allowed;
+background-color: rgba(60, 60, 60, 1);
 }    
 /* Botão Submit - apenas quando ativado */
 #btnSubmit:enabled{
