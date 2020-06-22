@@ -13,8 +13,8 @@ export default class TeamModel {
 
     create(name, country, city, shirt, chat) {
         const team = {
-            id: this.teams.length, name: name, country: country, city: city, shirt: shirt, chat: chat,
-            leader: 0, members: [], requests: [],
+            id: this.teams.length > 0 ? this.teams[this.teams.length - 1].id + 1 : 0, name: name,
+            country: country, city: city, shirt: shirt, chat: chat, leader: 0, members: [], requests: [],
             medals: { copper: [], bronze: [], silver: [], gold: [], plat: [], diamond: [], master: [], swift: [] },
             stats: { 
                 race: { 
@@ -41,9 +41,24 @@ export default class TeamModel {
                     return id;
                 }
             }
-        } 
-        alert(team.id)
+        }
         this.enroll(true, false, leaderName, leaderID(leaderName), team.id)
+    }
+
+    delete(deleteId) {
+        const users = JSON.parse(localStorage.users);
+        for (let memberId = 0; memberId < this.teams[deleteId].members.length; memberId++) {
+            users[this.teams[deleteId].members[memberId].userId].team = "";
+        }
+        localStorage.setItem('users', JSON.stringify(users));
+        this.teams.splice(deleteId, 1);
+        
+        if (deleteId < this.teams[this.teams.length - 1].id) {
+            for (let teamId = deleteId; teamId < this.teams.length; teamId++) {
+                this.teams[teamId].id = teamId;
+            }
+        }
+        this._persist();
     }
 
     addRequest(userName, userId, reason, teamId) {

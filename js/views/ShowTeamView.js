@@ -21,8 +21,9 @@ export default class ShowTeamView {
         this.reqDecline = document.getElementById('reqDecline');
 
         //Modal de mandar Request
-        this.frmJoin   = document.getElementById('frmJoin');
-        this.txtReason = document.getElementById('txtReason');
+        this.frmJoin    = document.getElementById('frmJoin');
+        this.txtReason  = document.getElementById('txtReason');
+        this.btnRequest = document.getElementById('btnRequest');
 
         //Stats
         this.slcType     = document.getElementById('slcType');
@@ -61,6 +62,7 @@ export default class ShowTeamView {
         this.loadMain(this.teamController.getMain(allInfo));
         this.loadBtns(this.isTeamMember(allInfo.members), allInfo.leader) ? this.loadReqs(allInfo.requests) : {} ;
         
+        //Carrega os pedidos de entrada
         this.slcReq.addEventListener('change', (event) => {
             if (this.slcReq.value != "") {
                 this.reqRead.disabled = false;
@@ -75,11 +77,11 @@ export default class ShowTeamView {
                         true, this.slcReq.value, allInfo.requests[this.slcReq.value].name,
                         allInfo.requests[this.slcReq.value].userId, this.id
                     );
-                    this._reloadReqs();
+                    this._reload();
                 });
                 this.reqDecline.addEventListener('click', event => {
                     this.teamController.addMember( false, this.slcReq.value, "", "", this.id);
-                    this._reloadReqs();
+                    this._reload();
                 });
             }
         });
@@ -95,9 +97,11 @@ export default class ShowTeamView {
         //Carregar membros e respetivos ranks
         this.loadMembers(allInfo.members, allInfo.leader);
 
+        //Envio de pedido de entrada
         this.frmJoin.addEventListener('submit', event => {
             event.preventDefault();
             this.teamController.sendRequest(this.txtReason.value, this.id);
+            this.btnRequest.disabled = true;
         });
     }
 
@@ -118,9 +122,11 @@ export default class ShowTeamView {
                 `<input type="button" value="Requests" id="" data-toggle="modal" data-target="#SeeReqs">`;
                 return true; //...Retorna verdadeiro para a função loadReqs correr
             }
-        } else { //Senão coloca o botão de Join
-            this.divBtnJL.innerHTML = `<input type="button" value="Join" id="" data-toggle="modal" data-target="#ReqJoin">`;
-            this.btnChat.disabled = true; //Impede o user de aceder ao chat da equipa a que não pertence
+        } else { //Senão coloca o botão de Join...
+            if (this.teamController.getId() === false) { //...caso o user não tenha uma equipa
+                this.divBtnJL.innerHTML = `<input type="button" value="Join" id="" data-toggle="modal" data-target="#ReqJoin">`;
+            }
+            this.btnChat.remove(); //Impede o user de aceder ao chat da equipa a que não pertence
         }
         return false; //Retorna falso para a função loadReqs não correr
     }
@@ -145,7 +151,7 @@ export default class ShowTeamView {
         }
     }
 
-    _reloadReqs() {
+    _reload() {
         this.slcReq.selectedIndex = 0;
         this.reqRead.disabled = true;
         this.reqAccept.disabled = true;

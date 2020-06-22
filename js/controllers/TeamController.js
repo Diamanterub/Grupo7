@@ -6,8 +6,7 @@ export default class TeamController {
         this.teamId = this.getId();
     }
 
-    getId() {
-        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+    getId(user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser')) {
         const users = JSON.parse(localStorage.users);
         for (let userID = 0; userID < users.length; userID++) {
             if (user == users[userID].username) {
@@ -29,6 +28,10 @@ export default class TeamController {
         }
     }
 
+    deleteTeam(teamId) {
+        this.teamModel.delete(teamId);
+    }
+
     sendRequest(reason, teamId) {
         const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
         const userId = function(user) {
@@ -39,11 +42,22 @@ export default class TeamController {
                 }
             }
         }
+        for (let requestId = 0; requestId < this.teamModel.getAll()[teamId].requests.length; requestId++) {
+            if (this.teamModel.getAll()[teamId].requests[requestId].userId == userId(user)) {
+                alert("You've already sent an unanswered request to this team.");
+                return;
+            }            
+        }
         this.teamModel.addRequest(user, userId(user), reason, teamId);
     }
 
     addMember(result, requestId, userName, userId, teamId) {
-        this.teamModel.enroll(result, requestId, userName, userId, teamId);
+        if (this.getId(userName) !== false && result) {
+            alert("Another team has already accepted this user first.")
+            this.teamModel.enroll(false, requestId, "", "", teamId);
+        } else {
+            this.teamModel.enroll(result, requestId, userName, userId, teamId);
+        }
     }
 
     searchTeam(name, country, city, selected) {

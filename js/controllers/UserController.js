@@ -27,8 +27,8 @@ export default class UserController {
         }
     }
 
-    logoutUser() {
-        this.userModel.logout();
+    deleteUser(userId) {
+        this.userModel.delete(userId);
     }
 
     checkSignStatus() {

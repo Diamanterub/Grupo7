@@ -13,7 +13,8 @@ import SearchTeamView    from './views/SearchTeamView.js';
 import CreateTeamView    from './views/CreateTeamView.js';
 import ShowTeamView      from './views/ShowTeamView.js';
 import ManageRunnersView from './views/ManageRunnersView.js';
-
+import ExamineUsersView  from './views/ExamineUsersView.js';
+import InspectTeamView   from './views/InspectTeamView.js';
 
 class App {
     constructor() {
@@ -30,6 +31,10 @@ class App {
             case "/html/admin/events/iet.html": this.completeEventView = new CompleteEventView(); break;
 
             case "/html/admin/events/manage_runners.html": this.manageRunnersView = new ManageRunnersView(); break;
+
+            case "/html/admin/examine_users.html": this.examineUsersView = new ExamineUsersView(); break;
+
+            case "/html/admin/inspect_teams.html": this.inspectTeamView = new InspectTeamView(); break;
 
             case "/html/events.html": this.searchEventView = new SearchEventView(); break;
 
