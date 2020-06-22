@@ -54,31 +54,33 @@ export default class UserModel {
         }
         this.users.splice(deleteId, 1);
 
-        if (deleteId < this.users[this.users.length - 1].id) {
-            for (let userId = deleteId; userId < this.users.length; userId++) {
-                const teams = localStorage.teams ? JSON.parse(localStorage.teams) : [];
-                for (let teamId = 0; teamId < teams.length; teamId++) {
-                    if (this.users[userId].team != "") {
-                        if (this.users[userId].team == teams[teamId].name) {
-                            for (let memberId = 0; memberId < teams[teamId].members.length; memberId++) {
-                                if (this.users[userId].id == teams[teamId].members[memberId].userId) {
-                                    teams[teamId].members[memberId].userId = userId;
+        if (this.users.length > 0) {
+            if (deleteId < this.users[this.users.length - 1].id) {
+                for (let userId = deleteId; userId < this.users.length; userId++) {
+                    const teams = localStorage.teams ? JSON.parse(localStorage.teams) : [];
+                    for (let teamId = 0; teamId < teams.length; teamId++) {
+                        if (this.users[userId].team != "") {
+                            if (this.users[userId].team == teams[teamId].name) {
+                                for (let memberId = 0; memberId < teams[teamId].members.length; memberId++) {
+                                    if (this.users[userId].id == teams[teamId].members[memberId].userId) {
+                                        teams[teamId].members[memberId].userId = userId;
+                                        break;
+                                    }
+                                }
+                                break;
+                            }
+                        } else {
+                            for (let requestId = 0; requestId < teams[teamId].requests.length; requestId++) {
+                                if (this.users[userId].id == teams[teamId].requests[requestId].userId) {
+                                    teams[teamId].requests[requestId].userId = userId;
                                     break;
                                 }
                             }
-                            break;
-                        }
-                    } else {
-                        for (let requestId = 0; requestId < teams[teamId].requests.length; requestId++) {
-                            if (this.users[userId].id == teams[teamId].requests[requestId].userId) {
-                                teams[teamId].requests[requestId].userId = userId;
-                                break;
-                            }
                         }
                     }
+                    localStorage.setItem('teams', JSON.stringify(teams));
+                    this.users[userId].id = userId;
                 }
-                localStorage.setItem('teams', JSON.stringify(teams));
-                this.users[userId].id = userId;
             }
         }
         this._persist();

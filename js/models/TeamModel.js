@@ -53,9 +53,11 @@ export default class TeamModel {
         localStorage.setItem('users', JSON.stringify(users));
         this.teams.splice(deleteId, 1);
         
-        if (deleteId < this.teams[this.teams.length - 1].id) {
-            for (let teamId = deleteId; teamId < this.teams.length; teamId++) {
-                this.teams[teamId].id = teamId;
+        if (this.teams.length > 0) {
+            if (deleteId < this.teams[this.teams.length - 1].id) {
+                for (let teamId = deleteId; teamId < this.teams.length; teamId++) {
+                    this.teams[teamId].id = teamId;
+                }
             }
         }
         this._persist();
