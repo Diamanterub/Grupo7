@@ -95,8 +95,10 @@ export default class ShowTeamView {
         this.loadMedals(allInfo.medals);
 
         //Atualizar stats ao mudar o valor de um dropdown
-        this.slcType.addEventListener('change', (event) => { this.loadStats(); });
-        this.slcDist.addEventListener('change', (event) => { this.loadStats(); });
+        this.slcType.addEventListener('change', (event) => {
+            this.loadStats(this.teamController.getStats(this.slcType.value, this.slcDist.value, allInfo.stats)); });
+        this.slcDist.addEventListener('change', (event) => {
+            this.loadStats(this.teamController.getStats(this.slcType.value, this.slcDist.value, allInfo.stats)); });
 
         //Carregar membros e respetivos ranks
         this.loadMembers(allInfo.members, allInfo.leader);

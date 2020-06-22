@@ -326,7 +326,7 @@ export default class EventModel {
         }
         for (let memberId = 0; memberId < teamMembers().length; memberId++) {
             let flag = false;
-            for (let runnerId = 0; runnerId < array.length; runnerId++) {
+            for (let runnerId = 0; runnerId < this.events[eventId].runners.length; runnerId++) {
                 if (this.events[eventId].runners[runnerId].data.runner == teamMembers()[memberId].name) {
                     this.events[eventId].runners[runnerId].data.run = "team"; flag = true;
                 }
@@ -410,7 +410,7 @@ export default class EventModel {
                 case "Copper":   users[userId].medals.copper .push(data); break;
             }
             users[userId].rank = this._RankFormula(users[userId].rank, medal);
-            arrayLB.run == "team" ? this._giveToTeam(data, users[userId].user) : {} ;
+            arrayLB[pos].run == "team" ? this._giveToTeam(medal, data, users[userId]) : {} ;
         }
         localStorage.setItem('users', JSON.stringify(users));
     }
@@ -443,10 +443,10 @@ export default class EventModel {
         return user;
     }
 
-    _giveToTeam(data, user) {
-        data = JSON.parse(JSON.stringify(data).replace('}', `,"member":"${user.username}"}`))
+    _giveToTeam(medal, data, user) {
+        data = JSON.parse(JSON.stringify(data).replace('}', `,"member":"${user.username}"}`));
         const teams = JSON.parse(localStorage.teams);
-        const teamId = _getTeamId(teams, user);
+        const teamId = this._getTeamId(teams, user);
         teams[teamId].stats = this._updateTeamStats(data, teams[teamId].stats);
         switch (medal) {
             case "Swift":    teams[teamId].medals.swift  .push(data); break;
@@ -722,21 +722,21 @@ export default class EventModel {
     }
 
     getDistances(lbDist, eventId) { //Coloca dentro do dropdown de Distancias as distâncias de um evento selecionado
-        if (JSON.stringify(this.events[eventId].dist).includes('"5k"')) { //Verificar se o evento tem a distância 5K
+        if (JSON.stringify(this.events[eventId].dist).includes('"d5K"')) { //Verificar se o evento tem a distância 5K
             var option   = document.createElement("option"); //Cria um elemento <option>
             option.text  = "5K";  option.value = "5K"; //Atribui ao text e valor da option a distância
             lbDist.add(option); //Adiciona ao dropdown a option
         }
         //Igual para todos os seguintes, com a respetiva distância
-        if (JSON.stringify(this.events[eventId].dist).includes('"10k"')) {
+        if (JSON.stringify(this.events[eventId].dist).includes('"d10K"')) {
             var option   = document.createElement("option");
             option.text  = "10K"; option.value = "10K"; lbDist.add(option);
         }
-        if (JSON.stringify(this.events[eventId].dist).includes('"21k"')) {
+        if (JSON.stringify(this.events[eventId].dist).includes('"d21K"')) {
             var option   = document.createElement("option");
             option.text  = "21K"; option.value = "21K"; lbDist.add(option);
         }
-        if (JSON.stringify(this.events[eventId].dist).includes('"42k"')) {
+        if (JSON.stringify(this.events[eventId].dist).includes('"d42K"')) {
             var option   = document.createElement("option");
             option.text  = "42K"; option.value = "42K"; lbDist.add(option);
         }

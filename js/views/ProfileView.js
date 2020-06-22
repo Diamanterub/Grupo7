@@ -15,6 +15,9 @@ export default class ProfileView {
         this.divPFP      = document.getElementById('divPFP');      //div para input da pfp
         this.divButton   = document.getElementById('divButton');   //div para botões
 
+        this.btnLogout = document.getElementById('btnLogout'); //botão para logout
+        this.btnLogout.addEventListener('click', event => { window.location.href = "/html/sign-in.html" });
+
         this.buildProfile();
     }
 

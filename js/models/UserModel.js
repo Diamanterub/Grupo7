@@ -163,41 +163,49 @@ export default class UserModel {
     _editEvents(newUser, currUser) {
         const events = localStorage.events ? JSON.parse(localStorage.events) : [];
         for (let eventId = 0; eventId < events.length; eventId++) {
-            for (let runnerId = 0; runnerId < events[eventId].length; runnerId++) {
+            for (let runnerId = 0; runnerId < events[eventId].runners.length; runnerId++) {
                 if (events[eventId].runners[runnerId].data.runner == currUser) {
                     events[eventId].runners[runnerId].data.runner = newUser;
-                    switch (events.runners[runnerId].data.dist) {
+                    switch (events[eventId].runners[runnerId].data.dist) {
                         case "5K":
-                            for (let pos = 0; pos < events[eventId].dist.d5k.Leaderboard.length; pos++) {
-                                if (events[eventId].dist.d5k.Leaderboard[pos].runner == currUser) {
-                                    events[eventId].dist.d5k.Leaderboard[pos].runner = newUser;
-                                    break;
+                            try {
+                                for (let pos = 0; pos < events[eventId].dist.d5K.Leaderboard.length; pos++) {
+                                    if (events[eventId].dist.d5K.Leaderboard[pos].runner == currUser) {
+                                        events[eventId].dist.d5K.Leaderboard[pos].runner = newUser;
+                                        break;
+                                    }
                                 }
-                            }
+                            } catch (error) {}
                         break;
                         case "10K":
-                            for (let pos = 0; pos < events[eventId].dist.d10k.Leaderboard.length; pos++) {
-                                if (events[eventId].dist.d10k.Leaderboard[pos].runner == currUser) {
-                                    events[eventId].dist.d10k.Leaderboard[pos].runner = newUser;
-                                    break;
+                            try {
+                                for (let pos = 0; pos < events[eventId].dist.d10K.Leaderboard.length; pos++) {
+                                    if (events[eventId].dist.d10K.Leaderboard[pos].runner == currUser) {
+                                        events[eventId].dist.d10K.Leaderboard[pos].runner = newUser;
+                                        break;
+                                    }
                                 }
-                            }
+                            } catch (error) {}
                         break;
                         case "21K":
-                            for (let pos = 0; pos < events[eventId].dist.d21k.Leaderboard.length; pos++) {
-                                if (events[eventId].dist.d21k.Leaderboard[pos].runner == currUser) {
-                                    events[eventId].dist.d21k.Leaderboard[pos].runner = newUser;
-                                    break;
+                            try {
+                                for (let pos = 0; pos < events[eventId].dist.d21K.Leaderboard.length; pos++) {
+                                    if (events[eventId].dist.d21K.Leaderboard[pos].runner == currUser) {
+                                        events[eventId].dist.d21K.Leaderboard[pos].runner = newUser;
+                                        break;
+                                    }
                                 }
-                            }
+                            } catch (error) {}
                         break;
                         case "42K":
-                            for (let pos = 0; pos < events[eventId].dist.d42k.Leaderboard.length; pos++) {
-                                if (events[eventId].dist.d42k.Leaderboard[pos].runner == currUser) {
-                                    events[eventId].dist.d42k.Leaderboard[pos].runner = newUser;
-                                    break;
+                            try {
+                                for (let pos = 0; pos < events[eventId].dist.d42K.Leaderboard.length; pos++) {
+                                    if (events[eventId].dist.d42K.Leaderboard[pos].runner == currUser) {
+                                        events[eventId].dist.d42K.Leaderboard[pos].runner = newUser;
+                                        break;
+                                    }
                                 }
-                            }
+                            } catch (error) {}
                         break;
                     }
                     break;
@@ -210,9 +218,15 @@ export default class UserModel {
     _editTeams(newUser, currUser) {
         const teams = localStorage.teams ? JSON.parse(localStorage.teams) : [];
         for (let teamId = 0; teamId < teams.length; teamId++) {
-            for (let memberId = 0; memberId < teams[teamId].length; memberId++) {
+            for (let memberId = 0; memberId < teams[teamId].members.length; memberId++) {
                 if (teams[teamId].members[memberId].name == currUser) {
                     teams[teamId].members[memberId].name = newUser;
+                    break;
+                }
+            }
+            for (let requestId = 0; requestId < teams[teamId].requests.length; requestId++) {
+                if (teams[teamId].requests[requestId].name == currUser) {
+                    teams[teamId].requests[requestId].name = newUser;
                     break;
                 }
             }
