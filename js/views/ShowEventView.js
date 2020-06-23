@@ -29,7 +29,7 @@ export default class EventView {
             try { this.d42K = document.getElementById('frm42K'); } catch (error) {}
             this.Message = document.getElementById('mdlRegisterMessage');
 
-            if (!this.isTeamLeader()) { this.Solo.checked = true; this.Team.disabled = true; }
+            if (this.isTeamLeader() == false) { this.Solo.checked = true; this.Team.disabled = true; }
 
             this.eventRegister();
         } catch (e) {}
@@ -74,22 +74,26 @@ export default class EventView {
     }
 
     isTeamLeader() {
-        const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
-        const users = JSON.parse(localStorage.users);
-        const teams = JSON.parse(localStorage.teams);
-        for (let userId = 0; userId < users.length; userId++) {
-            if (user == users[userId].username) {
-                for (let teamId = 0; teamId < teams.length; teamId++) {
-                    if (users[userId].team == teams[teamId].name) {
-                        for (let memberId = 0; memberId < teams[teamId].members.length; memberId++) {
-                            if (userId == teams[teamId].members[memberId].userId) {
-                                return teams[teamId].leader == memberId;
+        try {
+            const user = localStorage.loggedUser ? localStorage.getItem('loggedUser') : sessionStorage.getItem('loggedUser');
+            const users = JSON.parse(localStorage.users);
+            const teams = JSON.parse(localStorage.teams);
+            for (let userId = 0; userId < users.length; userId++) {
+                if (user == users[userId].username) {
+                    for (let teamId = 0; teamId < teams.length; teamId++) {
+                        if (users[userId].team == teams[teamId].name) {
+                            for (let memberId = 0; memberId < teams[teamId].members.length; memberId++) {
+                                if (userId == teams[teamId].members[memberId].userId) {
+                                    return teams[teamId].leader == memberId;
+                                }
                             }
                         }
                     }
                 }
             }
+            return false;
+        } catch (error) {
+            return false;
         }
-        return false;
     }
 }
